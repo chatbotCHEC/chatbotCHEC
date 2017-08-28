@@ -3,7 +3,8 @@
 require('./lib.php');
 require('./consultas.php');
 
-$NIU = $_REQUEST['NIU'];
+$reqBody= detectRequestBody();
+$NIU = $reqBody['result']['parameters']['NIU'];
 try{
 	$con = new PDO('mysql:host=167.114.131.74; dbnme=chec',$user,$pass);
 	$con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

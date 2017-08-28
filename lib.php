@@ -10,12 +10,9 @@ $db = "chec";
 
 //Obtener el cuerpo de la petición POST del chatbot
 function detectRequestBody() {
-    $rawInput = fopen('php://input', 'r');
-    $tempStream = fopen('php://temp', 'r+');
-    stream_copy_to_stream($rawInput, $tempStream);
-    rewind($tempStream);
-
-    return $tempStream;
+    $inputJSON = file_get_contents('php://input');
+    $input = json_decode($inputJSON, TRUE);
+    return $input;
 }
 
 ?>
