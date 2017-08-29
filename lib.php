@@ -36,7 +36,7 @@ class chatBotAPI {
         $db_response=getData($this->con, $NIU);
         
         //Verificar si se encontró el NIU
-        if($db_response['NIU']==""){
+        if(!(isset($db_response['NIU'])) || $db_response['NIU']==""){
             //Respuesta para cuando no se encuentra el NIU
             $json['speech']="No se ha encontrado un usuario con el número de cuenta solicitado";
             $json['displayText']="No se ha encontrado un usuario con el número de cuenta solicitado";
@@ -53,16 +53,30 @@ class chatBotAPI {
             }
             
             //Consultar si el NIU está asociado a alguna indisponibilidad sin resolver
+           
             $disp_response = getDisponibilidad($this->con, $db_response['COD_TRAFO']);
-            if($disp_response['ESTADO']=='APERTURA'){
-                //Respuesta para cuando hay una indisponibilidad
-                $json['speech']=$json['speech']."\n Para este usuario, se ha presentado un corte del servicio en la fecha: ".$disp_response['FECHA']." a las ".$disp_response['HORA'].". Estamos trabajando para reestablecer su servicio lo más pronto posible.";
-                $json['displayText']=$json['speech']."\n Para este usuario, se ha presentado un corte del servicio en la fecha: ".$disp_response['FECHA']." a las ".$disp_response['HORA'].". Estamos trabajando para reestablecer su servicio lo más pronto posible.";
-            }else{
-                //Respuesta para cuando no hay indisponibilidad
-                $json['speech']=$json['speech']."\n Para este usuario, no se presentan inconvenientes registrados.";
-                $json['displayText']=$json['speech']."\n Para este usuario, no se presentan inconvenientes registrados.";
+            if(!(is_null($disp_response))){
+                if($disp_response['ESTADO']=='APERTURA'){
+                    //Respuesta para cuando hay una indisponibilidad
+                    $json['speech']=$json['speech']."\n Para este usuario, se ha presentado un corte del servicio en la fecha: ".$disp_response['FECHA']." a las ".$disp_response['HORA'].". Estamos trabajando para reestablecer su servicio lo más pronto posible.";
+                    $json['displayText']=$json['speech']."\n Para este usuario, se ha presentado un corte del servicio en la fecha: ".$disp_response['FECHA']." a las ".$disp_response['HORA'].". Estamos trabajando para reestablecer su servicio lo más pronto posible.";
+                }else{
+                    //Respuesta para cuando no hay indisponibilidad
+                    $json['speech']=$json['speech']."\n Para este usuario, no se presentan inconvenientes registrados.";
+                    $json['displayText']=$json['speech']."\n Para este usuario, no se presentan inconvenientes registrados.";
+                }
             }
+
+             //Verificar si el usuario está en mora
+             $datosMora = $this->getMora($db_response['NIU']);
+             if(!(is_null($datosMora['DIAS_MORA'])) || isset($datosMora['DIAS_MORA'])){
+                if($datosMora['DIAS_MORA']>0){
+                $json['speech']=$json['speech']."\n El usuario registra ".$datosMora['DIAS_MORA']." días en mora, por un valor total de $".($datosMora['VR_MORA']*$datosMora['DIAS_MORA']);
+                $json['displayText']=$json['displayText']."\n El usuario registra ".$datosMora['DIAS_MORA']." días en mora, por un valor total de $".($datosMora['VR_MORA']*$datosMora['DIAS_MORA']);
+                }
+             }
+
+           
         }
         return $json;
     }
@@ -70,8 +84,9 @@ class chatBotAPI {
     public function getNiuFromName($nombre){
         $palabras = explode(" ", strtoupper($nombre));
         $niu = getNIUwithName($this->con, $palabras);
-        if(isset($niu['NIU']) && is_null($niu['NIU'])){
+        if(!(isset($niu['NIU'])) || is_null($niu['NIU'])){
             $json['speech']="No he podido encontrar ninguna cuenta asociada con el nombre ingresado";
+            $json['displayText']="No he podido encontrar ninguna cuenta asociada con el nombre ingresado";
         }else{
             return $this->getUserData($niu['NIU']);
         }
@@ -79,10 +94,21 @@ class chatBotAPI {
 
     public function getNiuFromTelephone($telefono){
         $niu = getNIUwithTel($this->con, $telefono);
-        if(isset($niu['NIU']) && is_null($niu['NIU'])){
+        if(!(isset($niu['NIU'])) || is_null($niu['NIU'])){
             $json['speech']="No he podido encontrar ninguna cuenta asociada con el teléfono ingresado";
+            $json['displayText']="No he podido encontrar ninguna cuenta asociada con el nombre ingresado";
         }else{
             return $this->getUserData($niu['NIU']);
+        }
+    }
+
+    public function getMora($niu){
+        $datosMora = getDiasMora($this->con, $niu);
+        if(!(isset($datosMora['DIAS_MORA'])) || is_null($datosMora['DIAS_MORA'])){
+            $json['speech']="No he podido encontrar ninguna cuenta asociada con el nombre ingresado";
+            $json['displayText']="No he podido encontrar ninguna cuenta asociada con el nombre ingresado";
+        }else{
+            return $datosMora;
         }
     }
 }

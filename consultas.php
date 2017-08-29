@@ -16,17 +16,21 @@
         foreach($circuito_res as $row){
             $COD_CIRCUITO = $row;
         }
-        $datos = $con -> query("SELECT CIRCUITO, FECHA, HORA, CONCAT(FECHA,' ',HORA) as TS, ESTADO FROM chec.indisponibilidadestel
-        WHERE CIRCUITO ='".$COD_CIRCUITO['COD_CIRCUITO']."' 
-        ORDER BY TS
-        DESC
-        LIMIT 1");
-        $db_response = array();
-        foreach($datos as $row )
-        {
-             $db_response=$row;
+        if(!(isset($COD_CIRCUITO['COD_CIRCUITO'])) || $COD_CIRCUITO['COD_CIRCUITO']== ""){
+            return null;
+        }else{
+            $datos = $con -> query("SELECT CIRCUITO, FECHA, HORA, CONCAT(FECHA,' ',HORA) as TS, ESTADO FROM chec.indisponibilidadestel
+            WHERE CIRCUITO ='".$COD_CIRCUITO['COD_CIRCUITO']."' 
+            ORDER BY TS
+            DESC
+            LIMIT 1");
+            $db_response = array();
+            foreach($datos as $row )
+            {
+                 $db_response=$row;
+            }
+            return $db_response;
         }
-        return $db_response;
     }
 
     function getNIUwithName($con, $palabras){
@@ -59,5 +63,17 @@
                      $db_response=$row;
                 }
                 return $db_response;
-            }
+    }
+
+    function getDiasMora($con, $niu){
+        $datos = $con -> query("SELECT DIAS_MORA, VR_MORA FROM chec.facturacion WHERE NIU ='".$niu."'");
+        $db_response = array();
+        foreach($datos as $row )
+        {
+             $db_response=$row;
+        }
+        return $db_response;
+    }
+
+
 ?>
