@@ -70,7 +70,7 @@ class chatBotAPI {
     public function getNiuFromName($nombre){
         $palabras = explode(" ", strtoupper($nombre));
         $niu = getNIUwithName($this->con, $palabras);
-        if(is_null($niu['NIU'])){
+        if(isset($niu['NIU']) && is_null($niu['NIU'])){
             $json['speech']="No he podido encontrar ninguna cuenta asociada con el nombre ingresado";
         }else{
             return $this->getUserData($niu['NIU']);
