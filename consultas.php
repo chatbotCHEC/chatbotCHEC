@@ -5,7 +5,7 @@
         $db_response = array();
         foreach($datos as $row )
         {
-             $db_response['Data']=$row;
+             $db_response=$row;
         }
         return $db_response;
     }
@@ -21,6 +21,28 @@
         ORDER BY TS
         DESC
         LIMIT 1");
+        $db_response = array();
+        foreach($datos as $row )
+        {
+             $db_response=$row;
+        }
+        return $db_response;
+    }
+
+    function getNIUwithName($con, $palabras){
+
+        $string = "SELECT NIU FROM chec.usuarios WHERE NOMBRE LIKE ";
+        $last = count($palabras) - 1;
+        foreach ($palabras as $i => $palabra) {
+            if($last!=0){
+                if($i==$last){
+                    $string = $string."'%".$palabra."%'";
+                    break;
+                }
+            }
+            $string = $string."'%".$palabra."%' AND NOMBRE LIKE ";
+        }
+        $datos = $con -> query($string);
         $db_response = array();
         foreach($datos as $row )
         {
