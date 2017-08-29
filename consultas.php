@@ -50,4 +50,14 @@
         }
         return $db_response;
     }
+
+    function getNIUwithTel($con, $telefono){
+                $datos = $con -> query("SELECT NIU FROM chec.usuarios WHERE TELEFONO = ".$telefono);
+                $db_response = array();
+                foreach($datos as $row )
+                {
+                     $db_response=$row;
+                }
+                return $db_response;
+            }
 ?>

@@ -76,6 +76,15 @@ class chatBotAPI {
             return $this->getUserData($niu['NIU']);
         }
     }
+
+    public function getNiuFromTelephone($telefono){
+        $niu = getNIUwithTel($this->con, $telefono);
+        if(isset($niu['NIU']) && is_null($niu['NIU'])){
+            $json['speech']="No he podido encontrar ninguna cuenta asociada con el teléfono ingresado";
+        }else{
+            return $this->getUserData($niu['NIU']);
+        }
+    }
 }
 
 

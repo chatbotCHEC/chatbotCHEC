@@ -6,6 +6,7 @@ require('./lib.php');
 $api = new chatBotApi();
 $NIU="";
 $Nombre="";
+$Telefono="";
 
 //Obtener el cuerpo de la petición que viene de API.ai
 $reqBody= $api->detectRequestBody();
@@ -17,10 +18,17 @@ if (isset($reqBody['result']['parameters']['NIU'])) {
 if (isset($reqBody['result']['parameters']['Nombre'])) {
 	$Nombre = $reqBody['result']['parameters']['Nombre'];
 }
+if (isset($reqBody['result']['parameters']['Telefono'])) {
+	$Telefono = $reqBody['result']['parameters']['Telefono'];
+}
 
 if($NIU == ""){
 	if($Nombre==""){
-		$response = "Lo siento, no pude encontrar la respuesta a tu petición";
+		if($Telefono==""){
+			$response = "Lo siento, no pude encontrar la respuesta a tu petición";
+		}else{
+			$response = $api->getNiuFromTelephone($Telefono);
+		}
 	}else{
 		$response = $api->getNiuFromName($Nombre);
 	}
