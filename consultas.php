@@ -35,14 +35,20 @@
 
     function getNIUwithName($con, $palabras){
 
-        $string = "SELECT NIU FROM chec.usuarios WHERE NOMBRE LIKE ";
+        $string = "SELECT distinct(NIU) FROM chec.usuarios WHERE NOMBRE LIKE ";
         $last = count($palabras) - 1;
         foreach ($palabras as $i => $palabra) {
-            if($last!=0){
-                if($i==$last){
-                    $string = $string."'%".$palabra."%'";
-                    break;
-                }
+            if($i==0 && $i==$last){
+                $string = $string."'".$palabra."%'";
+                break;
+            }
+            if($i==0 && $i!=$last){
+                $string = $string."'".$palabra."%' AND NOMBRE LIKE ";
+                continue;
+            }
+            if($i==$last){
+                $string = $string."'%".$palabra."%'";
+                break;
             }
             $string = $string."'%".$palabra."%' AND NOMBRE LIKE ";
         }
@@ -56,13 +62,13 @@
     }
 
     function getNIUwithTel($con, $telefono){
-                $datos = $con -> query("SELECT NIU FROM chec.usuarios WHERE TELEFONO = ".$telefono);
-                $db_response = array();
-                foreach($datos as $row )
-                {
-                     $db_response=$row;
-                }
-                return $db_response;
+        $datos = $con -> query("SELECT NIU FROM chec.usuarios WHERE TELEFONO = ".$telefono);
+        $db_response = array();
+        foreach($datos as $row )
+        {
+                $db_response=$row;
+        }
+        return $db_response;
     }
 
     function getDiasMora($con, $niu){
@@ -71,6 +77,44 @@
         foreach($datos as $row )
         {
              $db_response=$row;
+        }
+        return $db_response;
+    }
+
+    function getNIUwithAddress($con, $direccion){
+        $string = "SELECT NIU FROM chec.usuarios WHERE DES_DIRECCION LIKE ";
+        $last = count($direccion) - 1;
+        foreach ($direccion as $i => $palabra) {
+            if($i==0 && $i==$last){
+                $string = $string."'".$palabra."%'";
+                break;
+            }
+            if($i==0 && $i!=$last){
+                $string = $string."'".$palabra."%' AND DES_DIRECCION LIKE ";
+                continue;
+            }
+            if($i==$last){
+                $string = $string."'% ".$palabra."'";
+                break;
+            }
+            $string = $string."'% ".$palabra." %' AND DES_DIRECCION LIKE ";
+        }
+        
+        $datos = $con -> query($string);
+        $db_response = array();
+        foreach($datos as $row )
+        {
+             $db_response=$row;
+        }
+        return $db_response;
+    }
+
+    function getNIUwithCedula($con, $cedula){
+        $datos = $con -> query("SELECT NIU FROM chec.usuarios WHERE NUM_IDENTIFICACION = ".$cedula);
+        $db_response = array();
+        foreach($datos as $row )
+        {
+                $db_response=$row;
         }
         return $db_response;
     }
