@@ -1,0 +1,45 @@
+{
+    "uuid": "5d691364-9418-4251-b7d1-345965bd2f03",
+    "source": "mi niu es 8974654156",
+    "replies": [
+        "Estamos verificando el Número NIU en el sistema, por favor espere..."
+    ],
+    "action": {
+        "slug": "niu",
+        "done": true,
+        "reply": "Estamos verificando el Número NIU en el sistema, por favor espere..."
+    },
+    "next_actions": [],
+    "memory": {
+        "785421544": {
+            "raw": "8974654156",
+            "confidence": 0.5,
+            "value": "8974654156"
+        },
+        "mi-nombre-es": null,
+        "nombre": null,
+        "me-llamo": null
+    },
+    "sentiment": "neutral",
+    "entities": {
+        "niu_number": [
+            {
+                "raw": "8974654156",
+                "confidence": 0.5,
+                "value": "8974654156"
+            }
+        ]
+    },
+    "intents": [
+        {
+            "slug": "niu",
+            "confidence": 0.99
+        }
+    ],
+    "conversation_token": "04b9f6c867437bbb5ab5f3ff190c41bf",
+    "language": "es",
+    "processing_language": "es",
+    "timestamp": "2017-09-20T15:25:41.857259+00:00",
+    "version": "2.9.0",
+    "status": 200
+}
