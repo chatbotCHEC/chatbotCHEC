@@ -6,6 +6,7 @@ class chatBotAPI {
     private $user = "";
     private $pass = "";
     private $db = "chatbot_db";
+    private $request_token = "b18da64ff23ffba80dd4db93cfdeb8e2";
     
     //conexion a BD
     private $con;
@@ -40,7 +41,7 @@ class chatBotAPI {
     //Obtener los datos del usuario a partir del NIU
     public function getUserData($NIU){
         $db_response=getData($NIU, $this->con);
-        $json['messages'][0]['type'] = 'text';
+        
 
         //Verificar si se encontró el NIU
         if(!(isset($db_response->NIU)) || $db_response->NIU==""){
@@ -56,8 +57,7 @@ class chatBotAPI {
                 $json['messages'][0]['content']="El nombre del usuario con el número de cuenta ".$db_response->NIU.", es ".$db_response->NOMBRE.". Su predio se encuentra en la dirección ".$db_response->DIRECCION." y no tenemos registrado ningún número telefónico.";	
             }
                   
-        }
-        
+        }  
         return $json;
     }
 
@@ -162,6 +162,24 @@ class chatBotAPI {
             }
         }
         return $array;
+    }
+
+    public function htttpRequest($data, $url){
+        $opts = array(
+            'http'=>array(
+              'method'=>"POST",
+              'header'=>"Authorization: Token ".$this->request_token."\r\n",
+              'content'=>http_build_query($data)
+            )
+          );
+          
+            $context = stream_context_create($opts);
+          
+            $result = file_get_contents($url, false, $context);
+            if ($result === FALSE) { 
+                return "error";
+             }
+            return $result;
     }
 }
 

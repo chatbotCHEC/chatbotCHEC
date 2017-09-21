@@ -13,6 +13,7 @@ $Cedula="";
 
 //Obtener el cuerpo de la petición que viene de API.ai
 $reqBody= $api->detectRequestBody();
+$response['messages'][0]['type'] = 'text';
 
 //Asignación de parámetros
 if (isset($reqBody['conversation_token'])) {
@@ -40,7 +41,7 @@ if($NIU == ""){
 		if($Telefono==""){
 			if($Direccion==""){
 				if($Cedula==""){
-					$response = "Lo siento, no pude encontrar la respuesta a tu petición";
+					$response['messages'][0]['content'] = "Lo siento, no pude encontrar la respuesta a tu petición";
 				}else{
 					$response = $api->getNiuFromCedula($Cedula);
 				}
@@ -54,15 +55,14 @@ if($NIU == ""){
 		$response = $api->getNiuFromName($Nombre);
 	}
 }else{
-	$response = $api->getUserData($NIU);
+	//$response = $api->getUserData($NIU);
+	$response['messages'][0]['content'] = "Hola, si me llegó el NIU";
 }
 
 
 
+$url = "https://api.recast.ai/connect/v1/conversations/".$conversation_token."/messages";
+//var_dump($api->htttpRequest($response, $url));
 
-
-
-
-
-echo json_encode($response);
+//echo json_encode($response);
 ?>

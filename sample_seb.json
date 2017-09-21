@@ -1,6 +1,6 @@
 {
-    "uuid": "5d691364-9418-4251-b7d1-345965bd2f03",
-    "source": "mi niu es 8974654156",
+    "uuid": "ee642a2d-d7da-4eb7-8cae-d478b116d61b",
+    "source": "mi niu es 101104893",
     "replies": [
         "Estamos verificando el Número NIU en el sistema, por favor espere..."
     ],
@@ -12,9 +12,9 @@
     "next_actions": [],
     "memory": {
         "785421544": {
-            "raw": "8974654156",
-            "confidence": 0.5,
-            "value": "8974654156"
+            "confidence": 0.84,
+            "raw": "101104893",
+            "value": "101104893"
         },
         "mi-nombre-es": null,
         "nombre": null,
@@ -24,9 +24,9 @@
     "entities": {
         "niu_number": [
             {
-                "raw": "8974654156",
-                "confidence": 0.5,
-                "value": "8974654156"
+                "confidence": 0.84,
+                "raw": "101104893",
+                "value": "101104893"
             }
         ]
     },
@@ -36,10 +36,10 @@
             "confidence": 0.99
         }
     ],
-    "conversation_token": "04b9f6c867437bbb5ab5f3ff190c41bf",
+    "conversation_token": "13a51afa78d470cad9f6a3f6646c8ee9",
     "language": "es",
     "processing_language": "es",
-    "timestamp": "2017-09-20T15:25:41.857259+00:00",
+    "timestamp": "2017-09-21T15:58:46.951857+00:00",
     "version": "2.9.0",
     "status": 200
 }
