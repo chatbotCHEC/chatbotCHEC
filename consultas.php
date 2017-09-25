@@ -1,15 +1,46 @@
 <?php
 
-    function getData($con, $NIU){
-        $datos = $con -> query("SELECT NIU, NOMBRE, DES_DIRECCION, TELEFONO, COD_TRAFO FROM dw.DATOSBASICOS where NIU = '".$NIU."';");
-        $db_response = array();
-        foreach($datos as $row )
-        {
-             $db_response=$row;
-        }
-        return $db_response;
+    function getData($NIU, $con){
+        $filter = [ 'NIU' => $NIU ];
+        $query = new MongoDB\Driver\Query($filter);
+        $result = $con->executeQuery("chatbot_db.usuarios", $query);
+        $cliente = current($result->toArray());
+        return $cliente;
     }
 
+    function getNIUwithCedula($con, $cedula){
+        $filter = [ 'DOCUMENTO' => $cedula, 'TIPO_DOC' => "CC" ];
+        $query = new MongoDB\Driver\Query($filter);
+        $result = $con->executeQuery("chatbot_db.usuarios", $query);
+        $cliente = $result->toArray();
+        return $cliente;
+    }
+
+    function getNIUwithNIT($con, $nit){
+        $filter = [ 'DOCUMENTO' => $nit, 'TIPO_DOC' => "NI" ];
+        $query = new MongoDB\Driver\Query($filter);
+        $result = $con->executeQuery("chatbot_db.usuarios", $query);
+        $cliente = $result->toArray();
+        return $cliente;
+    }
+
+    function getNIUwithName($con, $palabras){
+        $filter = getNamesQuery($palabras);
+        $query = new MongoDB\Driver\Query($filter);
+        $result = $con->executeQuery("chatbot_db.usuarios", $query);
+        $clientes = $result->toArray();
+        return $clientes;
+    }
+
+    function getNIUwithAddress($con, $direccion){
+        $filter = getAdressQuery($direccion);
+        $query = new MongoDB\Driver\Query($filter);
+        var_dump($query);
+        $result = $con->executeQuery("chatbot_db.usuarios", $query);
+        $clientes = $result->toArray();
+        return $clientes;
+    }
+    
     function getDisponibilidad($con, $COD_TRAFO){
         $circuito_res = $con -> query("SELECT COD_CIRCUITO FROM dw.DIM_TRAFOS WHERE COD_TRAFO ='".$COD_TRAFO."'");
         $COD_CIRCUITO = array();
@@ -33,82 +64,210 @@
         }
     }
 
-    function getNIUwithName($con, $palabras){
-
-        $string = "SELECT distinct(NIU) FROM dw.DATOSBASICOS WHERE NOMBRE LIKE ";
-        $last = count($palabras) - 1;
-        foreach ($palabras as $i => $palabra) {
-            if($i==0 && $i==$last){
-                $string = $string."'".$palabra."%'";
-                break;
-            }
-            if($i==0 && $i!=$last){
-                $string = $string."'".$palabra."%' AND NOMBRE LIKE ";
-                continue;
-            }
-            if($i==$last){
-                $string = $string."'%".$palabra."%'";
-                break;
-            }
-            $string = $string."'%".$palabra."%' AND NOMBRE LIKE ";
-        }
-        $datos = $con -> query($string);
-        $db_response = array();
-        foreach($datos as $row )
-        {
-             $db_response=$row;
-        }
-        return $db_response;
-    }
+    
 
     function getNIUwithTel($con, $telefono){
-        $datos = $con -> query("SELECT NIU FROM dw.DATOSBASICOS WHERE TELEFONO = ".$telefono);
-        $db_response = array();
-        foreach($datos as $row )
-        {
-                $db_response=$row;
-        }
-        return $db_response;
+        $filter = [ 'TELEFONO' => $telefono ];
+        $query = new MongoDB\Driver\Query($filter);
+        $result = $con->executeQuery("chatbot_db.usuarios", $query);
+        $cliente = $result->toArray();
+        return $cliente;
     }
 
 
-    function getNIUwithAddress($con, $direccion){
-        $string = "SELECT NIU FROM dw.DATOSBASICOS WHERE DES_DIRECCION LIKE ";
-        $last = count($direccion) - 1;
-        foreach ($direccion as $i => $palabra) {
-            if($i==0 && $i==$last){
-                $string = $string."'".$palabra."%'";
+    
+
+    function getNamesQuery($palabras){
+        $num = count($palabras);
+        switch ($num) {
+            case 1:
+                $filter = ['NOMBRE' => new MongoDB\BSON\Regex( $palabras[0], 'i' )];
                 break;
-            }
-            if($i==0 && $i!=$last){
-                $string = $string."'".$palabra."%' AND DES_DIRECCION LIKE ";
-                continue;
-            }
-            if($i==$last){
-                $string = $string."'% ".$palabra."'";
+            case 2:
+                $filter = [
+                    'NOMBRE' => new MongoDB\BSON\Regex( $palabras[0], 'i' ),
+                    '$and' => [
+                        ['NOMBRE' => new MongoDB\BSON\Regex( $palabras[1], 'i' )]
+                    ]  
+                ];
                 break;
-            }
-            $string = $string."'% ".$palabra." %' AND DES_DIRECCION LIKE ";
+            case 3:
+                $filter = [
+                    'NOMBRE' => new MongoDB\BSON\Regex( $palabras[0], 'i' ),
+                    '$and' => [
+                        ['NOMBRE' => new MongoDB\BSON\Regex( $palabras[1], 'i' )],
+                        ['NOMBRE' => new MongoDB\BSON\Regex( $palabras[2], 'i' )]
+                    ]  
+                ];
+                break;
+            case 4:
+                $filter = [
+                    'NOMBRE' => new MongoDB\BSON\Regex( $palabras[0], 'i' ),
+                    '$and' => [
+                        ['NOMBRE' => new MongoDB\BSON\Regex( $palabras[1], 'i' )],
+                        ['NOMBRE' => new MongoDB\BSON\Regex( $palabras[2], 'i' )],
+                        ['$or' => [
+                            ['NOMBRE' => new MongoDB\BSON\Regex( $palabras[3], 'i' )]       
+                        ]]
+                    ]  
+                ];
+                break;
+            case 5:
+                $filter = [
+                    'NOMBRE' => new MongoDB\BSON\Regex( $palabras[0], 'i' ),
+                    '$and' => [
+                        ['NOMBRE' => new MongoDB\BSON\Regex( $palabras[1], 'i' )],
+                        ['NOMBRE' => new MongoDB\BSON\Regex( $palabras[2], 'i' )],
+                        ['$or' => [
+                            ['NOMBRE' => new MongoDB\BSON\Regex( $palabras[3], 'i' )],
+                            ['NOMBRE' => new MongoDB\BSON\Regex( $palabras[4], 'i' )]       
+                        ]]
+                    ]  
+                ];
+                break;
+            case 6:
+                $filter = [
+                    'NOMBRE' => new MongoDB\BSON\Regex( $palabras[0], 'i' ),
+                    '$and' => [
+                        ['NOMBRE' => new MongoDB\BSON\Regex( $palabras[1], 'i' )],
+                        ['NOMBRE' => new MongoDB\BSON\Regex( $palabras[2], 'i' )],
+                        ['$or' => [
+                            ['NOMBRE' => new MongoDB\BSON\Regex( $palabras[3], 'i' )],
+                            ['NOMBRE' => new MongoDB\BSON\Regex( $palabras[4], 'i' )],
+                            ['NOMBRE' => new MongoDB\BSON\Regex( $palabras[5], 'i' )]       
+                        ]]
+                    ]  
+                ];
+                break;
+            default:
+                $filter = null;
+                break;
         }
-        
-        $datos = $con -> query($string);
-        $db_response = array();
-        foreach($datos as $row )
-        {
-             $db_response=$row;
-        }
-        return $db_response;
+
+        return $filter;
     }
 
-    function getNIUwithCedula($con, $cedula){
-        $datos = $con -> query("SELECT NIU FROM dw.DATOSBASICOS WHERE NUM_IDENTIFICACION = ".$cedula);
-        $db_response = array();
-        foreach($datos as $row )
-        {
-                $db_response=$row;
+    function getAdressQuery($palabras){
+        $num = count($palabras);
+        switch ($num) {
+            case 1:
+                $filter = ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[0], 'i' )];
+                break;
+            case 2:
+                $filter = [
+                    'DIRECCION' => new MongoDB\BSON\Regex( $palabras[0], 'i' ),
+                    '$and' => [
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[1], 'i' )]
+                    ]  
+                ];
+                break;
+            case 3:
+                $filter = [
+                    'DIRECCION' => new MongoDB\BSON\Regex( $palabras[0], 'i' ),
+                    '$and' => [
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[1], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[2], 'i' )]
+                    ]  
+                ];
+                break;
+            case 4:
+                $filter = [
+                    'DIRECCION' => new MongoDB\BSON\Regex( $palabras[0], 'i' ),
+                    '$and' => [
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[1], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[2], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[3], 'i' )]
+                    ]  
+                ];
+                break;
+            case 5:
+                $filter = [
+                    'DIRECCION' => new MongoDB\BSON\Regex( $palabras[0], 'i' ),
+                    '$and' => [
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[1], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[2], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[3], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[4], 'i' )]
+                    ]  
+                ];
+                break;
+            case 6:
+                $filter = [
+                    'DIRECCION' => new MongoDB\BSON\Regex( $palabras[0], 'i' ),
+                    '$and' => [
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[1], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[2], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[3], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[4], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[5], 'i' )]
+                    ]  
+                ];
+                break;
+            case 7:
+                $filter = [
+                    'DIRECCION' => new MongoDB\BSON\Regex( $palabras[0], 'i' ),
+                    '$and' => [
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[1], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[2], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[3], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[4], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[5], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[6], 'i' )]
+                    ]  
+                ];
+                break;
+            case 8:
+                $filter = [
+                    'DIRECCION' => new MongoDB\BSON\Regex( $palabras[0], 'i' ),
+                    '$and' => [
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[1], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[2], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[3], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[4], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[5], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[6], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[7], 'i' )]
+                    ]  
+                ];
+                break;
+            case 9:
+                $filter = [
+                    'DIRECCION' => new MongoDB\BSON\Regex( $palabras[0], 'i' ),
+                    '$and' => [
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[1], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[2], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[3], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[4], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[5], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[6], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[7], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[8], 'i' )]
+                    ]  
+                ];
+                break;
+            case 10:
+                $filter = [
+                    'DIRECCION' => new MongoDB\BSON\Regex( $palabras[0], 'i' ),
+                    '$and' => [
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[1], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[2], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[3], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[4], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[5], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[6], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[7], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[8], 'i' )],
+                        ['DIRECCION' => new MongoDB\BSON\Regex( $palabras[9], 'i' )]
+                    ]  
+                ];
+                break;
+            
+            default:
+                $filter = null;
+                break;
         }
-        return $db_response;
-    }
 
+        return $filter;
+    }
 
 ?>

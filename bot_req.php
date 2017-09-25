@@ -4,11 +4,13 @@ require('./lib.php');
 
 //Instancia de la API
 $api = new chatBotApi();
+$conversation_token="";
 $NIU="";
 $Nombre="";
 $Telefono="";
 $Direccion="";
 $Cedula="";
+$NIT="";
 
 //Obtener el cuerpo de la petición que viene de API.ai
 $reqBody= $api->detectRequestBody();
@@ -29,13 +31,21 @@ if (isset($reqBody['result']['parameters']['Direccion'])) {
 if (isset($reqBody['result']['parameters']['Cedula'])) {
 	$Cedula = $reqBody['result']['parameters']['Cedula'];
 }
+if (isset($reqBody['result']['parameters']['NIT'])) {
+	$NIT = $reqBody['result']['parameters']['NIT'];
+}
+
 
 if($NIU == ""){
 	if($Nombre==""){
 		if($Telefono==""){
 			if($Direccion==""){
 				if($Cedula==""){
-					$response = "Lo siento, no pude encontrar la respuesta a tu petición";
+					if($NIT==""){
+						$response['displayText'] = "Lo siento, no pude encontrar la respuesta a tu petición";
+					}else{
+						$response = $api->getNiuFromNIT($NIT);
+					}
 				}else{
 					$response = $api->getNiuFromCedula($Cedula);
 				}
@@ -51,13 +61,6 @@ if($NIU == ""){
 }else{
 	$response = $api->getUserData($NIU);
 }
-
-
-
-
-
-
-
 
 echo json_encode($response);
 ?>
