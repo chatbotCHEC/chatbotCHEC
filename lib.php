@@ -2,10 +2,10 @@
 require('./consultas.php');
 class chatBotAPI {
     //Credenciales BD
-    private $host = "167.114.131.74";
-    private $user = "CBQT";
-    private $pass = "admin1234";
-    private $db = "chec";
+    private $host = "gestion-educativa.database.windows.net";
+    private $user = "usr_gestion_educativa";
+    private $pass = "YXj0q9JctrQoatODR4lr";
+    private $db = "GestionComercialCHEC";
     
     //conexion a BD
     private $con;
@@ -24,7 +24,7 @@ class chatBotAPI {
     //Conectar a la Base de datos
     public function connectToDB(){
         try{
-            $this->con = new PDO('mysql:host='.$this->host.'; dbnme='.$this->db, $this->user,$this->pass);
+            $this->con = new PDO('sqlsrv:Server='.$this->host.'; Database='.$this->db, $this->user.'@gestion-educativa',$this->pass);
             $this->con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }catch(PDOException $e){
             echo "Error de coneccion". $e->getMessage();
@@ -65,15 +65,6 @@ class chatBotAPI {
                 }
             }
 
-             //Verificar si el usuario está en mora
-             $datosMora = $this->getMora($db_response['NIU']);
-
-            if(isset($datosMora['DIAS_MORA']) || !(is_null($datosMora['DIAS_MORA'])) ){
-            if($datosMora['DIAS_MORA']>0){
-            $json['speech']=$json['speech']."\n El usuario registra ".$datosMora['DIAS_MORA']." días en mora, por un valor total de $".($datosMora['VR_MORA']*$datosMora['DIAS_MORA']);
-            $json['displayText']=$json['displayText']."\n El usuario registra ".$datosMora['DIAS_MORA']." días en mora, por un valor total de $".($datosMora['VR_MORA']*$datosMora['DIAS_MORA']);
-            }
-            }
                   
         }
         return $json;
@@ -144,14 +135,7 @@ class chatBotAPI {
         }
     }
 
-    public function getMora($niu){
-        $datosMora = getDiasMora($this->con, $niu);
-        if(!(isset($datosMora['DIAS_MORA'])) || is_null($datosMora['DIAS_MORA'])){
-            return null;
-        }else{
-            return $datosMora;
-        }
-    }
+
 
     public function processAddress($array){
         foreach ($array as $i => $value) {
