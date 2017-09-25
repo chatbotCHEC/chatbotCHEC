@@ -2,10 +2,10 @@
 require('./consultas.php');
 class chatBotAPI {
     //Credenciales BD
-    private $host = "localhost:27017";
-    private $user = "";
-    private $pass = "";
-    private $db = "chatbot_db";
+    private $host = "ds147884.mlab.com:47884";
+    private $user = "heroku_8hbdg59z";
+    private $pass = "e0eutnmkoq1f4n339dkueaggbb";
+    private $db = "heroku_8hbdg59z";
     
     //conexion a BD
     private $con;
@@ -25,7 +25,7 @@ class chatBotAPI {
     //Conectar a la Base de datos
     public function connectToDB(){
         try {
-            $this->con = new MongoDB\Driver\Manager("mongodb://localhost:27017");
+            $this->con = new MongoDB\Driver\Manager("mongodb://".$this->host);
         } catch (MongoDB\Driver\Exception\Exception $e) {
             $filename = basename(__FILE__);
             echo "The $filename script has experienced an error.\n"; 
