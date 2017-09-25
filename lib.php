@@ -6,7 +6,6 @@ class chatBotAPI {
     private $user = "";
     private $pass = "";
     private $db = "chatbot_db";
-    private $request_token = "b18da64ff23ffba80dd4db93cfdeb8e2";
     
     //conexion a BD
     private $con;
@@ -38,68 +37,84 @@ class chatBotAPI {
         
     }
 
-    //Obtener los datos del usuario a partir del NIU
-    public function getUserData($NIU){
-        $db_response=getData($NIU, $this->con);
-        
-
+    public function respuesta($persona){
         //Verificar si se encontró el NIU
-        if(!(isset($db_response->NIU)) || $db_response->NIU==""){
+        if(!(isset($persona->NIU)) || $persona->NIU==""){
             //Respuesta para cuando no se encuentra el NIU
-            $json['messages'][0]['content']="No se ha encontrado un usuario con el número de cuenta solicitado";
+            $json['speech']="No se ha encontrado un usuario con el dato indicado";
+            $json['displayText']="No se ha encontrado un usuario con el dato indicado";
         }else {
             //Verificar si el NIU consultado tiene telefono registrado
-            if($db_response->TELEFONO!="" && $db_response->TELEFONO!="NULL" ){
+            if($persona->TELEFONO!="" && $persona->TELEFONO!="NULL" ){
                 //Respuesta para cuando sí hay un teléfono registrado
-                $json['messages'][0]['content']="El nombre del usuario con el número de cuenta ".$db_response->NIU.", es ".$db_response->NOMBRE.". Su predio se encuentra en la dirección ".$db_response->DIRECCION." y su número de teléfono registrado es ".$db_response->TELEFONO.".";
+                $json['speech']="El nombre del usuario con el número de cuenta ".$persona->NIU.", es ".$persona->NOMBRE.". Su predio se encuentra en la dirección ".$persona->DIRECCION." y su número de teléfono registrado es ".$persona->TELEFONO.".";
+                $json['displayText']="El nombre del usuario con el número de cuenta ".$persona->NIU.", es ".$persona->NOMBRE.". Su predio se encuentra en la dirección ".$persona->DIRECCION." y su número de teléfono registrado es ".$persona->TELEFONO.".";               
             }else{
                 //Respuesta para cuando no hay un teléfono registrado
-                $json['messages'][0]['content']="El nombre del usuario con el número de cuenta ".$db_response->NIU.", es ".$db_response->NOMBRE.". Su predio se encuentra en la dirección ".$db_response->DIRECCION." y no tenemos registrado ningún número telefónico.";	
-            }
-                  
-        }  
+                $json['speech']="El nombre del usuario con el número de cuenta ".$persona->NIU.", es ".$persona->NOMBRE.". Su predio se encuentra en la dirección ".$persona->DIRECCION." y no tenemos registrado ningún número telefónico.";	
+                $json['displayText']="El nombre del usuario con el número de cuenta ".$persona->NIU.", es ".$persona->NOMBRE.". Su predio se encuentra en la dirección ".$persona->DIRECCION." y no tenemos registrado ningún número telefónico.";	
+            }  
+        } 
         return $json;
+    }
+
+    public function respuesta_plural($personas){
+        //Verificar si se encontró alguna cuenta con el nombre asociado
+        if(is_null($personas)||count($personas)==0){
+            //Respuesta para cuando no se encuentra la cuenta con el nombre asociado
+            $json['speech']="No se ha encontrado ninguna cuenta con el dato ingresado";
+            $json['displayText']="No se ha encontrado ninguna cuenta con el dato ingresado";
+        }else{
+            $json['speech']="Hemos encontrado las siguientes cuentas asociadas con el dato dado";
+            $json['displayText']="Hemos encontrado las siguientes cuentas asociadas con el dato dado\n";
+            foreach ($personas as $persona) {
+                $json['speech']=$json['speech']."\n - Nombre: ".$persona->NOMBRE."\n - Dirección: ".$persona->DIRECCION."\n - Numero de cuenta: ".$persona->NIU;
+                $json['displayText']=$json['displayText']."---------------\n - Nombre: ".$persona->NOMBRE."\n - Dirección: ".$persona->DIRECCION."\n - Numero de cuenta: ".$persona->NIU;
+            }
+            $json['speech']=$json['speech']."\n A continuación, digita el número de cuenta correspondiente a tu solicitud de la siguiente manera: \n NIU: #####";
+            $json['displayText']=$json['displayText']."\n A continuación, digita el número de cuenta correspondiente a tu solicitud de la siguiente manera: \n NIU: #####";
+        }
+        return $json;
+    }
+    
+    //Obtener los datos del usuario a partir del NIU
+    public function getUserData($NIU){
+        $persona=getData($NIU, $this->con);
+        return $this->respuesta($persona);
+    }
+
+    public function getNiuFromCedula($cedula){
+        $persona = getNIUwithCedula($this->con, $cedula);
+        return $this->respuesta_plural($persona);
+    }
+    public function getNiuFromNIT($nit){
+        $persona = getNIUwithNIT($this->con, $nit);
+        return $this->respuesta_plural($persona);
     }
 
     public function getNiuFromName($nombre){
         $palabras = explode(" ", strtoupper($nombre));
-        $niu = getNIUwithName($this->con, $palabras);
-        if(!(isset($niu['NIU'])) || is_null($niu['NIU'])){
-            $json['speech']="No he podido encontrar ninguna cuenta asociada con el nombre ingresado";
-            $json['displayText']="No he podido encontrar ninguna cuenta asociada con el nombre ingresado";
-            return $json;
-        }else{
-            return $this->getUserData($niu['NIU']);
-        }
+        $personas = getNIUwithName($this->con, $palabras);
+        return $this->respuesta_plural($personas);
     }
 
     public function getNiuFromTelephone($telefono){
-        $niu = getNIUwithTel($this->con, $telefono);
-        
-        if(!(isset($niu['NIU'])) || is_null($niu['NIU'])){
-            $json['speech']="No he podido encontrar ninguna cuenta asociada con el teléfono ingresado";
-            $json['displayText']="No he podido encontrar ninguna cuenta asociada con el nombre ingresado";
-            return $json;
-        }else{
-            return $this->getUserData($niu['NIU']);
-        }
+        $persona = getNIUwithTel($this->con, $telefono);
+        return $this->respuesta_plural($persona);
     }
 
-    public function getNiuFromCedula($cedula){
-        $niu = getNIUwithCedula($this->con, $cedula);
-        
-        if(!(isset($niu['NIU'])) || is_null($niu['NIU'])){
-            $json['speech']="No he podido encontrar ninguna cuenta asociada con la cédula ingresada";
-            $json['displayText']="No he podido encontrar ninguna cuenta asociada con la cédula ingresada";
-            return $json;
-        }else{
-            return $this->getUserData($niu['NIU']);
-        }
-    }
 
     
-
+    //PENDIENTE DE MEJORA, AUN NO SE DEBE IMPLEMENTAR
     public function getNiuFromAddress($direccion){
+        $direccionesProcesadas = $this->processAddress($direccion);
+        $personas = getNIUwithAddress($this->con, $direccionesProcesadas);
+        return $this->respuesta_plural($personas);
+    }
+
+
+
+    public function processAddress($direccion){
         $direcNoSymbols = $direccion;
         $direcNoHyphens = $direccion;
         if(strpos($direccion, '#')){
@@ -108,27 +123,8 @@ class chatBotAPI {
         if(strpos($direccion, '-')){
             $direcNoHyphens = substr_replace($direcNoSymbols, ' ', strpos($direcNoSymbols, '-'), 1);
         }
-    
         $output = preg_replace('!\s+!', ' ', $direcNoHyphens);
-        $direccionDiv = explode(" ", strtoupper($output));
-        $direccionesProcesadas = $this->processAddress($direccionDiv);
-    
-
-        
-        $niu = getNIUwithAddress($this->con, $direccionesProcesadas);
-        
-        if(!(isset($niu['NIU'])) || is_null($niu['NIU'])){
-            $json['speech']="No he podido encontrar ninguna cuenta asociada con la dirección ingresada";
-            $json['displayText']="No he podido encontrar ninguna cuenta asociada con la dirección ingresada";
-            return $json;
-        }else{
-            return $this->getUserData($niu['NIU']);
-        }
-    }
-
-
-
-    public function processAddress($array){
+        $array = explode(" ", strtoupper($output));
         foreach ($array as $i => $value) {
             if($value == "CARRERA" || $value == "CRA" || $value == "CAR" || $value == "CR"){
                 $array[$i]="CRA";
@@ -164,23 +160,22 @@ class chatBotAPI {
         return $array;
     }
 
-    public function htttpRequest($data, $url){
-        $opts = array(
-            'http'=>array(
-              'method'=>"POST",
-              'header'=>"Authorization: Token ".$this->request_token."\r\n",
-              'content'=>http_build_query($data)
-            )
-          );
-          
-            $context = stream_context_create($opts);
-          
-            $result = file_get_contents($url, false, $context);
-            if ($result === FALSE) { 
-                return "error";
-             }
-            return $result;
+    public function parseNumbers(){
+        $filter = [];
+        $query = new MongoDB\Driver\Query($filter);
+        $result = $this->con->executeQuery("chatbot_db.usuarios", $query);
+        foreach ($result as $r) {
+            $bulk = new MongoDB\Driver\BulkWrite;
+            $bulk->update(
+                ['_id' => $r->_id],
+                ['$set' => ['NIU' => strval($r->NIU), 'DOCUMENTO'=> strval($r->DOCUMENTO), 'TELEFONO'=> strval($r->TELEFONO)]],
+                ['multi' => false, 'upsert' => false]
+            );
+            $result = $this->con->executeBulkWrite('chatbot_db.usuarios', $bulk);
+        }
+        echo "\n converted ahora si";
     }
+
 }
 
 

@@ -10,17 +10,14 @@ $Nombre="";
 $Telefono="";
 $Direccion="";
 $Cedula="";
+$NIT="";
 
 //Obtener el cuerpo de la petición que viene de API.ai
 $reqBody= $api->detectRequestBody();
-$response['messages'][0]['type'] = 'text';
 
 //Asignación de parámetros
-if (isset($reqBody['conversation_token'])) {
-	$conversation_token = $reqBody['conversation_token'];
-}
-if (isset($reqBody['entities']['niu_number'][0]['value'])) {
-	$NIU = $reqBody['entities']['niu_number'][0]['value'];
+if (isset($reqBody['result']['parameters']['NIU'])) {
+	$NIU = $reqBody['result']['parameters']['NIU'];
 }
 if (isset($reqBody['result']['parameters']['Nombre'])) {
 	$Nombre = $reqBody['result']['parameters']['Nombre'];
@@ -34,6 +31,9 @@ if (isset($reqBody['result']['parameters']['Direccion'])) {
 if (isset($reqBody['result']['parameters']['Cedula'])) {
 	$Cedula = $reqBody['result']['parameters']['Cedula'];
 }
+if (isset($reqBody['result']['parameters']['NIT'])) {
+	$NIT = $reqBody['result']['parameters']['NIT'];
+}
 
 
 if($NIU == ""){
@@ -41,7 +41,11 @@ if($NIU == ""){
 		if($Telefono==""){
 			if($Direccion==""){
 				if($Cedula==""){
-					$response['messages'][0]['content'] = "Lo siento, no pude encontrar la respuesta a tu petición";
+					if($NIT==""){
+						$response['displayText'] = "Lo siento, no pude encontrar la respuesta a tu petición";
+					}else{
+						$response = $api->getNiuFromNIT($NIT);
+					}
 				}else{
 					$response = $api->getNiuFromCedula($Cedula);
 				}
@@ -55,14 +59,8 @@ if($NIU == ""){
 		$response = $api->getNiuFromName($Nombre);
 	}
 }else{
-	//$response = $api->getUserData($NIU);
-	$response['messages'][0]['content'] = "Hola, si me llegó el NIU";
+	$response = $api->getUserData($NIU);
 }
 
-
-
-$url = "https://api.recast.ai/connect/v1/conversations/".$conversation_token."/messages";
-//var_dump($api->htttpRequest($response, $url));
-
-//echo json_encode($response);
+echo json_encode($response);
 ?>
