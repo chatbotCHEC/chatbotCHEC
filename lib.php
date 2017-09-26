@@ -2,10 +2,10 @@
 require('./consultas.php');
 class chatBotAPI {
     //Credenciales BD
-    private $host = "ds147884.mlab.com:47884";
-    private $user = "heroku_8hbdg59z";
-    private $pass = "e0eutnmkoq1f4n339dkueaggbb";
-    private $db = "heroku_8hbdg59z";
+    private $host = "localhost:27017";
+    private $user = "";
+    private $pass = "";
+    private $db = "chatbot_db";
     
     //conexion a BD
     private $con;
@@ -54,6 +54,9 @@ class chatBotAPI {
                 $json['speech']="El nombre del usuario con el número de cuenta ".$persona->NIU.", es ".$persona->NOMBRE.". Su predio se encuentra en la dirección ".$persona->DIRECCION." y no tenemos registrado ningún número telefónico.";	
                 $json['displayText']="El nombre del usuario con el número de cuenta ".$persona->NIU.", es ".$persona->NOMBRE.". Su predio se encuentra en la dirección ".$persona->DIRECCION." y no tenemos registrado ningún número telefónico.";	
             }  
+            $indispMsg = $this->getIndisponibilidad($persona->NIU);
+            $json['speech']=$json['speech'].$indispMsg;
+            $json['displayText']=$json['displayText'].$indispMsg;
         } 
         return $json;
     }
@@ -103,16 +106,11 @@ class chatBotAPI {
         return $this->respuesta_plural($persona);
     }
 
-
-    
-    //PENDIENTE DE MEJORA, AUN NO SE DEBE IMPLEMENTAR
     public function getNiuFromAddress($direccion){
         $direccionesProcesadas = $this->processAddress($direccion);
         $personas = getNIUwithAddress($this->con, $direccionesProcesadas);
         return $this->respuesta_plural($personas);
     }
-
-
 
     public function processAddress($direccion){
         $direcNoSymbols = $direccion;
@@ -160,21 +158,24 @@ class chatBotAPI {
         return $array;
     }
 
-    public function parseNumbers(){
-        $filter = [];
-        $query = new MongoDB\Driver\Query($filter);
-        $result = $this->con->executeQuery("chatbot_db.usuarios", $query);
-        foreach ($result as $r) {
-            $bulk = new MongoDB\Driver\BulkWrite;
-            $bulk->update(
-                ['_id' => $r->_id],
-                ['$set' => ['NIU' => strval($r->NIU), 'DOCUMENTO'=> strval($r->DOCUMENTO), 'TELEFONO'=> strval($r->TELEFONO)]],
-                ['multi' => false, 'upsert' => false]
-            );
-            $result = $this->con->executeBulkWrite('chatbot_db.usuarios', $bulk);
+    public function getIndisponibilidad($niu){
+        $prog = getSuspProgramada($this->con, $niu);
+        if(count($prog)>0){
+            $msg="\nPara esta cuenta, hemos encontrado las siguientes novedades: ";
+            foreach ($prog as $p) {
+                $msg =$msg."\n - Hay una suspensión programada que inicia el ".$p->FECHA_INICIO." a las ".$p->HORA_INICIO.", y finaliza el ".$p->FECHA_FIN." a las ".$p->HORA_FIN;
+            }
+        }else {
+            $msg="\nPara esta cuenta no tengo reportada ninguna novedad";
         }
-        echo "\n converted ahora si";
+        return $msg;
     }
+
+    public function setIndispCircuito($data){
+        $result = insertIndispCircuito($this->con, $data);
+        return $result;
+    }
+
 
 }
 

@@ -41,27 +41,12 @@
         return $clientes;
     }
     
-    function getDisponibilidad($con, $COD_TRAFO){
-        $circuito_res = $con -> query("SELECT COD_CIRCUITO FROM dw.DIM_TRAFOS WHERE COD_TRAFO ='".$COD_TRAFO."'");
-        $COD_CIRCUITO = array();
-        foreach($circuito_res as $row){
-            $COD_CIRCUITO = $row;
-        }
-        if(!(isset($COD_CIRCUITO['COD_CIRCUITO'])) || $COD_CIRCUITO['COD_CIRCUITO']== ""){
-            return null;
-        }else{
-            $datos = $con -> query("SELECT CIRCUITO, FECHA, HORA, CONCAT(FECHA,' ',HORA) as TS, ESTADO FROM dbo.INDISP_TR
-            WHERE CIRCUITO ='".$COD_CIRCUITO['COD_CIRCUITO']."' 
-            ORDER BY TS
-            DESC
-            LIMIT 1");
-            $db_response = array();
-            foreach($datos as $row )
-            {
-                 $db_response=$row;
-            }
-            return $db_response;
-        }
+    function getSuspProgramada($con, $niu){
+        $filter = [ 'NIU' => $niu, 'ESTADO' => "ABIERTO" ];
+        $query = new MongoDB\Driver\Query($filter);
+        $result = $con->executeQuery("chatbot_db.susp_programadas", $query);
+        $cliente = $result->toArray();
+        return $cliente;
     }
 
     
@@ -268,6 +253,12 @@
         }
 
         return $filter;
+    }
+
+    function insertIndispCircuito($con, $data){
+        $bulk = new MongoDB\Driver\BulkWrite;        
+        $result = $con->executeBulkWrite('db.indisp_circuito', $bulk);
+        return $result;
     }
 
 ?>

@@ -4,7 +4,6 @@ require('./lib.php');
 
 //Instancia de la API
 $api = new chatBotApi();
-$conversation_token="";
 $NIU="";
 $Nombre="";
 $Telefono="";
