@@ -2,10 +2,10 @@
 require('./consultas.php');
 class chatBotAPI {
     //Credenciales BD
-    private $host = "https://chatbotchecum.documents.azure.com:10255";
-    private $user = "chatbotchecum";
+    private $host = "mongodb://chatbotchecum:s8cmq20ZZeA5N0i1CYJakhjWYdCqF2VxhMqAo60IQGarQzeRAjM0VMzIMF7mrvwhKoohEAgYojGAU6fiDCWE0w==@chatbotchecum.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+/*     private $user = "chatbotchecum";
     private $pass = "s8cmq20ZZeA5N0i1CYJakhjWYdCqF2VxhMqAo60IQGarQzeRAjM0VMzIMF7mrvwhKoohEAgYojGAU6fiDCWE0w==";
-    private $db = "chatbot_db";
+    private $db = "chatbot_db"; */
     
     //conexion a BD
     private $con;
@@ -25,7 +25,7 @@ class chatBotAPI {
     //Conectar a la Base de datos
     public function connectToDB(){
         try {
-            $this->con = new MongoDB\Driver\Manager("mongodb://".$this->host);
+            $this->con = new MongoDB\Driver\Manager($this->host);
         } catch (MongoDB\Driver\Exception\Exception $e) {
             $filename = basename(__FILE__);
             echo "The $filename script has experienced an error.\n"; 
