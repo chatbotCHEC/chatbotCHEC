@@ -2,9 +2,9 @@
 require('./consultas.php');
 class chatBotAPI {
     //Credenciales BD
-    private $host = "localhost:27017";
-    private $user = "";
-    private $pass = "";
+    private $host = "https://chatbotchecum.documents.azure.com:10255";
+    private $user = "chatbotchecum";
+    private $pass = "s8cmq20ZZeA5N0i1CYJakhjWYdCqF2VxhMqAo60IQGarQzeRAjM0VMzIMF7mrvwhKoohEAgYojGAU6fiDCWE0w==";
     private $db = "chatbot_db";
     
     //conexion a BD
