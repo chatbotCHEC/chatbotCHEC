@@ -32,7 +32,7 @@ if (isset($reqBody['result']['parameters']['suscribers'])) {
 
 if($fecha!="" && $time!="" && $condition!="" && $cod_circuit!="" && $suscribers!=""){
     $data = ['FECHA'=> $fecha, 'HORA'=> $time, 'ESTADO'=>$condition, 'CIRCUITO'=>$cod_circuit, 'N_SUSCRIPTORES'=>$suscribers];
-    $api->setIndispCircuito($data);
+	$api->setIndispCircuito($data);
 }elseif ($fecha!="" && $time!="" && $condition!="" && $cod_circuit!="") {
     $data = ['FECHA'=> $fecha, 'HORA'=> $time, 'ESTADO'=>$condition, 'CIRCUITO'=>$cod_circuit, 'N_SUSCRIPTORES'=>'NULL'];
     $api->setIndispCircuito($data);

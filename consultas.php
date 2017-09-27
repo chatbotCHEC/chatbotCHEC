@@ -256,8 +256,10 @@
     }
 
     function insertIndispCircuito($con, $data){
-        $bulk = new MongoDB\Driver\BulkWrite;        
+        $bulk = new MongoDB\Driver\BulkWrite;  
+        $a = $bulk->insert($data);      
         $result = $con->executeBulkWrite('db.indisp_circuito', $bulk);
+        var_dump($data);
         return $result;
     }
 
