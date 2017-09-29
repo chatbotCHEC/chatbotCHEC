@@ -35,7 +35,6 @@
     function getNIUwithAddress($con, $direccion){
         $filter = getAdressQuery($direccion);
         $query = new MongoDB\Driver\Query($filter);
-        var_dump($query);
         $result = $con->executeQuery("chatbot_db.usuarios", $query);
         $clientes = $result->toArray();
         return $clientes;
@@ -259,7 +258,6 @@
         $bulk = new MongoDB\Driver\BulkWrite;  
         $a = $bulk->insert($data);      
         $result = $con->executeBulkWrite('db.indisp_circuito', $bulk);
-        var_dump($data);
         return $result;
     }
 
