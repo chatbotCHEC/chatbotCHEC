@@ -2,10 +2,10 @@
 require('./consultas.php');
 class chatBotAPI {
     //Credenciales BD AZURE
-    //private $host = "mongodb://chatbotchecum:s8cmq20ZZeA5N0i1CYJakhjWYdCqF2VxhMqAo60IQGarQzeRAjM0VMzIMF7mrvwhKoohEAgYojGAU6fiDCWE0w==@chatbotchecum.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
+    private $host = "mongodb://chatbotchecum:s8cmq20ZZeA5N0i1CYJakhjWYdCqF2VxhMqAo60IQGarQzeRAjM0VMzIMF7mrvwhKoohEAgYojGAU6fiDCWE0w==@chatbotchecum.documents.azure.com:10255/?ssl=true&replicaSet=globaldb";
 
     //Credenciales Localhost
-    private $host = "mongodb://localhost:27017/chatbot_db";
+    //private $host = "mongodb://localhost:27017/chatbot_db";
 
     //conexion a BD
     private $con;
