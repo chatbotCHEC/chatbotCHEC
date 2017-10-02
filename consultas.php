@@ -258,7 +258,6 @@
         $bulk = new MongoDB\Driver\BulkWrite;  
         $a = $bulk->insert(['FECHA'=>$data['FECHA'], 'HORA'=>$data['HORA'], 'ESTADO'=>$data['ESTADO'], 'CIRCUITO'=>$data['CIRCUITO']]);      
         $result = $con->executeBulkWrite('chatbot_db.indisp_circuito', $bulk);
-        printf("Inserted %d document(s)\n", $result->getInsertedCount());
         return $result;
     }
 
