@@ -154,7 +154,6 @@
                 $filter = null;
                 break;
         }
-
         return $filter;
     }
 

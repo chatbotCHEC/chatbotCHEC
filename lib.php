@@ -161,8 +161,9 @@ class chatBotAPI {
     public function getIndisponibilidad($niu){
         $prog = getSuspProgramada($this->con, $niu);
         $circuito = getSuspCircuito($this->con, $niu);
+        $msg = "";
         if(count($prog)>0){
-            $msg="\n *Para esta cuenta, hemos encontrado las siguientes suspensiones programadas: ";
+            $msg.="\n *Para esta cuenta, hemos encontrado las siguientes suspensiones programadas: ";
             $hay_indisp = true;
             foreach ($prog as $p) {
                 $msg.="\n - Hay una suspensión programada que inicia el ".$p->FECHA_INICIO." a las ".$p->HORA_INICIO.", y finaliza el ".$p->FECHA_FIN." a las ".$p->HORA_FIN;
@@ -170,15 +171,15 @@ class chatBotAPI {
         }else {
             $hay_indisp = false;
         }
-        if($circuito->ESTADO =="ABIERTO"){
-            $hay_indisp = true;
-            $msg="\n *Para esta cuenta, hemos encontrado las siguientes indisponibilidades: \n - Hay una falla en el circuito reportada el ".$circuito->FECHA." a las ".$circuito->HORA.". Estamos trabajando para reestablecer el servicio";
+        if(count($circuito) > 0 && $circuito->ESTADO =="ABIERTO"){
+            $hay_circ = true;
+            $msg.="\n *Para esta cuenta, hemos encontrado las siguientes indisponibilidades: \n - Hay una falla en el circuito reportada el ".$circuito->FECHA." a las ".$circuito->HORA.". Estamos trabajando para reestablecer el servicio";
         }else {
-            $hay_indisp = false;
+            $hay_circ = false;
         }
 
-        if(!$hay_indisp){
-            $msg="\n *Para esta cuenta no tengo reportada ninguna novedad";
+        if(!$hay_indisp && !$hay_circ){
+            $msg.="\n *Para esta cuenta no tengo reportada ninguna novedad";
         }
 
         return $msg;
