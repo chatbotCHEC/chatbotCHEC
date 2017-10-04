@@ -171,7 +171,7 @@ class chatBotAPI {
         }else {
             $hay_indisp = false;
         }
-        if(count($circuito) > 0 && $circuito->ESTADO =="ABIERTO"){
+        if(count($circuito) > 0 && ($circuito->ESTADO =="ABIERTO" || $circuito->ESTADO =="APERTURA")){
             $hay_circ = true;
             $msg.="\n *Para esta cuenta, hemos encontrado las siguientes indisponibilidades: \n - Hay una falla en el circuito reportada el ".$circuito->FECHA." a las ".$circuito->HORA.". Estamos trabajando para reestablecer el servicio";
         }else {
