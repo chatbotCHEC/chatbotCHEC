@@ -1,5 +1,5 @@
 <?php
-
+    date_default_timezone_set('America/Bogota');
     function getData($NIU, $con){
         $filter = [ 'NIU' => $NIU ];
         $query = new MongoDB\Driver\Query($filter);
@@ -46,6 +46,33 @@
         $result = $con->executeQuery("chatbot_db.susp_programadas", $query);
         $cliente = $result->toArray();
         return $cliente;
+    }
+    function getSuspCircuito($con, $niu){
+        //Buscar el circuito correspondiente al usuario
+        $filter = ['NIU' => $niu];  
+        $query = new MongoDB\Driver\Query($filter);
+        $result = $con->executeQuery("chatbot_db.usuarios", $query);
+        $cliente = $result->toArray();
+        $circuito = $cliente[0]->CIRCUITO;
+        
+        //Buscar las indisponibilidades del circuito del usuario
+        $filter = ['CIRCUITO'=> $circuito ];
+        $query = new MongoDB\Driver\Query($filter);
+        $result = $con->executeQuery("chatbot_db.indisp_circuito", $query);
+        $registros = $result->toArray();
+
+        $reg_reciente = null;
+        $mostRecent= 0;
+        $now = time();
+        foreach($registros as $r){
+          $curDate = strtotime($r->FECHA." ".$r->HORA);
+          if ($curDate > $mostRecent && $curDate < $now) {
+             $mostRecent = $curDate;
+             $reg_reciente = $r;
+          }
+        }
+    
+        return $reg_reciente;
     }
 
     

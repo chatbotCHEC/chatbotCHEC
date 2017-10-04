@@ -47,8 +47,8 @@ class chatBotAPI {
             //Verificar si el NIU consultado tiene telefono registrado
             if($persona->TELEFONO!="" && $persona->TELEFONO!="NULL" ){
                 //Respuesta para cuando sí hay un teléfono registrado
-                $json['speech']="El nombre del usuario con el número de cuenta ".$persona->NIU.", es ".$persona->NOMBRE.". Su predio se encuentra en la dirección ".$persona->DIRECCION." y su número de teléfono registrado es ".$persona->TELEFONO.".";
-                $json['displayText']="El nombre del usuario con el número de cuenta ".$persona->NIU.", es ".$persona->NOMBRE.". Su predio se encuentra en la dirección ".$persona->DIRECCION." y su número de teléfono registrado es ".$persona->TELEFONO.".";               
+                $json['speech']="El nombre del usuario con el número de cuenta ".$persona->NIU.", es ".$persona->NOMBRE.". Su predio se encuentra en la dirección ".$persona->DIRECCION." - ".$persona->MUNICIPIO." y su número de teléfono registrado es ".$persona->TELEFONO.".";
+                $json['displayText']="El nombre del usuario con el número de cuenta ".$persona->NIU.", es ".$persona->NOMBRE.". Su predio se encuentra en la dirección ".$persona->DIRECCION." - ".$persona->MUNICIPIO." y su número de teléfono registrado es ".$persona->TELEFONO.".";               
             }else{
                 //Respuesta para cuando no hay un teléfono registrado
                 $json['speech']="El nombre del usuario con el número de cuenta ".$persona->NIU.", es ".$persona->NOMBRE.". Su predio se encuentra en la dirección ".$persona->DIRECCION." y no tenemos registrado ningún número telefónico.";	
@@ -160,14 +160,27 @@ class chatBotAPI {
 
     public function getIndisponibilidad($niu){
         $prog = getSuspProgramada($this->con, $niu);
+        $circuito = getSuspCircuito($this->con, $niu);
         if(count($prog)>0){
-            $msg="\nPara esta cuenta, hemos encontrado las siguientes novedades: ";
+            $msg="\n *Para esta cuenta, hemos encontrado las siguientes suspensiones programadas: ";
+            $hay_indisp = true;
             foreach ($prog as $p) {
-                $msg =$msg."\n - Hay una suspensión programada que inicia el ".$p->FECHA_INICIO." a las ".$p->HORA_INICIO.", y finaliza el ".$p->FECHA_FIN." a las ".$p->HORA_FIN;
+                $msg.="\n - Hay una suspensión programada que inicia el ".$p->FECHA_INICIO." a las ".$p->HORA_INICIO.", y finaliza el ".$p->FECHA_FIN." a las ".$p->HORA_FIN;
             }
         }else {
-            $msg="\nPara esta cuenta no tengo reportada ninguna novedad";
+            $hay_indisp = false;
         }
+        if($circuito->ESTADO =="ABIERTO"){
+            $hay_indisp = true;
+            $msg="\n *Para esta cuenta, hemos encontrado las siguientes indisponibilidades: \n - Hay una falla en el circuito reportada el ".$circuito->FECHA." a las ".$circuito->HORA.". Estamos trabajando para reestablecer el servicio";
+        }else {
+            $hay_indisp = false;
+        }
+
+        if(!$hay_indisp){
+            $msg="\n *Para esta cuenta no tengo reportada ninguna novedad";
+        }
+
         return $msg;
     }
 
