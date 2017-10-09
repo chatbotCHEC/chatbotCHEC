@@ -1,6 +1,6 @@
 <?php
-    $dbname="heroku_69tb2th4";
-    //$dbname="chatbot_db";
+    global $dbname="heroku_69tb2th4";
+    //global $dbname="chatbot_db";
 
     date_default_timezone_set('America/Bogota');
     function getData($NIU, $con){
