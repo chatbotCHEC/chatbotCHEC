@@ -60,6 +60,6 @@ if($NIU == ""){
 }else{
 	$response = $api->getUserData($NIU);
 }
-echo "hola";
+var_dump($NIU);
 echo json_encode($response);
 ?>
