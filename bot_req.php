@@ -18,8 +18,8 @@ $reqBody= $api->detectRequestBody();
 if (isset($reqBody['result']['parameters']['NIU'])) {
 	$NIU = $reqBody['result']['parameters']['NIU'];
 }
-if (isset($reqBody['result']['parameters']['Nombre'])) {
-	$Nombre = $reqBody['result']['parameters']['Nombre'];
+if (isset($reqBody['result']['parameters']['given_name'])) {
+	$Nombre = $reqBody['result']['parameters']['given_name'];
 }
 if (isset($reqBody['result']['parameters']['Telefono'])) {
 	$Telefono = $reqBody['result']['parameters']['Telefono'];
