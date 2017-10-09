@@ -1,12 +1,12 @@
 <?php
-    global $dbname="heroku_69tb2th4";
-    //global $dbname="chatbot_db";
+    $dbname="heroku_69tb2th4";
+    //$dbname="chatbot_db";
 
     date_default_timezone_set('America/Bogota');
     function getData($NIU, $con){
         $filter = [ 'NIU' => $NIU ];
         $query = new MongoDB\Driver\Query($filter);
-        $result = $con->executeQuery($dbname.".usuarios", $query);
+        $result = $con->executeQuery($GLOBALS['dbname'].".usuarios", $query);
         $cliente = current($result->toArray());
         return $cliente;
     }
@@ -14,7 +14,7 @@
     function getNIUwithCedula($con, $cedula){
         $filter = [ 'DOCUMENTO' => $cedula, 'TIPO_DOC' => "CC" ];
         $query = new MongoDB\Driver\Query($filter);
-        $result = $con->executeQuery($dbname.".usuarios", $query);
+        $result = $con->executeQuery($GLOBALS['dbname'].".usuarios", $query);
         $cliente = $result->toArray();
         return $cliente;
     }
@@ -22,7 +22,7 @@
     function getNIUwithNIT($con, $nit){
         $filter = [ 'DOCUMENTO' => $nit, 'TIPO_DOC' => "NI" ];
         $query = new MongoDB\Driver\Query($filter);
-        $result = $con->executeQuery($dbname.".usuarios", $query);
+        $result = $con->executeQuery($GLOBALS['dbname'].".usuarios", $query);
         $cliente = $result->toArray();
         return $cliente;
     }
@@ -30,7 +30,7 @@
     function getNIUwithName($con, $palabras){
         $filter = getNamesQuery($palabras);
         $query = new MongoDB\Driver\Query($filter);
-        $result = $con->executeQuery($dbname.".usuarios", $query);
+        $result = $con->executeQuery($GLOBALS['dbname'].".usuarios", $query);
         $clientes = $result->toArray();
         return $clientes;
     }
@@ -38,7 +38,7 @@
     function getNIUwithAddress($con, $direccion){
         $filter = getAdressQuery($direccion);
         $query = new MongoDB\Driver\Query($filter);
-        $result = $con->executeQuery($dbname.".usuarios", $query);
+        $result = $con->executeQuery($GLOBALS['dbname'].".usuarios", $query);
         $clientes = $result->toArray();
         return $clientes;
     }
@@ -46,7 +46,7 @@
     function getSuspProgramada($con, $niu){
         $filter = [ 'NIU' => $niu, 'ESTADO' => "ABIERTO" ];
         $query = new MongoDB\Driver\Query($filter);
-        $result = $con->executeQuery($dbname.".susp_programadas", $query);
+        $result = $con->executeQuery($GLOBALS['dbname'].".susp_programadas", $query);
         $cliente = $result->toArray();
         return $cliente;
     }
@@ -54,14 +54,14 @@
         //Buscar el circuito correspondiente al usuario
         $filter = ['NIU' => $niu];  
         $query = new MongoDB\Driver\Query($filter);
-        $result = $con->executeQuery($dbname.".usuarios", $query);
+        $result = $con->executeQuery($GLOBALS['dbname'].".usuarios", $query);
         $cliente = $result->toArray();
         $circuito = $cliente[0]->CIRCUITO;
         
         //Buscar las indisponibilidades del circuito del usuario
         $filter = ['CIRCUITO'=> $circuito ];
         $query = new MongoDB\Driver\Query($filter);
-        $result = $con->executeQuery($dbname.".indisp_circuito", $query);
+        $result = $con->executeQuery($GLOBALS['dbname'].".indisp_circuito", $query);
         $registros = $result->toArray();
 
         $reg_reciente = null;
@@ -83,7 +83,7 @@
     function getNIUwithTel($con, $telefono){
         $filter = [ 'TELEFONO' => $telefono ];
         $query = new MongoDB\Driver\Query($filter);
-        $result = $con->executeQuery($dbname.".usuarios", $query);
+        $result = $con->executeQuery($GLOBALS['dbname'].".usuarios", $query);
         $cliente = $result->toArray();
         return $cliente;
     }
@@ -286,7 +286,7 @@
     function insertIndispCircuito($con, $data){
         $bulk = new MongoDB\Driver\BulkWrite;  
         $a = $bulk->insert(['FECHA'=>$data['FECHA'], 'HORA'=>$data['HORA'], 'ESTADO'=>$data['ESTADO'], 'CIRCUITO'=>$data['CIRCUITO']]);      
-        $result = $con->executeBulkWrite($dbname.'.indisp_circuito', $bulk);
+        $result = $con->executeBulkWrite($GLOBALS['dbname'].'.indisp_circuito', $bulk);
         return $result;
     }
 
