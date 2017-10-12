@@ -61,6 +61,7 @@ class chatBotAPI {
             $json['speech']=$json['speech'].$indispMsg;
             $json['displayText']=$json['displayText'].$indispMsg;
         } 
+        $json['displayText']=urlencode($json['displayText']);
         return $json;
     }
 
