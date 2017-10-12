@@ -1,0 +1,870 @@
+<b>ORDEN: </B> 669010<br><br> 
+					CHEC informa que con el fin de realizar labores de mantenimiento preventivo correctivo 
+					será suspendido el servicio de energía en los siguientes sectores:
+						<br>	
+						
+			<table width="90%" border="1">
+			  <tr>
+			    <th  scope="col">Transformador</th>
+				<th  scope="col">Circuito</th>
+				<th  scope="col">Municipio Transformador</th>
+				<th  scope="col">Municipio Cliente</th>
+				<th  scope="col">Municipio Facturador</th>
+				<th  scope="col">Barrio</th>
+				<th  scope="col">Dirección</th>
+				<th  scope="col">Cuenta</th>
+				<th  scope="col">Edificio/ Vereda </th>				
+				<th width="230px" scope="col">Fecha Inicio</th>
+				<th  width="180px" scope="col">Hora Inicio</th>
+				<th width="230px" scope="col">Fecha Fin</th>
+				<th  width="160px" scope="col">Hora Fin</th>
+				<th  scope="col">Zona</th>
+			  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>181979683</td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO FTE CABILDO</td>
+					<td>182051365</td>
+					<td>VDA SAN LORENZO FTE CABILDO</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO</td>
+					<td>182052142</td>
+					<td>VDA SAN LORENZO</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO</td>
+					<td>182053929</td>
+					<td>VDA SAN LORENZO</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>SAN LORENZO</td>
+					<td>182054706</td>
+					<td></td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO</td>
+					<td>182055493</td>
+					<td>VDA SAN LORENZO</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA LA PRADERA</td>
+					<td>182056270</td>
+					<td>VDA LA PRADERA</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO FRENTE AL CABILDO</td>
+					<td>182057057</td>
+					<td>VDA SAN LORENZO FRENTE AL CABILDO</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>SAN LORENZO</td>
+					<td>182058834</td>
+					<td></td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO</td>
+					<td>182059611</td>
+					<td>VDA SAN LORENZO</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>SAN LORENZO</td>
+					<td>182060457</td>
+					<td></td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>SAN LORENZO</td>
+					<td>182061234</td>
+					<td></td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>182062011</td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>182063808</td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>182064685</td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>182065362</td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>182066149</td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>182067926</td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>182068703</td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>182069590</td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>182070326</td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>182071103</td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO</td>
+					<td>182072990</td>
+					<td>VDA SAN LORENZO</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>SAN LORENZO</td>
+					<td>182073777</td>
+					<td></td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>182074554</td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>182075231</td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO</td>
+					<td>182077805</td>
+					<td>VDA SAN LORENZO</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO</td>
+					<td>182078682</td>
+					<td>VDA SAN LORENZO</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>182079469</td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>182080205</td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>182081082</td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>327161672</td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO</td>
+					<td>330416977</td>
+					<td>VDA SAN LORENZO</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO CARNICERIA VILLADA PARQUE PPAL</td>
+					<td>361976416</td>
+					<td>VDA SAN LORENZO CARNICERIA VILLADA PARQUE PPAL</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>471793075</td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO SAL PRADERA</td>
+					<td>493231554</td>
+					<td>VDA SAN LORENZO SAL PRADERA</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO</td>
+					<td>507981900</td>
+					<td>VDA SAN LORENZO</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>530048878</td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>531105557</td>
+					<td>VDA SAN LORENZO SDA A PRADERA</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO SA A AGUAS CLARAS</td>
+					<td>551073023</td>
+					<td>VDA SAN LORENZO SA A AGUAS CLARAS</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO PANADERIA</td>
+					<td>573459527</td>
+					<td>VDA SAN LORENZO PANADERIA</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>SAL A AGUAS CLARAS SAN LORENZO</td>
+					<td>589845759</td>
+					<td></td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>CGTO  SAN LORENZO</td>
+					<td>594349334</td>
+					<td></td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA  BUENOS AIRES</td>
+					<td>594981356</td>
+					<td>VDA  BUENOS AIRES</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO</td>
+					<td>638781505</td>
+					<td>VDA SAN LORENZO</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO</td>
+					<td>677443411</td>
+					<td>VDA SAN LORENZO</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO</td>
+					<td>770200406</td>
+					<td>VDA SAN LORENZO</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO ENSEGUIDA COOPERATIVA PSO 2</td>
+					<td>873374300</td>
+					<td>VDA SAN LORENZO ENSEGUIDA COOPERATIVA PSO 2</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO ENSEGUIDA COOPERATIVA PSO 1</td>
+					<td>873375097</td>
+					<td>VDA SAN LORENZO ENSEGUIDA COOPERATIVA PSO 1</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO SAL A LA PRADERA</td>
+					<td>873571493</td>
+					<td>VDA SAN LORENZO SAL A LA PRADERA</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO SAL A LA PRADERA</td>
+					<td>873693662</td>
+					<td>VDA SAN LORENZO SAL A LA PRADERA</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO ENSEGUIDA DE LA SEDE DEL CABILDO</td>
+					<td>875075404</td>
+					<td>VDA SAN LORENZO ENSEGUIDA DE LA SEDE DEL CABILDO</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr> <tr>
+					<td>W55577</td>
+					<td>RIO23L14</td>
+					<td>RIOSUCIO</td>
+					<td>Riosucio</td>
+					<td>Riosucio</td>
+					<td></td>
+					<td>VDA SAN LORENZO PSO 2 SAL AGUAS CLARAS</td>
+					<td>876985305</td>
+					<td>VDA SAN LORENZO PSO 2 SAL AGUAS CLARAS</td>
+					<td>2017-10-12</td>
+					<td>14:00</td>
+					<td>2017-10-12</td>
+					<td>17:00</td>
+					<td>R</td>
+					
+				  </tr></table> <br><br><br><br><br>

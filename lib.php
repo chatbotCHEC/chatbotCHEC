@@ -75,7 +75,7 @@ class chatBotAPI {
             $json['displayText']="Hemos encontrado las siguientes cuentas asociadas con el dato dado\n";
             foreach ($personas as $persona) {
                 $json['speech']=$json['speech']."\n - Nombre: ".$persona->NOMBRE."\n - Dirección: ".$persona->DIRECCION."\n - Numero de cuenta: ".$persona->NIU;
-                $json['displayText']=$json['displayText']."---------------\n - Nombre: ".$persona->NOMBRE."\n - Dirección: ".$persona->DIRECCION."\n - Numero de cuenta: ".$persona->NIU;
+                $json['displayText']=$json['displayText']."---------------\n\n - Nombre: ".$persona->NOMBRE."\n - Dirección: ".$persona->DIRECCION."\n - Numero de cuenta: ".$persona->NIU;
             }
             $json['speech']=$json['speech']."\n A continuación, digita el número de cuenta correspondiente a tu solicitud de la siguiente manera: \n NIU: #####";
             $json['displayText']=$json['displayText']."\n A continuación, digita el número de cuenta correspondiente a tu solicitud de la siguiente manera: \n NIU: #####";

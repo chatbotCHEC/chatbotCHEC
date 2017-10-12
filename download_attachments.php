@@ -108,7 +108,7 @@ function get_attachments(){
                     $fp = fopen("./". $folder ."/". $filename, "w+");
                     fwrite($fp, $attachment['attachment']);
                     fclose($fp);
-                    chmod("./". $folder ."/". $filename, 0777);
+                    chmod("./". $folder ."/". $filename, 0666);
                 }
             }
         }
