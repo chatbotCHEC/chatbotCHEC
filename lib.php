@@ -71,8 +71,8 @@ class chatBotAPI {
             $json['speech']="No se ha encontrado ninguna cuenta con el dato ingresado";
             $json['displayText']="No se ha encontrado ninguna cuenta con el dato ingresado";
         }else{
-            $json['speech']="Hemos encontrado las siguientes cuentas asociadas con el dato dado";
-            $json['displayText']="Hemos encontrado las siguientes cuentas asociadas con el dato dado\n";
+            $json['speech']="Hemos encontrado las siguientes cuentas asociadas con el dato dado (Si su cuenta no se encuentra entre los resultados, intente con un criterio de búsqueda más específico)";
+            $json['displayText']="Hemos encontrado las siguientes cuentas asociadas con el dato dado. (Si su cuenta no se encuentra entre los resultados, intente con un criterio de búsqueda más específico)\n";
             foreach ($personas as $persona) {
                 $json['speech']=$json['speech']."\n - Nombre: ".$persona->NOMBRE."\n - Dirección: ".$persona->DIRECCION."\n - Numero de cuenta: ".$persona->NIU;
                 $json['displayText']=$json['displayText']."---------------\n\n - Nombre: ".$persona->NOMBRE."\n - Dirección: ".$persona->DIRECCION."\n - Numero de cuenta: ".$persona->NIU;
