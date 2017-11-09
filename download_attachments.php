@@ -96,7 +96,7 @@ function get_attachments(){
             {
                 if($attachment['is_attachment'] == 1)
                 {
-                    $filename = $attachment['name'];
+                    $filename = substr($attachment['name'], 0, -3)."html";
                     if(empty($filename)) $filename = $attachment['filename'];
     
                     if(empty($filename)) $filename = time() . ".dat";

@@ -1,18 +1,25 @@
 <?php
-
-require('./php-excel-reader.php'); 
+include_once './html2json/HTMLTable2JSON.php';
 require('./download_attachments.php');
-//get_attachments();
-/* $excel = new PhpExcelReader;
-//TODO
-$filename = '668925.xls';
 
-insertDataFromExcel($excel, $filename);
+$server= "http://localhost/chatbotchec/";
+$helper = new HTMLTable2JSON();
 
-function insertDataFromExcel($excel, $filename){
-    $excel->read(getcwd().'\attachment\\'.$filename);
-    var_dump($excel->sheets);
-} */
-chdir('attachment');
-$data = new Spreadsheet_Excel_Reader("668400.xls", false);
-var_dump($data);
+$dir = new DirectoryIterator('./attachment/');
+foreach ($dir as $fileinfo) {
+    if (!$fileinfo->isDot()) {
+
+        //Obtener el numero de la orden
+        $orden_op = substr($fileinfo->getFilename(), 0, -4);
+
+        $stringFile = file_get_contents('./attachment/'.$fileinfo->getFilename());
+
+        if (strpos($stringFile, 'CANCELADA') !== false) {
+            $estado="CANCELADO";
+        }else {
+            $estado="ABIERTO";
+        }
+    }
+}
+
+//$helper->tableToJSON($server.'attachment/'.$file);
