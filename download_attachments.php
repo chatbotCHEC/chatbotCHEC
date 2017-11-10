@@ -105,6 +105,9 @@ function get_attachments(){
                     {
                          mkdir($folder);
                     }
+                    if(file_exists("./". $folder ."/". $filename)){
+                        $filename = 'c-'.$filename;
+                    }
                     $fp = fopen("./". $folder ."/". $filename, "w+");
                     fwrite($fp, $attachment['attachment']);
                     fclose($fp);

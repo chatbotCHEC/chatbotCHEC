@@ -202,6 +202,15 @@ class chatBotAPI {
         return $response;
     }
 
+    public function setSuspProgramada($data){
+        $result = insertSuspProgramada($this->con, $data);
+        return $result;
+    }
+    public function updateSuspProgramada($data){
+        $result = updSuspProgramada($this->con, $data);
+        return $result;
+    }
+
 
 }
 

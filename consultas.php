@@ -293,4 +293,22 @@
         return $result;
     }
 
+    function insertSuspProgramada($con, $data){
+        $bulk = new MongoDB\Driver\BulkWrite;  
+        $a = $bulk->insert(['COD_TRAFO'=>$data['COD_TRAFO'], 'NIU'=>$data['NIU'], 'FECHA_INICIO'=>$data['FECHA_INICIO'], 'FECHA_FIN'=>$data['FECHA_FIN'], 'HORA_INICIO'=>$data['HORA_INICIO'], 'HORA_FIN'=>$data['HORA_FIN'], 'ESTADO'=>$data['ESTADO'], 'ORDEN_OP'=>$data['ORDEN_OP']]);      
+        $result = $con->executeBulkWrite($GLOBALS['dbname'].'.susp_programadas', $bulk);
+        return $result;
+    }
+
+    function updSuspProgramada($con, $orden_op){
+        $bulk = new MongoDB\Driver\BulkWrite;  
+        $a = $bulk->update(
+            ['ORDEN_OP' => $orden_op],
+            ['$set' => ['ESTADO' => 'CANCELADO']],
+            ['multi' => true, 'upsert' => false]
+        );      
+        $result = $con->executeBulkWrite($GLOBALS['dbname'].'.susp_programadas', $bulk);
+        return $result;
+    }
+
 ?>
