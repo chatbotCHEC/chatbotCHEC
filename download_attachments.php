@@ -5,13 +5,13 @@ function get_attachments(){
 
     /* connect to gmail with your credentials */
     $hostname = '{imap.gmail.com:993/imap/ssl}INBOX';
-    $username = 'load.suspensiones.programadas@gmail.com'; 
-    $password = 'umCHEC1234';
+    $username = 'prjchec.suspensiones_programadas@umanizales.edu.co'; 
+    $password = 'umCHEC1234_761349';
     
     /* try to connect */
     $inbox = imap_open($hostname,$username,$password) or die('Cannot connect to Gmail: ' . imap_last_error());
     
-    $emails = imap_search($inbox, 'FROM "prjchec.jcardona@umanizales.edu.co" UNSEEN');
+    $emails = imap_search($inbox, 'FROM "JHON.CALDERON@chec.com.co" UNSEEN');
     
     /* if any emails found, iterate through each email */
     if($emails) {
