@@ -3,7 +3,8 @@ include_once './html2json/HTMLTable2JSON.php';
 require('./download_attachments.php');
 require('./lib.php');
 
-$server= "http://localhost/chatbotchec/";
+//$server= "http://localhost/chatbotchec/";
+$server= "https://chatbotindisp.herokuapp.com/";
 $helper = new HTMLTable2JSON();
 $api = new chatBotApi();
 
