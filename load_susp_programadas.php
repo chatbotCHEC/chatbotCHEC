@@ -3,12 +3,13 @@ include_once './html2json/HTMLTable2JSON.php';
 require('./download_attachments.php');
 require('./lib.php');
 
-//$server= "http://localhost/chatbotchec/";
-$server= "https://chatbotindisp.herokuapp.com/";
+$server= "http://localhost/chatbotchec/";
+//$server= "https://chatbotindisp.herokuapp.com/";
 $helper = new HTMLTable2JSON();
 $api = new chatBotApi();
 
-get_attachments();
+//get_attachments();
+echo "attahcments downloaded";
 getDataFromFiles($server, $helper, $api, true);
 getDataFromFiles($server, $helper, $api, false);
 
@@ -20,6 +21,7 @@ function getDataFromFiles($server, $helper, $api, $initial){
     $dir = new DirectoryIterator('./attachment/');
     foreach ($dir as $fileinfo) {
         if (!$fileinfo->isDot()) {
+            echo "loading...\n";
             //Obtener el numero de la orden
             $file = $fileinfo->getFilename();
             if(substr( $file, 0, 2 ) == "c-"){

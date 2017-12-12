@@ -123,4 +123,51 @@ function get_attachments(){
 }
 
 
+
+function get_mail_body(){
+    include('./indisp_circuito.php');
+    //set_time_limit(6000); 
+
+    /* connect to gmail with your credentials */
+    $hostname = '{imap.gmail.com:993/imap/ssl}INBOX';
+    $username = 'prjchec.indisponibilidades_circuito@umanizales.edu.co'; 
+    $password = 'umCHEC1234_761349';
+    
+    /* try to connect */
+    $inbox = imap_open($hostname,$username,$password) or die('Cannot connect to Gmail: ' . imap_last_error());
+    
+    //$emails = imap_search($inbox, 'FROM "notificacionsgo@chec.com.co" SEEN');
+    $emails = imap_search($inbox, 'FROM "prjchec.jcardona@umanizales.edu.co" UNSEEN');
+    
+    /* if any emails found, iterate through each email */
+    if($emails) {
+    
+        $count = 1;
+    
+        /* put the newest emails on top */
+        rsort($emails);
+    
+        /* for every email... */
+        foreach($emails as $email_number) 
+        {
+    
+            /* get information specific to this email */
+            $overview = imap_fetch_overview($inbox,$email_number,0);
+    
+            $message = imap_fetchbody($inbox,$email_number,2);
+            
+            $sub = substr($message, strpos($message, '201'), 74);
+            $content = str_replace("= -", "-", $sub);
+        
+            saveIndispCircuito($content);
+           
+        }
+    } 
+    
+    /* close the connection */
+    imap_close($inbox);
+    return true;
+}
+
+
 ?>

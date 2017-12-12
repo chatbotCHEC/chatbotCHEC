@@ -287,6 +287,7 @@
     }
 
     function insertIndispCircuito($con, $data){
+        var_dump($GLOBALS['dbname']);
         $bulk = new MongoDB\Driver\BulkWrite;  
         $a = $bulk->insert(['FECHA'=>$data['FECHA'], 'HORA'=>$data['HORA'], 'ESTADO'=>$data['ESTADO'], 'CIRCUITO'=>$data['CIRCUITO']]);      
         $result = $con->executeBulkWrite($GLOBALS['dbname'].'.indisp_circuito', $bulk);
