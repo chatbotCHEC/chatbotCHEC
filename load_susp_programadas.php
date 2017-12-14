@@ -8,7 +8,7 @@ $server= "http://localhost/chatbotchec/";
 $helper = new HTMLTable2JSON();
 $api = new chatBotApi();
 
-//get_attachments();
+get_attachments();
 echo "attahcments downloaded";
 getDataFromFiles($server, $helper, $api, true);
 getDataFromFiles($server, $helper, $api, false);
