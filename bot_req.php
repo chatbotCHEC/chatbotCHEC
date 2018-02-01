@@ -15,8 +15,8 @@ $NIT="";
 $reqBody= $api->detectRequestBody();
 
 //Asignación de parámetros
-if (isset($reqBody['result']['parameters']['NIU'])) {
-	$NIU = $reqBody['result']['parameters']['NIU'];
+if (isset($reqBody['result']['parameters']['niu'])) {
+	$NIU = $reqBody['result']['parameters']['niu'];
 }
 if (isset($reqBody['result']['parameters']['Nombre'])) {
 	$Nombre = $reqBody['result']['parameters']['Nombre'];
@@ -34,7 +34,7 @@ if (isset($reqBody['result']['parameters']['NIT'])) {
 	$NIT = $reqBody['result']['parameters']['NIT'];
 }
 
-
+//este orden va con la misma jerarquia de pregunta en dialogflow
 if($NIU == ""){
 	if($Nombre==""){
 		if($Telefono==""){
