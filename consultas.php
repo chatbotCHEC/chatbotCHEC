@@ -47,6 +47,7 @@
     }
     
     function getSuspProgramada($con, $niu){
+        //TODO: Falta mejorar la consulta para obtener unicamente las suspensiones en el futuro
         $filter = [ 'NIU' => $niu, 'ESTADO' => "ABIERTO" ];
         $query = new MongoDB\Driver\Query($filter);
         $result = $con->executeQuery($GLOBALS['dbname'].".susp_programadas", $query);
