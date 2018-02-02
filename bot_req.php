@@ -27,6 +27,9 @@ foreach ($reqBody['result']['contexts'] as $valor) {
 if (isset($reqBody['result']['parameters']['number'])) {
     $number = $reqBody['result']['parameters']['number'];
 }
+if (isset($reqBody['result']['parameters']['given-name'])) {
+    $Nombre = $reqBody['result']['parameters']['given-name']." ".$reqBody['result']['parameters']['last-name'];
+}
 
 //Switch que determina cuál es el contexto principal de la petición y ejecuta una función del objeto api correspondientemente.
 switch ($contexts[0]) {

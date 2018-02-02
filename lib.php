@@ -68,15 +68,19 @@ class chatBotAPI {
             //Respuesta para cuando no se encuentra la cuenta con el nombre asociado
             $json['speech']="No se ha encontrado ninguna cuenta con el dato ingresado";
             $json['displayText']="No se ha encontrado ninguna cuenta con el dato ingresado";
+            $json['data']['telegram']="No se ha encontrado ninguna cuenta con el dato ingresado";
         }else{
             $json['speech']="Hemos encontrado las siguientes cuentas asociadas con el dato dado (Si su cuenta no se encuentra entre los resultados, intente con un criterio de búsqueda más específico)";
             $json['displayText']="Hemos encontrado las siguientes cuentas asociadas con el dato dado. (Si su cuenta no se encuentra entre los resultados, intente con un criterio de búsqueda más específico)\n";
+            $json['data']['telegram']="Hemos encontrado las siguientes cuentas asociadas con el dato dado. (Si su cuenta no se encuentra entre los resultados, intente con un criterio de búsqueda más específico)\n";
             foreach ($personas as $persona) {
-                $json['speech']=$json['speech']."\n - Nombre: ".$persona->NOMBRE."\n - Dirección: ".$persona->DIRECCION."\n - Numero de cuenta: ".$persona->NIU;
-                $json['displayText']=$json['displayText']."---------------\n\n - Nombre: ".$persona->NOMBRE."\n - Dirección: ".$persona->DIRECCION."\n - Numero de cuenta: ".$persona->NIU;
+                $json['speech'].="\n - Nombre: ".$persona->NOMBRE."\n - Dirección: ".$persona->DIRECCION."\n - Numero de cuenta: ".$persona->NIU;
+                $json['displayText'].="---------------\n\n - Nombre: ".$persona->NOMBRE."\n - Dirección: ".$persona->DIRECCION."\n - Numero de cuenta: ".$persona->NIU;
+                $json['data']['telegram'].="---------------\n\n - Nombre: ".$persona->NOMBRE."\n - Dirección: ".$persona->DIRECCION."\n - Numero de cuenta: ".$persona->NIU;
             }
-            $json['speech']=$json['speech']."\n A continuación, digita el número de cuenta correspondiente a tu solicitud";
-            $json['displayText']=$json['displayText']."\n A continuación, digita el número de cuenta correspondiente a tu solicitud";
+            $json['speech'].="\n A continuación, digita el número de cuenta correspondiente a tu solicitud";
+            $json['displayText'].="\n A continuación, digita el número de cuenta correspondiente a tu solicitud";
+            $json['data']['telegram'].="\n A continuación, digita el número de cuenta correspondiente a tu solicitud";
         }
         return $json;
     }
@@ -218,6 +222,7 @@ class chatBotAPI {
     public function getIndisNiu($niu){
         $json['speech'] = $this->getIndisponibilidad($niu);
         $json['displayText'] = $this->getIndisponibilidad($niu);
+        $json['data']['telegram'] = $this->getIndisponibilidad($niu);
         return $json;
     }
 
@@ -225,6 +230,7 @@ class chatBotAPI {
     public function getSPNiu($niu){
         $json['speech'] = $this->getSuspensionesProgramadas($niu);
         $json['displayText'] = $this->getSuspensionesProgramadas($niu);
+        $json['data']['telegram'] = $this->getSuspensionesProgramadas($niu);
         return $json;
     }
 
