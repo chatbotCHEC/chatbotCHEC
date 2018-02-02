@@ -159,28 +159,32 @@ class chatBotAPI {
         return $array;
     }
 
+    //método que obtiene las indisponibilidades con el NIU. Se diferencia de getIndisNiu, en cuanto a que esta
+    //puede ser reutilizada en otros parametros
     public function getIndisponibilidad($niu){
-        $prog = getSuspProgramada($this->con, $niu);
         $circuito = getSuspCircuito($this->con, $niu);
+        $msg = "";
+
+        if(count($circuito) > 0 && ($circuito->ESTADO =="ABIERTO" || $circuito->ESTADO =="APERTURA")){
+            $msg.="\n *Para esta cuenta, hemos encontrado las siguientes indisponibilidades: \n - Hay una falla en el circuito reportada el ".$circuito->FECHA." a las ".$circuito->HORA.". Estamos trabajando para reestablecer el servicio";
+        }else {
+            $msg.="\n *Para esta cuenta no tengo reportada ninguna indisponibilidad";
+        }
+        
+        return $msg;
+    }
+
+    //Método que obtiene las suspensiones programadas teniendo el NIU. Reutilizable
+    public function getSuspensionesProgramadas($niu){
+        $prog = getSuspProgramada($this->con, $niu);
         $msg = "";
         if(count($prog)>0){
             $msg.="\n *Para esta cuenta, hemos encontrado las siguientes suspensiones programadas: ";
-            $hay_indisp = true;
             foreach ($prog as $p) {
                 $msg.="\n - Hay una suspensión programada que inicia el ".$p->FECHA_INICIO." a las ".$p->HORA_INICIO.", y finaliza el ".$p->FECHA_FIN." a las ".$p->HORA_FIN;
             }
         }else {
-            $hay_indisp = false;
-        }
-        if(count($circuito) > 0 && ($circuito->ESTADO =="ABIERTO" || $circuito->ESTADO =="APERTURA")){
-            $hay_circ = true;
-            $msg.="\n *Para esta cuenta, hemos encontrado las siguientes indisponibilidades: \n - Hay una falla en el circuito reportada el ".$circuito->FECHA." a las ".$circuito->HORA.". Estamos trabajando para reestablecer el servicio";
-        }else {
-            $hay_circ = false;
-        }
-
-        if(!$hay_indisp && !$hay_circ){
-            $msg.="\n *Para esta cuenta no tengo reportada ninguna novedad";
+            $msg.="\n *Para esta cuenta no tengo reportada ninguna suspensión programada";
         }
 
         return $msg;
@@ -208,6 +212,21 @@ class chatBotAPI {
         $result = updSuspProgramada($this->con, $data);
         return $result;
     }
+
+    //Método que busca las indisponibilidades teniendo el numero de cuenta
+    public function getIndisNiu($niu){
+        $json['speech'] = $this->getIndisponibilidad($niu);
+        $json['displayText'] = $this->getIndisponibilidad($niu);
+        return $json;
+    }
+
+    //Método que busca las suspensiones programada teniendo el numero de cuenta
+    public function getSPNiu($niu){
+        $json['speech'] = $this->getSuspensionesProgramadas($niu);
+        $json['displayText'] = $this->getSuspensionesProgramadas($niu);
+        return $json;
+    }
+
 
 
 }
