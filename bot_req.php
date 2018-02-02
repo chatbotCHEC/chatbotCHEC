@@ -31,12 +31,12 @@ if (isset($reqBody['result']['parameters']['number'])) {
 //Switch que determina cuál es el contexto principal de la petición y ejecuta una función del objeto api correspondientemente.
 switch ($contexts[0]) {
     case 'c1_cc':
-        $api->getIndisCedula($number);
+        $response = $api->getNiuFromCedula($number);
         break;
     case 'c1_direccion':
         break;    
     case 'c1_nit':
-        $api->getIndisNit($number);
+        $response = $api->getNiuFromNIT($number);
         break;
     case 'c1_niu':
         $response = $api->getIndisNiu($number);
@@ -44,12 +44,12 @@ switch ($contexts[0]) {
     case 'c1_nombre':
         break;
     case 'c2_cc':
-        $api->getSPCedula($number);
+        $response = $api->getNiuFromCedula($number);
         break;
     case 'c2_direccion':
         break;    
     case 'c2_nit':
-        $api->getSPNit($number);
+        $response = $api->getNiuFromNIT($number);
         break;
     case 'c2_niu':
         $response = $api->getSPNiu($number);

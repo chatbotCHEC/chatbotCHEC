@@ -75,13 +75,14 @@ class chatBotAPI {
                 $json['speech']=$json['speech']."\n - Nombre: ".$persona->NOMBRE."\n - Dirección: ".$persona->DIRECCION."\n - Numero de cuenta: ".$persona->NIU;
                 $json['displayText']=$json['displayText']."---------------\n\n - Nombre: ".$persona->NOMBRE."\n - Dirección: ".$persona->DIRECCION."\n - Numero de cuenta: ".$persona->NIU;
             }
-            $json['speech']=$json['speech']."\n A continuación, digita el número de cuenta correspondiente a tu solicitud de la siguiente manera: \n NIU: #####";
-            $json['displayText']=$json['displayText']."\n A continuación, digita el número de cuenta correspondiente a tu solicitud de la siguiente manera: \n NIU: #####";
+            $json['speech']=$json['speech']."\n A continuación, digita el número de cuenta correspondiente a tu solicitud";
+            $json['displayText']=$json['displayText']."\n A continuación, digita el número de cuenta correspondiente a tu solicitud";
         }
         return $json;
     }
     
     //Obtener los datos del usuario a partir del NIU
+    //Todas estas tienden a desaparecer en el update
     public function getUserData($NIU){
         $persona=getData($NIU, $this->con);
         return $this->respuesta($persona);
@@ -226,6 +227,8 @@ class chatBotAPI {
         $json['displayText'] = $this->getSuspensionesProgramadas($niu);
         return $json;
     }
+
+    
 
 
 
