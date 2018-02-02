@@ -108,4 +108,5 @@ $response = $api->getNiuFromName($Nombre);
 }else{
 $response = $api->getUserData($NIU);
 } */
+header("Content-Type: application/json");
 echo json_encode($response);
