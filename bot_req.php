@@ -105,4 +105,4 @@ $response = $api->getNiuFromName($Nombre);
 }else{
 $response = $api->getUserData($NIU);
 } */
-echo json_encode($response);c
+echo json_encode($response);
