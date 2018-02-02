@@ -222,7 +222,7 @@ class chatBotAPI {
     public function getIndisNiu($niu){
         $json['speech'] = $this->getIndisponibilidad($niu);
         $json['displayText'] = $this->getIndisponibilidad($niu);
-        $json['messages'] = array('speech' => $this->getIndisponibilidad($niu)); 
+        $json['messages'] = array(array('speech' => $this->getIndisponibilidad($niu))); 
         return $json;
     }
 
@@ -230,7 +230,7 @@ class chatBotAPI {
     public function getSPNiu($niu){
         $json['speech'] = $this->getSuspensionesProgramadas($niu);
         $json['displayText'] = $this->getSuspensionesProgramadas($niu);
-        $json['messages'] = array('speech' => $this->getSuspensionesProgramadas($niu)); 
+        $json['messages'] = array(array('speech' => $this->getSuspensionesProgramadas($niu))); 
         return $json;
     }
 
