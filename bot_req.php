@@ -25,7 +25,7 @@ foreach ($reqBody['result']['contexts'] as $valor) {
 //Verifica si de la petición se recibe la entidad number
 //PENDIENTE: verificar cuando lleguen entidades Nombre, direccion
 if (isset($reqBody['result']['parameters']['number'])) {
-    $number = $reqBody['result']['parameters']['number'];
+    $number = strval($reqBody['result']['parameters']['number']);
 }
 if (isset($reqBody['result']['parameters']['given-name'])) {
     $Nombre = $reqBody['result']['parameters']['given-name']." ".$reqBody['result']['parameters']['last-name'];
