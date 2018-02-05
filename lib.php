@@ -62,7 +62,7 @@ class chatBotAPI {
         return $json;
     }
 
-    public function respuesta_plural($personas){
+    public function respuesta_plural($personas, $context){
         //Verificar si se encontró alguna cuenta con el nombre asociado
         if(is_null($personas)||count($personas)==0){
             //Respuesta para cuando no se encuentra la cuenta con el nombre asociado
@@ -77,6 +77,13 @@ class chatBotAPI {
             }
             $json['speech'].="\n A continuación, digita el número de cuenta correspondiente a tu solicitud";
             $json['displayText'].="\n A continuación, digita el número de cuenta correspondiente a tu solicitud";
+
+            if($context == "c1"){
+                $json['contextOut'] = array('c1_niu', 'c1');
+            }
+            if($context == "c2"){
+                $json['contextOut'] = array('c2_niu', 'c2');
+            }
         }
         return $json;
     }
@@ -88,30 +95,30 @@ class chatBotAPI {
         return $this->respuesta($persona);
     }
 
-    public function getNiuFromCedula($cedula){
+    public function getNiuFromCedula($cedula, $context){
         $persona = getNIUwithCedula($this->con, $cedula);
-        return $this->respuesta_plural($persona);
+        return $this->respuesta_plural($persona, $context);
     }
-    public function getNiuFromNIT($nit){
+    public function getNiuFromNIT($nit, $context){
         $persona = getNIUwithNIT($this->con, $nit);
-        return $this->respuesta_plural($persona);
+        return $this->respuesta_plural($persona, $context);
     }
 
-    public function getNiuFromName($nombre){
+    public function getNiuFromName($nombre, $context){
         $palabras = explode(" ", strtoupper($nombre));
         $personas = getNIUwithName($this->con, $palabras);
-        return $this->respuesta_plural($personas);
+        return $this->respuesta_plural($personas, $context);
     }
 
-    public function getNiuFromTelephone($telefono){
+    public function getNiuFromTelephone($telefono, $context){
         $persona = getNIUwithTel($this->con, $telefono);
-        return $this->respuesta_plural($persona);
+        return $this->respuesta_plural($persona, $context);
     }
 
-    public function getNiuFromAddress($direccion){
+    public function getNiuFromAddress($direccion, $context){
         $direccionesProcesadas = $this->processAddress($direccion);
         $personas = getNIUwithAddress($this->con, $direccionesProcesadas);
-        return $this->respuesta_plural($personas);
+        return $this->respuesta_plural($personas, $context);
     }
 
     public function processAddress($direccion){
