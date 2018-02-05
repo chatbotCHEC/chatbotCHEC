@@ -15,7 +15,6 @@ function getData($NIU, $con)
 function getNIUwithCedula($con, $cedula)
 {
     $filter = ['DOCUMENTO' => $cedula, 'TIPO_DOC' => "CC"];
-    var_dump($filter);
     $query = new MongoDB\Driver\Query($filter);
     $result = $con->executeQuery($GLOBALS['dbname'] . ".usuarios", $query);
     $cliente = $result->toArray();
