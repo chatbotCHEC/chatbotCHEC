@@ -184,7 +184,7 @@ class chatBotAPI {
         $prog = getSuspProgramada($this->con, $niu);
         $msg = "";
         if(count($prog)>0){
-            $msg.="\n *Para esta cuenta, hemos encontrado las siguientes suspensiones programadas: ";
+            $msg.="\n *Para la cuenta con el número &#36sys.number, hemos encontrado las siguientes suspensiones programadas: ";
             foreach ($prog as $p) {
                 $msg.="\n - Hay una suspensión programada que inicia el ".$p->FECHA_INICIO." a las ".$p->HORA_INICIO.", y finaliza el ".$p->FECHA_FIN." a las ".$p->HORA_FIN;
             }
@@ -222,7 +222,6 @@ class chatBotAPI {
     public function getIndisNiu($niu){
         $json['speech'] = $this->getIndisponibilidad($niu);
         $json['displayText'] = $this->getIndisponibilidad($niu);
-        $json['data']['telegram']['text'] = $this->getIndisponibilidad($niu);
         //$json['messages'] = array(array('platform'=>'telegram', 'speech' => $this->getIndisponibilidad($niu))); 
         return $json;
     }
@@ -231,7 +230,6 @@ class chatBotAPI {
     public function getSPNiu($niu){
         $json['speech'] = $this->getSuspensionesProgramadas($niu);
         $json['displayText'] = $this->getSuspensionesProgramadas($niu);
-        $json['data']['telegram']['text'] = $this->getSuspensionesProgramadas($niu);
         //$json['messages'] = array(array('platform'=>'telegram', 'speech' => $this->getSuspensionesProgramadas($niu))); 
         return $json;
     }
