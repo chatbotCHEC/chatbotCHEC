@@ -58,7 +58,15 @@ function getSuspProgramada($con, $niu)
     $query = new MongoDB\Driver\Query($filter);
     $result = $con->executeQuery($GLOBALS['dbname'] . ".susp_programadas", $query);
     $cliente = $result->toArray();
-    return $cliente;
+    $futuras = array();
+    $now = new DateTime();
+    foreach ($cliente as $key => $value) {
+        $date = new DateTime($value->FECHA_FIN.' '.$value->HORA_FIN);
+        if($date>$now){
+            array_push($futuras, $value);
+        }
+    }
+    return $futuras;
 }
 function getSuspCircuito($con, $niu)
 {
