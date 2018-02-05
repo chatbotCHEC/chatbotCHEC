@@ -137,7 +137,7 @@ function get_mail_body(){
     $inbox = imap_open($hostname,$username,$password) or die('Cannot connect to Gmail: ' . imap_last_error());
     
     //$emails = imap_search($inbox, 'FROM "notificacionsgo@chec.com.co" SEEN');
-    $emails = imap_search($inbox, 'FROM "prjchec.jcardona@umanizales.edu.co" UNSEEN');
+    $emails = imap_search($inbox, 'FROM "notificacionsgo@chec.com.co" UNSEEN');
     
     /* if any emails found, iterate through each email */
     if($emails) {
