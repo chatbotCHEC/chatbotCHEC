@@ -146,6 +146,7 @@ function get_mail_body(){
     
         /* put the newest emails on top */
         rsort($emails);
+        var_dump($emails);
     
         /* for every email... */
         foreach($emails as $email_number) 
