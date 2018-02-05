@@ -79,10 +79,10 @@ class chatBotAPI {
             $json['displayText'].="\n A continuación, digita el número de cuenta correspondiente a tu solicitud";
 
             if($context == "c1"){
-                $json['contextOut'] = array('c1_niu', 'c1');
+                $json['contextOut'] = array(array('name' => 'c1_niu'), array('name' => 'c1'));
             }
             if($context == "c2"){
-                $json['contextOut'] = array('c2_niu', 'c2');
+                $json['contextOut'] = array(array('name' => 'c2_niu'), array('name' => 'c2'));
             }
         }
         return $json;
