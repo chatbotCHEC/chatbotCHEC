@@ -174,9 +174,9 @@ class chatBotAPI {
         $msg = "";
 
         if(count($circuito) > 0 && ($circuito->ESTADO =="ABIERTO" || $circuito->ESTADO =="APERTURA")){
-            $msg.="\n *Para esta cuenta, hemos encontrado las siguientes indisponibilidades: \n - Hay una falla en el circuito reportada el ".$circuito->FECHA." a las ".$circuito->HORA.". Estamos trabajando para reestablecer el servicio";
+            $msg.="\n *Para la cuenta número &#36sys.number, hemos encontrado las siguientes indisponibilidades: \n - Hay una falla en el circuito reportada el ".$circuito->FECHA." a las ".$circuito->HORA.". Estamos trabajando para reestablecer el servicio";
         }else {
-            $msg.="\n *Para esta cuenta no tengo reportada ninguna indisponibilidad";
+            $msg.="\n *Para la cuenta número &#36sys.number no tengo reportada ninguna indisponibilidad";
         }
         
         return $msg;
@@ -192,7 +192,7 @@ class chatBotAPI {
                 $msg.="\n - Hay una suspensión programada que inicia el ".$p->FECHA_INICIO." a las ".$p->HORA_INICIO.", y finaliza el ".$p->FECHA_FIN." a las ".$p->HORA_FIN;
             }
         }else {
-            $msg.="\n *Para esta cuenta no tengo reportada ninguna suspensión programada";
+            $msg.="\n *Para la cuenta con el número &#36sys.number no tengo reportada ninguna suspensión programada";
         }
 
         return $msg;
