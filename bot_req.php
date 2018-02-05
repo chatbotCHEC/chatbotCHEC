@@ -25,7 +25,7 @@ foreach ($reqBody['result']['contexts'] as $valor) {
 //Verifica si de la petición se recibe la entidad number
 //PENDIENTE: verificar cuando lleguen entidades Nombre, direccion
 if (isset($reqBody['result']['parameters']['number'])) {
-    $number = $reqBody['result']['parameters']['number'];
+    $number = strval($reqBody['result']['parameters']['number']);
 }
 if (isset($reqBody['result']['parameters']['given-name'])) {
     $Nombre = $reqBody['result']['parameters']['given-name']." ".$reqBody['result']['parameters']['last-name'];
@@ -34,12 +34,12 @@ if (isset($reqBody['result']['parameters']['given-name'])) {
 //Switch que determina cuál es el contexto principal de la petición y ejecuta una función del objeto api correspondientemente.
 switch ($contexts[0]) {
     case 'c1_cc':
-        $response = $api->getNiuFromCedula($number);
+        $response = $api->getNiuFromCedula($number, $contexts[1]);
         break;
     case 'c1_direccion':
         break;    
     case 'c1_nit':
-        $response = $api->getNiuFromNIT($number);
+        $response = $api->getNiuFromNIT($number, $contexts[1]);
         break;
     case 'c1_niu':
         $response = $api->getIndisNiu($number);
@@ -47,12 +47,12 @@ switch ($contexts[0]) {
     case 'c1_nombre':
         break;
     case 'c2_cc':
-        $response = $api->getNiuFromCedula($number);
+        $response = $api->getNiuFromCedula($number, $contexts[1]);
         break;
     case 'c2_direccion':
         break;    
     case 'c2_nit':
-        $response = $api->getNiuFromNIT($number);
+        $response = $api->getNiuFromNIT($number, $contexts[1]);
         break;
     case 'c2_niu':
         $response = $api->getSPNiu($number);
