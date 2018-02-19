@@ -237,17 +237,17 @@ class chatBotAPI {
                             'keyboard' => array(
                                 array(                                
                                     array(
-                                        'text' => 'Si',
+                                        'text' => 'Si U+2714',
                                         'callback_data' => 'Si'
                                         );
                                     ),
                                 array(                                
                                     array(
-                                        'text' => 'No',
+                                        'text' => 'No U+2716',
                                         'callback_data' => 'No'
-                                        )
+                                         )
                                     )
-                            ),
+                                ),
 /*                             'one_time_keyboard' => true;
                             'resize_keyboard' => true
  */                        )
