@@ -1,61 +1,59 @@
 {
-    "id": "90ca3349-e8d5-41c0-9473-af7caa13a7ee",
-    "timestamp": "2018-02-05T14:08:42.694Z",
-    "lang": "es",
-    "result": {
-      "source": "agent",
-      "resolvedQuery": "334589904",
-      "action": "",
-      "actionIncomplete": false,
-      "parameters": {
-        "number": 334589904
-      },
-      "contexts": [
-        {
-          "name": "c2_niu",
-          "parameters": {
-            "number": 334589904,
-            "number.original": "334589904"
-          },
-          "lifespan": 5
+  "id": "90ca3349-e8d5-41c0-9473-af7caa13a7ee",
+  "timestamp": "2018-02-05T14:08:42.694Z",
+  "lang": "es",
+  "result": {
+    "source": "agent",
+    "resolvedQuery": "334589904",
+    "action": "",
+    "actionIncomplete": false,
+    "parameters": {
+      "number": 334589904
+    },
+    "contexts": [{
+        "name": "c2_niu",
+        "parameters": {
+          "number": 334589904,
+          "number.original": "334589904"
         },
-        {
-          "name": "c2",
-          "parameters": {
-            "number": 334589904,
-            "number.original": "334589904"
-          },
-          "lifespan": 5
-        }
-      ],
-      "metadata": {
-        "intentId": "7c0025a8-8fea-4d61-bae3-1ecb57e2e054",
-        "webhookUsed": "true",
-        "webhookForSlotFillingUsed": "true",
-        "webhookResponseTime": 274,
-        "intentName": "c2_re_niu"
+        "lifespan": 5
       },
-      "fulfillment": {
-        "speech": "\n *Para esta cuenta no tengo reportada ninguna suspensión programada",
-        "displayText": "\n *Para esta cuenta no tengo reportada ninguna suspensión programada",
-        "messages": [
-          {
-            "type": 0,
-            "speech": "\n *Para esta cuenta no tengo reportada ninguna suspensión programada"
-          }
-        ],
-        "data": {
-          "telegram": {
-            "text": "\n *Para esta cuenta no tengo reportada ninguna suspensión programada"
-          }
+      {
+        "name": "c2",
+        "parameters": {
+          "number": 334589904,
+          "number.original": "334589904"
+        },
+        "lifespan": 5
+      }
+    ],
+    "metadata": {
+      "intentId": "7c0025a8-8fea-4d61-bae3-1ecb57e2e054",
+      "webhookUsed": "true",
+      "webhookForSlotFillingUsed": "true",
+      "webhookResponseTime": 274,
+      "intentName": "c2_re_niu"
+    },
+    "fulfillment": {
+      "speech": "\n *Para esta cuenta no tengo reportada ninguna suspensión programada",
+      "displayText": "\n *Para esta cuenta no tengo reportada ninguna suspensión programada",
+      "messages": [{
+        "type": 0,
+        "speech": "\n *Para esta cuenta no tengo reportada ninguna suspensión programada"
+      }],
+      "data": {
+        "telegram": {
+          "text": "\n *Para esta cuenta no tengo reportada ninguna suspensión programada"
         }
-      },
-      "score": 1
+      }
     },
-    "status": {
-      "code": 200,
-      "errorType": "success",
-      "webhookTimedOut": false
-    },
-    "sessionId": "27ae8f1c-b0d3-4dc3-bbad-6baac49ff2c8"
-   }
+    "score": 1
+  },
+  "status": {
+    "code": 200,
+    "errorType": "success",
+    "webhookTimedOut": false
+  },
+  "sessionId": "27ae8f1c-b0d3-4dc3-bbad-6baac49ff2c8"
+}
+
