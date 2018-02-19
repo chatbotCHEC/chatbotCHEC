@@ -239,7 +239,7 @@ class chatBotAPI {
                                     array(
                                         'text' => 'Si',
                                         'callback_data' => 'Si'
-                                        );
+                                        )
                                     ),
                                 array(                                
                                     array(
@@ -248,9 +248,7 @@ class chatBotAPI {
                                         )
                                     )
                             ),
-/*                             'one_time_keyboard' => true;
-                            'resize_keyboard' => true
- */                        )
+                        )
                     ), 
                 )
             )  
