@@ -1,0 +1,17 @@
+{
+    "telegram": {
+        "text": "Para esta cuenta no tengo reportada ninguna indisponibilidad ¿Deseas consultar algo más?",
+        "reply_markup": {
+            "keyboard": [
+                [{
+                    "text": "Si 😥",
+                    "callback_data": "Si"
+                }],
+                [{
+                    "text": "No 😀",
+                    "callback_data": "No"
+                }]
+            ]
+        }
+    }
+}

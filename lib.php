@@ -235,16 +235,18 @@ class chatBotAPI {
                         'text' => $this->getIndisponibilidad($niu)."\n ¿Deseas consultar algo más?",
                         'reply_markup' => array(
                             'keyboard' => array(
-                                array(
-                                    'text' => 'Si',
-                                    'callback_data' => 'Si'
-                                    
-                                ),
-                                array(
-                                   'text' => 'No',
-                                   'callback_data' => 'No'
-
-                                )
+                                array(                                
+                                    array(
+                                        'text' => 'Si',
+                                        'callback_data' => 'Si'
+                                        );
+                                    ),
+                                array(                                
+                                    array(
+                                        'text' => 'No',
+                                        'callback_data' => 'No'
+                                        )
+                                    )
                             ),
 /*                             'one_time_keyboard' => true;
                             'resize_keyboard' => true
