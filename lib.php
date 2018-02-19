@@ -238,7 +238,7 @@ class chatBotAPI {
                                 array(                                
                                     array(
                                         'text' => 'Si',
-                                        'callback_data' => 'Si ✔️'
+                                        'callback_data' => 'Si \xE2\x9C\x94'
                                         )
                                     ),
                                 array(                                
