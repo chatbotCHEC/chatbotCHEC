@@ -226,7 +226,7 @@ class chatBotAPI {
         $json['speech'] = $this->getIndisponibilidad($niu);
         $json['displayText'] = $this->getIndisponibilidad($niu);
         $json['messages'] = array(
-            'data' => array(
+            array(
                 'telegram' => array(
                     'text' => $this->getIndisponibilidad($niu)."\n ¿Deseas consultar algo más?",
                     'reply_markup' => array(
