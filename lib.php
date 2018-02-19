@@ -238,13 +238,13 @@ class chatBotAPI {
                                 array(                                
                                     array(
                                         'text' => 'Si',
-                                        'callback_data' => 'Si \xE2\x9C\x94'
+                                        'callback_data' => 'Si ✔'
                                         )
                                     ),
                                 array(                                
                                     array(
                                         'text' => 'No',
-                                        'callback_data' => 'No \xE2\x9D\x8C'
+                                        'callback_data' => 'No ✖'
                                         )
                                     )
                             ),
