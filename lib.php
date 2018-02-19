@@ -225,7 +225,23 @@ class chatBotAPI {
     public function getIndisNiu($niu){
         $json['speech'] = $this->getIndisponibilidad($niu);
         $json['displayText'] = $this->getIndisponibilidad($niu);
-        //$json['messages'] = array(array('platform'=>'telegram', 'speech' => $this->getIndisponibilidad($niu))); 
+        $json['data'] = array(
+            'telegram' => array(
+                'text' => $this->getIndisponibilidad($niu)."\n ¿Deseas consultar algo más?",
+                'reply_markup' => array(
+                    'inline_keyboard' => array(
+                        array(
+                            'text' => 'Si', 
+                            'callback_data' => 'Si'
+                        ),
+                        array(
+                            'text' => 'No',
+                            'callback_data' => 'No'
+                        )
+                    ), 
+                )
+            ), 
+        );
         return $json;
     }
 

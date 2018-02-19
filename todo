@@ -1,0 +1,16 @@
+- Búsqueda por dirección en C1
+- Búsueda por dirección en C2
+- Búsqueda por nombre en C1
+- Búsqueda por nombre en C2
+- Cargar direcciones normalizadas
+- Script de carga de Suspensiones programadas
+- Script de carga de Suspensiones efectivas
+- Script de carga de Indisponibilidades circuito SCADA
+- Script de limpieza de Suspensiones programadas
+- Script de limpieza de Suspensiones efectivas
+- Script de limpieza de Indisponibilidades circuito SCADA
+- Interacción con SGO
+- Enviar botones desde el BE
+- Mejorar el léxico de mensajes
+- Guardar conversaciones
+- Validar resultados de búsqueda igual a 1 y redirigir a petición por NIU
