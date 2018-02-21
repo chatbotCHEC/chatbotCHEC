@@ -237,14 +237,14 @@ class chatBotAPI {
                             'keyboard' => array(
                                 array(                                
                                     array(
-                                        'text' => 'Si',
-                                        'callback_data' => 'Si \xE2\x9C\x94'
+                                        'text' => 'Sí ✔️',
+                                        'callback_data' => 'Si'
                                         )
                                     ),
                                 array(                                
                                     array(
-                                        'text' => 'No',
-                                        'callback_data' => 'No ✖️'
+                                        'text' => 'No ❌',
+                                        'callback_data' => 'No'
                                         )
                                     )
                             ),
