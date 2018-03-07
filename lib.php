@@ -8,6 +8,7 @@ class chatBotAPI {
     //Credenciales Localhost
     //private $host = "mongodb://localhost:27017/chatbot_db";
 
+    
     //conexion a BD
     private $con;
     private $bd;
@@ -16,12 +17,14 @@ class chatBotAPI {
         $this->connectToDB();
     }
 
+
     //Obtener el cuerpo de la petición POST del chatbot
     public function detectRequestBody() {
         $inputJSON = file_get_contents('php://input');
         $input = json_decode($inputJSON, TRUE);
         return $input;
     }
+
 
     //Conectar a la Base de datos
     public function connectToDB(){
@@ -37,6 +40,7 @@ class chatBotAPI {
         }
         
     }
+
 
     public function respuesta($persona){
         //Verificar si se encontró el NIU
@@ -237,14 +241,14 @@ class chatBotAPI {
                             'keyboard' => array(
                                 array(                                
                                     array(
-                                        'text' => 'Si',
-                                        'callback_data' => 'Si ✔️'
+                                        'text' => 'Sí ✔️',
+                                        'callback_data' => 'Menú Principal'
                                         )
                                     ),
                                 array(                                
                                     array(
-                                        'text' => 'No',
-                                        'callback_data' => 'No ✖️'
+                                        'text' => 'No ❌',
+                                        'callback_data' => 'No'
                                         )
                                     )
                             ),
@@ -264,8 +268,15 @@ class chatBotAPI {
         return $json;
     }
 
+
+
+    public function setSuspensionEfectiva($data){
+/*         $result = insertSuspensionesEfectiva($this->con, $data);
+ */        return $data;
+    }
+
+
     
 }
-
 
 ?>
