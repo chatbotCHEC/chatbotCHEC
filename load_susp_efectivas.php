@@ -1,20 +1,43 @@
 <?php
 
 require './lib.php';
+require 'download_attachments.php';
 
 $api = new chatBotApi();
+//Para Descargar
+//get_attachments_efectivas();
 
-$datos = cargaSuspensionesEfectivas("OTs_suspension_efectivas_2018_02_28_07_32_am.xls");
+$dir = new DirectoryIterator('./attachment_efectivas/');
+    foreach ($dir as $fileinfo) {
+        if (!$fileinfo->isDot()) {
+            echo "loading...\n";
 
-$resultado = $api->setSuspensionEfectiva($datos);
+             //Obtener el numero de la orden
+             $file = $fileinfo->getFilename();
+             $datos = cargaSuspensionesEfectivas($dir);
 
-var_dump($resultado);
+             var_dump($datos);
+
+        }
+
+    }
+
+
+//$datos = cargaSuspensionesEfectivas("OTs_suspension_efectivas_2018_02_28_07_32_am.xls");
+
+
+
+
+//$resultado = $api->setSuspensionEfectiva($datos);
+
+//var_dump($resultado);
 
 
 function cargaSuspensionesEfectivas($file){
     
     require_once "./PHPExcel-1.8/Classes/PHPExcel.php";
     require_once './IOFactory.php';
+
 
 	//Variable con el nombre del archivo
 	$nombreArchivo = './attachment_efectivas/'.$file;
@@ -45,6 +68,7 @@ function cargaSuspensionesEfectivas($file){
     }
 
     return $efec;
+    
 
 }
 
