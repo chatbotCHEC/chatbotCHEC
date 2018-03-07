@@ -9,12 +9,9 @@ $helper = new HTMLTable2JSON();
 $api = new chatBotApi();
 
 get_attachments();
-echo "attahcments downloaded";
+echo "attachments downloaded";
 getDataFromFiles($server, $helper, $api, true);
 getDataFromFiles($server, $helper, $api, false);
-
-
-
 
 
 function getDataFromFiles($server, $helper, $api, $initial){
@@ -22,6 +19,9 @@ function getDataFromFiles($server, $helper, $api, $initial){
     foreach ($dir as $fileinfo) {
         if (!$fileinfo->isDot()) {
             echo "loading...\n";
+
+
+            
             //Obtener el numero de la orden
             $file = $fileinfo->getFilename();
             if(substr( $file, 0, 2 ) == "c-"){
@@ -82,4 +82,3 @@ function getDataFromFiles($server, $helper, $api, $initial){
         }
     }
 }
-
