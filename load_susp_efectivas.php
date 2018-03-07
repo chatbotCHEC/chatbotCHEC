@@ -1,15 +1,18 @@
 <?php
-
+set_time_limit(3000); 
 require './lib.php';
 
 $api = new chatBotApi();
 
 $datos = cargaSuspensionesEfectivas("OTs_suspension_efectivas_2018_02_28_07_32_am.xls");
 
-$resultado = $api->setSuspensionEfectiva($datos);
+
+foreach ($datos as $fila){
+    
+    $resultado = $api->setSuspensionEfectiva($fila);
+}
 
 var_dump($resultado);
-
 
 function cargaSuspensionesEfectivas($file){
     
@@ -43,6 +46,9 @@ function cargaSuspensionesEfectivas($file){
         array_push($efec, $fila);
 
     }
+
+
+
 
     return $efec;
 

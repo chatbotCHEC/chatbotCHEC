@@ -303,9 +303,19 @@ function getAdressQuery($palabras)
     return $filter;
 }
 
+
+
+function insertSuspensionesEfectivas($con, $data)
+{
+    $bulk = new MongoDB\Driver\BulkWrite;
+    $a = $bulk->insert(['ID_ORDEN' => $data['0'], 'NIU' => $data['1'], 'FECHA_ATENCION' => $data['2'], 
+    'HORA_INI' => $data['3'], 'HORA_FIN' => $data['4'], 'DESCRIPCION' => $data['5'], 'VALOR' => $data['6']]);
+    $result = $con->executeBulkWrite($GLOBALS['dbname'] . '.susp_efectivas', $bulk);
+    return $result;
+}
+
 function insertIndispCircuito($con, $data)
 {
-    var_dump($GLOBALS['dbname']);
     $bulk = new MongoDB\Driver\BulkWrite;
     $a = $bulk->insert(['FECHA' => $data['FECHA'], 'HORA' => $data['HORA'], 'ESTADO' => $data['ESTADO'], 'CIRCUITO' => $data['CIRCUITO']]);
     $result = $con->executeBulkWrite($GLOBALS['dbname'] . '.indisp_circuito', $bulk);
