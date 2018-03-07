@@ -41,7 +41,6 @@ class chatBotAPI {
         
     }
 
-
     public function respuesta($persona){
         //Verificar si se encontró el NIU
         if(!(isset($persona->NIU)) || $persona->NIU==""){
@@ -271,8 +270,9 @@ class chatBotAPI {
 
 
     public function setSuspensionEfectiva($data){
-/*         $result = insertSuspensionesEfectiva($this->con, $data);
- */        return $data;
+
+        $result = insertSuspensionesEfectivas($this->con, $data);
+        return $result;
     }
 
 

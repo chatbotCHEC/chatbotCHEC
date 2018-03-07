@@ -1,1106 +1,1653 @@
-{"Transformador" : [
-	{"cell_text" : "N47088",
-	"column" : "Transformador",
-	"row" : "Row 0",
-	"spans" : "1"},
-	{"cell_text" : "N47088",
-	"column" : "Transformador",
-	"row" : "Row 1",
-	"spans" : "1"},
-	{"cell_text" : "N47088",
-	"column" : "Transformador",
-	"row" : "Row 2",
-	"spans" : "1"},
-	{"cell_text" : "N47088",
-	"column" : "Transformador",
-	"row" : "Row 3",
-	"spans" : "1"},
-	{"cell_text" : "N47088",
-	"column" : "Transformador",
-	"row" : "Row 4",
-	"spans" : "1"},
-	{"cell_text" : "N47088",
-	"column" : "Transformador",
-	"row" : "Row 5",
-	"spans" : "1"},
-	{"cell_text" : "N47088",
-	"column" : "Transformador",
-	"row" : "Row 6",
-	"spans" : "1"},
-	{"cell_text" : "N47088",
-	"column" : "Transformador",
-	"row" : "Row 7",
-	"spans" : "1"},
-	{"cell_text" : "N47088",
-	"column" : "Transformador",
-	"row" : "Row 8",
-	"spans" : "1"},
-	{"cell_text" : "N47088",
-	"column" : "Transformador",
-	"row" : "Row 9",
-	"spans" : "1"},
-	{"cell_text" : "N47088",
-	"column" : "Transformador",
-	"row" : "Row 10",
-	"spans" : "1"},
-	{"cell_text" : "N47088",
-	"column" : "Transformador",
-	"row" : "Row 11",
-	"spans" : "1"},
-	{"cell_text" : "N47088",
-	"column" : "Transformador",
-	"row" : "Row 12",
-	"spans" : "1"},
-	{"cell_text" : "N47088",
-	"column" : "Transformador",
-	"row" : "Row 13",
-	"spans" : "1"},
-	{"cell_text" : "N47088",
-	"column" : "Transformador",
-	"row" : "Row 14",
-	"spans" : "1"},
-	{"cell_text" : "N47088",
-	"column" : "Transformador",
-	"row" : "Row 15",
-	"spans" : "1"},
-	{"cell_text" : "N47088",
-	"column" : "Transformador",
-	"row" : "Row 16",
-	"spans" : "1"},
-	{"cell_text" : "N47088",
-	"column" : "Transformador",
-	"row" : "Row 17",
-	"spans" : "1"},
-	{"cell_text" : "N47088",
-	"column" : "Transformador",
-	"row" : "Row 18",
-	"spans" : "1"},
-	{"cell_text" : "N47088",
-	"column" : "Transformador",
-	"row" : "Row 19",
-	"spans" : "1"},
-	{"cell_text" : "N47088",
-	"column" : "Transformador",
-	"row" : "Row 20",
-	"spans" : "1"}],
-"Circuito" : [
-	{"cell_text" : "COL23L12",
-	"column" : "Circuito",
-	"row" : "Row 0",
-	"spans" : "1"},
-	{"cell_text" : "COL23L12",
-	"column" : "Circuito",
-	"row" : "Row 1",
-	"spans" : "1"},
-	{"cell_text" : "COL23L12",
-	"column" : "Circuito",
-	"row" : "Row 2",
-	"spans" : "1"},
-	{"cell_text" : "COL23L12",
-	"column" : "Circuito",
-	"row" : "Row 3",
-	"spans" : "1"},
-	{"cell_text" : "COL23L12",
-	"column" : "Circuito",
-	"row" : "Row 4",
-	"spans" : "1"},
-	{"cell_text" : "COL23L12",
-	"column" : "Circuito",
-	"row" : "Row 5",
-	"spans" : "1"},
-	{"cell_text" : "COL23L12",
-	"column" : "Circuito",
-	"row" : "Row 6",
-	"spans" : "1"},
-	{"cell_text" : "COL23L12",
-	"column" : "Circuito",
-	"row" : "Row 7",
-	"spans" : "1"},
-	{"cell_text" : "COL23L12",
-	"column" : "Circuito",
-	"row" : "Row 8",
-	"spans" : "1"},
-	{"cell_text" : "COL23L12",
-	"column" : "Circuito",
-	"row" : "Row 9",
-	"spans" : "1"},
-	{"cell_text" : "COL23L12",
-	"column" : "Circuito",
-	"row" : "Row 10",
-	"spans" : "1"},
-	{"cell_text" : "COL23L12",
-	"column" : "Circuito",
-	"row" : "Row 11",
-	"spans" : "1"},
-	{"cell_text" : "COL23L12",
-	"column" : "Circuito",
-	"row" : "Row 12",
-	"spans" : "1"},
-	{"cell_text" : "COL23L12",
-	"column" : "Circuito",
-	"row" : "Row 13",
-	"spans" : "1"},
-	{"cell_text" : "COL23L12",
-	"column" : "Circuito",
-	"row" : "Row 14",
-	"spans" : "1"},
-	{"cell_text" : "COL23L12",
-	"column" : "Circuito",
-	"row" : "Row 15",
-	"spans" : "1"},
-	{"cell_text" : "COL23L12",
-	"column" : "Circuito",
-	"row" : "Row 16",
-	"spans" : "1"},
-	{"cell_text" : "COL23L12",
-	"column" : "Circuito",
-	"row" : "Row 17",
-	"spans" : "1"},
-	{"cell_text" : "COL23L12",
-	"column" : "Circuito",
-	"row" : "Row 18",
-	"spans" : "1"},
-	{"cell_text" : "COL23L12",
-	"column" : "Circuito",
-	"row" : "Row 19",
-	"spans" : "1"},
-	{"cell_text" : "COL23L12",
-	"column" : "Circuito",
-	"row" : "Row 20",
-	"spans" : "1"}],
-"Municipio Transformador" : [
-	{"cell_text" : "SALAMINA",
-	"column" : "Municipio Transformador",
-	"row" : "Row 0",
-	"spans" : "1"},
-	{"cell_text" : "SALAMINA",
-	"column" : "Municipio Transformador",
-	"row" : "Row 1",
-	"spans" : "1"},
-	{"cell_text" : "SALAMINA",
-	"column" : "Municipio Transformador",
-	"row" : "Row 2",
-	"spans" : "1"},
-	{"cell_text" : "SALAMINA",
-	"column" : "Municipio Transformador",
-	"row" : "Row 3",
-	"spans" : "1"},
-	{"cell_text" : "SALAMINA",
-	"column" : "Municipio Transformador",
-	"row" : "Row 4",
-	"spans" : "1"},
-	{"cell_text" : "SALAMINA",
-	"column" : "Municipio Transformador",
-	"row" : "Row 5",
-	"spans" : "1"},
-	{"cell_text" : "SALAMINA",
-	"column" : "Municipio Transformador",
-	"row" : "Row 6",
-	"spans" : "1"},
-	{"cell_text" : "SALAMINA",
-	"column" : "Municipio Transformador",
-	"row" : "Row 7",
-	"spans" : "1"},
-	{"cell_text" : "SALAMINA",
-	"column" : "Municipio Transformador",
-	"row" : "Row 8",
-	"spans" : "1"},
-	{"cell_text" : "SALAMINA",
-	"column" : "Municipio Transformador",
-	"row" : "Row 9",
-	"spans" : "1"},
-	{"cell_text" : "SALAMINA",
-	"column" : "Municipio Transformador",
-	"row" : "Row 10",
-	"spans" : "1"},
-	{"cell_text" : "SALAMINA",
-	"column" : "Municipio Transformador",
-	"row" : "Row 11",
-	"spans" : "1"},
-	{"cell_text" : "SALAMINA",
-	"column" : "Municipio Transformador",
-	"row" : "Row 12",
-	"spans" : "1"},
-	{"cell_text" : "SALAMINA",
-	"column" : "Municipio Transformador",
-	"row" : "Row 13",
-	"spans" : "1"},
-	{"cell_text" : "SALAMINA",
-	"column" : "Municipio Transformador",
-	"row" : "Row 14",
-	"spans" : "1"},
-	{"cell_text" : "SALAMINA",
-	"column" : "Municipio Transformador",
-	"row" : "Row 15",
-	"spans" : "1"},
-	{"cell_text" : "SALAMINA",
-	"column" : "Municipio Transformador",
-	"row" : "Row 16",
-	"spans" : "1"},
-	{"cell_text" : "SALAMINA",
-	"column" : "Municipio Transformador",
-	"row" : "Row 17",
-	"spans" : "1"},
-	{"cell_text" : "SALAMINA",
-	"column" : "Municipio Transformador",
-	"row" : "Row 18",
-	"spans" : "1"},
-	{"cell_text" : "SALAMINA",
-	"column" : "Municipio Transformador",
-	"row" : "Row 19",
-	"spans" : "1"},
-	{"cell_text" : "SALAMINA",
-	"column" : "Municipio Transformador",
-	"row" : "Row 20",
-	"spans" : "1"}],
-"Municipio Cliente" : [
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Cliente",
-	"row" : "Row 0",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Cliente",
-	"row" : "Row 1",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Cliente",
-	"row" : "Row 2",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Cliente",
-	"row" : "Row 3",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Cliente",
-	"row" : "Row 4",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Cliente",
-	"row" : "Row 5",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Cliente",
-	"row" : "Row 6",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Cliente",
-	"row" : "Row 7",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Cliente",
-	"row" : "Row 8",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Cliente",
-	"row" : "Row 9",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Cliente",
-	"row" : "Row 10",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Cliente",
-	"row" : "Row 11",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Cliente",
-	"row" : "Row 12",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Cliente",
-	"row" : "Row 13",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Cliente",
-	"row" : "Row 14",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Cliente",
-	"row" : "Row 15",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Cliente",
-	"row" : "Row 16",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Cliente",
-	"row" : "Row 17",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Cliente",
-	"row" : "Row 18",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Cliente",
-	"row" : "Row 19",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Cliente",
-	"row" : "Row 20",
-	"spans" : "1"}],
-"Municipio Facturador" : [
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Facturador",
-	"row" : "Row 0",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Facturador",
-	"row" : "Row 1",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Facturador",
-	"row" : "Row 2",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Facturador",
-	"row" : "Row 3",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Facturador",
-	"row" : "Row 4",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Facturador",
-	"row" : "Row 5",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Facturador",
-	"row" : "Row 6",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Facturador",
-	"row" : "Row 7",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Facturador",
-	"row" : "Row 8",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Facturador",
-	"row" : "Row 9",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Facturador",
-	"row" : "Row 10",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Facturador",
-	"row" : "Row 11",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Facturador",
-	"row" : "Row 12",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Facturador",
-	"row" : "Row 13",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Facturador",
-	"row" : "Row 14",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Facturador",
-	"row" : "Row 15",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Facturador",
-	"row" : "Row 16",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Facturador",
-	"row" : "Row 17",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Facturador",
-	"row" : "Row 18",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Facturador",
-	"row" : "Row 19",
-	"spans" : "1"},
-	{"cell_text" : "Salamina",
-	"column" : "Municipio Facturador",
-	"row" : "Row 20",
-	"spans" : "1"}],
-"Dirección" : [
-	{"cell_text" : "VDA EL AGUILA",
-	"column" : "Dirección",
-	"row" : "Row 0",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA TRANSF 1",
-	"column" : "Dirección",
-	"row" : "Row 1",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA",
-	"column" : "Dirección",
-	"row" : "Row 2",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA",
-	"column" : "Dirección",
-	"row" : "Row 3",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA",
-	"column" : "Dirección",
-	"row" : "Row 4",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA T1",
-	"column" : "Dirección",
-	"row" : "Row 5",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA",
-	"column" : "Dirección",
-	"row" : "Row 6",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA",
-	"column" : "Dirección",
-	"row" : "Row 7",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA",
-	"column" : "Dirección",
-	"row" : "Row 8",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA",
-	"column" : "Dirección",
-	"row" : "Row 9",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA T1",
-	"column" : "Dirección",
-	"row" : "Row 10",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA TRASF 1",
-	"column" : "Dirección",
-	"row" : "Row 11",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA",
-	"column" : "Dirección",
-	"row" : "Row 12",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA TRANSF 1",
-	"column" : "Dirección",
-	"row" : "Row 13",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA TRANSF 1",
-	"column" : "Dirección",
-	"row" : "Row 14",
-	"spans" : "1"},
-	{"cell_text" : "VDA AGUILA ALTA",
-	"column" : "Dirección",
-	"row" : "Row 15",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA",
-	"column" : "Dirección",
-	"row" : "Row 16",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA",
-	"column" : "Dirección",
-	"row" : "Row 17",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA ALTA",
-	"column" : "Dirección",
-	"row" : "Row 18",
-	"spans" : "1"},
-	{"cell_text" : "VDA AGUILA ALTA",
-	"column" : "Dirección",
-	"row" : "Row 19",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA ALTO",
-	"column" : "Dirección",
-	"row" : "Row 20",
-	"spans" : "1"}],
-"Cuenta" : [
-	{"cell_text" : "314746907",
-	"column" : "Cuenta",
-	"row" : "Row 0",
-	"spans" : "1"},
-	{"cell_text" : "314747794",
-	"column" : "Cuenta",
-	"row" : "Row 1",
-	"spans" : "1"},
-	{"cell_text" : "314750194",
-	"column" : "Cuenta",
-	"row" : "Row 2",
-	"spans" : "1"},
-	{"cell_text" : "314751971",
-	"column" : "Cuenta",
-	"row" : "Row 3",
-	"spans" : "1"},
-	{"cell_text" : "314752758",
-	"column" : "Cuenta",
-	"row" : "Row 4",
-	"spans" : "1"},
-	{"cell_text" : "314753535",
-	"column" : "Cuenta",
-	"row" : "Row 5",
-	"spans" : "1"},
-	{"cell_text" : "314754312",
-	"column" : "Cuenta",
-	"row" : "Row 6",
-	"spans" : "1"},
-	{"cell_text" : "314755009",
-	"column" : "Cuenta",
-	"row" : "Row 7",
-	"spans" : "1"},
-	{"cell_text" : "314756886",
-	"column" : "Cuenta",
-	"row" : "Row 8",
-	"spans" : "1"},
-	{"cell_text" : "314757663",
-	"column" : "Cuenta",
-	"row" : "Row 9",
-	"spans" : "1"},
-	{"cell_text" : "314758440",
-	"column" : "Cuenta",
-	"row" : "Row 10",
-	"spans" : "1"},
-	{"cell_text" : "314759227",
-	"column" : "Cuenta",
-	"row" : "Row 11",
-	"spans" : "1"},
-	{"cell_text" : "314760063",
-	"column" : "Cuenta",
-	"row" : "Row 12",
-	"spans" : "1"},
-	{"cell_text" : "314761840",
-	"column" : "Cuenta",
-	"row" : "Row 13",
-	"spans" : "1"},
-	{"cell_text" : "314764291",
-	"column" : "Cuenta",
-	"row" : "Row 14",
-	"spans" : "1"},
-	{"cell_text" : "331449994",
-	"column" : "Cuenta",
-	"row" : "Row 15",
-	"spans" : "1"},
-	{"cell_text" : "480565186",
-	"column" : "Cuenta",
-	"row" : "Row 16",
-	"spans" : "1"},
-	{"cell_text" : "493549070",
-	"column" : "Cuenta",
-	"row" : "Row 17",
-	"spans" : "1"},
-	{"cell_text" : "525366171",
-	"column" : "Cuenta",
-	"row" : "Row 18",
-	"spans" : "1"},
-	{"cell_text" : "525380227",
-	"column" : "Cuenta",
-	"row" : "Row 19",
-	"spans" : "1"},
-	{"cell_text" : "525382891",
-	"column" : "Cuenta",
-	"row" : "Row 20",
-	"spans" : "1"}],
-"Edificio/ Vereda" : [
-	{"cell_text" : "VDA EL AGUILA",
-	"column" : "Edificio/ Vereda",
-	"row" : "Row 0",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA TRANSF 1",
-	"column" : "Edificio/ Vereda",
-	"row" : "Row 1",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA",
-	"column" : "Edificio/ Vereda",
-	"row" : "Row 2",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA",
-	"column" : "Edificio/ Vereda",
-	"row" : "Row 3",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA",
-	"column" : "Edificio/ Vereda",
-	"row" : "Row 4",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA T1",
-	"column" : "Edificio/ Vereda",
-	"row" : "Row 5",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA",
-	"column" : "Edificio/ Vereda",
-	"row" : "Row 6",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA",
-	"column" : "Edificio/ Vereda",
-	"row" : "Row 7",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA",
-	"column" : "Edificio/ Vereda",
-	"row" : "Row 8",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA",
-	"column" : "Edificio/ Vereda",
-	"row" : "Row 9",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA T1",
-	"column" : "Edificio/ Vereda",
-	"row" : "Row 10",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA TRASF 1",
-	"column" : "Edificio/ Vereda",
-	"row" : "Row 11",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA",
-	"column" : "Edificio/ Vereda",
-	"row" : "Row 12",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA TRANSF 1",
-	"column" : "Edificio/ Vereda",
-	"row" : "Row 13",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA TRANSF 1",
-	"column" : "Edificio/ Vereda",
-	"row" : "Row 14",
-	"spans" : "1"},
-	{"cell_text" : "VDA AGUILA ALTA",
-	"column" : "Edificio/ Vereda",
-	"row" : "Row 15",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA",
-	"column" : "Edificio/ Vereda",
-	"row" : "Row 16",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA",
-	"column" : "Edificio/ Vereda",
-	"row" : "Row 17",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA ALTA",
-	"column" : "Edificio/ Vereda",
-	"row" : "Row 18",
-	"spans" : "1"},
-	{"cell_text" : "VDA AGUILA ALTA",
-	"column" : "Edificio/ Vereda",
-	"row" : "Row 19",
-	"spans" : "1"},
-	{"cell_text" : "VDA EL AGUILA ALTO",
-	"column" : "Edificio/ Vereda",
-	"row" : "Row 20",
-	"spans" : "1"}],
-"Fecha Inicio" : [
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Inicio",
-	"row" : "Row 0",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Inicio",
-	"row" : "Row 1",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Inicio",
-	"row" : "Row 2",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Inicio",
-	"row" : "Row 3",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Inicio",
-	"row" : "Row 4",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Inicio",
-	"row" : "Row 5",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Inicio",
-	"row" : "Row 6",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Inicio",
-	"row" : "Row 7",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Inicio",
-	"row" : "Row 8",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Inicio",
-	"row" : "Row 9",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Inicio",
-	"row" : "Row 10",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Inicio",
-	"row" : "Row 11",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Inicio",
-	"row" : "Row 12",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Inicio",
-	"row" : "Row 13",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Inicio",
-	"row" : "Row 14",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Inicio",
-	"row" : "Row 15",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Inicio",
-	"row" : "Row 16",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Inicio",
-	"row" : "Row 17",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Inicio",
-	"row" : "Row 18",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Inicio",
-	"row" : "Row 19",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Inicio",
-	"row" : "Row 20",
-	"spans" : "1"}],
-"Hora Inicio" : [
-	{"cell_text" : "10:00",
-	"column" : "Hora Inicio",
-	"row" : "Row 0",
-	"spans" : "1"},
-	{"cell_text" : "10:00",
-	"column" : "Hora Inicio",
-	"row" : "Row 1",
-	"spans" : "1"},
-	{"cell_text" : "10:00",
-	"column" : "Hora Inicio",
-	"row" : "Row 2",
-	"spans" : "1"},
-	{"cell_text" : "10:00",
-	"column" : "Hora Inicio",
-	"row" : "Row 3",
-	"spans" : "1"},
-	{"cell_text" : "10:00",
-	"column" : "Hora Inicio",
-	"row" : "Row 4",
-	"spans" : "1"},
-	{"cell_text" : "10:00",
-	"column" : "Hora Inicio",
-	"row" : "Row 5",
-	"spans" : "1"},
-	{"cell_text" : "10:00",
-	"column" : "Hora Inicio",
-	"row" : "Row 6",
-	"spans" : "1"},
-	{"cell_text" : "10:00",
-	"column" : "Hora Inicio",
-	"row" : "Row 7",
-	"spans" : "1"},
-	{"cell_text" : "10:00",
-	"column" : "Hora Inicio",
-	"row" : "Row 8",
-	"spans" : "1"},
-	{"cell_text" : "10:00",
-	"column" : "Hora Inicio",
-	"row" : "Row 9",
-	"spans" : "1"},
-	{"cell_text" : "10:00",
-	"column" : "Hora Inicio",
-	"row" : "Row 10",
-	"spans" : "1"},
-	{"cell_text" : "10:00",
-	"column" : "Hora Inicio",
-	"row" : "Row 11",
-	"spans" : "1"},
-	{"cell_text" : "10:00",
-	"column" : "Hora Inicio",
-	"row" : "Row 12",
-	"spans" : "1"},
-	{"cell_text" : "10:00",
-	"column" : "Hora Inicio",
-	"row" : "Row 13",
-	"spans" : "1"},
-	{"cell_text" : "10:00",
-	"column" : "Hora Inicio",
-	"row" : "Row 14",
-	"spans" : "1"},
-	{"cell_text" : "10:00",
-	"column" : "Hora Inicio",
-	"row" : "Row 15",
-	"spans" : "1"},
-	{"cell_text" : "10:00",
-	"column" : "Hora Inicio",
-	"row" : "Row 16",
-	"spans" : "1"},
-	{"cell_text" : "10:00",
-	"column" : "Hora Inicio",
-	"row" : "Row 17",
-	"spans" : "1"},
-	{"cell_text" : "10:00",
-	"column" : "Hora Inicio",
-	"row" : "Row 18",
-	"spans" : "1"},
-	{"cell_text" : "10:00",
-	"column" : "Hora Inicio",
-	"row" : "Row 19",
-	"spans" : "1"},
-	{"cell_text" : "10:00",
-	"column" : "Hora Inicio",
-	"row" : "Row 20",
-	"spans" : "1"}],
-"Fecha Fin" : [
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Fin",
-	"row" : "Row 0",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Fin",
-	"row" : "Row 1",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Fin",
-	"row" : "Row 2",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Fin",
-	"row" : "Row 3",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Fin",
-	"row" : "Row 4",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Fin",
-	"row" : "Row 5",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Fin",
-	"row" : "Row 6",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Fin",
-	"row" : "Row 7",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Fin",
-	"row" : "Row 8",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Fin",
-	"row" : "Row 9",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Fin",
-	"row" : "Row 10",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Fin",
-	"row" : "Row 11",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Fin",
-	"row" : "Row 12",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Fin",
-	"row" : "Row 13",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Fin",
-	"row" : "Row 14",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Fin",
-	"row" : "Row 15",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Fin",
-	"row" : "Row 16",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Fin",
-	"row" : "Row 17",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Fin",
-	"row" : "Row 18",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Fin",
-	"row" : "Row 19",
-	"spans" : "1"},
-	{"cell_text" : "2017-12-19",
-	"column" : "Fecha Fin",
-	"row" : "Row 20",
-	"spans" : "1"}],
-"Hora Fin" : [
-	{"cell_text" : "15:00",
-	"column" : "Hora Fin",
-	"row" : "Row 0",
-	"spans" : "1"},
-	{"cell_text" : "15:00",
-	"column" : "Hora Fin",
-	"row" : "Row 1",
-	"spans" : "1"},
-	{"cell_text" : "15:00",
-	"column" : "Hora Fin",
-	"row" : "Row 2",
-	"spans" : "1"},
-	{"cell_text" : "15:00",
-	"column" : "Hora Fin",
-	"row" : "Row 3",
-	"spans" : "1"},
-	{"cell_text" : "15:00",
-	"column" : "Hora Fin",
-	"row" : "Row 4",
-	"spans" : "1"},
-	{"cell_text" : "15:00",
-	"column" : "Hora Fin",
-	"row" : "Row 5",
-	"spans" : "1"},
-	{"cell_text" : "15:00",
-	"column" : "Hora Fin",
-	"row" : "Row 6",
-	"spans" : "1"},
-	{"cell_text" : "15:00",
-	"column" : "Hora Fin",
-	"row" : "Row 7",
-	"spans" : "1"},
-	{"cell_text" : "15:00",
-	"column" : "Hora Fin",
-	"row" : "Row 8",
-	"spans" : "1"},
-	{"cell_text" : "15:00",
-	"column" : "Hora Fin",
-	"row" : "Row 9",
-	"spans" : "1"},
-	{"cell_text" : "15:00",
-	"column" : "Hora Fin",
-	"row" : "Row 10",
-	"spans" : "1"},
-	{"cell_text" : "15:00",
-	"column" : "Hora Fin",
-	"row" : "Row 11",
-	"spans" : "1"},
-	{"cell_text" : "15:00",
-	"column" : "Hora Fin",
-	"row" : "Row 12",
-	"spans" : "1"},
-	{"cell_text" : "15:00",
-	"column" : "Hora Fin",
-	"row" : "Row 13",
-	"spans" : "1"},
-	{"cell_text" : "15:00",
-	"column" : "Hora Fin",
-	"row" : "Row 14",
-	"spans" : "1"},
-	{"cell_text" : "15:00",
-	"column" : "Hora Fin",
-	"row" : "Row 15",
-	"spans" : "1"},
-	{"cell_text" : "15:00",
-	"column" : "Hora Fin",
-	"row" : "Row 16",
-	"spans" : "1"},
-	{"cell_text" : "15:00",
-	"column" : "Hora Fin",
-	"row" : "Row 17",
-	"spans" : "1"},
-	{"cell_text" : "15:00",
-	"column" : "Hora Fin",
-	"row" : "Row 18",
-	"spans" : "1"},
-	{"cell_text" : "15:00",
-	"column" : "Hora Fin",
-	"row" : "Row 19",
-	"spans" : "1"},
-	{"cell_text" : "15:00",
-	"column" : "Hora Fin",
-	"row" : "Row 20",
-	"spans" : "1"}],
-"Zona" : [
-	{"cell_text" : "R",
-	"column" : "Zona",
-	"row" : "Row 0",
-	"spans" : "1"},
-	{"cell_text" : "R",
-	"column" : "Zona",
-	"row" : "Row 1",
-	"spans" : "1"},
-	{"cell_text" : "R",
-	"column" : "Zona",
-	"row" : "Row 2",
-	"spans" : "1"},
-	{"cell_text" : "R",
-	"column" : "Zona",
-	"row" : "Row 3",
-	"spans" : "1"},
-	{"cell_text" : "R",
-	"column" : "Zona",
-	"row" : "Row 4",
-	"spans" : "1"},
-	{"cell_text" : "R",
-	"column" : "Zona",
-	"row" : "Row 5",
-	"spans" : "1"},
-	{"cell_text" : "R",
-	"column" : "Zona",
-	"row" : "Row 6",
-	"spans" : "1"},
-	{"cell_text" : "R",
-	"column" : "Zona",
-	"row" : "Row 7",
-	"spans" : "1"},
-	{"cell_text" : "R",
-	"column" : "Zona",
-	"row" : "Row 8",
-	"spans" : "1"},
-	{"cell_text" : "R",
-	"column" : "Zona",
-	"row" : "Row 9",
-	"spans" : "1"},
-	{"cell_text" : "R",
-	"column" : "Zona",
-	"row" : "Row 10",
-	"spans" : "1"},
-	{"cell_text" : "R",
-	"column" : "Zona",
-	"row" : "Row 11",
-	"spans" : "1"},
-	{"cell_text" : "R",
-	"column" : "Zona",
-	"row" : "Row 12",
-	"spans" : "1"},
-	{"cell_text" : "R",
-	"column" : "Zona",
-	"row" : "Row 13",
-	"spans" : "1"},
-	{"cell_text" : "R",
-	"column" : "Zona",
-	"row" : "Row 14",
-	"spans" : "1"},
-	{"cell_text" : "R",
-	"column" : "Zona",
-	"row" : "Row 15",
-	"spans" : "1"},
-	{"cell_text" : "R",
-	"column" : "Zona",
-	"row" : "Row 16",
-	"spans" : "1"},
-	{"cell_text" : "R",
-	"column" : "Zona",
-	"row" : "Row 17",
-	"spans" : "1"},
-	{"cell_text" : "R",
-	"column" : "Zona",
-	"row" : "Row 18",
-	"spans" : "1"},
-	{"cell_text" : "R",
-	"column" : "Zona",
-	"row" : "Row 19",
-	"spans" : "1"},
-	{"cell_text" : "R",
-	"column" : "Zona",
-	"row" : "Row 20",
-	"spans" : "1"}]
+{
+	"Transformador": [{
+			"cell_text": "N47088",
+			"column": "Transformador",
+			"row": "Row 0",
+			"spans": "1"
+		},
+		{
+			"cell_text": "N47088",
+			"column": "Transformador",
+			"row": "Row 1",
+			"spans": "1"
+		},
+		{
+			"cell_text": "N47088",
+			"column": "Transformador",
+			"row": "Row 2",
+			"spans": "1"
+		},
+		{
+			"cell_text": "N47088",
+			"column": "Transformador",
+			"row": "Row 3",
+			"spans": "1"
+		},
+		{
+			"cell_text": "N47088",
+			"column": "Transformador",
+			"row": "Row 4",
+			"spans": "1"
+		},
+		{
+			"cell_text": "N47088",
+			"column": "Transformador",
+			"row": "Row 5",
+			"spans": "1"
+		},
+		{
+			"cell_text": "N47088",
+			"column": "Transformador",
+			"row": "Row 6",
+			"spans": "1"
+		},
+		{
+			"cell_text": "N47088",
+			"column": "Transformador",
+			"row": "Row 7",
+			"spans": "1"
+		},
+		{
+			"cell_text": "N47088",
+			"column": "Transformador",
+			"row": "Row 8",
+			"spans": "1"
+		},
+		{
+			"cell_text": "N47088",
+			"column": "Transformador",
+			"row": "Row 9",
+			"spans": "1"
+		},
+		{
+			"cell_text": "N47088",
+			"column": "Transformador",
+			"row": "Row 10",
+			"spans": "1"
+		},
+		{
+			"cell_text": "N47088",
+			"column": "Transformador",
+			"row": "Row 11",
+			"spans": "1"
+		},
+		{
+			"cell_text": "N47088",
+			"column": "Transformador",
+			"row": "Row 12",
+			"spans": "1"
+		},
+		{
+			"cell_text": "N47088",
+			"column": "Transformador",
+			"row": "Row 13",
+			"spans": "1"
+		},
+		{
+			"cell_text": "N47088",
+			"column": "Transformador",
+			"row": "Row 14",
+			"spans": "1"
+		},
+		{
+			"cell_text": "N47088",
+			"column": "Transformador",
+			"row": "Row 15",
+			"spans": "1"
+		},
+		{
+			"cell_text": "N47088",
+			"column": "Transformador",
+			"row": "Row 16",
+			"spans": "1"
+		},
+		{
+			"cell_text": "N47088",
+			"column": "Transformador",
+			"row": "Row 17",
+			"spans": "1"
+		},
+		{
+			"cell_text": "N47088",
+			"column": "Transformador",
+			"row": "Row 18",
+			"spans": "1"
+		},
+		{
+			"cell_text": "N47088",
+			"column": "Transformador",
+			"row": "Row 19",
+			"spans": "1"
+		},
+		{
+			"cell_text": "N47088",
+			"column": "Transformador",
+			"row": "Row 20",
+			"spans": "1"
+		}
+	],
+	"Circuito": [{
+			"cell_text": "COL23L12",
+			"column": "Circuito",
+			"row": "Row 0",
+			"spans": "1"
+		},
+		{
+			"cell_text": "COL23L12",
+			"column": "Circuito",
+			"row": "Row 1",
+			"spans": "1"
+		},
+		{
+			"cell_text": "COL23L12",
+			"column": "Circuito",
+			"row": "Row 2",
+			"spans": "1"
+		},
+		{
+			"cell_text": "COL23L12",
+			"column": "Circuito",
+			"row": "Row 3",
+			"spans": "1"
+		},
+		{
+			"cell_text": "COL23L12",
+			"column": "Circuito",
+			"row": "Row 4",
+			"spans": "1"
+		},
+		{
+			"cell_text": "COL23L12",
+			"column": "Circuito",
+			"row": "Row 5",
+			"spans": "1"
+		},
+		{
+			"cell_text": "COL23L12",
+			"column": "Circuito",
+			"row": "Row 6",
+			"spans": "1"
+		},
+		{
+			"cell_text": "COL23L12",
+			"column": "Circuito",
+			"row": "Row 7",
+			"spans": "1"
+		},
+		{
+			"cell_text": "COL23L12",
+			"column": "Circuito",
+			"row": "Row 8",
+			"spans": "1"
+		},
+		{
+			"cell_text": "COL23L12",
+			"column": "Circuito",
+			"row": "Row 9",
+			"spans": "1"
+		},
+		{
+			"cell_text": "COL23L12",
+			"column": "Circuito",
+			"row": "Row 10",
+			"spans": "1"
+		},
+		{
+			"cell_text": "COL23L12",
+			"column": "Circuito",
+			"row": "Row 11",
+			"spans": "1"
+		},
+		{
+			"cell_text": "COL23L12",
+			"column": "Circuito",
+			"row": "Row 12",
+			"spans": "1"
+		},
+		{
+			"cell_text": "COL23L12",
+			"column": "Circuito",
+			"row": "Row 13",
+			"spans": "1"
+		},
+		{
+			"cell_text": "COL23L12",
+			"column": "Circuito",
+			"row": "Row 14",
+			"spans": "1"
+		},
+		{
+			"cell_text": "COL23L12",
+			"column": "Circuito",
+			"row": "Row 15",
+			"spans": "1"
+		},
+		{
+			"cell_text": "COL23L12",
+			"column": "Circuito",
+			"row": "Row 16",
+			"spans": "1"
+		},
+		{
+			"cell_text": "COL23L12",
+			"column": "Circuito",
+			"row": "Row 17",
+			"spans": "1"
+		},
+		{
+			"cell_text": "COL23L12",
+			"column": "Circuito",
+			"row": "Row 18",
+			"spans": "1"
+		},
+		{
+			"cell_text": "COL23L12",
+			"column": "Circuito",
+			"row": "Row 19",
+			"spans": "1"
+		},
+		{
+			"cell_text": "COL23L12",
+			"column": "Circuito",
+			"row": "Row 20",
+			"spans": "1"
+		}
+	],
+	"Municipio Transformador": [{
+			"cell_text": "SALAMINA",
+			"column": "Municipio Transformador",
+			"row": "Row 0",
+			"spans": "1"
+		},
+		{
+			"cell_text": "SALAMINA",
+			"column": "Municipio Transformador",
+			"row": "Row 1",
+			"spans": "1"
+		},
+		{
+			"cell_text": "SALAMINA",
+			"column": "Municipio Transformador",
+			"row": "Row 2",
+			"spans": "1"
+		},
+		{
+			"cell_text": "SALAMINA",
+			"column": "Municipio Transformador",
+			"row": "Row 3",
+			"spans": "1"
+		},
+		{
+			"cell_text": "SALAMINA",
+			"column": "Municipio Transformador",
+			"row": "Row 4",
+			"spans": "1"
+		},
+		{
+			"cell_text": "SALAMINA",
+			"column": "Municipio Transformador",
+			"row": "Row 5",
+			"spans": "1"
+		},
+		{
+			"cell_text": "SALAMINA",
+			"column": "Municipio Transformador",
+			"row": "Row 6",
+			"spans": "1"
+		},
+		{
+			"cell_text": "SALAMINA",
+			"column": "Municipio Transformador",
+			"row": "Row 7",
+			"spans": "1"
+		},
+		{
+			"cell_text": "SALAMINA",
+			"column": "Municipio Transformador",
+			"row": "Row 8",
+			"spans": "1"
+		},
+		{
+			"cell_text": "SALAMINA",
+			"column": "Municipio Transformador",
+			"row": "Row 9",
+			"spans": "1"
+		},
+		{
+			"cell_text": "SALAMINA",
+			"column": "Municipio Transformador",
+			"row": "Row 10",
+			"spans": "1"
+		},
+		{
+			"cell_text": "SALAMINA",
+			"column": "Municipio Transformador",
+			"row": "Row 11",
+			"spans": "1"
+		},
+		{
+			"cell_text": "SALAMINA",
+			"column": "Municipio Transformador",
+			"row": "Row 12",
+			"spans": "1"
+		},
+		{
+			"cell_text": "SALAMINA",
+			"column": "Municipio Transformador",
+			"row": "Row 13",
+			"spans": "1"
+		},
+		{
+			"cell_text": "SALAMINA",
+			"column": "Municipio Transformador",
+			"row": "Row 14",
+			"spans": "1"
+		},
+		{
+			"cell_text": "SALAMINA",
+			"column": "Municipio Transformador",
+			"row": "Row 15",
+			"spans": "1"
+		},
+		{
+			"cell_text": "SALAMINA",
+			"column": "Municipio Transformador",
+			"row": "Row 16",
+			"spans": "1"
+		},
+		{
+			"cell_text": "SALAMINA",
+			"column": "Municipio Transformador",
+			"row": "Row 17",
+			"spans": "1"
+		},
+		{
+			"cell_text": "SALAMINA",
+			"column": "Municipio Transformador",
+			"row": "Row 18",
+			"spans": "1"
+		},
+		{
+			"cell_text": "SALAMINA",
+			"column": "Municipio Transformador",
+			"row": "Row 19",
+			"spans": "1"
+		},
+		{
+			"cell_text": "SALAMINA",
+			"column": "Municipio Transformador",
+			"row": "Row 20",
+			"spans": "1"
+		}
+	],
+	"Municipio Cliente": [{
+			"cell_text": "Salamina",
+			"column": "Municipio Cliente",
+			"row": "Row 0",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Cliente",
+			"row": "Row 1",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Cliente",
+			"row": "Row 2",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Cliente",
+			"row": "Row 3",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Cliente",
+			"row": "Row 4",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Cliente",
+			"row": "Row 5",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Cliente",
+			"row": "Row 6",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Cliente",
+			"row": "Row 7",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Cliente",
+			"row": "Row 8",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Cliente",
+			"row": "Row 9",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Cliente",
+			"row": "Row 10",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Cliente",
+			"row": "Row 11",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Cliente",
+			"row": "Row 12",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Cliente",
+			"row": "Row 13",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Cliente",
+			"row": "Row 14",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Cliente",
+			"row": "Row 15",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Cliente",
+			"row": "Row 16",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Cliente",
+			"row": "Row 17",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Cliente",
+			"row": "Row 18",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Cliente",
+			"row": "Row 19",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Cliente",
+			"row": "Row 20",
+			"spans": "1"
+		}
+	],
+	"Municipio Facturador": [{
+			"cell_text": "Salamina",
+			"column": "Municipio Facturador",
+			"row": "Row 0",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Facturador",
+			"row": "Row 1",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Facturador",
+			"row": "Row 2",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Facturador",
+			"row": "Row 3",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Facturador",
+			"row": "Row 4",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Facturador",
+			"row": "Row 5",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Facturador",
+			"row": "Row 6",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Facturador",
+			"row": "Row 7",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Facturador",
+			"row": "Row 8",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Facturador",
+			"row": "Row 9",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Facturador",
+			"row": "Row 10",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Facturador",
+			"row": "Row 11",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Facturador",
+			"row": "Row 12",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Facturador",
+			"row": "Row 13",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Facturador",
+			"row": "Row 14",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Facturador",
+			"row": "Row 15",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Facturador",
+			"row": "Row 16",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Facturador",
+			"row": "Row 17",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Facturador",
+			"row": "Row 18",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Facturador",
+			"row": "Row 19",
+			"spans": "1"
+		},
+		{
+			"cell_text": "Salamina",
+			"column": "Municipio Facturador",
+			"row": "Row 20",
+			"spans": "1"
+		}
+	],
+	"Direcciï¿½n": [{
+			"cell_text": "VDA EL AGUILA",
+			"column": "Direcciï¿½n",
+			"row": "Row 0",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA TRANSF 1",
+			"column": "Direcciï¿½n",
+			"row": "Row 1",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA",
+			"column": "Direcciï¿½n",
+			"row": "Row 2",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA",
+			"column": "Direcciï¿½n",
+			"row": "Row 3",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA",
+			"column": "Direcciï¿½n",
+			"row": "Row 4",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA T1",
+			"column": "Direcciï¿½n",
+			"row": "Row 5",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA",
+			"column": "Direcciï¿½n",
+			"row": "Row 6",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA",
+			"column": "Direcciï¿½n",
+			"row": "Row 7",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA",
+			"column": "Direcciï¿½n",
+			"row": "Row 8",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA",
+			"column": "Direcciï¿½n",
+			"row": "Row 9",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA T1",
+			"column": "Direcciï¿½n",
+			"row": "Row 10",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA TRASF 1",
+			"column": "Direcciï¿½n",
+			"row": "Row 11",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA",
+			"column": "Direcciï¿½n",
+			"row": "Row 12",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA TRANSF 1",
+			"column": "Direcciï¿½n",
+			"row": "Row 13",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA TRANSF 1",
+			"column": "Direcciï¿½n",
+			"row": "Row 14",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA AGUILA ALTA",
+			"column": "Direcciï¿½n",
+			"row": "Row 15",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA",
+			"column": "Direcciï¿½n",
+			"row": "Row 16",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA",
+			"column": "Direcciï¿½n",
+			"row": "Row 17",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA ALTA",
+			"column": "Direcciï¿½n",
+			"row": "Row 18",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA AGUILA ALTA",
+			"column": "Direcciï¿½n",
+			"row": "Row 19",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA ALTO",
+			"column": "Direcciï¿½n",
+			"row": "Row 20",
+			"spans": "1"
+		}
+	],
+	"Cuenta": [{
+			"cell_text": "314746907",
+			"column": "Cuenta",
+			"row": "Row 0",
+			"spans": "1"
+		},
+		{
+			"cell_text": "314747794",
+			"column": "Cuenta",
+			"row": "Row 1",
+			"spans": "1"
+		},
+		{
+			"cell_text": "314750194",
+			"column": "Cuenta",
+			"row": "Row 2",
+			"spans": "1"
+		},
+		{
+			"cell_text": "314751971",
+			"column": "Cuenta",
+			"row": "Row 3",
+			"spans": "1"
+		},
+		{
+			"cell_text": "314752758",
+			"column": "Cuenta",
+			"row": "Row 4",
+			"spans": "1"
+		},
+		{
+			"cell_text": "314753535",
+			"column": "Cuenta",
+			"row": "Row 5",
+			"spans": "1"
+		},
+		{
+			"cell_text": "314754312",
+			"column": "Cuenta",
+			"row": "Row 6",
+			"spans": "1"
+		},
+		{
+			"cell_text": "314755009",
+			"column": "Cuenta",
+			"row": "Row 7",
+			"spans": "1"
+		},
+		{
+			"cell_text": "314756886",
+			"column": "Cuenta",
+			"row": "Row 8",
+			"spans": "1"
+		},
+		{
+			"cell_text": "314757663",
+			"column": "Cuenta",
+			"row": "Row 9",
+			"spans": "1"
+		},
+		{
+			"cell_text": "314758440",
+			"column": "Cuenta",
+			"row": "Row 10",
+			"spans": "1"
+		},
+		{
+			"cell_text": "314759227",
+			"column": "Cuenta",
+			"row": "Row 11",
+			"spans": "1"
+		},
+		{
+			"cell_text": "314760063",
+			"column": "Cuenta",
+			"row": "Row 12",
+			"spans": "1"
+		},
+		{
+			"cell_text": "314761840",
+			"column": "Cuenta",
+			"row": "Row 13",
+			"spans": "1"
+		},
+		{
+			"cell_text": "314764291",
+			"column": "Cuenta",
+			"row": "Row 14",
+			"spans": "1"
+		},
+		{
+			"cell_text": "331449994",
+			"column": "Cuenta",
+			"row": "Row 15",
+			"spans": "1"
+		},
+		{
+			"cell_text": "480565186",
+			"column": "Cuenta",
+			"row": "Row 16",
+			"spans": "1"
+		},
+		{
+			"cell_text": "493549070",
+			"column": "Cuenta",
+			"row": "Row 17",
+			"spans": "1"
+		},
+		{
+			"cell_text": "525366171",
+			"column": "Cuenta",
+			"row": "Row 18",
+			"spans": "1"
+		},
+		{
+			"cell_text": "525380227",
+			"column": "Cuenta",
+			"row": "Row 19",
+			"spans": "1"
+		},
+		{
+			"cell_text": "525382891",
+			"column": "Cuenta",
+			"row": "Row 20",
+			"spans": "1"
+		}
+	],
+	"Edificio/ Vereda": [{
+			"cell_text": "VDA EL AGUILA",
+			"column": "Edificio/ Vereda",
+			"row": "Row 0",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA TRANSF 1",
+			"column": "Edificio/ Vereda",
+			"row": "Row 1",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA",
+			"column": "Edificio/ Vereda",
+			"row": "Row 2",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA",
+			"column": "Edificio/ Vereda",
+			"row": "Row 3",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA",
+			"column": "Edificio/ Vereda",
+			"row": "Row 4",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA T1",
+			"column": "Edificio/ Vereda",
+			"row": "Row 5",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA",
+			"column": "Edificio/ Vereda",
+			"row": "Row 6",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA",
+			"column": "Edificio/ Vereda",
+			"row": "Row 7",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA",
+			"column": "Edificio/ Vereda",
+			"row": "Row 8",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA",
+			"column": "Edificio/ Vereda",
+			"row": "Row 9",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA T1",
+			"column": "Edificio/ Vereda",
+			"row": "Row 10",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA TRASF 1",
+			"column": "Edificio/ Vereda",
+			"row": "Row 11",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA",
+			"column": "Edificio/ Vereda",
+			"row": "Row 12",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA TRANSF 1",
+			"column": "Edificio/ Vereda",
+			"row": "Row 13",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA TRANSF 1",
+			"column": "Edificio/ Vereda",
+			"row": "Row 14",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA AGUILA ALTA",
+			"column": "Edificio/ Vereda",
+			"row": "Row 15",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA",
+			"column": "Edificio/ Vereda",
+			"row": "Row 16",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA",
+			"column": "Edificio/ Vereda",
+			"row": "Row 17",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA ALTA",
+			"column": "Edificio/ Vereda",
+			"row": "Row 18",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA AGUILA ALTA",
+			"column": "Edificio/ Vereda",
+			"row": "Row 19",
+			"spans": "1"
+		},
+		{
+			"cell_text": "VDA EL AGUILA ALTO",
+			"column": "Edificio/ Vereda",
+			"row": "Row 20",
+			"spans": "1"
+		}
+	],
+	"Fecha Inicio": [{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Inicio",
+			"row": "Row 0",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Inicio",
+			"row": "Row 1",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Inicio",
+			"row": "Row 2",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Inicio",
+			"row": "Row 3",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Inicio",
+			"row": "Row 4",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Inicio",
+			"row": "Row 5",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Inicio",
+			"row": "Row 6",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Inicio",
+			"row": "Row 7",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Inicio",
+			"row": "Row 8",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Inicio",
+			"row": "Row 9",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Inicio",
+			"row": "Row 10",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Inicio",
+			"row": "Row 11",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Inicio",
+			"row": "Row 12",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Inicio",
+			"row": "Row 13",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Inicio",
+			"row": "Row 14",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Inicio",
+			"row": "Row 15",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Inicio",
+			"row": "Row 16",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Inicio",
+			"row": "Row 17",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Inicio",
+			"row": "Row 18",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Inicio",
+			"row": "Row 19",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Inicio",
+			"row": "Row 20",
+			"spans": "1"
+		}
+	],
+	"Hora Inicio": [{
+			"cell_text": "10:00",
+			"column": "Hora Inicio",
+			"row": "Row 0",
+			"spans": "1"
+		},
+		{
+			"cell_text": "10:00",
+			"column": "Hora Inicio",
+			"row": "Row 1",
+			"spans": "1"
+		},
+		{
+			"cell_text": "10:00",
+			"column": "Hora Inicio",
+			"row": "Row 2",
+			"spans": "1"
+		},
+		{
+			"cell_text": "10:00",
+			"column": "Hora Inicio",
+			"row": "Row 3",
+			"spans": "1"
+		},
+		{
+			"cell_text": "10:00",
+			"column": "Hora Inicio",
+			"row": "Row 4",
+			"spans": "1"
+		},
+		{
+			"cell_text": "10:00",
+			"column": "Hora Inicio",
+			"row": "Row 5",
+			"spans": "1"
+		},
+		{
+			"cell_text": "10:00",
+			"column": "Hora Inicio",
+			"row": "Row 6",
+			"spans": "1"
+		},
+		{
+			"cell_text": "10:00",
+			"column": "Hora Inicio",
+			"row": "Row 7",
+			"spans": "1"
+		},
+		{
+			"cell_text": "10:00",
+			"column": "Hora Inicio",
+			"row": "Row 8",
+			"spans": "1"
+		},
+		{
+			"cell_text": "10:00",
+			"column": "Hora Inicio",
+			"row": "Row 9",
+			"spans": "1"
+		},
+		{
+			"cell_text": "10:00",
+			"column": "Hora Inicio",
+			"row": "Row 10",
+			"spans": "1"
+		},
+		{
+			"cell_text": "10:00",
+			"column": "Hora Inicio",
+			"row": "Row 11",
+			"spans": "1"
+		},
+		{
+			"cell_text": "10:00",
+			"column": "Hora Inicio",
+			"row": "Row 12",
+			"spans": "1"
+		},
+		{
+			"cell_text": "10:00",
+			"column": "Hora Inicio",
+			"row": "Row 13",
+			"spans": "1"
+		},
+		{
+			"cell_text": "10:00",
+			"column": "Hora Inicio",
+			"row": "Row 14",
+			"spans": "1"
+		},
+		{
+			"cell_text": "10:00",
+			"column": "Hora Inicio",
+			"row": "Row 15",
+			"spans": "1"
+		},
+		{
+			"cell_text": "10:00",
+			"column": "Hora Inicio",
+			"row": "Row 16",
+			"spans": "1"
+		},
+		{
+			"cell_text": "10:00",
+			"column": "Hora Inicio",
+			"row": "Row 17",
+			"spans": "1"
+		},
+		{
+			"cell_text": "10:00",
+			"column": "Hora Inicio",
+			"row": "Row 18",
+			"spans": "1"
+		},
+		{
+			"cell_text": "10:00",
+			"column": "Hora Inicio",
+			"row": "Row 19",
+			"spans": "1"
+		},
+		{
+			"cell_text": "10:00",
+			"column": "Hora Inicio",
+			"row": "Row 20",
+			"spans": "1"
+		}
+	],
+	"Fecha Fin": [{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Fin",
+			"row": "Row 0",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Fin",
+			"row": "Row 1",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Fin",
+			"row": "Row 2",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Fin",
+			"row": "Row 3",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Fin",
+			"row": "Row 4",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Fin",
+			"row": "Row 5",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Fin",
+			"row": "Row 6",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Fin",
+			"row": "Row 7",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Fin",
+			"row": "Row 8",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Fin",
+			"row": "Row 9",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Fin",
+			"row": "Row 10",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Fin",
+			"row": "Row 11",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Fin",
+			"row": "Row 12",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Fin",
+			"row": "Row 13",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Fin",
+			"row": "Row 14",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Fin",
+			"row": "Row 15",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Fin",
+			"row": "Row 16",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Fin",
+			"row": "Row 17",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Fin",
+			"row": "Row 18",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Fin",
+			"row": "Row 19",
+			"spans": "1"
+		},
+		{
+			"cell_text": "2017-12-19",
+			"column": "Fecha Fin",
+			"row": "Row 20",
+			"spans": "1"
+		}
+	],
+	"Hora Fin": [{
+			"cell_text": "15:00",
+			"column": "Hora Fin",
+			"row": "Row 0",
+			"spans": "1"
+		},
+		{
+			"cell_text": "15:00",
+			"column": "Hora Fin",
+			"row": "Row 1",
+			"spans": "1"
+		},
+		{
+			"cell_text": "15:00",
+			"column": "Hora Fin",
+			"row": "Row 2",
+			"spans": "1"
+		},
+		{
+			"cell_text": "15:00",
+			"column": "Hora Fin",
+			"row": "Row 3",
+			"spans": "1"
+		},
+		{
+			"cell_text": "15:00",
+			"column": "Hora Fin",
+			"row": "Row 4",
+			"spans": "1"
+		},
+		{
+			"cell_text": "15:00",
+			"column": "Hora Fin",
+			"row": "Row 5",
+			"spans": "1"
+		},
+		{
+			"cell_text": "15:00",
+			"column": "Hora Fin",
+			"row": "Row 6",
+			"spans": "1"
+		},
+		{
+			"cell_text": "15:00",
+			"column": "Hora Fin",
+			"row": "Row 7",
+			"spans": "1"
+		},
+		{
+			"cell_text": "15:00",
+			"column": "Hora Fin",
+			"row": "Row 8",
+			"spans": "1"
+		},
+		{
+			"cell_text": "15:00",
+			"column": "Hora Fin",
+			"row": "Row 9",
+			"spans": "1"
+		},
+		{
+			"cell_text": "15:00",
+			"column": "Hora Fin",
+			"row": "Row 10",
+			"spans": "1"
+		},
+		{
+			"cell_text": "15:00",
+			"column": "Hora Fin",
+			"row": "Row 11",
+			"spans": "1"
+		},
+		{
+			"cell_text": "15:00",
+			"column": "Hora Fin",
+			"row": "Row 12",
+			"spans": "1"
+		},
+		{
+			"cell_text": "15:00",
+			"column": "Hora Fin",
+			"row": "Row 13",
+			"spans": "1"
+		},
+		{
+			"cell_text": "15:00",
+			"column": "Hora Fin",
+			"row": "Row 14",
+			"spans": "1"
+		},
+		{
+			"cell_text": "15:00",
+			"column": "Hora Fin",
+			"row": "Row 15",
+			"spans": "1"
+		},
+		{
+			"cell_text": "15:00",
+			"column": "Hora Fin",
+			"row": "Row 16",
+			"spans": "1"
+		},
+		{
+			"cell_text": "15:00",
+			"column": "Hora Fin",
+			"row": "Row 17",
+			"spans": "1"
+		},
+		{
+			"cell_text": "15:00",
+			"column": "Hora Fin",
+			"row": "Row 18",
+			"spans": "1"
+		},
+		{
+			"cell_text": "15:00",
+			"column": "Hora Fin",
+			"row": "Row 19",
+			"spans": "1"
+		},
+		{
+			"cell_text": "15:00",
+			"column": "Hora Fin",
+			"row": "Row 20",
+			"spans": "1"
+		}
+	],
+	"Zona": [{
+			"cell_text": "R",
+			"column": "Zona",
+			"row": "Row 0",
+			"spans": "1"
+		},
+		{
+			"cell_text": "R",
+			"column": "Zona",
+			"row": "Row 1",
+			"spans": "1"
+		},
+		{
+			"cell_text": "R",
+			"column": "Zona",
+			"row": "Row 2",
+			"spans": "1"
+		},
+		{
+			"cell_text": "R",
+			"column": "Zona",
+			"row": "Row 3",
+			"spans": "1"
+		},
+		{
+			"cell_text": "R",
+			"column": "Zona",
+			"row": "Row 4",
+			"spans": "1"
+		},
+		{
+			"cell_text": "R",
+			"column": "Zona",
+			"row": "Row 5",
+			"spans": "1"
+		},
+		{
+			"cell_text": "R",
+			"column": "Zona",
+			"row": "Row 6",
+			"spans": "1"
+		},
+		{
+			"cell_text": "R",
+			"column": "Zona",
+			"row": "Row 7",
+			"spans": "1"
+		},
+		{
+			"cell_text": "R",
+			"column": "Zona",
+			"row": "Row 8",
+			"spans": "1"
+		},
+		{
+			"cell_text": "R",
+			"column": "Zona",
+			"row": "Row 9",
+			"spans": "1"
+		},
+		{
+			"cell_text": "R",
+			"column": "Zona",
+			"row": "Row 10",
+			"spans": "1"
+		},
+		{
+			"cell_text": "R",
+			"column": "Zona",
+			"row": "Row 11",
+			"spans": "1"
+		},
+		{
+			"cell_text": "R",
+			"column": "Zona",
+			"row": "Row 12",
+			"spans": "1"
+		},
+		{
+			"cell_text": "R",
+			"column": "Zona",
+			"row": "Row 13",
+			"spans": "1"
+		},
+		{
+			"cell_text": "R",
+			"column": "Zona",
+			"row": "Row 14",
+			"spans": "1"
+		},
+		{
+			"cell_text": "R",
+			"column": "Zona",
+			"row": "Row 15",
+			"spans": "1"
+		},
+		{
+			"cell_text": "R",
+			"column": "Zona",
+			"row": "Row 16",
+			"spans": "1"
+		},
+		{
+			"cell_text": "R",
+			"column": "Zona",
+			"row": "Row 17",
+			"spans": "1"
+		},
+		{
+			"cell_text": "R",
+			"column": "Zona",
+			"row": "Row 18",
+			"spans": "1"
+		},
+		{
+			"cell_text": "R",
+			"column": "Zona",
+			"row": "Row 19",
+			"spans": "1"
+		},
+		{
+			"cell_text": "R",
+			"column": "Zona",
+			"row": "Row 20",
+			"spans": "1"
+		}
+	]
 }

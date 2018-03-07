@@ -1,4 +1,5 @@
 <?php
+set_time_limit(3000); 
 
 require './lib.php';
 require 'download_attachments.php';
@@ -14,30 +15,30 @@ $dir = new DirectoryIterator('./attachment_efectivas/');
 
              //Obtener el numero de la orden
              $file = $fileinfo->getFilename();
-             $datos = cargaSuspensionesEfectivas($dir);
+             $datos = cargaSuspensionesEfectivas($file);
 
-             var_dump($datos);
+             foreach ($datos as $fila){
+    
+                $resultado = $api->setSuspensionEfectiva($fila);
+            }
+
+             unlink('./attachment_efectivas/'.$file);
 
         }
 
     }
 
-
-//$datos = cargaSuspensionesEfectivas("OTs_suspension_efectivas_2018_02_28_07_32_am.xls");
+//$datos = cargaSuspensionesEfectivas("OTs_suspension_efectivas_2018_03_06_10_20_am.xls");
 
 
 
 
 //$resultado = $api->setSuspensionEfectiva($datos);
 
-//var_dump($resultado);
-
-
 function cargaSuspensionesEfectivas($file){
     
     require_once "./PHPExcel-1.8/Classes/PHPExcel.php";
     require_once './IOFactory.php';
-
 
 	//Variable con el nombre del archivo
 	$nombreArchivo = './attachment_efectivas/'.$file;
@@ -61,15 +62,32 @@ function cargaSuspensionesEfectivas($file){
         $descripcion = $objPHPExcel->getActiveSheet()->getCell('Q'.$i)->getCalculatedValue();
         $valor = $objPHPExcel->getActiveSheet()->getCell('R'.$i)->getCalculatedValue();
 
-        $fila = array($id_orden, $niu, $fecha_atencion, $hora_ini, $hora_fin, $descripcion, $valor);
+        
+
+        if(strpos($valor, "_")){
+            $posaux = strpos($valor, "_" ) + 2;
+            if(substr($valor, $posaux, 1) == "-") {
+                $posicion = strpos($valor, "_" ) + 1;
+                $tipo_registro = substr($valor, $posicion, 1);
     
-        array_push($efec, $fila);
+                 if($tipo_registro == '3'){
+                    $valor = 's';
+                    $fila = array($id_orden, $niu, $fecha_atencion, $hora_ini, $hora_fin, $descripcion, $valor);
+                    array_push($efec, $fila);
+                 }elseif($tipo_registro == '8'){
+                    $valor = 'r';
+                    $fila = array($id_orden, $niu, $fecha_atencion, $hora_ini, $hora_fin, $descripcion, $valor);
+                    array_push($efec, $fila);
+                 }
+            }
 
-    }
-
+        }
+ 
+    }   
+    
     return $efec;
     
-
 }
+
 
 ?>
