@@ -13,7 +13,7 @@ function get_attachments(){
     /* try to connect */
     $inbox = imap_open($hostname,$username,$password) or die('Cannot connect to Gmail: ' . imap_last_error());
     
-    $emails = imap_search($inbox, 'FROM "JHON.CALDERON@chec.com.co" UNSEEN');
+    $emails = imap_search($inbox, 'FROM "prjchec.dcardona@umanizales.edu.co" UNSEEN');
     
     /* if any emails found, iterate through each email */
     if($emails) {
@@ -126,7 +126,6 @@ function get_attachments(){
 
 // ESTE BLOQUE TRABAJA CON SCADA
 function get_mail_body(){
-    include('./indisp_circuito.php');
     //set_time_limit(6000); 
 
     /* connect to gmail with your credentials */
@@ -138,7 +137,7 @@ function get_mail_body(){
     $inbox = imap_open($hostname,$username,$password) or die('Cannot connect to Gmail: ' . imap_last_error());
     
     //$emails = imap_search($inbox, 'FROM "notificacionsgo@chec.com.co" SEEN');
-    $emails = imap_search($inbox, 'FROM "notificacionsgo@chec.com.co" UNSEEN');
+    $emails = imap_search($inbox, 'FROM "prjchec.dcardona@umanizales.edu.co" UNSEEN');
     
     /* if any emails found, iterate through each email */
     if($emails) {
@@ -146,10 +145,8 @@ function get_mail_body(){
         $count = 1;
     
         /* put the newest emails on top */
-        rsort($emails);
-        var_dump($emails);
-    
-        /* for every email... */
+        rsort($emails);   
+        //for every email...
         foreach($emails as $email_number) 
         {
     
@@ -158,10 +155,24 @@ function get_mail_body(){
     
             $message = imap_fetchbody($inbox,$email_number,2);
             
-            $sub = substr($message, strpos($message, '201'), 74);
-            $content = str_replace("= -", "-", $sub);
+
+       
+            $content = imap_headerinfo($inbox, $email_number);
+
+
+
+            if(strpos($content->subject,"Fwd:")){
+                $inicioCadena = "201";
+                $pos = strpos($content->subject, $inicioCadena);
+                $return = substr($content->subject, $pos);
+
+            }else{
+                $return = $content->subject;            
+            }
+    
         
-            saveIndispCircuito($content);
+            saveIndispCircuito($return);
+
            
         }
     } 
@@ -268,8 +279,7 @@ function get_attachments_efectivas(){
             {
                 if($attachment['is_attachment'] == 1)
                 {
-/*                     $filename = substr($attachment['name'], 0, -3)."html";
- */                    if(empty($filename)) $filename = $attachment['filename'];
+                   if(empty($filename)) $filename = $attachment['filename'];
     
                     if(empty($filename)) $filename = time() . ".dat";
                     //FOLDER DE SUSPENSIONES EFECTIVAS
@@ -295,6 +305,27 @@ function get_attachments_efectivas(){
     return true;
 
 
+}
+
+
+function saveIndispCircuito($global){
+	require('./lib.php');
+	//Instancia de la API
+	$api = new chatBotApi();
+	
+	$fecha = "";
+	$time = "";
+	$condition = "";
+	$cod_circuit = "";
+	$suscribers = "";
+	
+	
+	$data = $api->getIndisponibilidadCircuitoData($global);
+	var_dump($data);
+	
+	$response = $api->setIndispCircuito($data);
+	
+	echo "papi donde esta el funk?";
 }
 
 

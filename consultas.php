@@ -1,4 +1,5 @@
 <?php
+// al cambiar el nombre de la DB modificarlo tambien en la funcion insertIndispCircuito
 $dbname = "heroku_69tb2th4";
 //$dbname="chatbot_db";
 
@@ -316,9 +317,10 @@ function insertSuspensionesEfectivas($con, $data)
 
 function insertIndispCircuito($con, $data)
 {
+    $dbname = 'heroku_69tb2th4';
     $bulk = new MongoDB\Driver\BulkWrite;
     $a = $bulk->insert(['FECHA' => $data['FECHA'], 'HORA' => $data['HORA'], 'ESTADO' => $data['ESTADO'], 'CIRCUITO' => $data['CIRCUITO']]);
-    $result = $con->executeBulkWrite($GLOBALS['dbname'] . '.indisp_circuito', $bulk);
+    $result = $con->executeBulkWrite($dbname . '.indisp_circuito', $bulk);
     return $result;
 }
 
