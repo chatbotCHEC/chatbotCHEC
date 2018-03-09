@@ -101,6 +101,56 @@ function getSuspCircuito($con, $niu)
     return $reg_reciente;
 }
 
+
+function getSuspEfectiva($con, $niu)
+{
+     
+    //Buscar Suspenciones efectivas
+    $id = new \MongoDB\BSON\ObjectId();
+    $filter = ['NIU' => $niu];
+    $query = new MongoDB\Driver\Query($filter);
+    $result = $con->executeQuery($GLOBALS['dbname'] . ".susp_efectivas", $query);
+    //var_dump($result);
+    
+    $cliente = $result->toArray();
+    //var_dump($cliente);
+
+    $reg_reciente = array();
+    
+    if (count($cliente) > 0) {
+        $efectiva = $cliente[0]->NIU;
+        
+
+        $mostRecent = 0;
+        $now = Time();
+
+            foreach($cliente as $r ){
+                $curDate = strtotime($r->HORA_FIN);
+
+                if($curDate > $mostRecent && $curDate < $now){
+                    $mostRecent = $curDate;
+                    $reg_reciente = $r;
+                }
+
+            }
+
+            
+        }
+        //var_dump($reg_reciente);
+
+        return $reg_reciente;
+
+    
+    
+}
+
+
+    
+
+
+
+
+
 function getNIUwithTel($con, $telefono)
 {
     $filter = ['TELEFONO' => $telefono];

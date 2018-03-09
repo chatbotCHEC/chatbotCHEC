@@ -175,7 +175,7 @@ class chatBotAPI {
     //método que obtiene las indisponibilidades con el NIU. Se diferencia de getIndisNiu, en cuanto a que esta
     //puede ser reutilizada en otros parametros
     public function getIndisponibilidad($niu){
-
+        /*
         $circuito = getSuspCircuito($this->con, $niu);
         $msg = "";
 
@@ -186,6 +186,15 @@ class chatBotAPI {
         }
         
         return $msg;
+        */
+        $susp = getSuspEfectiva($this->con, $niu);
+        var_dump($susp);
+
+        if(count($susp) > 0 || $susp[0]->VALOR=='r'){
+            //Invocar metodo para buscar interrupcion programada
+        }else{
+            $msg.="\n *Para esta cuenta, se reporta una suspensión efectiva por falta de pago realizada en la siguiente fecha: " .$susp[0]->HORA_FIN;
+        }
     }
 
     //Método que obtiene las suspensiones programadas teniendo el NIU. Reutilizable
