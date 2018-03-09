@@ -54,20 +54,35 @@ function getNIUwithAddress($con, $direccion)
 
 function getSuspProgramada($con, $niu)
 {
-    //TODO: Falta mejorar la consulta para obtener unicamente las suspensiones en el futuro
     $filter = ['NIU' => $niu, 'ESTADO' => "ABIERTO"];
     $query = new MongoDB\Driver\Query($filter);
     $result = $con->executeQuery($GLOBALS['dbname'] . ".susp_programadas", $query);
     $cliente = $result->toArray();
     $futuras = array();
-    $now = new DateTime();
+    
+    $now = time();
     foreach ($cliente as $key => $value) {
-        $date = new DateTime($value->FECHA_FIN.' '.$value->HORA_FIN);
-        if($date>$now){
+       
+       // var_dump($now);
+
+        $date = $value->FECHA_FIN.' '.$value->HORA_FIN;
+        //var_dump($date);
+        
+        $format = "d/m/Y H:i";
+        $dateobj = DateTime::createFromFormat($format, $date);
+        $iso_datetime = $dateobj->format(Datetime::ATOM);
+        $fecha_def = strtotime($iso_datetime);
+       // var_dump($fecha_def);
+        if($fecha_def>$now){
+            
             array_push($futuras, $value);
         }
+        //var_dump($fecha_def>$now);
     }
+   // var_dump($futuras);
+    
     return $futuras;
+
 }
 function getSuspCircuito($con, $niu)
 {
@@ -123,11 +138,12 @@ function getSuspEfectiva($con, $niu)
 
         $mostRecent = 0;
         $now = Time();
+        //var_dump($now);
 
             foreach($cliente as $r ){
-                $curDate = strtotime($r->HORA_FIN);
-
-                if($curDate > $mostRecent && $curDate < $now){
+                $curDate = strtotime($r->HORA_FIN);                
+                
+                if($curDate > $mostRecent){
                     $mostRecent = $curDate;
                     $reg_reciente = $r;
                 }
