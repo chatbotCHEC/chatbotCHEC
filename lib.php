@@ -210,16 +210,12 @@ class chatBotAPI {
         }else {
             //Invocar metodo para buscar interr scada
             return $this->getInterrupCircuito($niu);
-        }
-        
-
-        
+        }  
     }
 
     public function getInterrupCircuito($niu){
         $circuito = getSuspCircuito($this->con, $niu);
         $msg = "";
-
         if(count($circuito) > 0 && ($circuito->ESTADO =="ABIERTO" || $circuito->ESTADO =="APERTURA")){
             
             $msg.="\n *Para esta cuenta, hemos encontrado las siguientes indisponibilidades a nivel de circuito: \n - Hay una falla en el circuito reportada el ".$circuito->FECHA." a las ".$circuito->HORA.". Estamos trabajando para reestablecer el servicio";
@@ -230,8 +226,6 @@ class chatBotAPI {
 
             🔹 Línea para daños: Marca 115";
         }
-        
-        
     }
 
     public function setIndispCircuito($data){
@@ -300,16 +294,11 @@ class chatBotAPI {
         return $json;
     }
 
-
-
     public function setSuspensionEfectiva($data){
 
         $result = insertSuspensionesEfectivas($this->con, $data);
         return $result;
     }
-
-
-    
 }
 
 ?>
