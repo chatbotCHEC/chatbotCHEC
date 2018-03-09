@@ -190,33 +190,57 @@ class chatBotAPI {
     //método que obtiene las indisponibilidades con el NIU. Se diferencia de getIndisNiu, en cuanto a que esta
     //puede ser reutilizada en otros parametros
     public function getIndisponibilidad($niu){
-
-        $circuito = getSuspCircuito($this->con, $niu);
+        
+        $susp = getSuspEfectiva($this->con, $niu);
+        
         $msg = "";
 
-        if(count($circuito) > 0 && ($circuito->ESTADO =="ABIERTO" || $circuito->ESTADO =="APERTURA")){
-            $msg.="\n *Para esta cuenta, hemos encontrado las siguientes indisponibilidades: \n - Hay una falla en el circuito reportada el ".$circuito->FECHA." a las ".$circuito->HORA.". Estamos trabajando para reestablecer el servicio";
-        }else {
-            $msg.="\n *Para esta cuenta no tengo reportada ninguna indisponibilidad";
+        if(count($susp) > 0){
+            if($susp->VALOR == "s"){
+                $msg.="\n *Para esta cuenta, se reporta una suspensión efectiva por falta de pago realizada en la siguiente fecha: " . $susp->HORA_FIN;
+                return $msg;
+            }else{
+                //Invocar metodo para buscar interrupcion programada   
+                return $this->getSuspensionesProgramadas($niu);    
+            }
+            
+        }else{
+            //Invocar metodo para buscar interrupcion programada
+            return $this->getSuspensionesProgramadas($niu); 
         }
         
-        return $msg;
     }
 
     //Método que obtiene las suspensiones programadas teniendo el NIU. Reutilizable
     public function getSuspensionesProgramadas($niu){
         $prog = getSuspProgramada($this->con, $niu);
+        //var_dump($prog);
         $msg = "";
         if(count($prog)>0){
             $msg.="\n *Para esta cuenta, hemos encontrado las siguientes suspensiones programadas: ";
             foreach ($prog as $p) {
                 $msg.="\n - Hay una suspensión programada que inicia el ".$p->FECHA_INICIO." a las ".$p->HORA_INICIO.", y finaliza el ".$p->FECHA_FIN." a las ".$p->HORA_FIN;
             }
+            return $msg;
         }else {
-            $msg.="\n *Para esta cuenta no tengo reportada ninguna suspensión programada";
-        }
+            //Invocar metodo para buscar interr scada
+            return $this->getInterrupCircuito($niu);
+        }  
+    }
 
-        return $msg;
+    public function getInterrupCircuito($niu){
+        $circuito = getSuspCircuito($this->con, $niu);
+        $msg = "";
+        if(count($circuito) > 0 && ($circuito->ESTADO =="ABIERTO" || $circuito->ESTADO =="APERTURA")){
+            
+            $msg.="\n *Para esta cuenta, hemos encontrado las siguientes indisponibilidades a nivel de circuito: \n - Hay una falla en el circuito reportada el ".$circuito->FECHA." a las ".$circuito->HORA.". Estamos trabajando para reestablecer el servicio";
+            return $msg;
+        }else {
+            //Aqui se debe invocar la busqueda en SGO
+            return "\n 🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415
+
+            🔹 Línea para daños: Marca 115";
+        }
     }
 
     public function setIndispCircuito($data){
@@ -284,8 +308,6 @@ class chatBotAPI {
         //$json['messages'] = array(array('platform'=>'telegram', 'speech' => $this->getSuspensionesProgramadas($niu))); 
         return $json;
     }
-
-
 
     public function setSuspensionEfectiva($data){
 
