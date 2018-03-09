@@ -44,7 +44,7 @@ function getNIUwithAddress($con, $direccion)
 {
     $filter = getAdressQuery($direccion);
     $options = [
-        'limit' => 20,
+        'limit' => 5,
     ];
     $query = new MongoDB\Driver\Query($filter, $options);
     $result = $con->executeQuery($GLOBALS['dbname'] . ".usuarios", $query);

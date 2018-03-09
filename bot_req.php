@@ -36,7 +36,10 @@ switch ($contexts[0]) {
     case 'c1_cc':
         $response = $api->getNiuFromCedula($number, $contexts[1]);
         break;
-    case 'c1_direccion':
+    case 'c1_direccion_municipio':
+    //TODO: FALTA FILTRAR DIRECCION POR MUNICIPIO
+        $direccion = $reqBody['result']['resolvedQuery'];
+        $response = $api->getIndisAddress($direccion);
         break;    
     case 'c1_nit':
         $response = $api->getNiuFromNIT($number, $contexts[1]);
