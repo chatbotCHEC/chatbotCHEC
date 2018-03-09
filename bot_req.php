@@ -54,7 +54,7 @@ switch ($contexts[0]) {
     case 'c2_nit':
         $response = $api->getNiuFromNIT($number, $contexts[1]);
         break;
-    case 'ic2_nu':
+    case 'c2_niu':
         $response = $api->getSPNiu($number);
         break;
     case 'c2_nombre':

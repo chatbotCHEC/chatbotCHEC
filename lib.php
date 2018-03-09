@@ -170,9 +170,12 @@ class chatBotAPI {
         return $array;
     }
 
+
+
     //método que obtiene las indisponibilidades con el NIU. Se diferencia de getIndisNiu, en cuanto a que esta
     //puede ser reutilizada en otros parametros
     public function getIndisponibilidad($niu){
+
         $circuito = getSuspCircuito($this->con, $niu);
         $msg = "";
 
