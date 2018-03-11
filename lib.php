@@ -47,6 +47,33 @@ class chatBotAPI {
             //Respuesta para cuando no se encuentra el NIU
             $json['speech']="No se ha encontrado un usuario con el dato indicado";
             $json['displayText']="No se ha encontrado un usuario con el dato indicado";
+            $json['messages'] = array(
+                array(
+                    'type' => 4,
+                    'platform' => 'telegram',
+                    'payload' => array(
+                        'telegram' => array(
+                            'text' => "\n ¿Deseas consultar algo más?",
+                            'reply_markup' => array(
+                                'keyboard' => array(
+                                    array(                                
+                                        array(
+                                            'text' => 'Sí ✔️',
+                                            'callback_data' => 'Menú Principal'
+                                            )
+                                        ),
+                                    array(                                
+                                        array(
+                                            'text' => 'No ❌',
+                                            'callback_data' => 'No'
+                                            )
+                                        )
+                                ),
+                            )
+                        ), 
+                    )
+                )  
+            );
         }else {
             //Verificar si el NIU consultado tiene telefono registrado
             if($persona->TELEFONO!="" && $persona->TELEFONO!="NULL" ){
@@ -71,6 +98,33 @@ class chatBotAPI {
             //Respuesta para cuando no se encuentra la cuenta con el nombre asociado
             $json['speech']="No se ha encontrado ninguna cuenta con el dato ingresado.";
             $json['displayText']="No se ha encontrado ninguna cuenta con el dato ingresado.";
+            $json['messages'] = array(
+                array(
+                    'type' => 4,
+                    'platform' => 'telegram',
+                    'payload' => array(
+                        'telegram' => array(
+                            'text' => "\n ¿Deseas consultar algo más?",
+                            'reply_markup' => array(
+                                'keyboard' => array(
+                                    array(                                
+                                        array(
+                                            'text' => 'Sí ✔️',
+                                            'callback_data' => 'Menú Principal'
+                                            )
+                                        ),
+                                    array(                                
+                                        array(
+                                            'text' => 'No ❌',
+                                            'callback_data' => 'No'
+                                            )
+                                        )
+                                ),
+                            )
+                        ), 
+                    )
+                )  
+            );
         }else{
             $json['speech']="Hemos encontrado las siguientes cuentas asociadas con el dato dado (Si su cuenta no se encuentra entre los resultados, intente con un criterio de búsqueda más específico)";
             $json['displayText']="Hemos encontrado las siguientes cuentas asociadas con el dato dado. (Si su cuenta no se encuentra entre los resultados, intente con un criterio de búsqueda más específico)\n";
@@ -373,7 +427,6 @@ class chatBotAPI {
             return $json;
         }
     }
-
     
 }
 
