@@ -74,6 +74,7 @@ class chatBotAPI {
                     )
                 )  
             );
+
         }else {
             //Verificar si el NIU consultado tiene telefono registrado
             if($persona->TELEFONO!="" && $persona->TELEFONO!="NULL" ){
@@ -125,6 +126,7 @@ class chatBotAPI {
                     )
                 )  
             );
+
         }else{
             $json['speech']="Hemos encontrado las siguientes cuentas asociadas con el dato dado (Si su cuenta no se encuentra entre los resultados, intente con un criterio de búsqueda más específico)";
             $json['displayText']="Hemos encontrado las siguientes cuentas asociadas con el dato dado. (Si su cuenta no se encuentra entre los resultados, intente con un criterio de búsqueda más específico)\n";
@@ -291,9 +293,7 @@ class chatBotAPI {
             return $msg;
         }else {
             //Aqui se debe invocar la busqueda en SGO
-            return "\n 🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415
-
-            🔹 Línea para daños: Marca 115";
+            return "\n🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415 \n🔹 Línea para daños: Marca 115";
         }
     }
 
