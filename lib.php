@@ -242,7 +242,6 @@ class chatBotAPI {
     }
 
 
-
     //método que obtiene las indisponibilidades con el NIU. Se diferencia de getIndisNiu, en cuanto a que esta
     //puede ser reutilizada en otros parametros
     public function getIndisponibilidad($niu){
@@ -253,7 +252,7 @@ class chatBotAPI {
 
         if(count($susp) > 0){
             if($susp->VALOR == "s"){
-                $msg.="\n *Para esta cuenta, se reporta una suspensión efectiva por falta de pago realizada en la siguiente fecha: " . $susp->HORA_FIN;
+                $msg.="\n🔷 Para esta cuenta, se reporta una suspensión efectiva por falta de pago realizada en la siguiente fecha: " . $susp->HORA_FIN;
                 return $msg;
             }else{
                 //Invocar metodo para buscar interrupcion programada   
@@ -273,9 +272,9 @@ class chatBotAPI {
         //var_dump($prog);
         $msg = "";
         if(count($prog)>0){
-            $msg.="\n *Para esta cuenta, hemos encontrado las siguientes suspensiones programadas: ";
+            $msg.="\n🔷 Para esta cuenta, hemos encontrado las siguientes suspensiones programadas: ";
             foreach ($prog as $p) {
-                $msg.="\n - Hay una suspensión programada que inicia el ".$p->FECHA_INICIO." a las ".$p->HORA_INICIO.", y finaliza el ".$p->FECHA_FIN." a las ".$p->HORA_FIN;
+                $msg.="\n 🔷 Hay una suspensión programada que inicia el ".$p->FECHA_INICIO." a las ".$p->HORA_INICIO.", y finaliza el ".$p->FECHA_FIN." a las ".$p->HORA_FIN;
             }
             return $msg;
         }else {
@@ -293,7 +292,7 @@ class chatBotAPI {
             return $msg;
         }else {
             //Aqui se debe invocar la busqueda en SGO
-            return "\n Te cuento que en el momento no registras ninguna interrupción en el servicio de energía 👍⚡ \n Si deseas más información al respecto te tenemos los siguientes canales: \n🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415 \n🔹 Línea para daños: Marca 115";
+            return "\n Te cuento, en el momento no registras ninguna interrupción en el servicio de energía 👍⚡ \n Si deseas más información al respecto te tenemos los siguientes canales: \n🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415 \n🔹 Línea para daños: Marca 115";
         }
     }
 
