@@ -292,7 +292,7 @@ class chatBotAPI {
             return $msg;
         }else {
             //Aqui se debe invocar la busqueda en SGO
-            return "\n$nombre Te cuento, en el momento no registras ninguna interrupción en el servicio de energía 👍⚡ \nSi deseas más información al respecto te tenemos los siguientes canales: \n🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415 \n🔹 Línea para daños: Marca 115.\n";
+            return "\nTe cuento, en el momento no registras ninguna interrupción en el servicio de energía 👍⚡ \nSi deseas más información al respecto te tenemos los siguientes canales: \n🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415 \n🔹 Línea para daños: Marca 115.\n";
         }
     }
 
