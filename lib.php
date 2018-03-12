@@ -176,8 +176,22 @@ class chatBotAPI {
         return $resultado;
     }
     public function getNiuFromNIT($nit, $context){
-        $persona = getNIUwithNIT($this->con, $nit);
-        return $this->respuesta_plural($persona, $context);
+        $personas = getNIUwithNIT($this->con, $nit);
+        $resultado = array();
+        //Si encuentra un solo registro
+        if(count($personas)==1){
+            $resultado['NIU'] = $personas[0]->NIU;
+        }elseif (count($personas)>1) {
+            $foundResults = array();
+            foreach ($personas as $key => $value) {
+                array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' => $value->DIRECCION));
+            }
+            $resultado['VARIOS'] = $foundResults;
+            
+        }else{
+            $resultado['NINGUNO'] = 1;
+        }
+        return $resultado; 
     }
 
     public function getNiuFromName($nombre, $context){
@@ -449,6 +463,65 @@ class chatBotAPI {
 
     public function getIndisCC($cedula){
         $busqueda = $this->getNiuFromCedula($cedula);
+        //Verificar si se obtuvo una sola cuenta
+        if(isset($busqueda['NIU'])){
+            return $this->getIndisNiu($busqueda['NIU']);
+        }
+        
+        //Verificar si se obtuvo más de una dirección 
+        if(isset($busqueda['VARIOS'])){
+            $json['speech'] = "Encontramos las siguientes cuentas asociadas a la dirección buscada: \n ";
+            $json['displayText'] = "Encontramos las siguientes cuentas asociadas a la dirección buscada: \n ";
+            foreach ($busqueda['VARIOS'] as $key => $value) {
+                $json['speech'] .= "- Dirección: ".$value['DIRECCION']." Número de cuenta: ".$value['NIU']." \n  ";
+                $json['displayText'] .= "- Dirección:". $value['DIRECCION']." Número de cuenta: ".$value['NIU']." \n  ";
+            }
+            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
+            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
+            $json['contextOut'] = array(
+                array("name" => "c1_niu", "parameters" =>array("res" => "1"), "lifespan"=>4));
+            return $json;
+        }
+
+
+        //Verificar si no se encontró ninguna dirección
+        if(isset($busqueda['NINGUNO'])){
+            $json['speech'] = "No he podido encontrar ningún registro asociado con esta cédula.";
+            $json['displayText'] = "No he podido encontrar ningún registro asociado con esta cédula.";
+            $json['messages'] = array(
+                array(
+                    'type' => 4,
+                    'platform' => 'telegram',
+                    'payload' => array(
+                        'telegram' => array(
+                            'text' => "\n ¿Deseas consultar algo más?",
+                            'reply_markup' => array(
+                                'keyboard' => array(
+                                    array(                                
+                                        array(
+                                            'text' => 'Sí ✔️',
+                                            'callback_data' => 'Menú Principal'
+                                            )
+                                        ),
+                                    array(                                
+                                        array(
+                                            'text' => 'No ❌',
+                                            'callback_data' => 'No'
+                                            )
+                                        )
+                                ),
+                            )
+                        ), 
+                    )
+                )  
+            );
+            return $json;
+        }
+    }
+
+
+    public function getIndisNIT($cedula){
+        $busqueda = $this->getNiuFromNIT($cedula);
         //Verificar si se obtuvo una sola cuenta
         if(isset($busqueda['NIU'])){
             return $this->getIndisNiu($busqueda['NIU']);

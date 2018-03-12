@@ -48,7 +48,7 @@ switch ($contexts[0]) {
         if($contexts[1]=='c1_cc'){
             $response = $api->getIndisCC($number);
         }elseif ($contexts[1]=='c1_nit') {
-            $response = $api->getNiuFromNIT($number, $contexts[1]);
+            $response = $api->getIndisNIT($number);
         }elseif($contexts[1]=='c1_direccion_municipio'){
             $direccion = $reqBody['result']['resolvedQuery'];
             $response = $api->getIndisAddress($direccion);
