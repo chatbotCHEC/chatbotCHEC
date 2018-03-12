@@ -30,11 +30,10 @@ if (isset($reqBody['result']['parameters']['number'])) {
 if (isset($reqBody['result']['parameters']['given-name'])) {
     $Nombre = $reqBody['result']['parameters']['given-name']." ".$reqBody['result']['parameters']['last-name'];
 }
-
 //Switch que determina cuál es el contexto principal de la petición y ejecuta una función del objeto api correspondientemente.
 switch ($contexts[0]) {
     case 'c1_cc':
-        $response = $api->getNiuFromCedula($number, $contexts[1]);
+        $response = $api->getIndisCC($number);
         break;
     case 'c1_direccion_municipio':
     //TODO: FALTA FILTRAR DIRECCION POR MUNICIPIO
@@ -47,7 +46,7 @@ switch ($contexts[0]) {
     case 'c1_niu':
     //medida de control ante error en contextOut CORREGIR
         if($contexts[1]=='c1_cc'){
-            $response = $api->getNiuFromCedula($number, $contexts[1]);
+            $response = $api->getIndisCC($number);
         }elseif ($contexts[1]=='c1_nit') {
             $response = $api->getNiuFromNIT($number, $contexts[1]);
         }elseif($contexts[1]=='c1_direccion_municipio'){
