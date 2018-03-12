@@ -274,7 +274,7 @@ class chatBotAPI {
         if(count($prog)>0){
             $msg.="\n🔷 Para esta cuenta, hemos encontrado las siguientes suspensiones programadas: ";
             foreach ($prog as $p) {
-                $msg.="\n 🔷 Hay una suspensión programada que inicia el ".$p->FECHA_INICIO." a las ".$p->HORA_INICIO.", y finaliza el ".$p->FECHA_FIN." a las ".$p->HORA_FIN;
+                $msg.="\n🔷 Hay una suspensión programada que inicia el ".$p->FECHA_INICIO." a las ".$p->HORA_INICIO.", y finaliza el ".$p->FECHA_FIN." a las ".$p->HORA_FIN;
             }
             return $msg;
         }else {
@@ -288,11 +288,11 @@ class chatBotAPI {
         $msg = "";
         if(count($circuito) > 0 && ($circuito->ESTADO =="ABIERTO" || $circuito->ESTADO =="APERTURA")){
             
-            $msg.="\n 🔷 Para esta cuenta, hemos encontrado las siguientes indisponibilidades a nivel de circuito: \n - Hay una falla en el circuito reportada el ".$circuito->FECHA." a las ".$circuito->HORA.". Estamos trabajando para reestablecer el servicio";
+            $msg.="\n🔷 Para esta cuenta, hemos encontrado las siguientes indisponibilidades a nivel de circuito: \n🔷 Hay una falla en el circuito reportada el ".$circuito->FECHA." a las ".$circuito->HORA.". Estamos trabajando para reestablecer el servicio";
             return $msg;
         }else {
             //Aqui se debe invocar la busqueda en SGO
-            return "\n Te cuento, en el momento no registras ninguna interrupción en el servicio de energía 👍⚡ \n Si deseas más información al respecto te tenemos los siguientes canales: \n🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415 \n🔹 Línea para daños: Marca 115";
+            return "\n$nombre Te cuento, en el momento no registras ninguna interrupción en el servicio de energía 👍⚡ \nSi deseas más información al respecto te tenemos los siguientes canales: \n🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415 \n🔹 Línea para daños: Marca 115.\n";
         }
     }
 
