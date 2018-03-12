@@ -1,4 +1,5 @@
 <?php
+// al cambiar el nombre de la DB modificarlo tambien en la funcion insertIndispCircuito
 $dbname = "heroku_69tb2th4";
 //$dbname="chatbot_db";
 
@@ -43,7 +44,7 @@ function getNIUwithAddress($con, $direccion)
 {
     $filter = getAdressQuery($direccion);
     $options = [
-        'limit' => 20,
+        'limit' => 5,
     ];
     $query = new MongoDB\Driver\Query($filter, $options);
     $result = $con->executeQuery($GLOBALS['dbname'] . ".usuarios", $query);
@@ -53,20 +54,35 @@ function getNIUwithAddress($con, $direccion)
 
 function getSuspProgramada($con, $niu)
 {
-    //TODO: Falta mejorar la consulta para obtener unicamente las suspensiones en el futuro
     $filter = ['NIU' => $niu, 'ESTADO' => "ABIERTO"];
     $query = new MongoDB\Driver\Query($filter);
     $result = $con->executeQuery($GLOBALS['dbname'] . ".susp_programadas", $query);
     $cliente = $result->toArray();
     $futuras = array();
-    $now = new DateTime();
+    
+    $now = time();
     foreach ($cliente as $key => $value) {
-        $date = new DateTime($value->FECHA_FIN.' '.$value->HORA_FIN);
-        if($date>$now){
+       
+       // var_dump($now);
+
+        $date = $value->FECHA_FIN.' '.$value->HORA_FIN;
+        //var_dump($date);
+        
+        $format = "d/m/Y H:i";
+        $dateobj = DateTime::createFromFormat($format, $date);
+        $iso_datetime = $dateobj->format(Datetime::ATOM);
+        $fecha_def = strtotime($iso_datetime);
+       // var_dump($fecha_def);
+        if($fecha_def>$now){
+            
             array_push($futuras, $value);
         }
+        //var_dump($fecha_def>$now);
     }
+   // var_dump($futuras);
+    
     return $futuras;
+
 }
 function getSuspCircuito($con, $niu)
 {
@@ -99,6 +115,57 @@ function getSuspCircuito($con, $niu)
 
     return $reg_reciente;
 }
+
+
+function getSuspEfectiva($con, $niu)
+{
+     
+    //Buscar Suspenciones efectivas
+    $id = new \MongoDB\BSON\ObjectId();
+    $filter = ['NIU' => $niu];
+    $query = new MongoDB\Driver\Query($filter);
+    $result = $con->executeQuery($GLOBALS['dbname'] . ".susp_efectivas", $query);
+    //var_dump($result);
+    
+    $cliente = $result->toArray();
+    //var_dump($cliente);
+
+    $reg_reciente = array();
+    
+    if (count($cliente) > 0) {
+        $efectiva = $cliente[0]->NIU;
+        
+
+        $mostRecent = 0;
+        $now = Time();
+        //var_dump($now);
+
+            foreach($cliente as $r ){
+                $curDate = strtotime($r->HORA_FIN);                
+                
+                if($curDate > $mostRecent){
+                    $mostRecent = $curDate;
+                    $reg_reciente = $r;
+                }
+
+            }
+
+            
+        }
+        //var_dump($reg_reciente);
+
+        return $reg_reciente;
+
+    
+    
+}
+
+
+    
+
+
+
+
 
 function getNIUwithTel($con, $telefono)
 {
@@ -303,12 +370,23 @@ function getAdressQuery($palabras)
     return $filter;
 }
 
+
+
+function insertSuspensionesEfectivas($con, $data)
+{
+    $bulk = new MongoDB\Driver\BulkWrite;
+    $a = $bulk->insert(['ID_ORDEN' => $data['0'], 'NIU' => $data['1'], 'FECHA_ATENCION' => $data['2'], 
+    'HORA_INI' => $data['3'], 'HORA_FIN' => $data['4'], 'DESCRIPCION' => $data['5'], 'VALOR' => $data['6']]);
+    $result = $con->executeBulkWrite($GLOBALS['dbname'] . '.susp_efectivas', $bulk);
+    return $result;
+}
+
 function insertIndispCircuito($con, $data)
 {
-    var_dump($GLOBALS['dbname']);
+    $dbname = 'heroku_69tb2th4';
     $bulk = new MongoDB\Driver\BulkWrite;
     $a = $bulk->insert(['FECHA' => $data['FECHA'], 'HORA' => $data['HORA'], 'ESTADO' => $data['ESTADO'], 'CIRCUITO' => $data['CIRCUITO']]);
-    $result = $con->executeBulkWrite($GLOBALS['dbname'] . '.indisp_circuito', $bulk);
+    $result = $con->executeBulkWrite($dbname . '.indisp_circuito', $bulk);
     return $result;
 }
 

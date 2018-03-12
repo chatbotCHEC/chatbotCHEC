@@ -8,6 +8,7 @@ class chatBotAPI {
     //Credenciales Localhost
     //private $host = "mongodb://localhost:27017/chatbot_db";
 
+    
     //conexion a BD
     private $con;
     private $bd;
@@ -16,12 +17,14 @@ class chatBotAPI {
         $this->connectToDB();
     }
 
+
     //Obtener el cuerpo de la petición POST del chatbot
     public function detectRequestBody() {
         $inputJSON = file_get_contents('php://input');
         $input = json_decode($inputJSON, TRUE);
         return $input;
     }
+
 
     //Conectar a la Base de datos
     public function connectToDB(){
@@ -44,6 +47,34 @@ class chatBotAPI {
             //Respuesta para cuando no se encuentra el NIU
             $json['speech']="No se ha encontrado un usuario con el dato indicado";
             $json['displayText']="No se ha encontrado un usuario con el dato indicado";
+            $json['messages'] = array(
+                array(
+                    'type' => 4,
+                    'platform' => 'telegram',
+                    'payload' => array(
+                        'telegram' => array(
+                            'text' => "\n ¿Deseas consultar algo más?",
+                            'reply_markup' => array(
+                                'keyboard' => array(
+                                    array(                                
+                                        array(
+                                            'text' => 'Sí ✔️',
+                                            'callback_data' => 'Menú Principal'
+                                            )
+                                        ),
+                                    array(                                
+                                        array(
+                                            'text' => 'No ❌',
+                                            'callback_data' => 'No'
+                                            )
+                                        )
+                                ),
+                            )
+                        ), 
+                    )
+                )  
+            );
+
         }else {
             //Verificar si el NIU consultado tiene telefono registrado
             if($persona->TELEFONO!="" && $persona->TELEFONO!="NULL" ){
@@ -68,6 +99,34 @@ class chatBotAPI {
             //Respuesta para cuando no se encuentra la cuenta con el nombre asociado
             $json['speech']="No se ha encontrado ninguna cuenta con el dato ingresado.";
             $json['displayText']="No se ha encontrado ninguna cuenta con el dato ingresado.";
+            $json['messages'] = array(
+                array(
+                    'type' => 4,
+                    'platform' => 'telegram',
+                    'payload' => array(
+                        'telegram' => array(
+                            'text' => "\n ¿Deseas consultar algo más?",
+                            'reply_markup' => array(
+                                'keyboard' => array(
+                                    array(                                
+                                        array(
+                                            'text' => 'Sí ✔️',
+                                            'callback_data' => 'Menú Principal'
+                                            )
+                                        ),
+                                    array(                                
+                                        array(
+                                            'text' => 'No ❌',
+                                            'callback_data' => 'No'
+                                            )
+                                        )
+                                ),
+                            )
+                        ), 
+                    )
+                )  
+            );
+
         }else{
             $json['speech']="Hemos encontrado las siguientes cuentas asociadas con el dato dado (Si su cuenta no se encuentra entre los resultados, intente con un criterio de búsqueda más específico)";
             $json['displayText']="Hemos encontrado las siguientes cuentas asociadas con el dato dado. (Si su cuenta no se encuentra entre los resultados, intente con un criterio de búsqueda más específico)\n";
@@ -115,10 +174,25 @@ class chatBotAPI {
         return $this->respuesta_plural($persona, $context);
     }
 
-    public function getNiuFromAddress($direccion, $context){
+    public function getNiuFromAddress($direccion){
         $direccionesProcesadas = $this->processAddress($direccion);
         $personas = getNIUwithAddress($this->con, $direccionesProcesadas);
-        return $this->respuesta_plural($personas, $context);
+        $resultado = array();
+        //Si encuentra un solo registro
+        if(count($personas)==1){
+            $resultado['NIU'] = $personas[0]->NIU;
+            
+        }elseif (count($personas)>1) {
+            $foundResults = array();
+            foreach ($personas as $key => $value) {
+                array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' => $value->DIRECCION));
+            }
+            $resultado['VARIOS'] = $foundResults;
+            
+        }else{
+            $resultado['NINGUNO'] = 1;
+        }
+        return $resultado;
     }
 
     public function processAddress($direccion){
@@ -167,35 +241,59 @@ class chatBotAPI {
         return $array;
     }
 
+
     //método que obtiene las indisponibilidades con el NIU. Se diferencia de getIndisNiu, en cuanto a que esta
     //puede ser reutilizada en otros parametros
     public function getIndisponibilidad($niu){
-        $circuito = getSuspCircuito($this->con, $niu);
+        
+        $susp = getSuspEfectiva($this->con, $niu);
+        
         $msg = "";
 
-        if(count($circuito) > 0 && ($circuito->ESTADO =="ABIERTO" || $circuito->ESTADO =="APERTURA")){
-            $msg.="\n *Para esta cuenta, hemos encontrado las siguientes indisponibilidades: \n - Hay una falla en el circuito reportada el ".$circuito->FECHA." a las ".$circuito->HORA.". Estamos trabajando para reestablecer el servicio";
-        }else {
-            $msg.="\n *Para esta cuenta no tengo reportada ninguna indisponibilidad";
+        if(count($susp) > 0){
+            if($susp->VALOR == "s"){
+                $msg.="\n🔷 Para esta cuenta, se reporta una suspensión efectiva por falta de pago realizada en la siguiente fecha: " . $susp->HORA_FIN;
+                return $msg;
+            }else{
+                //Invocar metodo para buscar interrupcion programada   
+                return $this->getSuspensionesProgramadas($niu);    
+            }
+            
+        }else{
+            //Invocar metodo para buscar interrupcion programada
+            return $this->getSuspensionesProgramadas($niu); 
         }
         
-        return $msg;
     }
 
     //Método que obtiene las suspensiones programadas teniendo el NIU. Reutilizable
     public function getSuspensionesProgramadas($niu){
         $prog = getSuspProgramada($this->con, $niu);
+        //var_dump($prog);
         $msg = "";
         if(count($prog)>0){
-            $msg.="\n *Para esta cuenta, hemos encontrado las siguientes suspensiones programadas: ";
+            $msg.="\n🔷 Para esta cuenta, hemos encontrado las siguientes suspensiones programadas: ";
             foreach ($prog as $p) {
-                $msg.="\n - Hay una suspensión programada que inicia el ".$p->FECHA_INICIO." a las ".$p->HORA_INICIO.", y finaliza el ".$p->FECHA_FIN." a las ".$p->HORA_FIN;
+                $msg.="\n🔷 Hay una suspensión programada que inicia el ".$p->FECHA_INICIO." a las ".$p->HORA_INICIO.", y finaliza el ".$p->FECHA_FIN." a las ".$p->HORA_FIN;
             }
+            return $msg;
         }else {
-            $msg.="\n *Para esta cuenta no tengo reportada ninguna suspensión programada";
-        }
+            //Invocar metodo para buscar interr scada
+            return $this->getInterrupCircuito($niu);
+        }  
+    }
 
-        return $msg;
+    public function getInterrupCircuito($niu){
+        $circuito = getSuspCircuito($this->con, $niu);
+        $msg = "";
+        if(count($circuito) > 0 && ($circuito->ESTADO =="ABIERTO" || $circuito->ESTADO =="APERTURA")){
+            
+            $msg.="\n🔷 Para esta cuenta, hemos encontrado las siguientes indisponibilidades a nivel de circuito: \n🔷 Hay una falla en el circuito reportada el ".$circuito->FECHA." a las ".$circuito->HORA.". Estamos trabajando para reestablecer el servicio";
+            return $msg;
+        }else {
+            //Aqui se debe invocar la busqueda en SGO
+            return "\n$nombre Te cuento, en el momento no registras ninguna interrupción en el servicio de energía 👍⚡ \nSi deseas más información al respecto te tenemos los siguientes canales: \n🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415 \n🔹 Línea para daños: Marca 115.\n";
+        }
     }
 
     public function setIndispCircuito($data){
@@ -238,7 +336,7 @@ class chatBotAPI {
                                 array(                                
                                     array(
                                         'text' => 'Sí ✔️',
-                                        'callback_data' => 'Si'
+                                        'callback_data' => 'Menú Principal'
                                         )
                                     ),
                                 array(                                
@@ -264,8 +362,71 @@ class chatBotAPI {
         return $json;
     }
 
+    public function setSuspensionEfectiva($data){
+
+        $result = insertSuspensionesEfectivas($this->con, $data);
+        return $result;
+    }
+
+    //Método que busca el NIU de un usuario asociado con su direccion. Puede encontrar 1 solo registro y buscar, 2 o mas y mostrar una
+    //lista de posibles nius encontrados, o indicar que no se encontro registro alguno.
+    public function getIndisAddress($direccion){
+        $busqueda = $this->getNiuFromAddress($direccion);
+        //Verificar si se obtuvo una sola cuenta
+        if(isset($busqueda['NIU'])){
+            return $this->getIndisNiu($busqueda['NIU']);
+        }
+        
+        //Verificar si se obtuvo más de una dirección 
+        if(isset($busqueda['VARIOS'])){
+            $json['speech'] = "Encontramos las siguientes cuentas asociadas a la dirección buscada: \n ";
+            $json['displayText'] = "Encontramos las siguientes cuentas asociadas a la dirección buscada: \n ";
+            foreach ($busqueda['VARIOS'] as $key => $value) {
+                $json['speech'] .= "- Dirección: ".$value['DIRECCION']." Número de cuenta: ".$value['NIU']." \n  ";
+                $json['displayText'] .= "- Dirección:". $value['DIRECCION']." Número de cuenta: ".$value['NIU']." \n  ";
+            }
+            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
+            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
+            $json['contextOut'] = "c1_niu";
+            return $json;
+        }
+
+
+        //Verificar si no se encontró ninguna dirección
+        if(isset($busqueda['NINGUNO'])){
+            $json['speech'] = "No he podido encontrar ningún registro asociado con esta dirección.";
+            $json['displayText'] = "No he podido encontrar ningún registro asociado con esta dirección.";
+            $json['messages'] = array(
+                array(
+                    'type' => 4,
+                    'platform' => 'telegram',
+                    'payload' => array(
+                        'telegram' => array(
+                            'text' => "\n ¿Deseas consultar algo más?",
+                            'reply_markup' => array(
+                                'keyboard' => array(
+                                    array(                                
+                                        array(
+                                            'text' => 'Sí ✔️',
+                                            'callback_data' => 'Menú Principal'
+                                            )
+                                        ),
+                                    array(                                
+                                        array(
+                                            'text' => 'No ❌',
+                                            'callback_data' => 'No'
+                                            )
+                                        )
+                                ),
+                            )
+                        ), 
+                    )
+                )  
+            );
+            return $json;
+        }
+    }
     
 }
-
 
 ?>
