@@ -45,7 +45,17 @@ switch ($contexts[0]) {
         $response = $api->getNiuFromNIT($number, $contexts[1]);
         break;
     case 'c1_niu':
-        $response = $api->getIndisNiu($number);
+    //medida de control ante error en contextOut CORREGIR
+        if($contexts[1]=='c1_cc'){
+            $response = $api->getNiuFromCedula($number, $contexts[1]);
+        }elseif ($contexts[1]=='c1_nit') {
+            $response = $api->getNiuFromNIT($number, $contexts[1]);
+        }elseif($contexts[1]=='c1_direccion_municipio'){
+            $direccion = $reqBody['result']['resolvedQuery'];
+            $response = $api->getIndisAddress($direccion);
+        }else{
+            $response = $api->getIndisNiu($number);
+        }
         break;
     case 'c1_nombre':
         break;
