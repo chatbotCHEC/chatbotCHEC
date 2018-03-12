@@ -22,7 +22,6 @@
 
 
 - Interacción con SGO
-- Enviar botones desde el BE
 - Mejorar el léxico de mensajes
 - Guardar conversaciones
 - Validar resultados de búsqueda igual a 1 y redirigir a petición por NIU
