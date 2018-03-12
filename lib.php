@@ -472,8 +472,8 @@ class chatBotAPI {
 
         //Verificar si no se encontró ninguna dirección
         if(isset($busqueda['NINGUNO'])){
-            $json['speech'] = "No he podido encontrar ningún registro asociado con esta dirección.";
-            $json['displayText'] = "No he podido encontrar ningún registro asociado con esta dirección.";
+            $json['speech'] = "No he podido encontrar ningún registro asociado con esta cédula.";
+            $json['displayText'] = "No he podido encontrar ningún registro asociado con esta cédula.";
             $json['messages'] = array(
                 array(
                     'type' => 4,
