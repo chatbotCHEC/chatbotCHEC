@@ -138,10 +138,10 @@ class chatBotAPI {
             $json['displayText'].="\n A continuación, digita el número de cuenta correspondiente a tu solicitud";
 
             if($context == "c1"){
-                $json['contextOut'] = array(array('name' => 'c1_niu'), array('name' => 'c1'));
+                $json['contextOut'] = array(array('name' => 'c1_niu', 'lifespan'=> 2, 'parameters'=>array('res'=>'1')), array('name' => 'c1', 'lifespan'=> 2, 'parameters'=>array('res'=>'1')));
             }
             if($context == "c2"){
-                $json['contextOut'] = array(array('name' => 'c2_niu'), array('name' => 'c2'));
+                $json['contextOut'] = array(array('name' => 'c2_niu', 'lifespan'=> 2, 'parameters'=>array('res'=>'1')), array('name' => 'c2', 'lifespan'=> 2, 'parameters'=>array('res'=>'1')));
             }
         }
         return $json;
@@ -292,7 +292,7 @@ class chatBotAPI {
             return $msg;
         }else {
             //Aqui se debe invocar la busqueda en SGO
-            return "\n$nombre Te cuento, en el momento no registras ninguna interrupción en el servicio de energía 👍⚡ \nSi deseas más información al respecto te tenemos los siguientes canales: \n🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415 \n🔹 Línea para daños: Marca 115.\n";
+        return "\n \$nombre Te cuento, en el momento no registras ninguna interrupción en el servicio de energía 👍⚡ \nSi deseas más información al respecto te tenemos los siguientes canales: \n🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415 \n🔹 Línea para daños: Marca 115.\n";
         }
     }
 
