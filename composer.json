@@ -1,12 +1,10 @@
 {
     "name": "user/chatbotchec-service",
     "description": "chatbot para atencion al cliente CHEC",
-    "authors": [
-        {
-            "name": "Juan Cardona",
-            "email": "prjchec.jcardona@umanizales.edu.co"
-        }
-    ],
+    "authors": [{
+        "name": "Juan Cardona",
+        "email": "prjchec.jcardona@umanizales.edu.co"
+    }],
     "require": {
         "php": "^7.0.0",
         "ext-mongodb": "*",

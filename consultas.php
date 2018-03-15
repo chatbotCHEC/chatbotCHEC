@@ -59,28 +59,28 @@ function getSuspProgramada($con, $niu)
     $result = $con->executeQuery($GLOBALS['dbname'] . ".susp_programadas", $query);
     $cliente = $result->toArray();
     $futuras = array();
-    
+
     $now = time();
     foreach ($cliente as $key => $value) {
-       
-       // var_dump($now);
 
-        $date = $value->FECHA_FIN.' '.$value->HORA_FIN;
+        // var_dump($now);
+
+        $date = $value->FECHA_FIN . ' ' . $value->HORA_FIN;
         //var_dump($date);
-        
+
         $format = "d/m/Y H:i";
         $dateobj = DateTime::createFromFormat($format, $date);
         $iso_datetime = $dateobj->format(Datetime::ATOM);
         $fecha_def = strtotime($iso_datetime);
-       // var_dump($fecha_def);
-        if($fecha_def>$now){
-            
+        // var_dump($fecha_def);
+        if ($fecha_def > $now) {
+
             array_push($futuras, $value);
         }
         //var_dump($fecha_def>$now);
     }
-   // var_dump($futuras);
-    
+    // var_dump($futuras);
+
     return $futuras;
 
 }
@@ -116,56 +116,44 @@ function getSuspCircuito($con, $niu)
     return $reg_reciente;
 }
 
-
 function getSuspEfectiva($con, $niu)
 {
-     
+
     //Buscar Suspenciones efectivas
     $id = new \MongoDB\BSON\ObjectId();
     $filter = ['NIU' => $niu];
     $query = new MongoDB\Driver\Query($filter);
     $result = $con->executeQuery($GLOBALS['dbname'] . ".susp_efectivas", $query);
     //var_dump($result);
-    
+
     $cliente = $result->toArray();
     //var_dump($cliente);
 
     $reg_reciente = array();
-    
+
     if (count($cliente) > 0) {
         $efectiva = $cliente[0]->NIU;
-        
 
         $mostRecent = 0;
         $now = Time();
         //var_dump($now);
 
-            foreach($cliente as $r ){
-                $curDate = strtotime($r->HORA_FIN);                
-                
-                if($curDate > $mostRecent){
-                    $mostRecent = $curDate;
-                    $reg_reciente = $r;
-                }
+        foreach ($cliente as $r) {
+            $curDate = strtotime($r->HORA_FIN);
 
+            if ($curDate > $mostRecent) {
+                $mostRecent = $curDate;
+                $reg_reciente = $r;
             }
 
-            
         }
-        //var_dump($reg_reciente);
 
-        return $reg_reciente;
+    }
+    //var_dump($reg_reciente);
 
-    
-    
+    return $reg_reciente;
+
 }
-
-
-    
-
-
-
-
 
 function getNIUwithTel($con, $telefono)
 {
@@ -370,13 +358,11 @@ function getAdressQuery($palabras)
     return $filter;
 }
 
-
-
 function insertSuspensionesEfectivas($con, $data)
 {
     $bulk = new MongoDB\Driver\BulkWrite;
-    $a = $bulk->insert(['ID_ORDEN' => $data['0'], 'NIU' => $data['1'], 'FECHA_ATENCION' => $data['2'], 
-    'HORA_INI' => $data['3'], 'HORA_FIN' => $data['4'], 'DESCRIPCION' => $data['5'], 'VALOR' => $data['6']]);
+    $a = $bulk->insert(['ID_ORDEN' => $data['0'], 'NIU' => $data['1'], 'FECHA_ATENCION' => $data['2'],
+        'HORA_INI' => $data['3'], 'HORA_FIN' => $data['4'], 'DESCRIPCION' => $data['5'], 'VALOR' => $data['6']]);
     $result = $con->executeBulkWrite($GLOBALS['dbname'] . '.susp_efectivas', $bulk);
     return $result;
 }
