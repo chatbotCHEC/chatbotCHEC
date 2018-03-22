@@ -524,8 +524,8 @@ class chatBotAPI
 
         //Verificar si se obtuvo más de una dirección
         if (isset($busqueda['VARIOS'])) {
-            $json['speech'] = "Encontramos las siguientes cuentas asociadas a la dirección buscada: \n ";
-            $json['displayText'] = "Encontramos las siguientes cuentas asociadas a la dirección buscada: \n ";
+            $json['speech'] = "Encontramos las siguientes cuentas asociadas a la cédula buscada: \n ";
+            $json['displayText'] = "Encontramos las siguientes cuentas asociadas a la cédula buscada: \n ";
             foreach ($busqueda['VARIOS'] as $key => $value) {
                 $json['speech'] .= "- Dirección: " . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
                 $json['displayText'] .= "- Dirección:" . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
