@@ -42,54 +42,42 @@ switch ($contexts[0]) {
         $response = $api->getIndisCC($number);
         break;
     case 'c1_direccion_municipio':
-        //TODO: FALTA FILTRAR DIRECCION POR MUNICIPIO
         $direccion = $reqBody['result']['resolvedQuery'];
-        $response = $api->getIndisAddress($direccion);
+        $municipio = $reqBody['result']['parameters']['municipio'];
+        $response = $api->getIndisAddress($direccion, $municipio);
         break;
     case 'c1_nit':
-        $response = $api->getNiuFromNIT($number, $contexts[1]);
+        $response = $api->getIndisNIT($number);
         break;
     case 'c1_niu':
         //medida de control ante error en contextOut CORREGIR
-        if ($contexts[1] == 'c1_cc') {
-            $response = $api->getIndisCC($number);
-        } elseif ($contexts[1] == 'c1_nit') {
-            $response = $api->getIndisNIT($number);
-        } elseif ($contexts[1] == 'c1_direccion_municipio') {
-            $direccion = $reqBody['result']['resolvedQuery'];
-            $response = $api->getIndisAddress($direccion);
-        } else {
-            $response = $api->getIndisNiu($number);
-        }
+        $response = $api->getIndisNiu($number);
         break;
-    case 'c1_nombre':
-        $response = $api->getIndisNombre($nombre);
+    case 'c1_nombre_municipio':
+        $nombre = $reqBody['result']['resolvedQuery'];
+        $municipio = $reqBody['result']['parameters']['municipio'];
+        $response = $api->getIndisNombre($nombre, $municipio);
         break;
     case 'c2_cc':
-        $response = $api->getNiuFromCedula($number, $contexts[1]);
+        $response = $api->getSPCC($number);
         break;
-    case 'c2_direccion':
-        if ($contexts[1] == 'c2_cc') {
-            $response = $api->getIndisCC($number);
-        } elseif ($contexts[1] == 'c2_nit') {
-            $response = $api->getIndisNIT($number);
-        } elseif ($contexts[1] == 'c2_direccion_municipio') {
-            $direccion = $reqBody['result']['resolvedQuery'];
-            $response = $api->getIndisAddress($direccion);
-        } else {
-            $response = $api->getSPNiu($number);
-        }
+    case 'c2_direccion_municipio':
+        $direccion = $reqBody['result']['resolvedQuery'];
+        $municipio = $reqBody['result']['parameters']['municipio'];
+        $response = $api->getSPAddress($direccion, $municipio);
         break;
     case 'c2_nit':
-        $response = $api->getNiuFromNIT($number, $contexts[1]);
+        $response = $api->getSPNIT($number);
         break;
     case 'c2_niu':
         $response = $api->getSPNiu($number);
         break;
         
-    case 'c2_nombre':
+    case 'c2_nombre_municipio':
+        $nombre = $reqBody['result']['resolvedQuery'];
+        $municipio = $reqBody['result']['parameters']['municipio'];
+        $response = $api->getSPNombre($nombre, $municipio);
         break;
-        $response = $api->getIndisNombre($nombre);
 }
 
 //Asignación de parámetros
