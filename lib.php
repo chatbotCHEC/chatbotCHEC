@@ -55,7 +55,7 @@ class chatBotAPI
                     'platform' => 'telegram',
                     'payload' => array(
                         'telegram' => array(
-                            'text' => "\n ¿Deseas consultar algo más?",
+                            'text' => "No se ha encontrado ninguna cuenta con el dato ingresado. \n ¿Deseas consultar algo más?",
                             'reply_markup' => array(
                                 'keyboard' => array(
                                     array(
@@ -108,7 +108,7 @@ class chatBotAPI
                     'platform' => 'telegram',
                     'payload' => array(
                         'telegram' => array(
-                            'text' => "\n ¿Deseas consultar algo más?",
+                            'text' => "No se ha encontrado ninguna cuenta con el dato ingresado. \n ¿Deseas consultar algo más?",
                             'reply_markup' => array(
                                 'keyboard' => array(
                                     array(
@@ -281,7 +281,7 @@ class chatBotAPI
         }
         return $array;
     }
-
+    // ------------------------------- MAIN C1 -------------------------------
     //método que obtiene las indisponibilidades con el NIU. Se diferencia de getIndisNiu, en cuanto a que esta
     //puede ser reutilizada en otros parametros
     public function getIndisponibilidad($niu)
@@ -485,7 +485,7 @@ class chatBotAPI
                     'platform' => 'telegram',
                     'payload' => array(
                         'telegram' => array(
-                            'text' => "\n ¿Deseas consultar algo más?",
+                            'text' => "No he podido encontrar ningún registro asociado con esta dirección. \n ¿Deseas consultar algo más?",
                             'reply_markup' => array(
                                 'keyboard' => array(
                                     array(
@@ -510,6 +510,10 @@ class chatBotAPI
         }
     }
 
+
+
+
+    // Funcion para buscar Indisponibilidad con la cedula
     public function getIndisCC($cedula)
     {
         $busqueda = $this->getNiuFromCedula($cedula);
@@ -543,7 +547,7 @@ class chatBotAPI
                     'platform' => 'telegram',
                     'payload' => array(
                         'telegram' => array(
-                            'text' => "\n ¿Deseas consultar algo más?",
+                            'text' => "No he podido encontrar ningún registro asociado con esta cédula.\n ¿Deseas consultar algo más?",
                             'reply_markup' => array(
                                 'keyboard' => array(
                                     array(
@@ -568,6 +572,8 @@ class chatBotAPI
         }
     }
 
+
+    // Funcion para buscar Indisponibilidad con el NIT
     public function getIndisNIT($cedula)
     {
         $busqueda = $this->getNiuFromNIT($cedula);
