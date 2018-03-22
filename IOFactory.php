@@ -6,7 +6,7 @@ if (!defined('PHPEXCEL_ROOT')) {
      * @ignore
      */
     define('PHPEXCEL_ROOT', dirname(__FILE__) . '/../');
-    require(PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php');
+    require PHPEXCEL_ROOT . 'PHPExcel/Autoloader.php';
 }
 
 /**
@@ -44,8 +44,8 @@ class PHPExcel_IOFactory
      * @static
      */
     private static $searchLocations = array(
-        array( 'type' => 'IWriter', 'path' => 'PHPExcel/Writer/{0}.php', 'class' => 'PHPExcel_Writer_{0}' ),
-        array( 'type' => 'IReader', 'path' => 'PHPExcel/Reader/{0}.php', 'class' => 'PHPExcel_Reader_{0}' )
+        array('type' => 'IWriter', 'path' => 'PHPExcel/Writer/{0}.php', 'class' => 'PHPExcel_Writer_{0}'),
+        array('type' => 'IReader', 'path' => 'PHPExcel/Reader/{0}.php', 'class' => 'PHPExcel_Reader_{0}'),
     );
 
     /**
@@ -113,7 +113,7 @@ class PHPExcel_IOFactory
      */
     public static function addSearchLocation($type = '', $location = '', $classname = '')
     {
-        self::$searchLocations[] = array( 'type' => $type, 'path' => $location, 'class' => $classname );
+        self::$searchLocations[] = array('type' => $type, 'path' => $location, 'class' => $classname);
     }
 
     /**
@@ -227,24 +227,24 @@ class PHPExcel_IOFactory
         $extensionType = null;
         if (isset($pathinfo['extension'])) {
             switch (strtolower($pathinfo['extension'])) {
-                case 'xlsx':            //    Excel (OfficeOpenXML) Spreadsheet
-                case 'xlsm':            //    Excel (OfficeOpenXML) Macro Spreadsheet (macros will be discarded)
-                case 'xltx':            //    Excel (OfficeOpenXML) Template
-                case 'xltm':            //    Excel (OfficeOpenXML) Macro Template (macros will be discarded)
+                case 'xlsx': //    Excel (OfficeOpenXML) Spreadsheet
+                case 'xlsm': //    Excel (OfficeOpenXML) Macro Spreadsheet (macros will be discarded)
+                case 'xltx': //    Excel (OfficeOpenXML) Template
+                case 'xltm': //    Excel (OfficeOpenXML) Macro Template (macros will be discarded)
                     $extensionType = 'Excel2007';
                     break;
-                case 'xls':                //    Excel (BIFF) Spreadsheet
-                case 'xlt':                //    Excel (BIFF) Template
+                case 'xls': //    Excel (BIFF) Spreadsheet
+                case 'xlt': //    Excel (BIFF) Template
                     $extensionType = 'Excel5';
                     break;
-                case 'ods':                //    Open/Libre Offic Calc
-                case 'ots':                //    Open/Libre Offic Calc Template
+                case 'ods': //    Open/Libre Offic Calc
+                case 'ots': //    Open/Libre Offic Calc Template
                     $extensionType = 'OOCalc';
                     break;
                 case 'slk':
                     $extensionType = 'SYLK';
                     break;
-                case 'xml':                //    Excel 2003 SpreadSheetML
+                case 'xml': //    Excel 2003 SpreadSheetML
                     $extensionType = 'Excel2003XML';
                     break;
                 case 'gnumeric':

@@ -5,7 +5,7 @@ $soapClientOptions = array(
     'soap_version' => SOAP_1_1,
     'exceptions' => true,
     'trace' => 1,
-    'cache_wsdl' => WSDL_CACHE_NONE
+    'cache_wsdl' => WSDL_CACHE_NONE,
 );
 $client = new SoapClient($url);
 

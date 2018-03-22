@@ -1,5 +1,5 @@
 <?php
 
-include('./download_attachments.php');
+include './download_attachments.php';
 
 get_mail_body();
