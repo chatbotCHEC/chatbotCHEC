@@ -63,12 +63,17 @@ function getSuspProgramada($con, $niu)
     $now = time();
     foreach ($cliente as $key => $value) {
 
-        // var_dump($now);
-
+        
         $date = $value->FECHA_FIN . ' ' . $value->HORA_FIN;
-        //var_dump($date);
+        
+        //Validar formato de fecha
+        $parsedDate = substr($date, 2, 1);
+        if($parsedDate == "/"){
+            $format = "d/m/Y H:i";
+        }else{
+            $format = "Y-m-d H:i";
+        }
 
-        $format = "d/m/Y H:i";
         $dateobj = DateTime::createFromFormat($format, $date);
         $iso_datetime = $dateobj->format(Datetime::ATOM);
         $fecha_def = strtotime($iso_datetime);

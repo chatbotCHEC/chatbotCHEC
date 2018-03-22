@@ -1,5 +1,8 @@
 <?php
 
+error_reporting(-1);
+ini_set('display_errors', 'On');
+
 //TODO: consultas.php 1
 
 require './lib.php';
@@ -32,7 +35,6 @@ if (isset($reqBody['result']['parameters']['given-name'])) {
     $Nombre = $reqBody['result']['parameters']['given-name'] . " " . $reqBody['result']['parameters']['last-name'];
 }
 
-var_dump($contexts);
 
 //Switch que determina cuál es el contexto principal de la petición y ejecuta una función del objeto api correspondientemente.
 switch ($contexts[0]) {
