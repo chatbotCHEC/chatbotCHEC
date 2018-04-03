@@ -87,4 +87,4 @@ switch ($contexts[0]['name']) {
 
 
 header("Content-Type: application/json");
-echo json_encode($reqBody);
+echo json_encode($response);
