@@ -22,7 +22,7 @@ $reqBody = $api->detectRequestBody();
 
 //Obtener los contextos de la petición
 foreach ($reqBody['result']['contexts'] as $valor) {
-    array_push($contexts, $valor['name']);
+    array_push($contexts, $valor);
 }
 
 //Verifica si de la petición se recibe la entidad number
@@ -46,7 +46,7 @@ if(isset($reqBody['result']['parameters']['municipio'])){
 
 
 //Switch que determina cuál es el contexto principal de la petición y ejecuta una función del objeto api correspondientemente.
-switch ($contexts[0]) {
+switch ($contexts[0]['name']) {
     case 'c1_cc':
         $response = $api->getIndisCC($number);
         break;
