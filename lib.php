@@ -181,7 +181,7 @@ class chatBotAPI
         return $resultado;
     }
 
-    public function getNiuFromNIT($nit, $context)
+    public function getNiuFromNIT($nit)
     {
         $personas = getNIUwithNIT($this->con, $nit);
         $resultado = array();
