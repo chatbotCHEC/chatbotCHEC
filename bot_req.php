@@ -46,44 +46,49 @@ if(isset($reqBody['result']['parameters']['municipio'])){
 
 
 //Switch que determina cuál es el contexto principal de la petición y ejecuta una función del objeto api correspondientemente.
-switch ($contexts[0]['name']) {
-    case 'c1_cc':
-        $response = $api->getIndisCC($number);
-        break;
-    case 'c1_direccion_municipio':
-        $direccion = $reqBody['result']['resolvedQuery'];
-        $response = $api->getIndisAddress($direccion, $municipio);
-        break;
-    case 'c1_nit':
-        $response = $api->getIndisNIT($number);
-        break;
-    case 'c1_niu':
-        //medida de control ante error en contextOut CORREGIR
-        $response = $api->getIndisNiu($number);
-        break;
-    case 'c1_nombre_municipio':
-        $nombre = $reqBody['result']['resolvedQuery'];
-        $response = $api->getIndisNombre($nombre, $municipio);
-        break;
-    case 'c2_cc':
-        $response = $api->getSPCC($number);
-        break;
-    case 'c2_direccion_municipio':
-        $direccion = $reqBody['result']['resolvedQuery'];
-        $response = $api->getSPAddress($direccion, $municipio);
-        break;
-    case 'c2_nit':
-        $response = $api->getSPNIT($number);
-        break;
-    case 'c2_niu':
-        $response = $api->getSPNiu($number);
-        break;
-        
-    case 'c2_nombre_municipio':
-        $nombre = $reqBody['result']['resolvedQuery'];
-        $response = $api->getSPNombre($nombre, $municipio);
-        break;
+foreach ($contexts as $i => $con) {
+
+    switch ($con['name']) {
+        case 'c1_cc':
+            $response = $api->getIndisCC($number);
+            break;
+        case 'c1_direccion_municipio':
+            $direccion = $reqBody['result']['resolvedQuery'];
+            $response = $api->getIndisAddress($direccion, $municipio);
+            break;
+        case 'c1_nit':
+            $response = $api->getIndisNIT($number);
+            break;
+        case 'c1_niu':
+            //medida de control ante error en contextOut CORREGIR
+            $response = $api->getIndisNiu($number);
+            break;
+        case 'c1_nombre_municipio':
+            $nombre = $reqBody['result']['resolvedQuery'];
+            $response = $api->getIndisNombre($nombre, $municipio);
+            break;
+        case 'c2_cc':
+            $response = $api->getSPCC($number);
+            break;
+        case 'c2_direccion_municipio':
+            $direccion = $reqBody['result']['resolvedQuery'];
+            $response = $api->getSPAddress($direccion, $municipio);
+            break;
+        case 'c2_nit':
+            $response = $api->getSPNIT($number);
+            break;
+        case 'c2_niu':
+            $response = $api->getSPNiu($number);
+            break;
+        case 'c2_nombre_municipio':
+            $nombre = $reqBody['result']['resolvedQuery'];
+            $response = $api->getSPNombre($nombre, $municipio);
+            break;
+        default:
+            break;
+    }
 }
+
 
 
 header("Content-Type: application/json");
