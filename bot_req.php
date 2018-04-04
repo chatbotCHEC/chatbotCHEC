@@ -35,18 +35,20 @@ if (isset($reqBody['result']['parameters']['given-name'])) {
     $Nombre = $reqBody['result']['parameters']['given-name'] . " " . $reqBody['result']['parameters']['last-name'];
 }
 
-//Verifica si de la petición se recibe el municipio
-if(isset($reqBody['result']['parameters']['municipio'])){
-    $municipio = $reqBody['result']['parameters']['municipio'];
-}elseif (isset($contexts[0]['parameters']['municipio'])) {
-    $municipio = $contexts[0]['parameters']['municipio'];
-}else{
-    $municipio = '';
-}
+
 
 
 //Switch que determina cuál es el contexto principal de la petición y ejecuta una función del objeto api correspondientemente.
 foreach ($contexts as $i => $con) {
+
+    //Verifica si de la petición se recibe el municipio
+    if(isset($reqBody['result']['parameters']['municipio'])){
+        $municipio = $reqBody['result']['parameters']['municipio'];
+    }elseif (isset($con['parameters']['municipio'])) {
+        $municipio = $con['parameters']['municipio'];
+    }else{
+        $municipio = '';
+    }
 
     switch ($con['name']) {
         case 'c1_cc':
