@@ -20,6 +20,12 @@ $contexts = array();
 //Obtener el cuerpo de la petición que viene de API.ai
 $reqBody = $api->detectRequestBody();
 
+
+$fp = fopen('request.json', 'w');
+fwrite($fp, json_encode($reqBody));
+fclose($fp);
+
+
 //Obtener los contextos de la petición
 foreach ($reqBody['result']['contexts'] as $valor) {
     array_push($contexts, $valor);
