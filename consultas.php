@@ -16,7 +16,10 @@ function getData($NIU, $con)
 function getNIUwithCedula($con, $cedula)
 {
     $filter = ['DOCUMENTO' => $cedula, 'TIPO_DOC' => "CC"];
-    $query = new MongoDB\Driver\Query($filter);
+    $options = [
+        'limit' => 10,
+    ];
+    $query = new MongoDB\Driver\Query($filter, $options);
     $result = $con->executeQuery($GLOBALS['dbname'] . ".usuarios", $query);
     $cliente = $result->toArray();
     return $cliente;
@@ -25,7 +28,10 @@ function getNIUwithCedula($con, $cedula)
 function getNIUwithNIT($con, $nit)
 {
     $filter = ['DOCUMENTO' => $nit, 'TIPO_DOC' => "NI"];
-    $query = new MongoDB\Driver\Query($filter);
+    $options = [
+        'limit' => 10,
+    ];
+    $query = new MongoDB\Driver\Query($filter, $options);
     $result = $con->executeQuery($GLOBALS['dbname'] . ".usuarios", $query);
     $cliente = $result->toArray();
     return $cliente;
@@ -35,7 +41,7 @@ function getNIUwithName($con, $palabras, $municipio)
 {
     $filter = getNamesQuery($palabras, $municipio);
     $options = [
-        'limit' => 5,
+        'limit' => 15,
     ];
     $query = new MongoDB\Driver\Query($filter, $options);
     $result = $con->executeQuery($GLOBALS['dbname'] . ".usuarios", $query);
@@ -47,7 +53,7 @@ function getNIUwithAddress($con, $direccion, $municipio)
 {
     $filter = getAdressQuery($direccion, $municipio);
     $options = [
-        'limit' => 5,
+        'limit' => 15,
     ];
     $query = new MongoDB\Driver\Query($filter, $options);
     $result = $con->executeQuery($GLOBALS['dbname'] . ".usuarios", $query);

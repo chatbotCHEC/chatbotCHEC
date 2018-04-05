@@ -214,7 +214,8 @@ class chatBotAPI
         } elseif (count($personas) > 1) {
             $foundResults = array();
             foreach ($personas as $key => $value) {
-                array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' => $value->DIRECCION));
+                $direcShow = "******".substr( $value->DIRECCION, -7);
+                array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' =>$direcShow));
             }
             $resultado['VARIOS'] = $foundResults;
 
@@ -248,14 +249,14 @@ class chatBotAPI
     public function processAddress($direccion)
     {
         $direcNoSymbols = $direccion;
-        $direcNoHyphens = $direccion;
         if (strpos($direccion, '#')) {
             $direcNoSymbols = substr_replace($direccion, ' ', strpos($direccion, '#'), 1);
         }
         if (strpos($direccion, '-')) {
-            $direcNoHyphens = substr_replace($direcNoSymbols, ' ', strpos($direcNoSymbols, '-'), 1);
+            $direcNoSymbols = substr_replace($direcNoSymbols, ' ', strpos($direcNoSymbols, '-'), 1);
         }
-        $output = preg_replace('!\s+!', ' ', $direcNoHyphens);
+        $res = preg_replace("/[^a-zA-Z0-9\s]/", "", $direcNoSymbols);
+        $output = preg_replace('!\s+!', ' ', $res);
         $array = explode(" ", strtoupper($output));
         foreach ($array as $i => $value) {
             if ($value == "CARRERA" || $value == "CRA" || $value == "CAR" || $value == "CR") {
