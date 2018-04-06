@@ -236,7 +236,8 @@ class chatBotAPI
         } elseif (count($personas) > 1) {
             $foundResults = array();
             foreach ($personas as $key => $value) {
-                array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' => $value->DIRECCION));
+                $direcShow = "******".substr( $value->DIRECCION, -7);
+                array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' => $direcShow));
             }
             $resultado['VARIOS'] = $foundResults;
 
@@ -267,16 +268,15 @@ class chatBotAPI
             }
             if ($value == "AVENIDA" || $value == "AV" || $value == "AVE" || $value == "AVDA") {
                 $array[$i] = "AVE";
-                array_push($array, "AV");
-                array_push($array, "AVDA");
+                //array_push($array, "AV");
+                //array_push($array, "AVDA");
             }
             if ($value == "APARTAMENTO" || $value == "APTO" || $value == "AP") {
                 $array[$i] = "APT";
-                array_push($array, "APTO");
             }
             if ($value == "BLOQUE" || $value == "BLQ" || $value == "BL" || $value == "BLOKE") {
                 $array[$i] = "BLQ";
-                array_push($array, "BLO");
+                //array_push($array, "BLO");
             }
             if ($value == "LOCAL" || $value == "LOC") {
                 $array[$i] = "LOC";
@@ -286,8 +286,8 @@ class chatBotAPI
             }
             if ($value == "SECTOR" || $value == "SEC" || $value == "SECT") {
                 $array[$i] = "SECTOR";
-                array_push($array, "SEC");
-                array_push($array, "SECT");
+                //array_push($array, "SEC");
+                //array_push($array, "SECT");
             }
         }
         return $array;
@@ -335,7 +335,7 @@ class chatBotAPI
     //Método que busca el NIU de un usuario asociado con su direccion. Puede encontrar 1 solo registro y buscar, 2 o mas y mostrar una
     //lista de posibles nius encontrados, o indicar que no se encontro registro alguno.
     public function getIndisAddress($direccion, $municipio)
-    {
+    { 
         $busqueda = $this->getNiuFromAddress($direccion, $municipio);
         //Verificar si se obtuvo una sola cuenta
         if (isset($busqueda['NIU'])) {
@@ -344,14 +344,14 @@ class chatBotAPI
 
         //Verificar si se obtuvo más de una dirección
         if (isset($busqueda['VARIOS'])) {
-            $json['speech'] = "Encontramos las siguientes cuentas asociadas a la dirección buscada: \n ";
-            $json['displayText'] = "Encontramos las siguientes cuentas asociadas a la dirección buscada: \n ";
+            $json['speech'] = "Encontramos las siguientes cuentas asociadas a la dirección buscada (Por cuestiones de seguridad no mostramos los datos en su totalidad): \n ";
+            $json['displayText'] = "Encontramos las siguientes cuentas asociadas a la dirección buscada (Por cuestiones de seguridad no mostramos los datos en su totalidad): \n ";
             foreach ($busqueda['VARIOS'] as $key => $value) {
                 $json['speech'] .= "- Dirección: " . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
                 $json['displayText'] .= "- Dirección:" . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
             }
-            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
-            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
+            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar. (Sin espacios, letras ni puntos)";
+            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar. (Sin espacios, letras ni puntos)";
             $json['contextOut'] = array(
                 array("name" => "c1_niu", "parameters" => array("res" => "1"), "lifespan" => 4));
             return $json;
@@ -404,14 +404,14 @@ class chatBotAPI
 
         //Verificar si se obtuvo más de una dirección
         if (isset($busqueda['VARIOS'])) {
-            $json['speech'] = "Encontramos las siguientes cuentas asociadas a la cédula buscada: \n ";
-            $json['displayText'] = "Encontramos las siguientes cuentas asociadas a la cédula buscada: \n ";
+            $json['speech'] = "Encontramos las siguientes cuentas asociadas a la cédula buscada (Por cuestiones de seguridad no mostramos los datos en su totalidad): \n ";
+            $json['displayText'] = "Encontramos las siguientes cuentas asociadas a la cédula buscada (Por cuestiones de seguridad no mostramos los datos en su totalidad): \n ";
             foreach ($busqueda['VARIOS'] as $key => $value) {
                 $json['speech'] .= "- Dirección: " . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
                 $json['displayText'] .= "- Dirección:" . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
             }
-            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
-            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
+            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar. (Sin espacios, letras ni puntos)";
+            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar. (Sin espacios, letras ni puntos)";
             $json['contextOut'] = array(
                 array("name" => "c1_niu", "parameters" => array("res" => "1"), "lifespan" => 1));
             return $json;
@@ -464,14 +464,14 @@ class chatBotAPI
 
         //Verificar si se obtuvo más de una dirección
         if (isset($busqueda['VARIOS'])) {
-            $json['speech'] = "Encontramos las siguientes cuentas asociadas al NIT buscado: \n ";
-            $json['displayText'] = "Encontramos las siguientes cuentas asociadas al NIT buscado: \n ";
+            $json['speech'] = "Encontramos las siguientes cuentas asociadas al NIT buscado (Por cuestiones de seguridad no mostramos los datos en su totalidad): \n ";
+            $json['displayText'] = "Encontramos las siguientes cuentas asociadas al NIT buscado (Por cuestiones de seguridad no mostramos los datos en su totalidad): \n ";
             foreach ($busqueda['VARIOS'] as $key => $value) {
                 $json['speech'] .= "- Dirección: " . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
                 $json['displayText'] .= "- Dirección:" . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
             }
-            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
-            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
+            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar (Sin espacios, letras ni puntos).";
+            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar (Sin espacios, letras ni puntos).";
             $json['contextOut'] = array(
                 array("name" => "c1_niu", "parameters" => array("res" => "1"), "lifespan" => 4));
             return $json;
@@ -525,14 +525,14 @@ class chatBotAPI
 
         //Verificar si se obtuvo más de una dirección
         if (isset($busqueda['VARIOS'])) {
-            $json['speech'] = "Encontramos las siguientes cuentas asociadas al nombre buscado: \n ";
-            $json['displayText'] = "Encontramos las siguientes cuentas asociadas al nombre buscado: \n ";
+            $json['speech'] = "Encontramos las siguientes cuentas asociadas al nombre buscado (Por cuestiones de seguridad no mostramos los datos en su totalidad): \n ";
+            $json['displayText'] = "Encontramos las siguientes cuentas asociadas al nombre buscado (Por cuestiones de seguridad no mostramos los datos en su totalidad): \n ";
             foreach ($busqueda['VARIOS'] as $key => $value) {
                 $json['speech'] .= "- Dirección: " . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
                 $json['displayText'] .= "- Dirección:" . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
             }
-            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
-            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
+            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar (Sin espacios, letras ni puntos).";
+            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar (Sin espacios, letras ni puntos).";
             return $json;
         }
 
@@ -619,14 +619,14 @@ class chatBotAPI
 
         //Verificar si se obtuvo más de una dirección
         if (isset($busqueda['VARIOS'])) {
-            $json['speech'] = "Encontramos las siguientes cuentas asociadas a la cédula buscada: \n ";
-            $json['displayText'] = "Encontramos las siguientes cuentas asociadas a la cédula buscada: \n ";
+            $json['speech'] = "Encontramos las siguientes cuentas asociadas a la cédula buscada (Por cuestiones de seguridad no mostramos los datos en su totalidad): \n ";
+            $json['displayText'] = "Encontramos las siguientes cuentas asociadas a la cédula buscada (Por cuestiones de seguridad no mostramos los datos en su totalidad): \n ";
             foreach ($busqueda['VARIOS'] as $key => $value) {
                 $json['speech'] .= "- Dirección: " . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
                 $json['displayText'] .= "- Dirección:" . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
             }
-            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
-            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
+            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar (Sin espacios, letras ni puntos).";
+            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar (Sin espacios, letras ni puntos).";
             $json['contextOut'] = array(
                 array("name" => "c2_niu", "parameters" => array("res" => "1"), "lifespan" => 1));
             return $json;
@@ -679,14 +679,14 @@ class chatBotAPI
 
         //Verificar si se obtuvo más de una dirección
         if (isset($busqueda['VARIOS'])) {
-            $json['speech'] = "Encontramos las siguientes cuentas asociadas al NIT buscado: \n ";
-            $json['displayText'] = "Encontramos las siguientes cuentas asociadas al NIT buscado: \n ";
+            $json['speech'] = "Encontramos las siguientes cuentas asociadas al NIT buscado (Por cuestiones de seguridad no mostramos los datos en su totalidad): \n ";
+            $json['displayText'] = "Encontramos las siguientes cuentas asociadas al NIT buscado (Por cuestiones de seguridad no mostramos los datos en su totalidad): \n ";
             foreach ($busqueda['VARIOS'] as $key => $value) {
                 $json['speech'] .= "- Dirección: " . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
                 $json['displayText'] .= "- Dirección:" . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
             }
-            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
-            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
+            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar (Sin espacios, letras ni puntos).";
+            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar (Sin espacios, letras ni puntos).";
             $json['contextOut'] = array(
                 array("name" => "c2_niu", "parameters" => array("res" => "1"), "lifespan" => 1));
             return $json;
@@ -740,14 +740,14 @@ class chatBotAPI
 
         //Verificar si se obtuvo más de una dirección
         if (isset($busqueda['VARIOS'])) {
-            $json['speech'] = "Encontramos las siguientes cuentas asociadas a la dirección buscada: \n ";
-            $json['displayText'] = "Encontramos las siguientes cuentas asociadas a la dirección buscada: \n ";
+            $json['speech'] = "Encontramos las siguientes cuentas asociadas a la dirección buscada (Por cuestiones de seguridad no mostramos los datos en su totalidad): \n ";
+            $json['displayText'] = "Encontramos las siguientes cuentas asociadas a la dirección buscada (Por cuestiones de seguridad no mostramos los datos en su totalidad): \n ";
             foreach ($busqueda['VARIOS'] as $key => $value) {
                 $json['speech'] .= "- Dirección: " . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
                 $json['displayText'] .= "- Dirección:" . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
             }
-            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
-            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
+            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar (Sin espacios, letras ni puntos).";
+            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar (Sin espacios, letras ni puntos).";
             $json['contextOut'] = array(
                 array("name" => "c1_niu", "parameters" => array("res" => "1"), "lifespan" => 4));
             return $json;
@@ -801,14 +801,14 @@ class chatBotAPI
 
         //Verificar si se obtuvo más de una dirección
         if (isset($busqueda['VARIOS'])) {
-            $json['speech'] = "Encontramos las siguientes cuentas asociadas al nombre buscado: \n ";
-            $json['displayText'] = "Encontramos las siguientes cuentas asociadas al nombre buscado: \n ";
+            $json['speech'] = "Encontramos las siguientes cuentas asociadas al nombre buscado (Por cuestiones de seguridad no mostramos los datos en su totalidad): \n ";
+            $json['displayText'] = "Encontramos las siguientes cuentas asociadas al nombre buscado (Por cuestiones de seguridad no mostramos los datos en su totalidad): \n ";
             foreach ($busqueda['VARIOS'] as $key => $value) {
                 $json['speech'] .= "- Dirección: " . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
                 $json['displayText'] .= "- Dirección:" . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
             }
-            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
-            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
+            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar (Sin espacios, letras ni puntos).";
+            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar (Sin espacios, letras ni puntos).";
             return $json;
         }
 
