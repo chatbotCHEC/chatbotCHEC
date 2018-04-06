@@ -82,19 +82,19 @@ function getSuspProgramada($con, $niu)
         }else{
             $format = "Y-m-d H:i";
         }
-
+        
         $dateobj = DateTime::createFromFormat($format, $date);
         $iso_datetime = $dateobj->format(Datetime::ATOM);
         $fecha_def = strtotime($iso_datetime);
         // var_dump($fecha_def);
         if ($fecha_def > $now) {
-
+            
             array_push($futuras, $value);
         }
         //var_dump($fecha_def>$now);
     }
     // var_dump($futuras);
-
+    
     return $futuras;
 
 }

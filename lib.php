@@ -888,7 +888,7 @@ class chatBotAPI
         $prog = getSuspProgramada($this->con, $niu);
         //var_dump($prog);
         $msg = "";
-        if (!is_array($prog)) {
+        if (!is_array($prog) || count($prog)>0) {
             $msg .= "\n🔷 Para esta cuenta, hemos encontrado las siguientes suspensiones programadas: ";
             foreach ($prog as $p) {
                 $msg .= "\n🔷 Hay una suspensión programada que inicia el " . $p->FECHA_INICIO . " a las " . $p->HORA_INICIO . ", y finaliza el " . $p->FECHA_FIN . " a las " . $p->HORA_FIN;
