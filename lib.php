@@ -171,7 +171,8 @@ class chatBotAPI
         } elseif (count($personas) > 1) {
             $foundResults = array();
             foreach ($personas as $key => $value) {
-                array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' => $value->DIRECCION));
+                $direcShow = "******".substr( $value->DIRECCION, -7);
+                array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' => $direcShow));
             }
             $resultado['VARIOS'] = $foundResults;
 
@@ -191,7 +192,8 @@ class chatBotAPI
         } elseif (count($personas) > 1) {
             $foundResults = array();
             foreach ($personas as $key => $value) {
-                array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' => $value->DIRECCION));
+                $direcShow = "******".substr( $value->DIRECCION, -7);
+                array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' => $direcShow));
             }
             $resultado['VARIOS'] = $foundResults;
 
