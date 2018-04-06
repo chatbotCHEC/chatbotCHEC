@@ -866,7 +866,7 @@ class chatBotAPI
 
         $msg = "";
 
-        if (count($susp) > 0) {
+        if (!is_array($susp)) {
             if ($susp->VALOR == "s") {
                 $msg .= "\n🔷 Para esta cuenta, se reporta una suspensión efectiva por falta de pago realizada en la siguiente fecha: " . $susp->HORA_FIN;
                 return $msg;
@@ -888,7 +888,7 @@ class chatBotAPI
         $prog = getSuspProgramada($this->con, $niu);
         //var_dump($prog);
         $msg = "";
-        if (count($prog) > 0) {
+        if (!is_array($prog)) {
             $msg .= "\n🔷 Para esta cuenta, hemos encontrado las siguientes suspensiones programadas: ";
             foreach ($prog as $p) {
                 $msg .= "\n🔷 Hay una suspensión programada que inicia el " . $p->FECHA_INICIO . " a las " . $p->HORA_INICIO . ", y finaliza el " . $p->FECHA_FIN . " a las " . $p->HORA_FIN;
@@ -912,7 +912,7 @@ class chatBotAPI
     {
         $circuito = getSuspCircuito($this->con, $niu);
         $msg = "";
-        if (!is_array($circuito) > 0 && ($circuito->ESTADO == "ABIERTO" || $circuito->ESTADO == "APERTURA")) {
+        if (!is_array($circuito) && ($circuito->ESTADO == "ABIERTO" || $circuito->ESTADO == "APERTURA")) {
 
             $msg .= "\n🔷 Para esta cuenta, hemos encontrado las siguientes indisponibilidades a nivel de circuito: \n🔷 Hay una falla en el circuito reportada el " . $circuito->FECHA . " a las " . $circuito->HORA . ". Estamos trabajando para reestablecer el servicio";
             return $msg;
