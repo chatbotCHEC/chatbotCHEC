@@ -912,7 +912,7 @@ class chatBotAPI
     {
         $circuito = getSuspCircuito($this->con, $niu);
         $msg = "";
-        if (count($circuito) > 0 && ($circuito->ESTADO == "ABIERTO" || $circuito->ESTADO == "APERTURA")) {
+        if (!is_array($circuito) > 0 && ($circuito->ESTADO == "ABIERTO" || $circuito->ESTADO == "APERTURA")) {
 
             $msg .= "\n🔷 Para esta cuenta, hemos encontrado las siguientes indisponibilidades a nivel de circuito: \n🔷 Hay una falla en el circuito reportada el " . $circuito->FECHA . " a las " . $circuito->HORA . ". Estamos trabajando para reestablecer el servicio";
             return $msg;
