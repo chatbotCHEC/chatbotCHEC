@@ -57,7 +57,7 @@ class chatBotAPI
                         'telegram' => array(
                             'text' => "No se ha encontrado ninguna cuenta con el dato ingresado. \n ¿Deseas consultar algo más?",
                             'reply_markup' => array(
-                                'keyboard' => array(
+                                'inline_keyboard' => array(
                                     array(
                                         array(
                                             'text' => 'Sí ✔️',
@@ -110,7 +110,7 @@ class chatBotAPI
                         'telegram' => array(
                             'text' => "No se ha encontrado ninguna cuenta con el dato ingresado. \n ¿Deseas consultar algo más?",
                             'reply_markup' => array(
-                                'keyboard' => array(
+                                'inline_keyboard' => array(
                                     array(
                                         array(
                                             'text' => 'Sí ✔️',
@@ -311,7 +311,7 @@ class chatBotAPI
                     'telegram' => array(
                         'text' => $this->getIndisponibilidad($niu) . "\n ¿Deseas consultar algo más?",
                         'reply_markup' => array(
-                            'keyboard' => array(
+                            'inline_keyboard' => array(
                                 array(
                                     array(
                                         'text' => 'Sí ✔️',
@@ -371,7 +371,7 @@ class chatBotAPI
                         'telegram' => array(
                             'text' => "No he podido encontrar ningún registro asociado con esta dirección. \n ¿Deseas consultar algo más?",
                             'reply_markup' => array(
-                                'keyboard' => array(
+                                'inline_keyboard' => array(
                                     array(
                                         array(
                                             'text' => 'Sí ✔️',
@@ -431,7 +431,7 @@ class chatBotAPI
                         'telegram' => array(
                             'text' => "No he podido encontrar ningún registro asociado con esta cédula.\n ¿Deseas consultar algo más?",
                             'reply_markup' => array(
-                                'keyboard' => array(
+                                'inline_keyboard' => array(
                                     array(
                                         array(
                                             'text' => 'Sí ✔️',
@@ -491,7 +491,7 @@ class chatBotAPI
                         'telegram' => array(
                             'text' => "No he podido encontrar ningún registro asociado con este NIT.\n ¿Deseas consultar algo más?",
                             'reply_markup' => array(
-                                'keyboard' => array(
+                                'inline_keyboard' => array(
                                     array(
                                         array(
                                             'text' => 'Sí ✔️',
@@ -550,7 +550,7 @@ class chatBotAPI
                         'telegram' => array(
                             'text' => "No he podido encontrar ningún registro asociado con este nombre.\n ¿Deseas consultar algo más?",
                             'reply_markup' => array(
-                                'keyboard' => array(
+                                'inline_keyboard' => array(
                                     array(
                                         array(
                                             'text' => 'Sí ✔️',
@@ -587,7 +587,7 @@ class chatBotAPI
                     'telegram' => array(
                         'text' => $this->getSuspensionesProgramadas($niu, true) . "\n ¿Deseas consultar algo más?",
                         'reply_markup' => array(
-                            'keyboard' => array(
+                            'inline_keyboard' => array(
                                 array(
                                     array(
                                         'text' => 'Sí ✔️',
@@ -646,7 +646,7 @@ class chatBotAPI
                         'telegram' => array(
                             'text' => "No he podido encontrar ningún registro asociado con esta cédula.\n ¿Deseas consultar algo más?",
                             'reply_markup' => array(
-                                'keyboard' => array(
+                                'inline_keyboard' => array(
                                     array(
                                         array(
                                             'text' => 'Sí ✔️',
@@ -706,7 +706,7 @@ class chatBotAPI
                         'telegram' => array(
                             'text' => "No he podido encontrar ningún registro asociado con este NIT.\n ¿Deseas consultar algo más?",
                             'reply_markup' => array(
-                                'keyboard' => array(
+                                'inline_keyboard' => array(
                                     array(
                                         array(
                                             'text' => 'Sí ✔️',
@@ -767,7 +767,7 @@ class chatBotAPI
                         'telegram' => array(
                             'text' => "No he podido encontrar ningún registro asociado con esta dirección. \n ¿Deseas consultar algo más?",
                             'reply_markup' => array(
-                                'keyboard' => array(
+                                'inline_keyboard' => array(
                                     array(
                                         array(
                                             'text' => 'Sí ✔️',
@@ -826,7 +826,7 @@ class chatBotAPI
                         'telegram' => array(
                             'text' => "No he podido encontrar ningún registro asociado con este nombre.\n ¿Deseas consultar algo más?",
                             'reply_markup' => array(
-                                'keyboard' => array(
+                                'inline_keyboard' => array(
                                     array(
                                         array(
                                             'text' => 'Sí ✔️',
