@@ -184,13 +184,13 @@ function getNamesQuery($palabras, $municipio)
     switch ($num) {
         case 1:
             $filter = [
-                'MUNICIPIO' => $municipio,
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'),
                 'NOMBRE' => new MongoDB\BSON\Regex($palabras[0], 'i')
             ];
             break;
         case 2:
             $filter = [
-                'MUNICIPIO' => $municipio,
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'),
                 'NOMBRE' => new MongoDB\BSON\Regex($palabras[0], 'i'),
                 '$and' => [
                     ['NOMBRE' => new MongoDB\BSON\Regex($palabras[1], 'i')],
@@ -199,7 +199,7 @@ function getNamesQuery($palabras, $municipio)
             break;
         case 3:
             $filter = [
-                'MUNICIPIO' => $municipio,
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'),
                 'NOMBRE' => new MongoDB\BSON\Regex($palabras[0], 'i'),
                 '$and' => [
                     ['NOMBRE' => new MongoDB\BSON\Regex($palabras[1], 'i')],
@@ -209,7 +209,7 @@ function getNamesQuery($palabras, $municipio)
             break;
         case 4:
             $filter = [
-                'MUNICIPIO' => $municipio,
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'),
                 'NOMBRE' => new MongoDB\BSON\Regex($palabras[0], 'i'),
                 '$and' => [
                     ['NOMBRE' => new MongoDB\BSON\Regex($palabras[1], 'i')],
@@ -222,7 +222,7 @@ function getNamesQuery($palabras, $municipio)
             break;
         case 5:
             $filter = [
-                'MUNICIPIO' => $municipio,
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'),
                 'NOMBRE' => new MongoDB\BSON\Regex($palabras[0], 'i'),
                 '$and' => [
                     ['NOMBRE' => new MongoDB\BSON\Regex($palabras[1], 'i')],
@@ -236,7 +236,7 @@ function getNamesQuery($palabras, $municipio)
             break;
         case 6:
             $filter = [
-                'MUNICIPIO' => $municipio,
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'),
                 'NOMBRE' => new MongoDB\BSON\Regex($palabras[0], 'i'),
                 '$and' => [
                     ['NOMBRE' => new MongoDB\BSON\Regex($palabras[1], 'i')],
@@ -262,13 +262,13 @@ function getAdressQuery($palabras, $municipio)
     switch ($num) {
         case 1:
             $filter = [
-                'MUNICIPIO' => $municipio, 
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'), 
                 'DIRECCION' => new MongoDB\BSON\Regex($palabras[0], 'i')
             ];
             break;
         case 2:
             $filter = [
-                'MUNICIPIO' => $municipio,
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'),
                 'DIRECCION' => new MongoDB\BSON\Regex($palabras[0], 'i'),
                 '$and' => [
                     ['DIRECCION' => new MongoDB\BSON\Regex($palabras[1], 'i')],
@@ -277,7 +277,7 @@ function getAdressQuery($palabras, $municipio)
             break;
         case 3:
             $filter = [
-                'MUNICIPIO' => $municipio,
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'),
                 'DIRECCION' => new MongoDB\BSON\Regex($palabras[0], 'i'),
                 '$and' => [
                     ['DIRECCION' => new MongoDB\BSON\Regex($palabras[1], 'i')],
@@ -287,7 +287,7 @@ function getAdressQuery($palabras, $municipio)
             break;
         case 4:
             $filter = [
-                'MUNICIPIO' => $municipio,
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'),
                 'DIRECCION' => new MongoDB\BSON\Regex($palabras[0], 'i'),
                 '$and' => [
                     ['DIRECCION' => new MongoDB\BSON\Regex($palabras[1], 'i')],
@@ -298,7 +298,7 @@ function getAdressQuery($palabras, $municipio)
             break;
         case 5:
             $filter = [
-                'MUNICIPIO' => $municipio,
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'),
                 'DIRECCION' => new MongoDB\BSON\Regex($palabras[0], 'i'),
                 '$and' => [
                     ['DIRECCION' => new MongoDB\BSON\Regex($palabras[1], 'i')],
@@ -310,7 +310,7 @@ function getAdressQuery($palabras, $municipio)
             break;
         case 6:
             $filter = [
-                'MUNICIPIO' => $municipio,
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'),
                 'DIRECCION' => new MongoDB\BSON\Regex($palabras[0], 'i'),
                 '$and' => [
                     ['DIRECCION' => new MongoDB\BSON\Regex($palabras[1], 'i')],
@@ -323,7 +323,7 @@ function getAdressQuery($palabras, $municipio)
             break;
         case 7:
             $filter = [
-                'MUNICIPIO' => $municipio,
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'),
                 'DIRECCION' => new MongoDB\BSON\Regex($palabras[0], 'i'),
                 '$and' => [
                     ['DIRECCION' => new MongoDB\BSON\Regex($palabras[1], 'i')],
@@ -337,7 +337,7 @@ function getAdressQuery($palabras, $municipio)
             break;
         case 8:
             $filter = [
-                'MUNICIPIO' => $municipio,
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'),
                 'DIRECCION' => new MongoDB\BSON\Regex($palabras[0], 'i'),
                 '$and' => [
                     ['DIRECCION' => new MongoDB\BSON\Regex($palabras[1], 'i')],
@@ -352,7 +352,7 @@ function getAdressQuery($palabras, $municipio)
             break;
         case 9:
             $filter = [
-                'MUNICIPIO' => $municipio,
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'),
                 'DIRECCION' => new MongoDB\BSON\Regex($palabras[0], 'i'),
                 '$and' => [
                     ['DIRECCION' => new MongoDB\BSON\Regex($palabras[1], 'i')],
@@ -368,7 +368,7 @@ function getAdressQuery($palabras, $municipio)
             break;
         case 10:
             $filter = [
-                'MUNICIPIO' => $municipio,
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'),
                 'DIRECCION' => new MongoDB\BSON\Regex($palabras[0], 'i'),
                 '$and' => [
                     ['DIRECCION' => new MongoDB\BSON\Regex($palabras[1], 'i')],
