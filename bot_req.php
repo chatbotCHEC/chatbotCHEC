@@ -66,8 +66,6 @@ foreach ($contexts as $i => $con) {
             break;
         case 'c1_direccion_municipio':
             $direccion = $reqBody['result']['resolvedQuery'];
-            var_dump($direccion);
-            var_dump($municipio);
             $response = $api->getIndisAddress($direccion, $municipio);
             $answered = true;
             break;
