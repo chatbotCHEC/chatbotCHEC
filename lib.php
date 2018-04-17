@@ -361,8 +361,8 @@ class chatBotAPI
 
         //Verificar si no se encontró ninguna dirección
         if (isset($busqueda['NINGUNO'])) {
-            $json['speech'] = "No he podido encontrar ningún registro asociado con esta dirección.";
-            $json['displayText'] = "No he podido encontrar ningún registro asociado con esta dirección.";
+            $json['speech'] = "No he podido encontrar ningún registro asociado con esta dirección. ¿Deseas consultar algo más?";
+            $json['displayText'] = "No he podido encontrar ningún registro asociado con esta dirección.\n ¿Deseas consultar algo más?";
             $json['messages'] = array(
                 array(
                     'type' => 4,
@@ -421,8 +421,8 @@ class chatBotAPI
 
         //Verificar si no se encontró ninguna dirección
         if (isset($busqueda['NINGUNO'])) {
-            $json['speech'] = "No he podido encontrar ningún registro asociado con esta cédula.";
-            $json['displayText'] = "No he podido encontrar ningún registro asociado con esta cédula.";
+            $json['speech'] = "No he podido encontrar ningún registro asociado con esta cédula. ¿Deseas consultar algo más?";
+            $json['displayText'] = "No he podido encontrar ningún registro asociado con esta cédula.\n ¿Deseas consultar algo más?";
             $json['messages'] = array(
                 array(
                     'type' => 4,
@@ -481,8 +481,8 @@ class chatBotAPI
 
         //Verificar si no se encontró ninguna dirección
         if (isset($busqueda['NINGUNO'])) {
-            $json['speech'] = "No he podido encontrar ningún registro asociado con este NIT.";
-            $json['displayText'] = "No he podido encontrar ningún registro asociado con este NIT.";
+            $json['speech'] = "No he podido encontrar ningún registro asociado con este NIT. ¿Deseas consultar algo más?";
+            $json['displayText'] = "No he podido encontrar ningún registro asociado con este NIT. \n ¿Deseas consultar algo más?";
             $json['messages'] = array(
                 array(
                     'type' => 4,
@@ -540,8 +540,8 @@ class chatBotAPI
 
         //Verificar si no se encontró ninguna dirección
         if (isset($busqueda['NINGUNO'])) {
-            $json['speech'] = "No he podido encontrar ningún registro asociado con este nombre.";
-            $json['displayText'] = "No he podido encontrar ningún registro asociado con este nombre.";
+            $json['speech'] = "No he podido encontrar ningún registro asociado con este nombre. ¿Deseas consultar algo más?";
+            $json['displayText'] = "No he podido encontrar ningún registro asociado con este nombre.\n ¿Deseas consultar algo más?";
             $json['messages'] = array(
                 array(
                     'type' => 4,
@@ -636,8 +636,8 @@ class chatBotAPI
 
         //Verificar si no se encontró ninguna dirección
         if (isset($busqueda['NINGUNO'])) {
-            $json['speech'] = "No he podido encontrar ningún registro asociado con esta cédula.";
-            $json['displayText'] = "No he podido encontrar ningún registro asociado con esta cédula.";
+            $json['speech'] = "No he podido encontrar ningún registro asociado con esta cédula. ¿Deseas consultar algo más?";
+            $json['displayText'] = "No he podido encontrar ningún registro asociado con esta cédula.\n ¿Deseas consultar algo más?";
             $json['messages'] = array(
                 array(
                     'type' => 4,
@@ -696,8 +696,8 @@ class chatBotAPI
 
         //Verificar si no se encontró ninguna dirección
         if (isset($busqueda['NINGUNO'])) {
-            $json['speech'] = "No he podido encontrar ningún registro asociado con este NIT.";
-            $json['displayText'] = "No he podido encontrar ningún registro asociado con este NIT.";
+            $json['speech'] = "No he podido encontrar ningún registro asociado con este NIT. ¿Deseas consultar algo más?";
+            $json['displayText'] = "No he podido encontrar ningún registro asociado con este NIT.\n ¿Deseas consultar algo más?";
             $json['messages'] = array(
                 array(
                     'type' => 4,
@@ -757,8 +757,8 @@ class chatBotAPI
 
         //Verificar si no se encontró ninguna dirección
         if (isset($busqueda['NINGUNO'])) {
-            $json['speech'] = "No he podido encontrar ningún registro asociado con esta dirección.";
-            $json['displayText'] = "No he podido encontrar ningún registro asociado con esta dirección.";
+            $json['speech'] = "No he podido encontrar ningún registro asociado con esta dirección. ¿Deseas consultar algo más?";
+            $json['displayText'] = "No he podido encontrar ningún registro asociado con esta dirección.\n ¿Deseas consultar algo más?";
             $json['messages'] = array(
                 array(
                     'type' => 4,
@@ -816,8 +816,8 @@ class chatBotAPI
 
         //Verificar si no se encontró ninguna dirección
         if (isset($busqueda['NINGUNO'])) {
-            $json['speech'] = "No he podido encontrar ningún registro asociado con este nombre.";
-            $json['displayText'] = "No he podido encontrar ningún registro asociado con este nombre.";
+            $json['speech'] = "No he podido encontrar ningún registro asociado con este nombre. ¿Deseas consultar algo más?";
+            $json['displayText'] = "No he podido encontrar ningún registro asociado con este nombre.\n ¿Deseas consultar algo más?";
             $json['messages'] = array(
                 array(
                     'type' => 4,

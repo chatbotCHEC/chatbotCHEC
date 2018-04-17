@@ -50,14 +50,15 @@ foreach ($contexts as $i => $con) {
 
     //Verifica si de la petición se recibe el municipio
     if(isset($reqBody['result']['parameters']['municipio'])){
-        $municipio = $reqBody['result']['parameters']['municipio'];
+        $raw_municipio = $reqBody['result']['parameters']['municipio'];
     }elseif (isset($con['parameters']['municipio'])) {
-        $municipio = $con['parameters']['municipio'];
+        $raw_municipio = $con['parameters']['municipio'];
     }else{
-        $municipio = '';
+        $raw_municipio = '';
     }
 
-    $municipio = strtoupper($municipio);
+    $municipio = strtoupper($raw_municipio);
+    var_dump($municipio);
 
     switch ($con['name']) {
         case 'c1_cc':
