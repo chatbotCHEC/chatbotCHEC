@@ -328,28 +328,6 @@ class chatBotAPI
                         ),
                     ),
                 ),
-                'platform' => 'skype',
-                'payload' => array(
-                    'skype' => array(
-                        'text' => $this->getIndisponibilidad($niu) . "\n ¿Deseas consultar algo más?",
-                        'reply_markup' => array(
-                            'keyboard' => array(
-                                array(
-                                    array(
-                                        'text' => 'Sí ✔️',
-                                        'callback_data' => 'Menú Principal',
-                                    ),
-                                ),
-                                array(
-                                    array(
-                                        'text' => 'No ❌',
-                                        'callback_data' => 'No',
-                                    ),
-                                ),
-                            ),
-                        ),
-                    ),
-                ),
             ),
         );
         return $json;
