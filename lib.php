@@ -371,9 +371,34 @@ class chatBotAPI
                 $json['displayText'] .= "- Dirección:" . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
             }
             $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar. (Sin espacios, letras ni puntos)";
-            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar. (Sin espacios, letras ni puntos)";
-            $json['contextOut'] = array(
-                array("name" => "c1_niu", "parameters" => array("res" => "1"), "lifespan" => 4));
+            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar. (Sin espacios, letras ni puntos)\n Si por el contrario, quieres buscar por otra opción escribe 'Atras'\n Si quieres regresar al menú escribe 'Menu Principal'";
+            $json['messages'] = array(
+                array(
+                    'type' => 4,
+                    'platform' => 'telegram',
+                    'payload' => array(
+                        'telegram' => array(
+                            'text' => $json['speech']."\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
+                            'reply_markup' => array(
+                                'inline_keyboard' => array(
+                                    array(
+                                        array(
+                                            'text' => '🔙 Buscar de nuevo',
+                                            'callback_data' => '1.',
+                                        ),
+                                    ),
+                                    array(
+                                        array(
+                                            'text' => '💠 Menú Principal',
+                                            'callback_data' => 'Menú Principal',
+                                        ),
+                                    ),
+                                ),
+                            ),
+                        ),
+                    ),
+                ),
+            );
             return $json;
         }
 
