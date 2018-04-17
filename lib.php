@@ -171,8 +171,12 @@ class chatBotAPI
         } elseif (count($personas) > 1) {
             $foundResults = array();
             foreach ($personas as $key => $value) {
-                $direcShow = "******".substr( $value->DIRECCION, -7);
-                array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' => $direcShow));
+                //Mostrar valores enmascarados
+                /* $direcShow = "******".substr( $value->DIRECCION, -7);
+                array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' => $direcShow)); */
+
+                //Mostrar valores sin enmascarar
+                array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' => $value->DIRECCION));
             }
             $resultado['VARIOS'] = $foundResults;
 
@@ -192,8 +196,12 @@ class chatBotAPI
         } elseif (count($personas) > 1) {
             $foundResults = array();
             foreach ($personas as $key => $value) {
-                $direcShow = "******".substr( $value->DIRECCION, -7);
-                array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' => $direcShow));
+                //Mostrar valores enmascarados
+                /* $direcShow = "******".substr( $value->DIRECCION, -7);
+                array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' => $direcShow)); */
+
+                //Mostrar valores sin enmascarar
+                array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' => $value->DIRECCION));
             }
             $resultado['VARIOS'] = $foundResults;
 
@@ -216,8 +224,13 @@ class chatBotAPI
         } elseif (count($personas) > 1) {
             $foundResults = array();
             foreach ($personas as $key => $value) {
-                $direcShow = "******".substr( $value->DIRECCION, -7);
-                array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' =>$direcShow));
+
+                //La siguiente línea se encarga de enmascarar los datos por motivos de seguridad.
+                /* $direcShow = "******".substr( $value->DIRECCION, -7);
+                array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' =>$direcShow)); */
+                
+                //Sin enmascarar
+                array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' =>$value->DIRECCION));
             }
             $resultado['VARIOS'] = $foundResults;
 
@@ -238,8 +251,13 @@ class chatBotAPI
         } elseif (count($personas) > 1) {
             $foundResults = array();
             foreach ($personas as $key => $value) {
-                $direcShow = "******".substr( $value->DIRECCION, -7);
-                array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' => $direcShow));
+
+                //Mostrar valores enmascarados
+                /* $direcShow = "******".substr( $value->DIRECCION, -7);
+                array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' => $direcShow)); */
+
+                //Mostrar valores sin enmascarar
+                array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' => $value->DIRECCION));
             }
             $resultado['VARIOS'] = $foundResults;
 
