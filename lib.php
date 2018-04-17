@@ -393,6 +393,12 @@ class chatBotAPI
                                             'callback_data' => 'Menú Principal',
                                         ),
                                     ),
+                                    array(
+                                        array(
+                                            'text' => '🔍 Consulta el número de cuenta',
+                                            'callback_data' => 'NIU',
+                                        ),
+                                    ),
                                 ),
                             ),
                         ),
@@ -476,6 +482,12 @@ class chatBotAPI
                                         array(
                                             'text' => '💠 Menú Principal',
                                             'callback_data' => 'Menú Principal',
+                                        ),
+                                    ),
+                                    array(
+                                        array(
+                                            'text' => '🔍 Consulta el número de cuenta',
+                                            'callback_data' => 'NIU',
                                         ),
                                     ),
                                 ),
@@ -564,6 +576,12 @@ class chatBotAPI
                                             'callback_data' => 'Menú Principal',
                                         ),
                                     ),
+                                    array(
+                                        array(
+                                            'text' => '🔍 Consulta el número de cuenta',
+                                            'callback_data' => 'NIU',
+                                        ),
+                                    ),
                                 ),
                             ),
                         ),
@@ -648,6 +666,12 @@ class chatBotAPI
                                         array(
                                             'text' => '💠 Menú Principal',
                                             'callback_data' => 'Menú Principal',
+                                        ),
+                                    ),
+                                    array(
+                                        array(
+                                            'text' => '🔍 Consulta el número de cuenta',
+                                            'callback_data' => 'NIU',
                                         ),
                                     ),
                                 ),
@@ -771,6 +795,12 @@ class chatBotAPI
                                             'callback_data' => 'Menú Principal',
                                         ),
                                     ),
+                                    array(
+                                        array(
+                                            'text' => '🔍 Consulta el número de cuenta',
+                                            'callback_data' => 'NIU',
+                                        ),
+                                    ),
                                 ),
                             ),
                         ),
@@ -854,6 +884,12 @@ class chatBotAPI
                                         array(
                                             'text' => '💠 Menú Principal',
                                             'callback_data' => 'Menú Principal',
+                                        ),
+                                    ),
+                                    array(
+                                        array(
+                                            'text' => '🔍 Consulta el número de cuenta',
+                                            'callback_data' => 'NIU',
                                         ),
                                     ),
                                 ),
@@ -943,6 +979,12 @@ class chatBotAPI
                                             'callback_data' => 'Menú Principal',
                                         ),
                                     ),
+                                    array(
+                                        array(
+                                            'text' => '🔍 Consulta el número de cuenta',
+                                            'callback_data' => 'NIU',
+                                        ),
+                                    ),
                                 ),
                             ),
                         ),
@@ -1027,6 +1069,12 @@ class chatBotAPI
                                         array(
                                             'text' => '💠 Menú Principal',
                                             'callback_data' => 'Menú Principal',
+                                        ),
+                                    ),
+                                    array(
+                                        array(
+                                            'text' => '🔍 Consulta el número de cuenta',
+                                            'callback_data' => 'NIU',
                                         ),
                                     ),
                                 ),
