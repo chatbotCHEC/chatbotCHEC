@@ -57,6 +57,8 @@ foreach ($contexts as $i => $con) {
         $municipio = '';
     }
 
+    $municipio = strtoupper($municipio);
+
     switch ($con['name']) {
         case 'c1_cc':
             $response = $api->getIndisCC($number);
