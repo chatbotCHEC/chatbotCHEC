@@ -370,8 +370,8 @@ class chatBotAPI
                 $json['speech'] .= "- Dirección: " . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
                 $json['displayText'] .= "- Dirección:" . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
             }
-            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar. (Sin espacios, letras ni puntos)";
-            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar. (Sin espacios, letras ni puntos)\n Si por el contrario, quieres buscar por otra opción escribe 'Buscar de nuevo'\n Si quieres regresar al menú escribe 'Menu Principal'";
+            $json['speech'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda";
+            $json['displayText'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda\n Si por el contrario, quieres buscar por otra opción escribe 'Buscar de nuevo'\n Si quieres regresar al menú escribe 'Menu Principal'";
             $json['messages'] = array(
                 array(
                     'type' => 4,
@@ -461,8 +461,8 @@ class chatBotAPI
                 $json['speech'] .= "- Dirección: " . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
                 $json['displayText'] .= "- Dirección:" . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
             }
-            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar. (Sin espacios, letras ni puntos)";
-            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar. (Sin espacios, letras ni puntos)\n Si por el contrario, quieres buscar por otra opción escribe 'Buscar de nuevo'\n Si quieres regresar al menú escribe 'Menu Principal'";
+            $json['speech'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda";
+            $json['displayText'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda\n Si por el contrario, quieres buscar por otra opción escribe 'Buscar de nuevo'\n Si quieres regresar al menú escribe 'Menu Principal'";
             $json['messages'] = array(
                 array(
                     'type' => 4,
@@ -552,9 +552,9 @@ class chatBotAPI
                 $json['speech'] .= "- Dirección: " . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
                 $json['displayText'] .= "- Dirección:" . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
             }
-            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar (Sin espacios, letras ni puntos).";
-            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar (Sin espacios, letras ni puntos).";
-            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar. (Sin espacios, letras ni puntos)\n Si por el contrario, quieres buscar por otra opción escribe 'Buscar de nuevo'\n Si quieres regresar al menú escribe 'Menu Principal'";
+            $json['speech'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda";
+            $json['displayText'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda";
+            $json['displayText'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda\n Si por el contrario, quieres buscar por otra opción escribe 'Buscar de nuevo'\n Si quieres regresar al menú escribe 'Menu Principal'";
             $json['messages'] = array(
                 array(
                     'type' => 4,
@@ -645,8 +645,8 @@ class chatBotAPI
                 $json['speech'] .= "- Dirección: " . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
                 $json['displayText'] .= "- Dirección:" . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
             }
-            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar (Sin espacios, letras ni puntos).";
-            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar. (Sin espacios, letras ni puntos)\n Si por el contrario, quieres buscar por otra opción escribe 'Buscar de nuevo'\n Si quieres regresar al menú escribe 'Menu Principal'";
+            $json['speech'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda";
+            $json['displayText'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda\n Si por el contrario, quieres buscar por otra opción escribe 'Buscar de nuevo'\n Si quieres regresar al menú escribe 'Menu Principal'";
             $json['messages'] = array(
                 array(
                     'type' => 4,
@@ -772,8 +772,8 @@ class chatBotAPI
                 $json['speech'] .= "- Dirección: " . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
                 $json['displayText'] .= "- Dirección:" . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
             }
-            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar (Sin espacios, letras ni puntos).";
-            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar. (Sin espacios, letras ni puntos)\n Si por el contrario, quieres buscar por otra opción escribe 'Buscar de nuevo'\n Si quieres regresar al menú escribe 'Menu Principal'";
+            $json['speech'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda";
+            $json['displayText'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda\n Si por el contrario, quieres buscar por otra opción escribe 'Buscar de nuevo'\n Si quieres regresar al menú escribe 'Menu Principal'";
             $json['messages'] = array(
                 array(
                     'type' => 4,
@@ -863,8 +863,8 @@ class chatBotAPI
                 $json['speech'] .= "- Dirección: " . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
                 $json['displayText'] .= "- Dirección:" . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
             }
-            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar (Sin espacios, letras ni puntos).";
-            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar. (Sin espacios, letras ni puntos)\n Si por el contrario, quieres buscar por otra opción escribe 'Buscar de nuevo'\n Si quieres regresar al menú escribe 'Menu Principal'";
+            $json['speech'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda";
+            $json['displayText'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda\n Si por el contrario, quieres buscar por otra opción escribe 'Buscar de nuevo'\n Si quieres regresar al menú escribe 'Menu Principal'";
             $json['messages'] = array(
                 array(
                     'type' => 4,
@@ -955,9 +955,8 @@ class chatBotAPI
                 $json['speech'] .= "- Dirección: " . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
                 $json['displayText'] .= "- Dirección:" . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
             }
-            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar (Sin espacios, letras ni puntos).";
-            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar (Sin espacios, letras ni puntos).";
-            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar. (Sin espacios, letras ni puntos)\n Si por el contrario, quieres buscar por otra opción escribe 'Buscar de nuevo'\n Si quieres regresar al menú escribe 'Menu Principal'";
+            $json['speech'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda";
+            $json['displayText'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda\n Si por el contrario, quieres buscar por otra opción escribe 'Buscar de nuevo'\n Si quieres regresar al menú escribe 'Menu Principal'";
             $json['messages'] = array(
                 array(
                     'type' => 4,
@@ -1048,8 +1047,8 @@ class chatBotAPI
                 $json['speech'] .= "- Dirección: " . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
                 $json['displayText'] .= "- Dirección:" . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
             }
-            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar (Sin espacios, letras ni puntos).";
-            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar. (Sin espacios, letras ni puntos)\n Si por el contrario, quieres buscar por otra opción escribe 'Buscar de nuevo'\n Si quieres regresar al menú escribe 'Menu Principal'";
+            $json['speech'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda";
+            $json['displayText'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda\n Si por el contrario, quieres buscar por otra opción escribe 'Buscar de nuevo'\n Si quieres regresar al menú escribe 'Menu Principal'";
             $json['messages'] = array(
                 array(
                     'type' => 4,
