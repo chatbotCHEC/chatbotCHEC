@@ -1139,7 +1139,7 @@ class chatBotAPI
 
         if (!is_array($susp)) {
             if ($susp->VALOR == "s") {
-                $msg .= "\n🔷 Para esta cuenta, se reporta una suspensión efectiva por falta de pago realizada en la siguiente fecha: " . $susp->HORA_FIN;
+                $msg .= "\n🔷 Para esta cuenta, se reporta una suspensión efectiva realizada en la siguiente fecha: " . $susp->HORA_FIN;
                 return $msg;
             } else {
                 //Invocar metodo para buscar interrupcion programada
