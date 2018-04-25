@@ -1,15 +1,22 @@
 <?php
 
-$url = "https://webservicedes.chec.com.co/WCF_Indisponibilidad/ServiceIndisponibilidad.svc?wsdl";
-$soapClientOptions = array(
-    'soap_version' => SOAP_1_1,
-    'exceptions' => true,
-    'trace' => 1,
-    'cache_wsdl' => WSDL_CACHE_NONE,
-);
-$client = new SoapClient($url);
+error_reporting(-1);
+ini_set('display_errors', 'On');
 
-$niu = "101101442";
-$result = $client->ConsultarIndisponibilidad($niu);
 
-echo $result;
+var_dump(consultarIndisponibilidad($_GET['niu']));
+
+function consultarIndisponibilidad($niu){
+    require "Mesmotronic/Soap/WsaSoap.php";
+    require "Mesmotronic/Soap/WsaSoapClient.php";
+    require "Mesmotronic/Soap/WsseAuthHeader.php";
+    
+    $wsdl = "https://webservicedes.chec.com.co/WCF_Indisponibilidad/ServiceIndisponibilidad.svc?wsdl";
+    
+    $client = new \Mesmotronic\Soap\WsaSoapClient($wsdl);
+    $result = $client->ConsultarIndisponibilidad(array('Cuenta' => $niu));
+    
+    return $result->ConsultarIndisponibilidadResult;
+}
+
+?>

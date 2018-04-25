@@ -9,6 +9,7 @@
         "php": "^7.0.0",
         "ext-mongodb": "*",
         "ext-imap": "*",
-        "ext-soap": "*"
+        "ext-soap": "^7.1",
+        "prezent/soap-client": "^0.1.4"
     }
 }
