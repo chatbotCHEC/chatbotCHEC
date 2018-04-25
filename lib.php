@@ -57,7 +57,7 @@ class chatBotAPI
                         'telegram' => array(
                             'text' => "No se ha encontrado ninguna cuenta con el dato ingresado. \n ¿Deseas consultar algo más?",
                             'reply_markup' => array(
-                                'keyboard' => array(
+                                'inline_keyboard' => array(
                                     array(
                                         array(
                                             'text' => 'Sí ✔️',
@@ -110,7 +110,7 @@ class chatBotAPI
                         'telegram' => array(
                             'text' => "No se ha encontrado ninguna cuenta con el dato ingresado. \n ¿Deseas consultar algo más?",
                             'reply_markup' => array(
-                                'keyboard' => array(
+                                'inline_keyboard' => array(
                                     array(
                                         array(
                                             'text' => 'Sí ✔️',
@@ -171,6 +171,11 @@ class chatBotAPI
         } elseif (count($personas) > 1) {
             $foundResults = array();
             foreach ($personas as $key => $value) {
+                //Mostrar valores enmascarados
+                /* $direcShow = "******".substr( $value->DIRECCION, -7);
+                array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' => $direcShow)); */
+
+                //Mostrar valores sin enmascarar
                 array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' => $value->DIRECCION));
             }
             $resultado['VARIOS'] = $foundResults;
@@ -191,6 +196,11 @@ class chatBotAPI
         } elseif (count($personas) > 1) {
             $foundResults = array();
             foreach ($personas as $key => $value) {
+                //Mostrar valores enmascarados
+                /* $direcShow = "******".substr( $value->DIRECCION, -7);
+                array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' => $direcShow)); */
+
+                //Mostrar valores sin enmascarar
                 array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' => $value->DIRECCION));
             }
             $resultado['VARIOS'] = $foundResults;
@@ -214,7 +224,13 @@ class chatBotAPI
         } elseif (count($personas) > 1) {
             $foundResults = array();
             foreach ($personas as $key => $value) {
-                array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' => $value->DIRECCION));
+
+                //La siguiente línea se encarga de enmascarar los datos por motivos de seguridad.
+                /* $direcShow = "******".substr( $value->DIRECCION, -7);
+                array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' =>$direcShow)); */
+                
+                //Sin enmascarar
+                array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' =>$value->DIRECCION));
             }
             $resultado['VARIOS'] = $foundResults;
 
@@ -235,6 +251,12 @@ class chatBotAPI
         } elseif (count($personas) > 1) {
             $foundResults = array();
             foreach ($personas as $key => $value) {
+
+                //Mostrar valores enmascarados
+                /* $direcShow = "******".substr( $value->DIRECCION, -7);
+                array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' => $direcShow)); */
+
+                //Mostrar valores sin enmascarar
                 array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' => $value->DIRECCION));
             }
             $resultado['VARIOS'] = $foundResults;
@@ -248,14 +270,14 @@ class chatBotAPI
     public function processAddress($direccion)
     {
         $direcNoSymbols = $direccion;
-        $direcNoHyphens = $direccion;
         if (strpos($direccion, '#')) {
             $direcNoSymbols = substr_replace($direccion, ' ', strpos($direccion, '#'), 1);
         }
         if (strpos($direccion, '-')) {
-            $direcNoHyphens = substr_replace($direcNoSymbols, ' ', strpos($direcNoSymbols, '-'), 1);
+            $direcNoSymbols = substr_replace($direcNoSymbols, ' ', strpos($direcNoSymbols, '-'), 1);
         }
-        $output = preg_replace('!\s+!', ' ', $direcNoHyphens);
+        $res = preg_replace("/[^a-zA-Z0-9\s]/", "", $direcNoSymbols);
+        $output = preg_replace('!\s+!', ' ', $res);
         $array = explode(" ", strtoupper($output));
         foreach ($array as $i => $value) {
             if ($value == "CARRERA" || $value == "CRA" || $value == "CAR" || $value == "CR") {
@@ -266,16 +288,15 @@ class chatBotAPI
             }
             if ($value == "AVENIDA" || $value == "AV" || $value == "AVE" || $value == "AVDA") {
                 $array[$i] = "AVE";
-                array_push($array, "AV");
-                array_push($array, "AVDA");
+                //array_push($array, "AV");
+                //array_push($array, "AVDA");
             }
             if ($value == "APARTAMENTO" || $value == "APTO" || $value == "AP") {
                 $array[$i] = "APT";
-                array_push($array, "APTO");
             }
             if ($value == "BLOQUE" || $value == "BLQ" || $value == "BL" || $value == "BLOKE") {
                 $array[$i] = "BLQ";
-                array_push($array, "BLO");
+                //array_push($array, "BLO");
             }
             if ($value == "LOCAL" || $value == "LOC") {
                 $array[$i] = "LOC";
@@ -285,8 +306,8 @@ class chatBotAPI
             }
             if ($value == "SECTOR" || $value == "SEC" || $value == "SECT") {
                 $array[$i] = "SECTOR";
-                array_push($array, "SEC");
-                array_push($array, "SECT");
+                //array_push($array, "SEC");
+                //array_push($array, "SECT");
             }
         }
         return $array;
@@ -308,7 +329,7 @@ class chatBotAPI
                     'telegram' => array(
                         'text' => $this->getIndisponibilidad($niu) . "\n ¿Deseas consultar algo más?",
                         'reply_markup' => array(
-                            'keyboard' => array(
+                            'inline_keyboard' => array(
                                 array(
                                     array(
                                         'text' => 'Sí ✔️',
@@ -334,7 +355,7 @@ class chatBotAPI
     //Método que busca el NIU de un usuario asociado con su direccion. Puede encontrar 1 solo registro y buscar, 2 o mas y mostrar una
     //lista de posibles nius encontrados, o indicar que no se encontro registro alguno.
     public function getIndisAddress($direccion, $municipio)
-    {
+    { 
         $busqueda = $this->getNiuFromAddress($direccion, $municipio);
         //Verificar si se obtuvo una sola cuenta
         if (isset($busqueda['NIU'])) {
@@ -343,23 +364,54 @@ class chatBotAPI
 
         //Verificar si se obtuvo más de una dirección
         if (isset($busqueda['VARIOS'])) {
-            $json['speech'] = "Encontramos las siguientes cuentas asociadas a la dirección buscada: \n ";
-            $json['displayText'] = "Encontramos las siguientes cuentas asociadas a la dirección buscada: \n ";
+            $json['speech'] = "Encontramos las siguientes cuentas asociadas a la dirección buscada (Por cuestiones de seguridad no mostramos los datos en su totalidad): \n ";
+            $json['displayText'] = "Encontramos las siguientes cuentas asociadas a la dirección buscada (Por cuestiones de seguridad no mostramos los datos en su totalidad): \n ";
             foreach ($busqueda['VARIOS'] as $key => $value) {
                 $json['speech'] .= "- Dirección: " . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
                 $json['displayText'] .= "- Dirección:" . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
             }
-            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
-            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
-            $json['contextOut'] = array(
-                array("name" => "c1_niu", "parameters" => array("res" => "1"), "lifespan" => 4));
+            $json['speech'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda";
+            $json['displayText'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda\n Si por el contrario, quieres buscar por otra opción escribe 'Buscar de nuevo'\n Si quieres regresar al menú escribe 'Menu Principal'";
+            $json['messages'] = array(
+                array(
+                    'type' => 4,
+                    'platform' => 'telegram',
+                    'payload' => array(
+                        'telegram' => array(
+                            'text' => $json['speech']."\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
+                            'reply_markup' => array(
+                                'inline_keyboard' => array(
+                                    array(
+                                        array(
+                                            'text' => '🔙 Buscar de nuevo',
+                                            'callback_data' => '1.',
+                                        ),
+                                    ),
+                                    array(
+                                        array(
+                                            'text' => '💠 Menú Principal',
+                                            'callback_data' => 'Menú Principal',
+                                        ),
+                                    ),
+                                    array(
+                                        array(
+                                            'text' => '🔍 Consulta el número de cuenta',
+                                            'callback_data' => 'NIU',
+                                        ),
+                                    ),
+                                ),
+                            ),
+                        ),
+                    ),
+                ),
+            );
             return $json;
         }
 
         //Verificar si no se encontró ninguna dirección
         if (isset($busqueda['NINGUNO'])) {
-            $json['speech'] = "No he podido encontrar ningún registro asociado con esta dirección.";
-            $json['displayText'] = "No he podido encontrar ningún registro asociado con esta dirección.";
+            $json['speech'] = "No he podido encontrar ningún registro asociado con esta dirección. ¿Deseas consultar algo más?";
+            $json['displayText'] = "No he podido encontrar ningún registro asociado con esta dirección.\n ¿Deseas consultar algo más?";
             $json['messages'] = array(
                 array(
                     'type' => 4,
@@ -368,7 +420,7 @@ class chatBotAPI
                         'telegram' => array(
                             'text' => "No he podido encontrar ningún registro asociado con esta dirección. \n ¿Deseas consultar algo más?",
                             'reply_markup' => array(
-                                'keyboard' => array(
+                                'inline_keyboard' => array(
                                     array(
                                         array(
                                             'text' => 'Sí ✔️',
@@ -403,23 +455,54 @@ class chatBotAPI
 
         //Verificar si se obtuvo más de una dirección
         if (isset($busqueda['VARIOS'])) {
-            $json['speech'] = "Encontramos las siguientes cuentas asociadas a la cédula buscada: \n ";
-            $json['displayText'] = "Encontramos las siguientes cuentas asociadas a la cédula buscada: \n ";
+            $json['speech'] = "Encontramos las siguientes cuentas asociadas a la cédula buscada (Por cuestiones de seguridad no mostramos los datos en su totalidad): \n ";
+            $json['displayText'] = "Encontramos las siguientes cuentas asociadas a la cédula buscada (Por cuestiones de seguridad no mostramos los datos en su totalidad): \n ";
             foreach ($busqueda['VARIOS'] as $key => $value) {
                 $json['speech'] .= "- Dirección: " . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
                 $json['displayText'] .= "- Dirección:" . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
             }
-            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
-            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
-            $json['contextOut'] = array(
-                array("name" => "c1_niu", "parameters" => array("res" => "1"), "lifespan" => 1));
+            $json['speech'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda";
+            $json['displayText'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda\n Si por el contrario, quieres buscar por otra opción escribe 'Buscar de nuevo'\n Si quieres regresar al menú escribe 'Menu Principal'";
+            $json['messages'] = array(
+                array(
+                    'type' => 4,
+                    'platform' => 'telegram',
+                    'payload' => array(
+                        'telegram' => array(
+                            'text' => $json['speech']."\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
+                            'reply_markup' => array(
+                                'inline_keyboard' => array(
+                                    array(
+                                        array(
+                                            'text' => '🔙 Buscar de nuevo',
+                                            'callback_data' => '1.',
+                                        ),
+                                    ),
+                                    array(
+                                        array(
+                                            'text' => '💠 Menú Principal',
+                                            'callback_data' => 'Menú Principal',
+                                        ),
+                                    ),
+                                    array(
+                                        array(
+                                            'text' => '🔍 Consulta el número de cuenta',
+                                            'callback_data' => 'NIU',
+                                        ),
+                                    ),
+                                ),
+                            ),
+                        ),
+                    ),
+                ),
+            );
             return $json;
         }
 
         //Verificar si no se encontró ninguna dirección
         if (isset($busqueda['NINGUNO'])) {
-            $json['speech'] = "No he podido encontrar ningún registro asociado con esta cédula.";
-            $json['displayText'] = "No he podido encontrar ningún registro asociado con esta cédula.";
+            $json['speech'] = "No he podido encontrar ningún registro asociado con esta cédula. ¿Deseas consultar algo más?";
+            $json['displayText'] = "No he podido encontrar ningún registro asociado con esta cédula.\n ¿Deseas consultar algo más?";
             $json['messages'] = array(
                 array(
                     'type' => 4,
@@ -428,7 +511,7 @@ class chatBotAPI
                         'telegram' => array(
                             'text' => "No he podido encontrar ningún registro asociado con esta cédula.\n ¿Deseas consultar algo más?",
                             'reply_markup' => array(
-                                'keyboard' => array(
+                                'inline_keyboard' => array(
                                     array(
                                         array(
                                             'text' => 'Sí ✔️',
@@ -463,23 +546,55 @@ class chatBotAPI
 
         //Verificar si se obtuvo más de una dirección
         if (isset($busqueda['VARIOS'])) {
-            $json['speech'] = "Encontramos las siguientes cuentas asociadas al NIT buscado: \n ";
-            $json['displayText'] = "Encontramos las siguientes cuentas asociadas al NIT buscado: \n ";
+            $json['speech'] = "Encontramos las siguientes cuentas asociadas al NIT buscado (Por cuestiones de seguridad no mostramos los datos en su totalidad): \n ";
+            $json['displayText'] = "Encontramos las siguientes cuentas asociadas al NIT buscado (Por cuestiones de seguridad no mostramos los datos en su totalidad): \n ";
             foreach ($busqueda['VARIOS'] as $key => $value) {
                 $json['speech'] .= "- Dirección: " . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
                 $json['displayText'] .= "- Dirección:" . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
             }
-            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
-            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
-            $json['contextOut'] = array(
-                array("name" => "c1_niu", "parameters" => array("res" => "1"), "lifespan" => 4));
+            $json['speech'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda";
+            $json['displayText'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda";
+            $json['displayText'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda\n Si por el contrario, quieres buscar por otra opción escribe 'Buscar de nuevo'\n Si quieres regresar al menú escribe 'Menu Principal'";
+            $json['messages'] = array(
+                array(
+                    'type' => 4,
+                    'platform' => 'telegram',
+                    'payload' => array(
+                        'telegram' => array(
+                            'text' => $json['speech']."\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
+                            'reply_markup' => array(
+                                'inline_keyboard' => array(
+                                    array(
+                                        array(
+                                            'text' => '🔙 Buscar de nuevo',
+                                            'callback_data' => '1.',
+                                        ),
+                                    ),
+                                    array(
+                                        array(
+                                            'text' => '💠 Menú Principal',
+                                            'callback_data' => 'Menú Principal',
+                                        ),
+                                    ),
+                                    array(
+                                        array(
+                                            'text' => '🔍 Consulta el número de cuenta',
+                                            'callback_data' => 'NIU',
+                                        ),
+                                    ),
+                                ),
+                            ),
+                        ),
+                    ),
+                ),
+            );
             return $json;
         }
 
         //Verificar si no se encontró ninguna dirección
         if (isset($busqueda['NINGUNO'])) {
-            $json['speech'] = "No he podido encontrar ningún registro asociado con este NIT.";
-            $json['displayText'] = "No he podido encontrar ningún registro asociado con este NIT.";
+            $json['speech'] = "No he podido encontrar ningún registro asociado con este NIT. ¿Deseas consultar algo más?";
+            $json['displayText'] = "No he podido encontrar ningún registro asociado con este NIT. \n ¿Deseas consultar algo más?";
             $json['messages'] = array(
                 array(
                     'type' => 4,
@@ -488,7 +603,7 @@ class chatBotAPI
                         'telegram' => array(
                             'text' => "No he podido encontrar ningún registro asociado con este NIT.\n ¿Deseas consultar algo más?",
                             'reply_markup' => array(
-                                'keyboard' => array(
+                                'inline_keyboard' => array(
                                     array(
                                         array(
                                             'text' => 'Sí ✔️',
@@ -524,21 +639,54 @@ class chatBotAPI
 
         //Verificar si se obtuvo más de una dirección
         if (isset($busqueda['VARIOS'])) {
-            $json['speech'] = "Encontramos las siguientes cuentas asociadas al nombre buscado: \n ";
-            $json['displayText'] = "Encontramos las siguientes cuentas asociadas al nombre buscado: \n ";
+            $json['speech'] = "Encontramos las siguientes cuentas asociadas al nombre buscado (Por cuestiones de seguridad no mostramos los datos en su totalidad): \n ";
+            $json['displayText'] = "Encontramos las siguientes cuentas asociadas al nombre buscado (Por cuestiones de seguridad no mostramos los datos en su totalidad): \n ";
             foreach ($busqueda['VARIOS'] as $key => $value) {
                 $json['speech'] .= "- Dirección: " . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
                 $json['displayText'] .= "- Dirección:" . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
             }
-            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
-            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
+            $json['speech'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda";
+            $json['displayText'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda\n Si por el contrario, quieres buscar por otra opción escribe 'Buscar de nuevo'\n Si quieres regresar al menú escribe 'Menu Principal'";
+            $json['messages'] = array(
+                array(
+                    'type' => 4,
+                    'platform' => 'telegram',
+                    'payload' => array(
+                        'telegram' => array(
+                            'text' => $json['speech']."\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
+                            'reply_markup' => array(
+                                'inline_keyboard' => array(
+                                    array(
+                                        array(
+                                            'text' => '🔙 Buscar de nuevo',
+                                            'callback_data' => '1.',
+                                        ),
+                                    ),
+                                    array(
+                                        array(
+                                            'text' => '💠 Menú Principal',
+                                            'callback_data' => 'Menú Principal',
+                                        ),
+                                    ),
+                                    array(
+                                        array(
+                                            'text' => '🔍 Consulta el número de cuenta',
+                                            'callback_data' => 'NIU',
+                                        ),
+                                    ),
+                                ),
+                            ),
+                        ),
+                    ),
+                ),
+            );
             return $json;
         }
 
         //Verificar si no se encontró ninguna dirección
         if (isset($busqueda['NINGUNO'])) {
-            $json['speech'] = "No he podido encontrar ningún registro asociado con este nombre.";
-            $json['displayText'] = "No he podido encontrar ningún registro asociado con este nombre.";
+            $json['speech'] = "No he podido encontrar ningún registro asociado con este nombre. ¿Deseas consultar algo más?";
+            $json['displayText'] = "No he podido encontrar ningún registro asociado con este nombre.\n ¿Deseas consultar algo más?";
             $json['messages'] = array(
                 array(
                     'type' => 4,
@@ -547,7 +695,7 @@ class chatBotAPI
                         'telegram' => array(
                             'text' => "No he podido encontrar ningún registro asociado con este nombre.\n ¿Deseas consultar algo más?",
                             'reply_markup' => array(
-                                'keyboard' => array(
+                                'inline_keyboard' => array(
                                     array(
                                         array(
                                             'text' => 'Sí ✔️',
@@ -584,7 +732,7 @@ class chatBotAPI
                     'telegram' => array(
                         'text' => $this->getSuspensionesProgramadas($niu, true) . "\n ¿Deseas consultar algo más?",
                         'reply_markup' => array(
-                            'keyboard' => array(
+                            'inline_keyboard' => array(
                                 array(
                                     array(
                                         'text' => 'Sí ✔️',
@@ -618,23 +766,54 @@ class chatBotAPI
 
         //Verificar si se obtuvo más de una dirección
         if (isset($busqueda['VARIOS'])) {
-            $json['speech'] = "Encontramos las siguientes cuentas asociadas a la cédula buscada: \n ";
-            $json['displayText'] = "Encontramos las siguientes cuentas asociadas a la cédula buscada: \n ";
+            $json['speech'] = "Encontramos las siguientes cuentas asociadas a la cédula buscada (Por cuestiones de seguridad no mostramos los datos en su totalidad): \n ";
+            $json['displayText'] = "Encontramos las siguientes cuentas asociadas a la cédula buscada (Por cuestiones de seguridad no mostramos los datos en su totalidad): \n ";
             foreach ($busqueda['VARIOS'] as $key => $value) {
                 $json['speech'] .= "- Dirección: " . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
                 $json['displayText'] .= "- Dirección:" . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
             }
-            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
-            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
-            $json['contextOut'] = array(
-                array("name" => "c2_niu", "parameters" => array("res" => "1"), "lifespan" => 1));
+            $json['speech'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda";
+            $json['displayText'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda\n Si por el contrario, quieres buscar por otra opción escribe 'Buscar de nuevo'\n Si quieres regresar al menú escribe 'Menu Principal'";
+            $json['messages'] = array(
+                array(
+                    'type' => 4,
+                    'platform' => 'telegram',
+                    'payload' => array(
+                        'telegram' => array(
+                            'text' => $json['speech']."\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
+                            'reply_markup' => array(
+                                'inline_keyboard' => array(
+                                    array(
+                                        array(
+                                            'text' => '🔙 Buscar otra vez',
+                                            'callback_data' => '1.',
+                                        ),
+                                    ),
+                                    array(
+                                        array(
+                                            'text' => '💠 Menú Principal',
+                                            'callback_data' => 'Menú Principal',
+                                        ),
+                                    ),
+                                    array(
+                                        array(
+                                            'text' => '🔍 Consulta el número de cuenta',
+                                            'callback_data' => 'NIU',
+                                        ),
+                                    ),
+                                ),
+                            ),
+                        ),
+                    ),
+                ),
+            );
             return $json;
         }
 
         //Verificar si no se encontró ninguna dirección
         if (isset($busqueda['NINGUNO'])) {
-            $json['speech'] = "No he podido encontrar ningún registro asociado con esta cédula.";
-            $json['displayText'] = "No he podido encontrar ningún registro asociado con esta cédula.";
+            $json['speech'] = "No he podido encontrar ningún registro asociado con esta cédula. ¿Deseas consultar algo más?";
+            $json['displayText'] = "No he podido encontrar ningún registro asociado con esta cédula.\n ¿Deseas consultar algo más?";
             $json['messages'] = array(
                 array(
                     'type' => 4,
@@ -643,7 +822,7 @@ class chatBotAPI
                         'telegram' => array(
                             'text' => "No he podido encontrar ningún registro asociado con esta cédula.\n ¿Deseas consultar algo más?",
                             'reply_markup' => array(
-                                'keyboard' => array(
+                                'inline_keyboard' => array(
                                     array(
                                         array(
                                             'text' => 'Sí ✔️',
@@ -678,23 +857,54 @@ class chatBotAPI
 
         //Verificar si se obtuvo más de una dirección
         if (isset($busqueda['VARIOS'])) {
-            $json['speech'] = "Encontramos las siguientes cuentas asociadas al NIT buscado: \n ";
-            $json['displayText'] = "Encontramos las siguientes cuentas asociadas al NIT buscado: \n ";
+            $json['speech'] = "Encontramos las siguientes cuentas asociadas al NIT buscado (Por cuestiones de seguridad no mostramos los datos en su totalidad): \n ";
+            $json['displayText'] = "Encontramos las siguientes cuentas asociadas al NIT buscado (Por cuestiones de seguridad no mostramos los datos en su totalidad): \n ";
             foreach ($busqueda['VARIOS'] as $key => $value) {
                 $json['speech'] .= "- Dirección: " . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
                 $json['displayText'] .= "- Dirección:" . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
             }
-            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
-            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
-            $json['contextOut'] = array(
-                array("name" => "c2_niu", "parameters" => array("res" => "1"), "lifespan" => 1));
+            $json['speech'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda";
+            $json['displayText'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda\n Si por el contrario, quieres buscar por otra opción escribe 'Buscar de nuevo'\n Si quieres regresar al menú escribe 'Menu Principal'";
+            $json['messages'] = array(
+                array(
+                    'type' => 4,
+                    'platform' => 'telegram',
+                    'payload' => array(
+                        'telegram' => array(
+                            'text' => $json['speech']."\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
+                            'reply_markup' => array(
+                                'inline_keyboard' => array(
+                                    array(
+                                        array(
+                                            'text' => '🔙 Buscar otra vez',
+                                            'callback_data' => '1.',
+                                        ),
+                                    ),
+                                    array(
+                                        array(
+                                            'text' => '💠 Menú Principal',
+                                            'callback_data' => 'Menú Principal',
+                                        ),
+                                    ),
+                                    array(
+                                        array(
+                                            'text' => '🔍 Consulta el número de cuenta',
+                                            'callback_data' => 'NIU',
+                                        ),
+                                    ),
+                                ),
+                            ),
+                        ),
+                    ),
+                ),
+            );
             return $json;
         }
 
         //Verificar si no se encontró ninguna dirección
         if (isset($busqueda['NINGUNO'])) {
-            $json['speech'] = "No he podido encontrar ningún registro asociado con este NIT.";
-            $json['displayText'] = "No he podido encontrar ningún registro asociado con este NIT.";
+            $json['speech'] = "No he podido encontrar ningún registro asociado con este NIT. ¿Deseas consultar algo más?";
+            $json['displayText'] = "No he podido encontrar ningún registro asociado con este NIT.\n ¿Deseas consultar algo más?";
             $json['messages'] = array(
                 array(
                     'type' => 4,
@@ -703,7 +913,7 @@ class chatBotAPI
                         'telegram' => array(
                             'text' => "No he podido encontrar ningún registro asociado con este NIT.\n ¿Deseas consultar algo más?",
                             'reply_markup' => array(
-                                'keyboard' => array(
+                                'inline_keyboard' => array(
                                     array(
                                         array(
                                             'text' => 'Sí ✔️',
@@ -739,23 +949,54 @@ class chatBotAPI
 
         //Verificar si se obtuvo más de una dirección
         if (isset($busqueda['VARIOS'])) {
-            $json['speech'] = "Encontramos las siguientes cuentas asociadas a la dirección buscada: \n ";
-            $json['displayText'] = "Encontramos las siguientes cuentas asociadas a la dirección buscada: \n ";
+            $json['speech'] = "Encontramos las siguientes cuentas asociadas a la dirección buscada (Por cuestiones de seguridad no mostramos los datos en su totalidad): \n ";
+            $json['displayText'] = "Encontramos las siguientes cuentas asociadas a la dirección buscada (Por cuestiones de seguridad no mostramos los datos en su totalidad): \n ";
             foreach ($busqueda['VARIOS'] as $key => $value) {
                 $json['speech'] .= "- Dirección: " . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
                 $json['displayText'] .= "- Dirección:" . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
             }
-            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
-            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
-            $json['contextOut'] = array(
-                array("name" => "c1_niu", "parameters" => array("res" => "1"), "lifespan" => 4));
+            $json['speech'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda";
+            $json['displayText'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda\n Si por el contrario, quieres buscar por otra opción escribe 'Buscar de nuevo'\n Si quieres regresar al menú escribe 'Menu Principal'";
+            $json['messages'] = array(
+                array(
+                    'type' => 4,
+                    'platform' => 'telegram',
+                    'payload' => array(
+                        'telegram' => array(
+                            'text' => $json['speech']."\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
+                            'reply_markup' => array(
+                                'inline_keyboard' => array(
+                                    array(
+                                        array(
+                                            'text' => '🔙 Buscar otra vez',
+                                            'callback_data' => '1.',
+                                        ),
+                                    ),
+                                    array(
+                                        array(
+                                            'text' => '💠 Menú Principal',
+                                            'callback_data' => 'Menú Principal',
+                                        ),
+                                    ),
+                                    array(
+                                        array(
+                                            'text' => '🔍 Consulta el número de cuenta',
+                                            'callback_data' => 'NIU',
+                                        ),
+                                    ),
+                                ),
+                            ),
+                        ),
+                    ),
+                ),
+            );
             return $json;
         }
 
         //Verificar si no se encontró ninguna dirección
         if (isset($busqueda['NINGUNO'])) {
-            $json['speech'] = "No he podido encontrar ningún registro asociado con esta dirección.";
-            $json['displayText'] = "No he podido encontrar ningún registro asociado con esta dirección.";
+            $json['speech'] = "No he podido encontrar ningún registro asociado con esta dirección. ¿Deseas consultar algo más?";
+            $json['displayText'] = "No he podido encontrar ningún registro asociado con esta dirección.\n ¿Deseas consultar algo más?";
             $json['messages'] = array(
                 array(
                     'type' => 4,
@@ -764,7 +1005,7 @@ class chatBotAPI
                         'telegram' => array(
                             'text' => "No he podido encontrar ningún registro asociado con esta dirección. \n ¿Deseas consultar algo más?",
                             'reply_markup' => array(
-                                'keyboard' => array(
+                                'inline_keyboard' => array(
                                     array(
                                         array(
                                             'text' => 'Sí ✔️',
@@ -800,21 +1041,54 @@ class chatBotAPI
 
         //Verificar si se obtuvo más de una dirección
         if (isset($busqueda['VARIOS'])) {
-            $json['speech'] = "Encontramos las siguientes cuentas asociadas al nombre buscado: \n ";
-            $json['displayText'] = "Encontramos las siguientes cuentas asociadas al nombre buscado: \n ";
+            $json['speech'] = "Encontramos las siguientes cuentas asociadas al nombre buscado (Por cuestiones de seguridad no mostramos los datos en su totalidad): \n ";
+            $json['displayText'] = "Encontramos las siguientes cuentas asociadas al nombre buscado (Por cuestiones de seguridad no mostramos los datos en su totalidad): \n ";
             foreach ($busqueda['VARIOS'] as $key => $value) {
                 $json['speech'] .= "- Dirección: " . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
                 $json['displayText'] .= "- Dirección:" . $value['DIRECCION'] . " Número de cuenta: " . $value['NIU'] . " \n  ";
             }
-            $json['speech'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
-            $json['displayText'] .= "A continuación, ingresa el número de cuenta que deseas consultar.";
+            $json['speech'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda";
+            $json['displayText'] .= "A continuación, selecciona el botón 'Consulta el número de cuenta' y luego ingresa el número de cuenta correspondiente a tu búsqueda\n Si por el contrario, quieres buscar por otra opción escribe 'Buscar de nuevo'\n Si quieres regresar al menú escribe 'Menu Principal'";
+            $json['messages'] = array(
+                array(
+                    'type' => 4,
+                    'platform' => 'telegram',
+                    'payload' => array(
+                        'telegram' => array(
+                            'text' => $json['speech']."\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
+                            'reply_markup' => array(
+                                'inline_keyboard' => array(
+                                    array(
+                                        array(
+                                            'text' => '🔙 Buscar otra vez',
+                                            'callback_data' => '1.',
+                                        ),
+                                    ),
+                                    array(
+                                        array(
+                                            'text' => '💠 Menú Principal',
+                                            'callback_data' => 'Menú Principal',
+                                        ),
+                                    ),
+                                    array(
+                                        array(
+                                            'text' => '🔍 Consulta el número de cuenta',
+                                            'callback_data' => 'NIU',
+                                        ),
+                                    ),
+                                ),
+                            ),
+                        ),
+                    ),
+                ),
+            );
             return $json;
         }
 
         //Verificar si no se encontró ninguna dirección
         if (isset($busqueda['NINGUNO'])) {
-            $json['speech'] = "No he podido encontrar ningún registro asociado con este nombre.";
-            $json['displayText'] = "No he podido encontrar ningún registro asociado con este nombre.";
+            $json['speech'] = "No he podido encontrar ningún registro asociado con este nombre. ¿Deseas consultar algo más?";
+            $json['displayText'] = "No he podido encontrar ningún registro asociado con este nombre.\n ¿Deseas consultar algo más?";
             $json['messages'] = array(
                 array(
                     'type' => 4,
@@ -823,7 +1097,7 @@ class chatBotAPI
                         'telegram' => array(
                             'text' => "No he podido encontrar ningún registro asociado con este nombre.\n ¿Deseas consultar algo más?",
                             'reply_markup' => array(
-                                'keyboard' => array(
+                                'inline_keyboard' => array(
                                     array(
                                         array(
                                             'text' => 'Sí ✔️',
@@ -863,9 +1137,9 @@ class chatBotAPI
 
         $msg = "";
 
-        if (count($susp) > 0) {
+        if (!is_array($susp)) {
             if ($susp->VALOR == "s") {
-                $msg .= "\n🔷 Para esta cuenta, se reporta una suspensión efectiva por falta de pago realizada en la siguiente fecha: " . $susp->HORA_FIN;
+                $msg .= "\n🔷 Para esta cuenta, se reporta una suspensión efectiva realizada en la siguiente fecha: " . $susp->HORA_FIN;
                 return $msg;
             } else {
                 //Invocar metodo para buscar interrupcion programada
@@ -885,7 +1159,7 @@ class chatBotAPI
         $prog = getSuspProgramada($this->con, $niu);
         //var_dump($prog);
         $msg = "";
-        if (count($prog) > 0) {
+        if (!is_array($prog) || count($prog)>0) {
             $msg .= "\n🔷 Para esta cuenta, hemos encontrado las siguientes suspensiones programadas: ";
             foreach ($prog as $p) {
                 $msg .= "\n🔷 Hay una suspensión programada que inicia el " . $p->FECHA_INICIO . " a las " . $p->HORA_INICIO . ", y finaliza el " . $p->FECHA_FIN . " a las " . $p->HORA_FIN;
@@ -909,7 +1183,7 @@ class chatBotAPI
     {
         $circuito = getSuspCircuito($this->con, $niu);
         $msg = "";
-        if (count($circuito) > 0 && ($circuito->ESTADO == "ABIERTO" || $circuito->ESTADO == "APERTURA")) {
+        if (!is_array($circuito) && ($circuito->ESTADO == "ABIERTO" || $circuito->ESTADO == "APERTURA")) {
 
             $msg .= "\n🔷 Para esta cuenta, hemos encontrado las siguientes indisponibilidades a nivel de circuito: \n🔷 Hay una falla en el circuito reportada el " . $circuito->FECHA . " a las " . $circuito->HORA . ". Estamos trabajando para reestablecer el servicio";
             return $msg;

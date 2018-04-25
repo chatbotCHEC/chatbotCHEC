@@ -16,7 +16,10 @@ function getData($NIU, $con)
 function getNIUwithCedula($con, $cedula)
 {
     $filter = ['DOCUMENTO' => $cedula, 'TIPO_DOC' => "CC"];
-    $query = new MongoDB\Driver\Query($filter);
+    $options = [
+        'limit' => 10,
+    ];
+    $query = new MongoDB\Driver\Query($filter, $options);
     $result = $con->executeQuery($GLOBALS['dbname'] . ".usuarios", $query);
     $cliente = $result->toArray();
     return $cliente;
@@ -25,7 +28,10 @@ function getNIUwithCedula($con, $cedula)
 function getNIUwithNIT($con, $nit)
 {
     $filter = ['DOCUMENTO' => $nit, 'TIPO_DOC' => "NI"];
-    $query = new MongoDB\Driver\Query($filter);
+    $options = [
+        'limit' => 10,
+    ];
+    $query = new MongoDB\Driver\Query($filter, $options);
     $result = $con->executeQuery($GLOBALS['dbname'] . ".usuarios", $query);
     $cliente = $result->toArray();
     return $cliente;
@@ -35,7 +41,7 @@ function getNIUwithName($con, $palabras, $municipio)
 {
     $filter = getNamesQuery($palabras, $municipio);
     $options = [
-        'limit' => 5,
+        'limit' => 15,
     ];
     $query = new MongoDB\Driver\Query($filter, $options);
     $result = $con->executeQuery($GLOBALS['dbname'] . ".usuarios", $query);
@@ -47,7 +53,7 @@ function getNIUwithAddress($con, $direccion, $municipio)
 {
     $filter = getAdressQuery($direccion, $municipio);
     $options = [
-        'limit' => 5,
+        'limit' => 15,
     ];
     $query = new MongoDB\Driver\Query($filter, $options);
     $result = $con->executeQuery($GLOBALS['dbname'] . ".usuarios", $query);
@@ -76,19 +82,19 @@ function getSuspProgramada($con, $niu)
         }else{
             $format = "Y-m-d H:i";
         }
-
+        
         $dateobj = DateTime::createFromFormat($format, $date);
         $iso_datetime = $dateobj->format(Datetime::ATOM);
         $fecha_def = strtotime($iso_datetime);
         // var_dump($fecha_def);
         if ($fecha_def > $now) {
-
+            
             array_push($futuras, $value);
         }
         //var_dump($fecha_def>$now);
     }
     // var_dump($futuras);
-
+    
     return $futuras;
 
 }
@@ -178,13 +184,13 @@ function getNamesQuery($palabras, $municipio)
     switch ($num) {
         case 1:
             $filter = [
-                'MUNICIPIO' => $municipio,
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'),
                 'NOMBRE' => new MongoDB\BSON\Regex($palabras[0], 'i')
             ];
             break;
         case 2:
             $filter = [
-                'MUNICIPIO' => $municipio,
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'),
                 'NOMBRE' => new MongoDB\BSON\Regex($palabras[0], 'i'),
                 '$and' => [
                     ['NOMBRE' => new MongoDB\BSON\Regex($palabras[1], 'i')],
@@ -193,7 +199,7 @@ function getNamesQuery($palabras, $municipio)
             break;
         case 3:
             $filter = [
-                'MUNICIPIO' => $municipio,
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'),
                 'NOMBRE' => new MongoDB\BSON\Regex($palabras[0], 'i'),
                 '$and' => [
                     ['NOMBRE' => new MongoDB\BSON\Regex($palabras[1], 'i')],
@@ -203,7 +209,7 @@ function getNamesQuery($palabras, $municipio)
             break;
         case 4:
             $filter = [
-                'MUNICIPIO' => $municipio,
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'),
                 'NOMBRE' => new MongoDB\BSON\Regex($palabras[0], 'i'),
                 '$and' => [
                     ['NOMBRE' => new MongoDB\BSON\Regex($palabras[1], 'i')],
@@ -216,7 +222,7 @@ function getNamesQuery($palabras, $municipio)
             break;
         case 5:
             $filter = [
-                'MUNICIPIO' => $municipio,
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'),
                 'NOMBRE' => new MongoDB\BSON\Regex($palabras[0], 'i'),
                 '$and' => [
                     ['NOMBRE' => new MongoDB\BSON\Regex($palabras[1], 'i')],
@@ -230,7 +236,7 @@ function getNamesQuery($palabras, $municipio)
             break;
         case 6:
             $filter = [
-                'MUNICIPIO' => $municipio,
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'),
                 'NOMBRE' => new MongoDB\BSON\Regex($palabras[0], 'i'),
                 '$and' => [
                     ['NOMBRE' => new MongoDB\BSON\Regex($palabras[1], 'i')],
@@ -256,13 +262,13 @@ function getAdressQuery($palabras, $municipio)
     switch ($num) {
         case 1:
             $filter = [
-                'MUNICIPIO' => $municipio, 
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'), 
                 'DIRECCION' => new MongoDB\BSON\Regex($palabras[0], 'i')
             ];
             break;
         case 2:
             $filter = [
-                'MUNICIPIO' => $municipio,
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'),
                 'DIRECCION' => new MongoDB\BSON\Regex($palabras[0], 'i'),
                 '$and' => [
                     ['DIRECCION' => new MongoDB\BSON\Regex($palabras[1], 'i')],
@@ -271,7 +277,7 @@ function getAdressQuery($palabras, $municipio)
             break;
         case 3:
             $filter = [
-                'MUNICIPIO' => $municipio,
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'),
                 'DIRECCION' => new MongoDB\BSON\Regex($palabras[0], 'i'),
                 '$and' => [
                     ['DIRECCION' => new MongoDB\BSON\Regex($palabras[1], 'i')],
@@ -281,7 +287,7 @@ function getAdressQuery($palabras, $municipio)
             break;
         case 4:
             $filter = [
-                'MUNICIPIO' => $municipio,
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'),
                 'DIRECCION' => new MongoDB\BSON\Regex($palabras[0], 'i'),
                 '$and' => [
                     ['DIRECCION' => new MongoDB\BSON\Regex($palabras[1], 'i')],
@@ -292,7 +298,7 @@ function getAdressQuery($palabras, $municipio)
             break;
         case 5:
             $filter = [
-                'MUNICIPIO' => $municipio,
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'),
                 'DIRECCION' => new MongoDB\BSON\Regex($palabras[0], 'i'),
                 '$and' => [
                     ['DIRECCION' => new MongoDB\BSON\Regex($palabras[1], 'i')],
@@ -304,7 +310,7 @@ function getAdressQuery($palabras, $municipio)
             break;
         case 6:
             $filter = [
-                'MUNICIPIO' => $municipio,
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'),
                 'DIRECCION' => new MongoDB\BSON\Regex($palabras[0], 'i'),
                 '$and' => [
                     ['DIRECCION' => new MongoDB\BSON\Regex($palabras[1], 'i')],
@@ -317,7 +323,7 @@ function getAdressQuery($palabras, $municipio)
             break;
         case 7:
             $filter = [
-                'MUNICIPIO' => $municipio,
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'),
                 'DIRECCION' => new MongoDB\BSON\Regex($palabras[0], 'i'),
                 '$and' => [
                     ['DIRECCION' => new MongoDB\BSON\Regex($palabras[1], 'i')],
@@ -331,7 +337,7 @@ function getAdressQuery($palabras, $municipio)
             break;
         case 8:
             $filter = [
-                'MUNICIPIO' => $municipio,
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'),
                 'DIRECCION' => new MongoDB\BSON\Regex($palabras[0], 'i'),
                 '$and' => [
                     ['DIRECCION' => new MongoDB\BSON\Regex($palabras[1], 'i')],
@@ -346,7 +352,7 @@ function getAdressQuery($palabras, $municipio)
             break;
         case 9:
             $filter = [
-                'MUNICIPIO' => $municipio,
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'),
                 'DIRECCION' => new MongoDB\BSON\Regex($palabras[0], 'i'),
                 '$and' => [
                     ['DIRECCION' => new MongoDB\BSON\Regex($palabras[1], 'i')],
@@ -362,7 +368,7 @@ function getAdressQuery($palabras, $municipio)
             break;
         case 10:
             $filter = [
-                'MUNICIPIO' => $municipio,
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'),
                 'DIRECCION' => new MongoDB\BSON\Regex($palabras[0], 'i'),
                 '$and' => [
                     ['DIRECCION' => new MongoDB\BSON\Regex($palabras[1], 'i')],
