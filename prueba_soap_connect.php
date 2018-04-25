@@ -8,7 +8,7 @@ try {
         'trace'=>1, 
         'cache_wsdl'=>WSDL_CACHE_NONE 
     ); 
-    $client = new SoapClient('https://webservicedes.chec.com.co/WCF_Indisponibilidad/ServiceIndisponibilidad.svc?wsdl', $options); 
+    $client = new SoapClient('https://checindisponibilidaddes.chec.com.co/ServiceIndisponibilidad.svc?wsdl', $options); 
     // Note where 'Get' and 'request' tags are in the XML
 var_dump($client->__getFunctions());
 $niu = "182894608"; 
