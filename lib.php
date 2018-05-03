@@ -1,10 +1,16 @@
 <?php
 require './consultas.php';
+require "Mesmotronic/Soap/WsaSoap.php";
+require "Mesmotronic/Soap/WsaSoapClient.php";
+require "Mesmotronic/Soap/WsseAuthHeader.php";
+
 class chatBotAPI
 {
 
     //Credenciales HEROKU Mlab
     private $host = "mongodb://heroku_69tb2th4:m2oheamen7422pmnq3htdb56dt@ds113775.mlab.com:13775/heroku_69tb2th4";
+
+    private $SGOurl = 'https://checindisponibilidad.chec.com.co/ServiceIndisponibilidad.svc?wsdl';
 
     //Credenciales Localhost
     //private $host = "mongodb://localhost:27017/chatbot_db";
@@ -42,7 +48,7 @@ class chatBotAPI
 
     }
 
-    public function respuesta($persona)
+   /*  public function respuesta($persona)
     {
         //Verificar si se encontró el NIU
         if (!(isset($persona->NIU)) || $persona->NIU == "") {
@@ -152,7 +158,7 @@ class chatBotAPI
         }
         return $json;
     }
-
+ */
     //Obtener los datos del usuario a partir del NIU
     //Todas estas tienden a desaparecer en el update
     public function getUserData($NIU)
@@ -319,15 +325,16 @@ class chatBotAPI
     //Método que busca las indisponibilidades teniendo el numero de cuenta
     public function getIndisNiu($niu)
     {
-        $json['speech'] = $this->getIndisponibilidad($niu);
-        $json['displayText'] = $this->getIndisponibilidad($niu);
+        $response = $this->getIndisponibilidad($niu);
+        $json['speech'] = $response;
+        $json['displayText'] = $response;
         $json['messages'] = array(
             array(
                 'type' => 4,
                 'platform' => 'telegram',
                 'payload' => array(
                     'telegram' => array(
-                        'text' => $this->getIndisponibilidad($niu) . "\n ¿Deseas consultar algo más?",
+                        'text' => $response,
                         'reply_markup' => array(
                             'inline_keyboard' => array(
                                 array(
@@ -722,15 +729,16 @@ class chatBotAPI
     //Método que busca las suspensiones programada teniendo el numero de cuenta
     public function getSPNiu($niu)
     {
-        $json['speech'] = $this->getSuspensionesProgramadas($niu, true);
-        $json['displayText'] = $this->getSuspensionesProgramadas($niu, true);
+        $response = $this->getSuspensionesProgramadas($niu, true);
+        $json['speech'] = $response;
+        $json['displayText'] = $response;
         $json['messages'] = array(
             array(
                 'type' => 4,
                 'platform' => 'telegram',
                 'payload' => array(
                     'telegram' => array(
-                        'text' => $this->getSuspensionesProgramadas($niu, true) . "\n ¿Deseas consultar algo más?",
+                        'text' => $response . "\n ¿Deseas consultar algo más?",
                         'reply_markup' => array(
                             'inline_keyboard' => array(
                                 array(
@@ -1132,7 +1140,6 @@ class chatBotAPI
     //puede ser reutilizada en otros parametros
     public function getIndisponibilidad($niu)
     {
-
         $susp = getSuspEfectiva($this->con, $niu);
 
         $msg = "";
@@ -1188,10 +1195,35 @@ class chatBotAPI
             $msg .= "\n🔷 Para esta cuenta, hemos encontrado las siguientes indisponibilidades a nivel de circuito: \n🔷 Hay una falla en el circuito reportada el " . $circuito->FECHA . " a las " . $circuito->HORA . ". Estamos trabajando para reestablecer el servicio";
             return $msg;
         } else {
-            //Aqui se debe invocar la busqueda en SGO
-            return "\nTe cuento, en el momento no registras ninguna interrupción en el servicio de energía 👍⚡ \nSi deseas más información al respecto te tenemos los siguientes canales: \n🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415 \n🔹 Línea para daños: Marca 115.\n";
+            //Invocar metodo para buscar interr SGO
+            return $this->getSGO($niu);
         }
     }
+
+    //Método que obtiene las interrupciones a nivel de nodo SGO teniendo el NIU. Reutilizable
+    public function getSGO($niu)
+    {
+        $res = $this->consultarIndisponibilidad($niu);
+        if(substr($res->NombreSuscriptor,0,5)!="ERROR"){
+            $time = explode(" ", $res->Fecha);
+            //Validar si se encuentra una indisponibilidad en el SGO
+            if($res->Estado==0){
+                $msg = "\n🔷 Para esta cuenta, hemos encontrado la siguiente indisponibilidad: \n🔷 Hay una falla reportada el " . $time[0] . " a las " . $time[1] . ".";
+                //Validar si ya hay cuadrillas en campo
+                if($res->Orden == 1){
+                    $msg .= "\n Pero no te preocupes, ya tenemos una de nuetras cuadrillas en camino para solucionar este inconveniente.";
+                }
+                return $msg;
+            }else{
+                return "\nTe cuento, en el momento no registras ninguna interrupción en el servicio de energía 👍⚡ \nSi deseas más información al respecto te tenemos los siguientes canales: \n🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415 \n🔹 Línea para daños: Marca 115.\n";            
+            }
+        }else{
+            return "No he podido encontrar ningún registro asociado con esta cuenta. ¿Deseas consultar algo más?";
+        }
+    }
+
+
+
     //-----------------------------------------------------------------------------
 
 
@@ -1239,5 +1271,34 @@ class chatBotAPI
         return $result;
     }
     //----------------------------------------------------------------------
+
+    //----------------------------CONEXION SGO------------------------------------
+
+    public function consultarIndisponibilidad($niu){
+        
+        $wsdl = $this->SGOurl;
+        $client = new \Mesmotronic\Soap\WsaSoapClient($wsdl);
+        $result = $client->ConsultarIndisponibilidad(array('Cuenta' => $niu));
+        
+        return $result->ConsultarIndisponibilidadResult;
+    }
+    
+    public function consularInterrupcionesDelServicioXCuenta($niu){
+    
+        $wsdl = $this->SGOurl;
+        $client2 = new \Mesmotronic\Soap\WsaSoapClient($wsdl);
+        $result2 = $client2->consularInterrupcionesDelServicioXCuenta(array('Cuenta' => $niu));
+        
+        return $result2->consularInterrupcionesDelServicioXCuentaResult;
+    }
+    
+    public function consultarIndisponibilidadXNodo($nodo){
+    
+        $wsdl = $this->SGOurl;
+        $client3 = new \Mesmotronic\Soap\WsaSoapClient($wsdl);
+        $result3 = $client3->consultarIndisponibilidadXNodo(array('Nodo' => $nodo));
+        
+        return $result3->consultarIndisponibilidadXNodoResult;
+    }
 
 }
