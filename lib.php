@@ -282,7 +282,17 @@ class chatBotAPI
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => "\n🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415 \n🔹 Línea para daños: Marca 115.\n🔹 CHAT en Linea: "
+                    'speech' => "🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415"
+                ),
+                array(
+                    'type' => 0,
+                    'platform' => 'skype',
+                    'speech' => "🔹 Línea para daños: Marca 115."
+                ),
+                array(
+                    'type' => 0,
+                    'platform' => 'skype',
+                    'speech' => "🔹 CHAT en Línea: "
                 ),
                 array(
                     'type' => 1,
@@ -290,7 +300,7 @@ class chatBotAPI
                     'subtitle' => "",
                     'buttons' => array(
                         array(
-                            'text' => "👆 Ingresa Aquí",
+                            'text' => "Ingresa Aquí",
                             'postback' => "http://servicio.asistenciachat.com/website/chec_chat/Default2.aspx"
                         )
                     )
