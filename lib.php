@@ -867,56 +867,165 @@ class chatBotAPI
     public function getSPNiu($niu)
     {
         $response = $this->getSuspensionesProgramadas($niu, true);
-        $json['speech'] = $response . "A continuación selecciona una opción:";
-        $json['displayText'] = $response . "\n A continuación selecciona una opción:";
-        $json['messages'] = array(
-            array(
-                'type' => 4,
-                'platform' => 'telegram',
-                'payload' => array(
-                    'telegram' => array(
-                        'text' => $response . "\n A continuación selecciona una opción:",
-                        'reply_markup' => array(
-                            'inline_keyboard' => array(
-                                array(
+         //Validar si no se encontró ninguna susp programada para enviar diferentes tipos de respuesta
+         if(substr($response, 0, 7)=="En este"){
+            $json['speech'] = $response;
+            $json['displayText'] = $response;
+            $json['messages'] = array(
+                array(
+                    'type' => 0,
+                    'platform' => 'telegram',
+                    'speech' =>  $response
+                ),
+                array(
+                    'type' => 0,
+                    'platform' => 'telegram',
+                    'speech' =>  "\n🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415 \n🔹 Línea para daños: Marca 115.\n🔹 CHAT en Linea: "
+                ),
+                array(
+                    'type' => 1,
+                    'platform' => 'telegram',
+                    'title' => 'Chat asistido por agente',
+                    'subtitle' => '',
+                    'buttons' => array(
+                        array(
+                            'text' => "👆 Ingresa Aquí",
+                            'postback' => "https://servicio.asistenciachat.com/website/chec_chat/Default2.aspx"
+                        )
+                    )
+                ),
+                array(
+                    'type' => 4,
+                    'platform' => 'telegram',
+                    'payload' => array(
+                        'telegram' => array(
+                            'text' =>  "Si por el contrario deseas seguir conversando conmigo selecciona una de las siguientes opciones:",
+                            'reply_markup' => array(
+                                'inline_keyboard' => array(
                                     array(
-                                        'text' => '🔙 Buscar de nuevo',
-                                        'callback_data' => '1.',
-                                    )
+                                        array(
+                                            'text' => '🔙 Buscar de nuevo',
+                                            'callback_data' => '1.',
+                                        ),
+                                    ),
+                                    array(
+                                        array(
+                                            'text' => '💠 Menú Principal',
+                                            'callback_data' => 'Menú Principal',
+                                        ),
+                                    ),
+                                    array(
+                                        array(
+                                            'text' => '👌 He finalizado la consulta',
+                                            'callback_data' => 'No',
+                                        ),
+                                    ),
                                 ),
-                                array(
-                                    array(
-                                        'text' => '💠 Menú Principal',
-                                        'callback_data' => 'Menú Principal',
-                                    )
-                                ),
-                                array(
-                                    array(
-                                        'text' => '👌 He finalizado la consulta',
-                                        'callback_data' => 'No',
-                                    )
-                                )
                             ),
                         ),
                     ),
                 ),
-            ),
-            array(
-                'type' => 0,
-                'platform' => 'skype',
-                'speech' => $response
-            ),
-            array(
-                'type' => 2,
-                'platform' => 'skype',
-                'title' => 'Selecciona una opción:',
-                'replies' => array(
-                    '🔙 Buscar de nuevo',
-                    '💠 Menú Principal',
-                    '👌 He finalizado la consulta'
+                array(
+                    'type' => 0,
+                    'platform' => 'skype',
+                    'speech' => $response
+                ),
+                array(
+                    'type' => 0,
+                    'platform' => 'skype',
+                    'speech' => "🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415"
+                ),
+                array(
+                    'type' => 0,
+                    'platform' => 'skype',
+                    'speech' => "🔹 Línea para daños: Marca 115."
+                ),
+                array(
+                    'type' => 0,
+                    'platform' => 'skype',
+                    'speech' => "🔹 CHAT en Línea: "
+                ),
+                array(
+                    'type' => 1,
+                    'platform' => 'skype',
+                    'title' => 'Chat asistido por agente',
+                    'subtitle' => "",
+                    'buttons' => array(
+                        array(
+                            'text' => "Ingresa Aquí",
+                            'postback' => "https://servicio.asistenciachat.com/website/chec_chat/Default2.aspx"
+                        )
+                    )
+                ),
+                array(
+                    'type' => 0,
+                    'platform' => 'skype',
+                    'speech' => "Si por el contrario deseas seguir conversando conmigo selecciona una de las siguientes opciones:"
+                ),
+                array(
+                    'type' => 2,
+                    'platform' => 'skype',
+                    'title' => 'Selecciona una opción:',
+                    'replies' => array(
+                        '🔙 Buscar de nuevo',
+                        '💠 Menú Principal',
+                        '👌 He finalizado la consulta'
+                    )
                 )
-            )
-        );
+            );
+        }else{ //Se envía cuando sí se encuentra alguna indisponibilidad
+            $json['speech'] = $response . "A continuación selecciona una opción:";
+            $json['displayText'] = $response . "\n A continuación selecciona una opción:";
+            $json['messages'] = array(
+                array(
+                    'type' => 4,
+                    'platform' => 'telegram',
+                    'payload' => array(
+                        'telegram' => array(
+                            'text' => $response . "\n A continuación selecciona una opción:",
+                            'reply_markup' => array(
+                                'inline_keyboard' => array(
+                                    array(
+                                        array(
+                                            'text' => '🔙 Buscar de nuevo',
+                                            'callback_data' => '1.',
+                                        ),
+                                    ),
+                                    array(
+                                        array(
+                                            'text' => '💠 Menú Principal',
+                                            'callback_data' => 'Menú Principal',
+                                        ),
+                                    ),
+                                    array(
+                                        array(
+                                            'text' => '👌 He finalizado la consulta',
+                                            'callback_data' => 'No',
+                                        ),
+                                    ),
+                                ),
+                            ),
+                        ),
+                    ),
+                ),
+                array(
+                    'type' => 0,
+                    'platform' => 'skype',
+                    'speech' => $response
+                ),
+                array(
+                    'type' => 2,
+                    'platform' => 'skype',
+                    'title' => 'Selecciona una opción:',
+                    'replies' => array(
+                        '🔙 Buscar de nuevo',
+                        '💠 Menú Principal',
+                        '👌 He finalizado la consulta'
+                    )
+                )
+            );
+        }
+
         return $json;
     }
 
