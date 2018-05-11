@@ -216,15 +216,15 @@ class chatBotAPI
     public function getIndisNiu($niu)
     {
         $response = $this->getIndisponibilidad($niu);
-        $json['speech'] = $response + "A continuación selecciona una opción:";
-        $json['displayText'] = $response + "\n A continuación selecciona una opción:";
+        $json['speech'] = $response . "A continuación selecciona una opción:";
+        $json['displayText'] = $response . "\n A continuación selecciona una opción:";
         $json['messages'] = array(
             array(
                 'type' => 4,
                 'platform' => 'telegram',
                 'payload' => array(
                     'telegram' => array(
-                        'text' => $response + "\n A continuación selecciona una opción:",
+                        'text' => $response . "\n A continuación selecciona una opción:",
                         'reply_markup' => array(
                             'inline_keyboard' => array(
                                 array(
@@ -641,15 +641,15 @@ class chatBotAPI
     public function getSPNiu($niu)
     {
         $response = $this->getSuspensionesProgramadas($niu, true);
-        $json['speech'] = $response + "A continuación selecciona una opción:";
-        $json['displayText'] = $response + "\n A continuación selecciona una opción:";
+        $json['speech'] = $response . "A continuación selecciona una opción:";
+        $json['displayText'] = $response . "\n A continuación selecciona una opción:";
         $json['messages'] = array(
             array(
                 'type' => 4,
                 'platform' => 'telegram',
                 'payload' => array(
                     'telegram' => array(
-                        'text' => $response + "\n A continuación selecciona una opción:",
+                        'text' => $response . "\n A continuación selecciona una opción:",
                         'reply_markup' => array(
                             'inline_keyboard' => array(
                                 array(
