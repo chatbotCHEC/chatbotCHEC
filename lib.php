@@ -1114,6 +1114,7 @@ class chatBotAPI
         } else {
             //Invocar metodo para buscar interr SGO
             //return $this->getSGO($niu);
+            return "No he podido encontrar ningún registro asociado con esta cuenta.";
         }
     }
 
@@ -1135,7 +1136,7 @@ class chatBotAPI
                 return "\nEn este momento no me reporta ninguna falla del servicio en tu sector, por favor comunicate con nosotros CHAT en Linea: \n🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415 \n🔹 Línea para daños: Marca 115.\n";            
             }
         }else{
-            return "No he podido encontrar ningún registro asociado con esta cuenta. ¿Quieres realizar otra consulta?";
+            return "No he podido encontrar ningún registro asociado con esta cuenta.";
         }
     }
 
