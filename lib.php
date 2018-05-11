@@ -417,29 +417,29 @@ class chatBotAPI
 
         //Verificar si no se encontró ninguna dirección
         if (isset($busqueda['NINGUNO'])) {
-            $json['speech'] = "No he podido encontrar ningún registro asociado con esta dirección. ¿Deseas consultar algo más?";
-            $json['displayText'] = "No he podido encontrar ningún registro asociado con esta dirección.\n ¿Deseas consultar algo más?";
+            $json['speech'] = "No encuentro ningún registro asociado a este número de dirección. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal";
+            $json['displayText'] = "No encuentro ningún registro asociado a este número de dirección.\n Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal";
             $json['messages'] = array(
                 array(
                     'type' => 4,
                     'platform' => 'telegram',
                     'payload' => array(
                         'telegram' => array(
-                            'text' => "No he podido encontrar ningún registro asociado con esta dirección. \n ¿Deseas consultar algo más?",
+                            'text' => "No encuentro ningún registro asociado a este número de dirección. \n Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal",
                             'reply_markup' => array(
                                 'inline_keyboard' => array(
                                     array(
                                         array(
-                                            'text' => 'Sí ✔️',
-                                            'callback_data' => 'Menú Principal',
+                                            'text' => '🔙 Buscar de nuevo',
+                                            'callback_data' => '1.',
                                         ),
                                     ),
                                     array(
                                         array(
-                                            'text' => 'No ❌',
-                                            'callback_data' => 'No',
+                                            'text' => '💠 Menú Principal',
+                                            'callback_data' => 'Menú Principal',
                                         ),
-                                    ),
+                                    )
                                 ),
                             ),
                         ),
