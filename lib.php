@@ -216,56 +216,149 @@ class chatBotAPI
     public function getIndisNiu($niu)
     {
         $response = $this->getIndisponibilidad($niu);
-        $json['speech'] = $response . "A continuación selecciona una opción:";
-        $json['displayText'] = $response . "\n A continuación selecciona una opción:";
-        $json['messages'] = array(
-            array(
-                'type' => 4,
-                'platform' => 'telegram',
-                'payload' => array(
-                    'telegram' => array(
-                        'text' => $response . "\n A continuación selecciona una opción:",
-                        'reply_markup' => array(
-                            'inline_keyboard' => array(
-                                array(
+
+        //Validar si no se encontró ninguna indisponibilidad para enviar diferentes tipos de respuesta
+        if(substr($response, 0, 7)=="En este"){
+            $json['speech'] = $response;
+            $json['displayText'] = $response;
+            $json['messages'] = array(
+                array(
+                    'type' => 0,
+                    'platform' => 'telegram',
+                    'speech' =>  $response
+                ),
+                array(
+                    'type' => 0,
+                    'platform' => 'telegram',
+                    'speech' =>  "\n🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415 \n🔹 Línea para daños: Marca 115.\n🔹 CHAT en Linea: "
+                ),
+                array(
+                    'type' => 1,
+                    'platform' => 'telegram',
+                    'subtitle' => '',
+                    'buttons' => array(
+                        array(
+                            'text' => "👆 Ingresa Aquí",
+                            'postback' => "http://servicio.asistenciachat.com/website/chec_chat/Default2.aspx"
+                        )
+                    )
+                ),
+                array(
+                    'type' => 4,
+                    'platform' => 'telegram',
+                    'payload' => array(
+                        'telegram' => array(
+                            'text' =>  "Si por el contrario deseas seguir conversando conmigo selecciona una de las siguientes opciones:",
+                            'reply_markup' => array(
+                                'inline_keyboard' => array(
                                     array(
-                                        'text' => '🔙 Buscar de nuevo',
-                                        'callback_data' => '1.',
+                                        array(
+                                            'text' => '🔙 Buscar de nuevo',
+                                            'callback_data' => '1.',
+                                        ),
                                     ),
-                                ),
-                                array(
                                     array(
-                                        'text' => '💠 Menú Principal',
-                                        'callback_data' => 'Menú Principal',
+                                        array(
+                                            'text' => '💠 Menú Principal',
+                                            'callback_data' => 'Menú Principal',
+                                        ),
                                     ),
-                                ),
-                                array(
                                     array(
-                                        'text' => '👌 He finalizado la consulta',
-                                        'callback_data' => 'No',
+                                        array(
+                                            'text' => '👌 He finalizado la consulta',
+                                            'callback_data' => 'No',
+                                        ),
                                     ),
                                 ),
                             ),
                         ),
                     ),
                 ),
-            ),
-            array(
-                'type' => 0,
-                'platform' => 'skype',
-                'speech' => $response
-            ),
-            array(
-                'type' => 2,
-                'platform' => 'skype',
-                'title' => 'A continuación selecciona una opción:',
-                'replies' => array(
-                    '🔙 Buscar de nuevo',
-                    '💠 Menú Principal',
-                    '👌 He finalizado la consulta'
+                array(
+                    'type' => 0,
+                    'platform' => 'skype',
+                    'speech' => $response
+                ),
+                array(
+                    'type' => 0,
+                    'platform' => 'skype',
+                    'speech' => "\n🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415 \n🔹 Línea para daños: Marca 115.\n🔹 CHAT en Linea: "
+                ),
+                array(
+                    'type' => 1,
+                    'platform' => 'skype',
+                    'subtitle' => "",
+                    'buttons' => array(
+                        array(
+                            'text' => "👆 Ingresa Aquí",
+                            'postback' => "http://servicio.asistenciachat.com/website/chec_chat/Default2.aspx"
+                        )
+                    )
+                ),
+                array(
+                    'type' => 2,
+                    'platform' => 'skype',
+                    'title' => 'Si por el contrario deseas seguir conversando conmigo selecciona una de las siguientes opciones:',
+                    'replies' => array(
+                        '🔙 Buscar de nuevo',
+                        '💠 Menú Principal',
+                        '👌 He finalizado la consulta'
+                    )
                 )
-            )
-        );
+            );
+        }else{ //Se envía cuando sí se encuentra alguna indisponibilidad
+            $json['speech'] = $response . "A continuación selecciona una opción:";
+            $json['displayText'] = $response . "\n A continuación selecciona una opción:";
+            $json['messages'] = array(
+                array(
+                    'type' => 4,
+                    'platform' => 'telegram',
+                    'payload' => array(
+                        'telegram' => array(
+                            'text' => $response . "\n A continuación selecciona una opción:",
+                            'reply_markup' => array(
+                                'inline_keyboard' => array(
+                                    array(
+                                        array(
+                                            'text' => '🔙 Buscar de nuevo',
+                                            'callback_data' => '1.',
+                                        ),
+                                    ),
+                                    array(
+                                        array(
+                                            'text' => '💠 Menú Principal',
+                                            'callback_data' => 'Menú Principal',
+                                        ),
+                                    ),
+                                    array(
+                                        array(
+                                            'text' => '👌 He finalizado la consulta',
+                                            'callback_data' => 'No',
+                                        ),
+                                    ),
+                                ),
+                            ),
+                        ),
+                    ),
+                ),
+                array(
+                    'type' => 0,
+                    'platform' => 'skype',
+                    'speech' => $response
+                ),
+                array(
+                    'type' => 2,
+                    'platform' => 'skype',
+                    'title' => 'Selecciona una opción:',
+                    'replies' => array(
+                        '🔙 Buscar de nuevo',
+                        '💠 Menú Principal',
+                        '👌 He finalizado la consulta'
+                    )
+                )
+            );
+        }
+
         return $json;
     }
 
@@ -325,12 +418,12 @@ class chatBotAPI
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => $json['speech']
+                    'speech' => $json['speech'] . "\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees."
                 ),
                 array(
                     'type' => 2,
                     'platform' => 'skype',
-                    'title' => 'Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.',
+                    'title' => 'Selecciona una opción',
                     'replies' => array(
                         '🔙 Buscar de nuevo',
                         '💠 Menú Principal',
@@ -371,6 +464,20 @@ class chatBotAPI
                         ),
                     ),
                 ),
+                array(
+                    'type' => 0,
+                    'platform' => 'skype',
+                    'speech' => "No encuentro ningún registro asociado a esta dirección. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal"
+                ),
+                array(
+                    'type' => 2,
+                    'platform' => 'skype',
+                    'title' => 'Selecciona una opción',
+                    'replies' => array(
+                        '🔙 Buscar de nuevo',
+                        '💠 Menú Principal'
+                    )
+                )
             );
             return $json;
         }
@@ -431,12 +538,12 @@ class chatBotAPI
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => $json['speech']
+                    'speech' => $json['speech'] . "\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees."
                 ),
                 array(
                     'type' => 2,
                     'platform' => 'skype',
-                    'title' => 'Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.',
+                    'title' => 'Selecciona una opción',
                     'replies' => array(
                         '🔙 Buscar de nuevo',
                         '💠 Menú Principal',
@@ -449,15 +556,15 @@ class chatBotAPI
 
         //Verificar si no se encontró ninguna cédula
         if (isset($busqueda['NINGUNO'])) {
-            $json['speech'] = "No encuentro ningún registro asociado a este número de cédula. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal?";
-            $json['displayText'] = "No encuentro ningún registro asociado a este número de cédula. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal?";
+            $json['speech'] = "No encuentro ningún registro asociado a este número de cédula. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal";
+            $json['displayText'] = "No encuentro ningún registro asociado a este número de cédula. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal";
             $json['messages'] = array(
                 array(
                     'type' => 4,
                     'platform' => 'telegram',
                     'payload' => array(
                         'telegram' => array(
-                            'text' => "No encuentro ningún registro asociado a este número de cédula. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal?",
+                            'text' => "No encuentro ningún registro asociado a este número de cédula. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal",
                             'reply_markup' => array(
                                 'inline_keyboard' => array(
                                     array(
@@ -477,6 +584,20 @@ class chatBotAPI
                         ),
                     ),
                 ),
+                array(
+                    'type' => 0,
+                    'platform' => 'skype',
+                    'speech' => "No encuentro ningún registro asociado a este número de cédula. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal"
+                ),
+                array(
+                    'type' => 2,
+                    'platform' => 'skype',
+                    'title' => 'Selecciona una opción',
+                    'replies' => array(
+                        '🔙 Buscar de nuevo',
+                        '💠 Menú Principal'
+                    )
+                )
             );
             return $json;
         }
@@ -538,12 +659,12 @@ class chatBotAPI
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => $json['speech']
+                    'speech' => $json['speech'] . "\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees."
                 ),
                 array(
                     'type' => 2,
                     'platform' => 'skype',
-                    'title' => 'Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.',
+                    'title' => 'Selecciona una opción',
                     'replies' => array(
                         '🔙 Buscar de nuevo',
                         '💠 Menú Principal',
@@ -584,6 +705,20 @@ class chatBotAPI
                         ),
                     ),
                 ),
+                array(
+                    'type' => 0,
+                    'platform' => 'skype',
+                    'speech' => "No encuentro ningún registro asociado a este número de NIT. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal"
+                ),
+                array(
+                    'type' => 2,
+                    'platform' => 'skype',
+                    'title' => 'Selecciona una opción',
+                    'replies' => array(
+                        '🔙 Buscar de nuevo',
+                        '💠 Menú Principal'
+                    )
+                )
             );
             return $json;
         }
@@ -645,12 +780,12 @@ class chatBotAPI
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => $json['speech']
+                    'speech' => $json['speech'] . "\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees."
                 ),
                 array(
                     'type' => 2,
                     'platform' => 'skype',
-                    'title' => 'Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.',
+                    'title' => 'Selecciona una opción',
                     'replies' => array(
                         '🔙 Buscar de nuevo',
                         '💠 Menú Principal',
@@ -691,6 +826,20 @@ class chatBotAPI
                         ),
                     ),
                 ),
+                array(
+                    'type' => 0,
+                    'platform' => 'skype',
+                    'speech' => "No encuentro ningún registro asociado a este nombre. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal"
+                ),
+                array(
+                    'type' => 2,
+                    'platform' => 'skype',
+                    'title' => 'Selecciona una opción',
+                    'replies' => array(
+                        '🔙 Buscar de nuevo',
+                        '💠 Menú Principal'
+                    )
+                )
             );
             return $json;
         }
@@ -743,7 +892,7 @@ class chatBotAPI
             array(
                 'type' => 2,
                 'platform' => 'skype',
-                'title' => 'A continuación selecciona una opción:',
+                'title' => 'Selecciona una opción:',
                 'replies' => array(
                     '🔙 Buscar de nuevo',
                     '💠 Menú Principal',
@@ -809,12 +958,12 @@ class chatBotAPI
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => $json['speech']
+                    'speech' => $json['speech'] . "\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees."
                 ),
                 array(
                     'type' => 2,
                     'platform' => 'skype',
-                    'title' => 'Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.',
+                    'title' => 'Selecciona una opción',
                     'replies' => array(
                         '🔙 Buscar de nuevo',
                         '💠 Menú Principal',
@@ -855,6 +1004,20 @@ class chatBotAPI
                         ),
                     ),
                 ),
+                array(
+                    'type' => 0,
+                    'platform' => 'skype',
+                    'speech' => "No encuentro ningún registro asociado a este número de cédula. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal"
+                ),
+                array(
+                    'type' => 2,
+                    'platform' => 'skype',
+                    'title' => 'Selecciona una opción',
+                    'replies' => array(
+                        '🔙 Buscar de nuevo',
+                        '💠 Menú Principal'
+                    )
+                )
             );
             return $json;
         }
@@ -915,12 +1078,12 @@ class chatBotAPI
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => $json['speech']
+                    'speech' => $json['speech'] . "\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees."
                 ),
                 array(
                     'type' => 2,
                     'platform' => 'skype',
-                    'title' => 'Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.',
+                    'title' => 'Selecciona una opción',
                     'replies' => array(
                         '🔙 Buscar de nuevo',
                         '💠 Menú Principal',
@@ -961,6 +1124,20 @@ class chatBotAPI
                         ),
                     ),
                 ),
+                array(
+                    'type' => 0,
+                    'platform' => 'skype',
+                    'speech' => "No encuentro ningún registro asociado a este número de NIT. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal"
+                ),
+                array(
+                    'type' => 2,
+                    'platform' => 'skype',
+                    'title' => 'Selecciona una opción',
+                    'replies' => array(
+                        '🔙 Buscar de nuevo',
+                        '💠 Menú Principal'
+                    )
+                )
             );
             return $json;
         }
@@ -1022,12 +1199,12 @@ class chatBotAPI
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => $json['speech']
+                    'speech' => $json['speech'] . "\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees."
                 ),
                 array(
                     'type' => 2,
                     'platform' => 'skype',
-                    'title' => 'Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.',
+                    'title' => 'Selecciona una opción',
                     'replies' => array(
                         '🔙 Buscar de nuevo',
                         '💠 Menú Principal',
@@ -1068,6 +1245,20 @@ class chatBotAPI
                         ),
                     ),
                 ),
+                array(
+                    'type' => 0,
+                    'platform' => 'skype',
+                    'speech' => "No encuentro ningún registro asociado a esta dirección. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal"
+                ),
+                array(
+                    'type' => 2,
+                    'platform' => 'skype',
+                    'title' => 'Selecciona una opción',
+                    'replies' => array(
+                        '🔙 Buscar de nuevo',
+                        '💠 Menú Principal'
+                    )
+                )
             );
             return $json;
         }
@@ -1129,12 +1320,12 @@ class chatBotAPI
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => $json['speech']
+                    'speech' => $json['speech'] . "\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees."
                 ),
                 array(
                     'type' => 2,
                     'platform' => 'skype',
-                    'title' => 'Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.',
+                    'title' => 'Selecciona una opción',
                     'replies' => array(
                         '🔙 Buscar de nuevo',
                         '💠 Menú Principal',
@@ -1175,6 +1366,20 @@ class chatBotAPI
                         ),
                     ),
                 ),
+                array(
+                    'type' => 0,
+                    'platform' => 'skype',
+                    'speech' => "No encuentro ningún registro asociado a este nombre. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal"
+                ),
+                array(
+                    'type' => 2,
+                    'platform' => 'skype',
+                    'title' => 'Selecciona una opción',
+                    'replies' => array(
+                        '🔙 Buscar de nuevo',
+                        '💠 Menú Principal'
+                    )
+                )
             );
             return $json;
         }
@@ -1261,14 +1466,14 @@ class chatBotAPI
             $time = explode(" ", $res->Fecha);
             //Validar si se encuentra una indisponibilidad en el SGO
             if($res->Estado==0){
-                $msg = "\n🔷 Para el inmueble consultado encontre que se reportó la siguiente falla en el servicio de energía: \n🔷 Hay una falla en el nodo reportada el " . $time[0] . " a las " . $time[1] . ".";
+                $msg = "\n🔷 Para el inmueble consultado encontré que se reportó la siguiente falla en el servicio de energía: \n🔷 Hay una falla en el nodo reportada el " . $time[0] . " a las " . $time[1] . ".";
                 //Validar si ya hay cuadrillas en campo
                 if($res->Orden == 1){
-                    $msg .= "\n Pero no te preocupes, ya tenemos una de nuetras cuadrillas en camino para solucionar este inconveniente.";
+                    $msg .= "\n Ya tenemos una de nuetras cuadrillas en camino para solucionar este inconveniente.";
                 }
                 return $msg;
             }else{
-                return "\nEn este momento no me reporta ninguna falla del servicio en tu sector, por favor comunicate con nosotros CHAT en Linea: \n🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415 \n🔹 Línea para daños: Marca 115.\n";            
+                return "En este momento no me reporta ninguna falla del servicio en tu sector, por favor comunicate con nosotros: ";            
             }
         }else{
             return "No he podido encontrar ningún registro asociado con esta cuenta.";
