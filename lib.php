@@ -48,117 +48,7 @@ class chatBotAPI
 
     }
 
-   /*  public function respuesta($persona)
-    {
-        //Verificar si se encontró el NIU
-        if (!(isset($persona->NIU)) || $persona->NIU == "") {
-            //Respuesta para cuando no se encuentra el NIU
-            $json['speech'] = "No se ha encontrado un usuario con el dato indicado";
-            $json['displayText'] = "No se ha encontrado un usuario con el dato indicado";
-            $json['messages'] = array(
-                array(
-                    'type' => 4,
-                    'platform' => 'telegram',
-                    'payload' => array(
-                        'telegram' => array(
-                            'text' => "No se ha encontrado ninguna cuenta con el dato ingresado. \n ¿Quieres realizar otra consulta?",
-                            'reply_markup' => array(
-                                'inline_keyboard' => array(
-                                    array(
-                                        array(
-                                            'text' => 'Sí ✔️',
-                                            'callback_data' => 'Menú Principal',
-                                        ),
-                                    ),
-                                    array(
-                                        array(
-                                            'text' => 'No ❌',
-                                            'callback_data' => 'No',
-                                        ),
-                                    ),
-                                ),
-                            ),
-                        ),
-                    ),
-                ),
-            );
-
-        } else {
-            //Verificar si el NIU consultado tiene telefono registrado
-            if ($persona->TELEFONO != "" && $persona->TELEFONO != "NULL") {
-                //Respuesta para cuando sí hay un teléfono registrado
-                $json['speech'] = "El nombre del usuario con el número de cuenta " . $persona->NIU . ", es " . $persona->NOMBRE . ". Su predio se encuentra en la dirección " . $persona->DIRECCION . " - " . $persona->MUNICIPIO . " y su número de teléfono registrado es " . $persona->TELEFONO . ".";
-                $json['displayText'] = "El nombre del usuario con el número de cuenta " . $persona->NIU . ", es " . $persona->NOMBRE . ". Su predio se encuentra en la dirección " . $persona->DIRECCION . " - " . $persona->MUNICIPIO . " y su número de teléfono registrado es " . $persona->TELEFONO . ".";
-            } else {
-                //Respuesta para cuando no hay un teléfono registrado
-                $json['speech'] = "El nombre del usuario con el número de cuenta " . $persona->NIU . ", es " . $persona->NOMBRE . ". Su predio se encuentra en la dirección " . $persona->DIRECCION . " y no tenemos registrado ningún número telefónico.";
-                $json['displayText'] = "El nombre del usuario con el número de cuenta " . $persona->NIU . ", es " . $persona->NOMBRE . ". Su predio se encuentra en la dirección " . $persona->DIRECCION . " y no tenemos registrado ningún número telefónico.";
-            }
-            $indispMsg = $this->getIndisponibilidad($persona->NIU);
-            $json['speech'] = $json['speech'] . $indispMsg;
-            $json['displayText'] = $json['displayText'] . $indispMsg;
-        }
-        return $json;
-    }
-
-    public function respuesta_plural($personas, $context)
-    {
-        //Verificar si se encontró alguna cuenta con el nombre asociado
-        if (is_null($personas) || count($personas) == 0) {
-            //Respuesta para cuando no se encuentra la cuenta con el nombre asociado
-            $json['speech'] = "No se ha encontrado ninguna cuenta con el dato ingresado.";
-            $json['displayText'] = "No se ha encontrado ninguna cuenta con el dato ingresado.";
-            $json['messages'] = array(
-                array(
-                    'type' => 4,
-                    'platform' => 'telegram',
-                    'payload' => array(
-                        'telegram' => array(
-                            'text' => "No se ha encontrado ninguna cuenta con el dato ingresado. \n ¿Quieres realizar otra consulta?",
-                            'reply_markup' => array(
-                                'inline_keyboard' => array(
-                                    array(
-                                        array(
-                                            'text' => 'Sí ✔️',
-                                            'callback_data' => 'Menú Principal',
-                                        ),
-                                    ),
-                                    array(
-                                        array(
-                                            'text' => 'No ❌',
-                                            'callback_data' => 'No',
-                                        ),
-                                    ),
-                                ),
-                            ),
-                        ),
-                    ),
-                ),
-            );
-
-        } else {
-            $json['speech'] = "Hemos encontrado las siguientes cuentas asociadas con el dato dado (Si su cuenta no se encuentra entre los resultados, intente con un criterio de búsqueda más específico)";
-            $json['displayText'] = "Hemos encontrado las siguientes cuentas asociadas con el dato dado. (Si su cuenta no se encuentra entre los resultados, intente con un criterio de búsqueda más específico)\n";
-            foreach ($personas as $persona) {
-                $json['speech'] .= "\n - Nombre: " . $persona->NOMBRE . "\n - Dirección: " . $persona->DIRECCION . "\n - Numero de cuenta: " . $persona->NIU;
-                $json['displayText'] .= "---------------\n\n - Nombre: " . $persona->NOMBRE . "\n - Dirección: " . $persona->DIRECCION . "\n - Numero de cuenta: " . $persona->NIU;
-            }
-            $json['speech'] .= "\n A continuación, digita el número de cuenta correspondiente a tu solicitud";
-            $json['displayText'] .= "\n A continuación, digita el número de cuenta correspondiente a tu solicitud";
-
-            if ($context == "c1") {
-                $json['contextOut'] = array(
-                    array("name" => "c1_niu", "parameters" => array("res" => "1"), "lifespan" => 4),
-                    array("name" => "c1_cc", "parameters" => array("res" => "1"), "lifespan" => 4));
-            }
-            if ($context == "c2") {
-                $json['contextOut'] = array(array('name' => 'c2_niu', 'lifespan' => 4, 'parameters' => json_decode("{}")));
-            }
-
-        }
-        return $json;
-    }
- */
+   
     //Obtener los datos del usuario a partir del NIU
     //Todas estas tienden a desaparecer en el update
     public function getUserData($NIU)
@@ -360,6 +250,21 @@ class chatBotAPI
                     ),
                 ),
             ),
+            array(
+                'type' => 0,
+                'platform' => 'skype',
+                'speech' => $response
+            ),
+            array(
+                'type' => 2,
+                'platform' => 'skype',
+                'title' => 'A continuación selecciona una opción:',
+                'replies' => array(
+                    '🔙 Buscar de nuevo',
+                    '💠 Menú Principal',
+                    '👌 He finalizado la consulta'
+                )
+            )
         );
         return $json;
     }
@@ -1158,7 +1063,7 @@ class chatBotAPI
 
         if (!is_array($susp)) {
             if ($susp->VALOR == "s") {
-                $msg .= "\n🔷 Para esta cuenta, se reporta una suspensión efectiva realizada en la siguiente fecha: " . $susp->HORA_FIN;
+                $msg .= "\n🔷 Tu servicio se encuentra suspendido desde: $susp->HORA_FIN por cualquiera de los siguientes motivos: \n - Falta de pago";
                 return $msg;
             } else {
                 //Invocar metodo para buscar interrupcion programada
