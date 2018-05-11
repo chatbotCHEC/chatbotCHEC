@@ -307,9 +307,14 @@ class chatBotAPI
                     )
                 ),
                 array(
+                    'type' => 0,
+                    'platform' => 'skype',
+                    'speech' => "Si por el contrario deseas seguir conversando conmigo selecciona una de las siguientes opciones:"
+                ),
+                array(
                     'type' => 2,
                     'platform' => 'skype',
-                    'title' => 'Si por el contrario deseas seguir conversando conmigo selecciona una de las siguientes opciones:',
+                    'title' => 'Selecciona una opción:',
                     'replies' => array(
                         '🔙 Buscar de nuevo',
                         '💠 Menú Principal',
