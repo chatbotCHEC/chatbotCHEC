@@ -235,6 +235,7 @@ class chatBotAPI
                 array(
                     'type' => 1,
                     'platform' => 'telegram',
+                    'title' => 'Chat asistido por agente',
                     'subtitle' => '',
                     'buttons' => array(
                         array(
