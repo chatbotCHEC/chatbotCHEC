@@ -1113,7 +1113,7 @@ class chatBotAPI
             return $msg;
         } else {
             //Invocar metodo para buscar interr SGO
-            return $this->getSGO($niu);
+            //return $this->getSGO($niu);
         }
     }
 
