@@ -301,7 +301,7 @@ class chatBotAPI
                     'buttons' => array(
                         array(
                             'text' => "Ingresa Aquí",
-                            'postback' => "http://servicio.asistenciachat.com/website/chec_chat/Default2.aspx"
+                            'postback' => "https://servicio.asistenciachat.com/website/chec_chat/Default2.aspx"
                         )
                     )
                 ),
