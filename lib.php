@@ -322,6 +322,21 @@ class chatBotAPI
                         ),
                     ),
                 ),
+                array(
+                    'type' => 0,
+                    'platform' => 'skype',
+                    'speech' => $json['speech']
+                ),
+                array(
+                    'type' => 2,
+                    'platform' => 'skype',
+                    'title' => 'Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.',
+                    'replies' => array(
+                        '🔙 Buscar de nuevo',
+                        '💠 Menú Principal',
+                        '🔍 Consulta el número de cuenta'
+                    )
+                )
             );
             return $json;
         }
@@ -413,6 +428,21 @@ class chatBotAPI
                         ),
                     ),
                 ),
+                array(
+                    'type' => 0,
+                    'platform' => 'skype',
+                    'speech' => $json['speech']
+                ),
+                array(
+                    'type' => 2,
+                    'platform' => 'skype',
+                    'title' => 'Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.',
+                    'replies' => array(
+                        '🔙 Buscar de nuevo',
+                        '💠 Menú Principal',
+                        '🔍 Consulta el número de cuenta'
+                    )
+                )
             );
             return $json;
         }
@@ -505,6 +535,21 @@ class chatBotAPI
                         ),
                     ),
                 ),
+                array(
+                    'type' => 0,
+                    'platform' => 'skype',
+                    'speech' => $json['speech']
+                ),
+                array(
+                    'type' => 2,
+                    'platform' => 'skype',
+                    'title' => 'Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.',
+                    'replies' => array(
+                        '🔙 Buscar de nuevo',
+                        '💠 Menú Principal',
+                        '🔍 Consulta el número de cuenta'
+                    )
+                )
             );
             return $json;
         }
@@ -597,6 +642,21 @@ class chatBotAPI
                         ),
                     ),
                 ),
+                array(
+                    'type' => 0,
+                    'platform' => 'skype',
+                    'speech' => $json['speech']
+                ),
+                array(
+                    'type' => 2,
+                    'platform' => 'skype',
+                    'title' => 'Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.',
+                    'replies' => array(
+                        '🔙 Buscar de nuevo',
+                        '💠 Menú Principal',
+                        '🔍 Consulta el número de cuenta'
+                    )
+                )
             );
             return $json;
         }
@@ -675,6 +735,21 @@ class chatBotAPI
                     ),
                 ),
             ),
+            array(
+                'type' => 0,
+                'platform' => 'skype',
+                'speech' => $response
+            ),
+            array(
+                'type' => 2,
+                'platform' => 'skype',
+                'title' => 'A continuación selecciona una opción:',
+                'replies' => array(
+                    '🔙 Buscar de nuevo',
+                    '💠 Menú Principal',
+                    '👌 He finalizado la consulta'
+                )
+            )
         );
         return $json;
     }
@@ -731,6 +806,21 @@ class chatBotAPI
                         ),
                     ),
                 ),
+                array(
+                    'type' => 0,
+                    'platform' => 'skype',
+                    'speech' => $json['speech']
+                ),
+                array(
+                    'type' => 2,
+                    'platform' => 'skype',
+                    'title' => 'Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.',
+                    'replies' => array(
+                        '🔙 Buscar de nuevo',
+                        '💠 Menú Principal',
+                        '🔍 Consulta el número de cuenta'
+                    )
+                )
             );
             return $json;
         }
@@ -822,6 +912,21 @@ class chatBotAPI
                         ),
                     ),
                 ),
+                array(
+                    'type' => 0,
+                    'platform' => 'skype',
+                    'speech' => $json['speech']
+                ),
+                array(
+                    'type' => 2,
+                    'platform' => 'skype',
+                    'title' => 'Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.',
+                    'replies' => array(
+                        '🔙 Buscar de nuevo',
+                        '💠 Menú Principal',
+                        '🔍 Consulta el número de cuenta'
+                    )
+                )
             );
             return $json;
         }
@@ -914,6 +1019,21 @@ class chatBotAPI
                         ),
                     ),
                 ),
+                array(
+                    'type' => 0,
+                    'platform' => 'skype',
+                    'speech' => $json['speech']
+                ),
+                array(
+                    'type' => 2,
+                    'platform' => 'skype',
+                    'title' => 'Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.',
+                    'replies' => array(
+                        '🔙 Buscar de nuevo',
+                        '💠 Menú Principal',
+                        '🔍 Consulta el número de cuenta'
+                    )
+                )
             );
             return $json;
         }
@@ -1006,6 +1126,21 @@ class chatBotAPI
                         ),
                     ),
                 ),
+                array(
+                    'type' => 0,
+                    'platform' => 'skype',
+                    'speech' => $json['speech']
+                ),
+                array(
+                    'type' => 2,
+                    'platform' => 'skype',
+                    'title' => 'Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.',
+                    'replies' => array(
+                        '🔙 Buscar de nuevo',
+                        '💠 Menú Principal',
+                        '🔍 Consulta el número de cuenta'
+                    )
+                )
             );
             return $json;
         }
@@ -1063,7 +1198,7 @@ class chatBotAPI
 
         if (!is_array($susp)) {
             if ($susp->VALOR == "s") {
-                $msg .= "\n🔷 Tu servicio se encuentra suspendido desde: $susp->HORA_FIN por cualquiera de los siguientes motivos: \n - Falta de pago";
+                $msg .= "\n🔷 Tu servicio se encuentra suspendido desde: $susp->HORA_FIN por cualquiera de los siguientes motivos: \n - Falta de pago \n - Solicitud del cliente \n - Revisión técnica.";
                 return $msg;
             } else {
                 //Invocar metodo para buscar interrupcion programada
