@@ -61,7 +61,7 @@ class chatBotAPI
                     'platform' => 'telegram',
                     'payload' => array(
                         'telegram' => array(
-                            'text' => "No se ha encontrado ninguna cuenta con el dato ingresado. \n ¿Deseas consultar algo más?",
+                            'text' => "No se ha encontrado ninguna cuenta con el dato ingresado. \n ¿Quieres realizar otra consulta?",
                             'reply_markup' => array(
                                 'inline_keyboard' => array(
                                     array(
@@ -114,7 +114,7 @@ class chatBotAPI
                     'platform' => 'telegram',
                     'payload' => array(
                         'telegram' => array(
-                            'text' => "No se ha encontrado ninguna cuenta con el dato ingresado. \n ¿Deseas consultar algo más?",
+                            'text' => "No se ha encontrado ninguna cuenta con el dato ingresado. \n ¿Quieres realizar otra consulta?",
                             'reply_markup' => array(
                                 'inline_keyboard' => array(
                                     array(
@@ -326,26 +326,32 @@ class chatBotAPI
     public function getIndisNiu($niu)
     {
         $response = $this->getIndisponibilidad($niu);
-        $json['speech'] = $response;
-        $json['displayText'] = $response;
+        $json['speech'] = $response + "A continuación selecciona una opción:";
+        $json['displayText'] = $response + "\n A continuación selecciona una opción:";
         $json['messages'] = array(
             array(
                 'type' => 4,
                 'platform' => 'telegram',
                 'payload' => array(
                     'telegram' => array(
-                        'text' => $response,
+                        'text' => $response + "\n A continuación selecciona una opción:",
                         'reply_markup' => array(
                             'inline_keyboard' => array(
                                 array(
                                     array(
-                                        'text' => 'Sí ✔️',
+                                        'text' => '🔙 Buscar de nuevo',
+                                        'callback_data' => '1.',
+                                    ),
+                                ),
+                                array(
+                                    array(
+                                        'text' => '💠 Menú Principal',
                                         'callback_data' => 'Menú Principal',
                                     ),
                                 ),
                                 array(
                                     array(
-                                        'text' => 'No ❌',
+                                        'text' => '👌 He finalizado la consulta',
                                         'callback_data' => 'No',
                                     ),
                                 ),
@@ -417,15 +423,15 @@ class chatBotAPI
 
         //Verificar si no se encontró ninguna dirección
         if (isset($busqueda['NINGUNO'])) {
-            $json['speech'] = "No encuentro ningún registro asociado a este número de dirección. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal";
-            $json['displayText'] = "No encuentro ningún registro asociado a este número de dirección.\n Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal";
+            $json['speech'] = "No encuentro ningún registro asociado a esta dirección. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal";
+            $json['displayText'] = "No encuentro ningún registro asociado a esta dirección. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal";
             $json['messages'] = array(
                 array(
                     'type' => 4,
                     'platform' => 'telegram',
                     'payload' => array(
                         'telegram' => array(
-                            'text' => "No encuentro ningún registro asociado a este número de dirección. \n Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal",
+                            'text' => "No encuentro ningún registro asociado a esta dirección. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal",
                             'reply_markup' => array(
                                 'inline_keyboard' => array(
                                     array(
@@ -506,31 +512,31 @@ class chatBotAPI
             return $json;
         }
 
-        //Verificar si no se encontró ninguna dirección
+        //Verificar si no se encontró ninguna cédula
         if (isset($busqueda['NINGUNO'])) {
-            $json['speech'] = "No he podido encontrar ningún registro asociado con esta cédula. ¿Deseas consultar algo más?";
-            $json['displayText'] = "No he podido encontrar ningún registro asociado con esta cédula.\n ¿Deseas consultar algo más?";
+            $json['speech'] = "No encuentro ningún registro asociado a este número de cédula. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal?";
+            $json['displayText'] = "No encuentro ningún registro asociado a este número de cédula. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal?";
             $json['messages'] = array(
                 array(
                     'type' => 4,
                     'platform' => 'telegram',
                     'payload' => array(
                         'telegram' => array(
-                            'text' => "No he podido encontrar ningún registro asociado con esta cédula.\n ¿Deseas consultar algo más?",
+                            'text' => "No encuentro ningún registro asociado a este número de cédula. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal?",
                             'reply_markup' => array(
                                 'inline_keyboard' => array(
                                     array(
                                         array(
-                                            'text' => 'Sí ✔️',
-                                            'callback_data' => 'Menú Principal',
+                                            'text' => '🔙 Buscar de nuevo',
+                                            'callback_data' => '1.',
                                         ),
                                     ),
                                     array(
                                         array(
-                                            'text' => 'No ❌',
-                                            'callback_data' => 'No',
+                                            'text' => '💠 Menú Principal',
+                                            'callback_data' => 'Menú Principal',
                                         ),
-                                    ),
+                                    )
                                 ),
                             ),
                         ),
@@ -600,29 +606,29 @@ class chatBotAPI
 
         //Verificar si no se encontró ninguna dirección
         if (isset($busqueda['NINGUNO'])) {
-            $json['speech'] = "No he podido encontrar ningún registro asociado con este NIT. ¿Deseas consultar algo más?";
-            $json['displayText'] = "No he podido encontrar ningún registro asociado con este NIT. \n ¿Deseas consultar algo más?";
+            $json['speech'] = "No encuentro ningún registro asociado a este número de NIT. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal";
+            $json['displayText'] = "No encuentro ningún registro asociado a este número de NIT. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal";
             $json['messages'] = array(
                 array(
                     'type' => 4,
                     'platform' => 'telegram',
                     'payload' => array(
                         'telegram' => array(
-                            'text' => "No he podido encontrar ningún registro asociado con este NIT.\n ¿Deseas consultar algo más?",
+                            'text' => "No encuentro ningún registro asociado a este número de NIT. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal",
                             'reply_markup' => array(
                                 'inline_keyboard' => array(
                                     array(
                                         array(
-                                            'text' => 'Sí ✔️',
-                                            'callback_data' => 'Menú Principal',
+                                            'text' => '🔙 Buscar de nuevo',
+                                            'callback_data' => '1.',
                                         ),
                                     ),
                                     array(
                                         array(
-                                            'text' => 'No ❌',
-                                            'callback_data' => 'No',
+                                            'text' => '💠 Menú Principal',
+                                            'callback_data' => 'Menú Principal',
                                         ),
-                                    ),
+                                    )
                                 ),
                             ),
                         ),
@@ -692,29 +698,29 @@ class chatBotAPI
 
         //Verificar si no se encontró ninguna dirección
         if (isset($busqueda['NINGUNO'])) {
-            $json['speech'] = "No he podido encontrar ningún registro asociado con este nombre. ¿Deseas consultar algo más?";
-            $json['displayText'] = "No he podido encontrar ningún registro asociado con este nombre.\n ¿Deseas consultar algo más?";
+            $json['speech'] = "No encuentro ningún registro asociado a este nombre. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal";
+            $json['displayText'] = "No encuentro ningún registro asociado a este nombre. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal";
             $json['messages'] = array(
                 array(
                     'type' => 4,
                     'platform' => 'telegram',
                     'payload' => array(
                         'telegram' => array(
-                            'text' => "No he podido encontrar ningún registro asociado con este nombre.\n ¿Deseas consultar algo más?",
+                            'text' => "No encuentro ningún registro asociado a este nombre. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal",
                             'reply_markup' => array(
                                 'inline_keyboard' => array(
                                     array(
                                         array(
-                                            'text' => 'Sí ✔️',
-                                            'callback_data' => 'Menú Principal',
+                                            'text' => '🔙 Buscar de nuevo',
+                                            'callback_data' => '1.',
                                         ),
                                     ),
                                     array(
                                         array(
-                                            'text' => 'No ❌',
-                                            'callback_data' => 'No',
+                                            'text' => '💠 Menú Principal',
+                                            'callback_data' => 'Menú Principal',
                                         ),
-                                    ),
+                                    )
                                 ),
                             ),
                         ),
@@ -730,29 +736,35 @@ class chatBotAPI
     public function getSPNiu($niu)
     {
         $response = $this->getSuspensionesProgramadas($niu, true);
-        $json['speech'] = $response;
-        $json['displayText'] = $response;
+        $json['speech'] = $response + "A continuación selecciona una opción:";
+        $json['displayText'] = $response + "\n A continuación selecciona una opción:";
         $json['messages'] = array(
             array(
                 'type' => 4,
                 'platform' => 'telegram',
                 'payload' => array(
                     'telegram' => array(
-                        'text' => $response . "\n ¿Deseas consultar algo más?",
+                        'text' => $response + "\n A continuación selecciona una opción:",
                         'reply_markup' => array(
                             'inline_keyboard' => array(
                                 array(
                                     array(
-                                        'text' => 'Sí ✔️',
-                                        'callback_data' => 'Menú Principal',
-                                    ),
+                                        'text' => '🔙 Buscar de nuevo',
+                                        'callback_data' => '1.',
+                                    )
                                 ),
                                 array(
                                     array(
-                                        'text' => 'No ❌',
-                                        'callback_data' => 'No',
-                                    ),
+                                        'text' => '💠 Menú Principal',
+                                        'callback_data' => 'Menú Principal',
+                                    )
                                 ),
+                                array(
+                                    array(
+                                        'text' => '👌 He finalizado la consulta',
+                                        'callback_data' => 'No',
+                                    )
+                                )
                             ),
                         ),
                     ),
@@ -820,29 +832,29 @@ class chatBotAPI
 
         //Verificar si no se encontró ninguna dirección
         if (isset($busqueda['NINGUNO'])) {
-            $json['speech'] = "No he podido encontrar ningún registro asociado con esta cédula. ¿Deseas consultar algo más?";
-            $json['displayText'] = "No he podido encontrar ningún registro asociado con esta cédula.\n ¿Deseas consultar algo más?";
+            $json['speech'] = "No encuentro ningún registro asociado a este número de cédula. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal?";
+            $json['displayText'] = "No encuentro ningún registro asociado a este número de cédula. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal?";
             $json['messages'] = array(
                 array(
                     'type' => 4,
                     'platform' => 'telegram',
                     'payload' => array(
                         'telegram' => array(
-                            'text' => "No he podido encontrar ningún registro asociado con esta cédula.\n ¿Deseas consultar algo más?",
+                            'text' => "No encuentro ningún registro asociado a este número de cédula. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal?",
                             'reply_markup' => array(
                                 'inline_keyboard' => array(
                                     array(
                                         array(
-                                            'text' => 'Sí ✔️',
-                                            'callback_data' => 'Menú Principal',
+                                            'text' => '🔙 Buscar de nuevo',
+                                            'callback_data' => '1.',
                                         ),
                                     ),
                                     array(
                                         array(
-                                            'text' => 'No ❌',
-                                            'callback_data' => 'No',
+                                            'text' => '💠 Menú Principal',
+                                            'callback_data' => 'Menú Principal',
                                         ),
-                                    ),
+                                    )
                                 ),
                             ),
                         ),
@@ -911,29 +923,29 @@ class chatBotAPI
 
         //Verificar si no se encontró ninguna dirección
         if (isset($busqueda['NINGUNO'])) {
-            $json['speech'] = "No he podido encontrar ningún registro asociado con este NIT. ¿Deseas consultar algo más?";
-            $json['displayText'] = "No he podido encontrar ningún registro asociado con este NIT.\n ¿Deseas consultar algo más?";
+            $json['speech'] = "No encuentro ningún registro asociado a este número de NIT. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal";
+            $json['displayText'] = "No encuentro ningún registro asociado a este número de NIT. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal";
             $json['messages'] = array(
                 array(
                     'type' => 4,
                     'platform' => 'telegram',
                     'payload' => array(
                         'telegram' => array(
-                            'text' => "No he podido encontrar ningún registro asociado con este NIT.\n ¿Deseas consultar algo más?",
+                            'text' => "No encuentro ningún registro asociado a este número de NIT. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal",
                             'reply_markup' => array(
                                 'inline_keyboard' => array(
                                     array(
                                         array(
-                                            'text' => 'Sí ✔️',
-                                            'callback_data' => 'Menú Principal',
+                                            'text' => '🔙 Buscar de nuevo',
+                                            'callback_data' => '1.',
                                         ),
                                     ),
                                     array(
                                         array(
-                                            'text' => 'No ❌',
-                                            'callback_data' => 'No',
+                                            'text' => '💠 Menú Principal',
+                                            'callback_data' => 'Menú Principal',
                                         ),
-                                    ),
+                                    )
                                 ),
                             ),
                         ),
@@ -1003,29 +1015,29 @@ class chatBotAPI
 
         //Verificar si no se encontró ninguna dirección
         if (isset($busqueda['NINGUNO'])) {
-            $json['speech'] = "No he podido encontrar ningún registro asociado con esta dirección. ¿Deseas consultar algo más?";
-            $json['displayText'] = "No he podido encontrar ningún registro asociado con esta dirección.\n ¿Deseas consultar algo más?";
+            $json['speech'] = "No encuentro ningún registro asociado a esta dirección. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal";
+            $json['displayText'] = "No encuentro ningún registro asociado a esta dirección. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal";
             $json['messages'] = array(
                 array(
                     'type' => 4,
                     'platform' => 'telegram',
                     'payload' => array(
                         'telegram' => array(
-                            'text' => "No he podido encontrar ningún registro asociado con esta dirección. \n ¿Deseas consultar algo más?",
+                            'text' => "No encuentro ningún registro asociado a esta dirección. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal",
                             'reply_markup' => array(
                                 'inline_keyboard' => array(
                                     array(
                                         array(
-                                            'text' => 'Sí ✔️',
-                                            'callback_data' => 'Menú Principal',
+                                            'text' => '🔙 Buscar de nuevo',
+                                            'callback_data' => '1.',
                                         ),
                                     ),
                                     array(
                                         array(
-                                            'text' => 'No ❌',
-                                            'callback_data' => 'No',
+                                            'text' => '💠 Menú Principal',
+                                            'callback_data' => 'Menú Principal',
                                         ),
-                                    ),
+                                    )
                                 ),
                             ),
                         ),
@@ -1095,29 +1107,29 @@ class chatBotAPI
 
         //Verificar si no se encontró ninguna dirección
         if (isset($busqueda['NINGUNO'])) {
-            $json['speech'] = "No he podido encontrar ningún registro asociado con este nombre. ¿Deseas consultar algo más?";
-            $json['displayText'] = "No he podido encontrar ningún registro asociado con este nombre.\n ¿Deseas consultar algo más?";
+            $json['speech'] = "No encuentro ningún registro asociado a este nombre. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal";
+            $json['displayText'] = "No encuentro ningún registro asociado a este nombre. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal";
             $json['messages'] = array(
                 array(
                     'type' => 4,
                     'platform' => 'telegram',
                     'payload' => array(
                         'telegram' => array(
-                            'text' => "No he podido encontrar ningún registro asociado con este nombre.\n ¿Deseas consultar algo más?",
+                            'text' => "No encuentro ningún registro asociado a este nombre. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal",
                             'reply_markup' => array(
                                 'inline_keyboard' => array(
                                     array(
                                         array(
-                                            'text' => 'Sí ✔️',
-                                            'callback_data' => 'Menú Principal',
+                                            'text' => '🔙 Buscar de nuevo',
+                                            'callback_data' => '1.',
                                         ),
                                     ),
                                     array(
                                         array(
-                                            'text' => 'No ❌',
-                                            'callback_data' => 'No',
+                                            'text' => '💠 Menú Principal',
+                                            'callback_data' => 'Menú Principal',
                                         ),
-                                    ),
+                                    )
                                 ),
                             ),
                         ),
@@ -1169,12 +1181,12 @@ class chatBotAPI
         if (!is_array($prog) || count($prog)>0) {
             $msg .= "\n🔷 Para esta cuenta, hemos encontrado las siguientes suspensiones programadas: ";
             foreach ($prog as $p) {
-                $msg .= "\n🔷 Hay una suspensión programada que inicia el " . $p->FECHA_INICIO . " a las " . $p->HORA_INICIO . ", y finaliza el " . $p->FECHA_FIN . " a las " . $p->HORA_FIN;
+                $msg .= "\nPara el inmueble consultado encontre las siguientes interrupciones del servicio de energía programadas:\n🔷 Hay una interrupción programada que inicia el " . $p->FECHA_INICIO . " a las " . $p->HORA_INICIO . ", y finaliza el " . $p->FECHA_FIN . " a las " . $p->HORA_FIN;
             }
             return $msg;
         } else {
             if ($soloC2) {
-                $msg .= "\nTe cuento, en el momento no registras ninguna interrupción programada 👍⚡ \nSi deseas más información al respecto te tenemos los siguientes canales: \n🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415 \n🔹 Línea para daños: Marca 115.\n";
+                $msg .= "\nEn este momento no me reporta ninguna falla del servicio en tu sector, por favor comunicate con nosotros CHAT en Linea: \n🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415 \n🔹 Línea para daños: Marca 115.\n";
                 return $msg;
 
             } else {
@@ -1192,7 +1204,7 @@ class chatBotAPI
         $msg = "";
         if (!is_array($circuito) && ($circuito->ESTADO == "ABIERTO" || $circuito->ESTADO == "APERTURA")) {
 
-            $msg .= "\n🔷 Para esta cuenta, hemos encontrado las siguientes indisponibilidades a nivel de circuito: \n🔷 Hay una falla en el circuito reportada el " . $circuito->FECHA . " a las " . $circuito->HORA . ". Estamos trabajando para reestablecer el servicio";
+            $msg .= "\n🔷 Para el inmueble consultado encontre que se reportó la siguiente falla en el servicio de energía: \n🔷 Hay una falla en el circuito reportada el " . $circuito->FECHA . " a las " . $circuito->HORA . ". Estamos trabajando para reestablecer el servicio lo más pronto posible.";
             return $msg;
         } else {
             //Invocar metodo para buscar interr SGO
@@ -1208,17 +1220,17 @@ class chatBotAPI
             $time = explode(" ", $res->Fecha);
             //Validar si se encuentra una indisponibilidad en el SGO
             if($res->Estado==0){
-                $msg = "\n🔷 Para esta cuenta, hemos encontrado la siguiente indisponibilidad: \n🔷 Hay una falla reportada el " . $time[0] . " a las " . $time[1] . ".";
+                $msg = "\n🔷 Para el inmueble consultado encontre que se reportó la siguiente falla en el servicio de energía: \n🔷 Hay una falla en el nodo reportada el " . $time[0] . " a las " . $time[1] . ".";
                 //Validar si ya hay cuadrillas en campo
                 if($res->Orden == 1){
                     $msg .= "\n Pero no te preocupes, ya tenemos una de nuetras cuadrillas en camino para solucionar este inconveniente.";
                 }
                 return $msg;
             }else{
-                return "\nTe cuento, en el momento no registras ninguna interrupción en el servicio de energía 👍⚡ \nSi deseas más información al respecto te tenemos los siguientes canales: \n🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415 \n🔹 Línea para daños: Marca 115.\n";            
+                return "\nEn este momento no me reporta ninguna falla del servicio en tu sector, por favor comunicate con nosotros CHAT en Linea: \n🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415 \n🔹 Línea para daños: Marca 115.\n";            
             }
         }else{
-            return "No he podido encontrar ningún registro asociado con esta cuenta. ¿Deseas consultar algo más?";
+            return "No he podido encontrar ningún registro asociado con esta cuenta. ¿Quieres realizar otra consulta?";
         }
     }
 
