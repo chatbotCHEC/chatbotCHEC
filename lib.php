@@ -1692,7 +1692,7 @@ class chatBotAPI
 
         insertCalificacion($this->con, $calificacion);
 
-        if($calificacion == 'Excelente'||$calificacion == 'Bueno'){
+        if($calificacion['calificacion'] == 'Excelente'||$calificacion['calificacion'] == 'Bueno'){
             $event = 'calif_positiva';
         }else{
             $event = 'calif_negativa';
