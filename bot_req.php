@@ -107,7 +107,7 @@ foreach ($contexts as $i => $con) {
             $answered = true;
             break;
         case 'calificacion':
-            $calificacion['calificacion'] = $reqBody['result']['resolvedQuery'];
+            $calificacion['calificacion'] = substr($reqBody['result']['resolvedQuery'],4);
             $calificacion['id'] = $reqBody['id'];
             $calificacion['sessionId'] = $reqBody['sessionId'];
             $calificacion['date'] = $reqBody['timestamp'];
