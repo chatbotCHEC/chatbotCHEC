@@ -1690,7 +1690,7 @@ class chatBotAPI
 
     public function setCalificacion($calificacion){
 
-        insertCalificacion($this->con, substr($calificacion, 2));
+        insertCalificacion($this->con, $calificacion);
 
         if($calificacion == '😍 Excelente'||$calificacion == '😁 Bueno'){
             $event = 'calif_positiva';
