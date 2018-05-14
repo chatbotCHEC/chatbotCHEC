@@ -429,3 +429,9 @@ function updSuspProgramada($con, $orden_op)
     $result = $con->executeBulkWrite($GLOBALS['dbname'] . '.susp_programadas', $bulk);
     return $result;
 }
+
+function insertCalificacion($calificacion){
+    $bulk = new MongoDB\Driver\BulkWrite;
+    $a = $bulk->insert(['CALIFICACION' => $calificacion['calificacion'], 'ID' => $calificacion['id'], 'SESSIONID' => $calificacion['sessionId'], 'FECHA' => $calificacion['date']]);
+    $result = $con->executeBulkWrite($GLOBALS['dbname'] . '.calificacion', $bulk);
+}

@@ -106,6 +106,14 @@ foreach ($contexts as $i => $con) {
             $response = $api->getSPNombre($nombre, $municipio);
             $answered = true;
             break;
+        case 'calificacion':
+            $calificacion['calificacion'] = $reqBody['result']['resolvedQuery'];
+            $calificacion['id'] = $reqBody['id'];
+            $calificacion['sessionId'] = $reqBody['sessionId'];
+            $calificacion['date'] = $reqBody['timestamp'];
+            $response = $api->setCalificacion($calificacion);
+            $answered = true;
+            break;
         default:
             break;
     }

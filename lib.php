@@ -1685,4 +1685,24 @@ class chatBotAPI
         return $result3->consultarIndisponibilidadXNodoResult;
     }
 
+
+    //----------------------------CALIFICACION DEL SERVICIO------------------------------------
+
+    public function setCalificacion($calificacion){
+
+        insertCalificacion($this->con, substr($calificacion, 2));
+
+        if($calificacion == '😍 Excelente'||$calificacion == '😁 Bueno'){
+            $event = 'calif_positiva';
+        }else{
+            $event = 'calif_negativa';
+        }
+
+
+        $json['followupEvent'] = array(
+            'name' => $event
+        );
+        return $json;
+    }
+
 }
