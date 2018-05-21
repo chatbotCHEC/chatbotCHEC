@@ -153,7 +153,7 @@ function get_mail_body()
             } else {
                 $return = $content->subject;
             }
-
+            var_dump($return);
             saveIndispCircuito($return);
 
         }
