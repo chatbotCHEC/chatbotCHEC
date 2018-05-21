@@ -135,6 +135,11 @@ function get_mail_body()
 
         /* put the newest emails on top */
         rsort($emails);
+
+        include './lib.php';
+        //Instancia de la API
+        $api = new chatBotApi();
+
         //for every email...
         foreach ($emails as $email_number) {
 
@@ -153,8 +158,7 @@ function get_mail_body()
             } else {
                 $return = $content->subject;
             }
-            var_dump($return);
-            saveIndispCircuito($return);
+            saveIndispCircuito($return, $api);
 
         }
     }
@@ -277,11 +281,9 @@ function get_attachments_efectivas()
 
 }
 
-function saveIndispCircuito($global)
+function saveIndispCircuito($global, $api)
 {
-    require './lib.php';
-    //Instancia de la API
-    $api = new chatBotApi();
+
 
     $fecha = "";
     $time = "";

@@ -1,9 +1,9 @@
 <?php
 require './consultas.php';
-/* require "Mesmotronic/Soap/WsaSoap.php";
+require "Mesmotronic/Soap/WsaSoap.php";
 require "Mesmotronic/Soap/WsaSoapClient.php";
 require "Mesmotronic/Soap/WsseAuthHeader.php";
- */
+
 class chatBotAPI
 {
 
