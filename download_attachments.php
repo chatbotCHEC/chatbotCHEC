@@ -13,7 +13,7 @@ function get_attachments()
     /* try to connect */
     $inbox = imap_open($hostname, $username, $password) or die('Cannot connect to Gmail: ' . imap_last_error());
 
-    $emails = imap_search($inbox, 'FROM "prjchec.dcardona@umanizales.edu.co" UNSEEN');
+    $emails = imap_search($inbox, 'FROM "JHON.CALDERON@chec.com.co" UNSEEN');
 
     /* if any emails found, iterate through each email */
     if ($emails) {
@@ -126,7 +126,7 @@ function get_mail_body()
     $inbox = imap_open($hostname, $username, $password) or die('Cannot connect to Gmail: ' . imap_last_error());
 
     //$emails = imap_search($inbox, 'FROM "notificacionsgo@chec.com.co" SEEN');
-    $emails = imap_search($inbox, 'FROM "prjchec.dcardona@umanizales.edu.co" UNSEEN');
+    $emails = imap_search($inbox, 'FROM "JHON.CALDERON@chec.com.co" UNSEEN');
 
     /* if any emails found, iterate through each email */
     if ($emails) {
@@ -177,7 +177,7 @@ function get_attachments_efectivas()
     /* try to connect */
     $inbox = imap_open($hostname, $username, $password) or die('Cannot connect to Gmail: ' . imap_last_error());
 
-    $emails = imap_search($inbox, 'FROM "prjchec.dcardona@umanizales.edu.co" UNSEEN');
+    $emails = imap_search($inbox, 'FROM "JHON.CALDERON@chec.com.co" UNSEEN');
 
     /* if any emails found, iterate through each email */
     if ($emails) {
@@ -294,5 +294,4 @@ function saveIndispCircuito($global)
 
     $response = $api->setIndispCircuito($data);
 
-    echo "papi donde esta el funk?";
 }
