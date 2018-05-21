@@ -143,6 +143,8 @@ function get_mail_body()
         //for every email...
         foreach ($emails as $email_number) {
 
+            $ids [] = $email_number;
+
             /* get information specific to this email */
             $overview = imap_fetch_overview($inbox, $email_number, 0);
 
@@ -161,6 +163,8 @@ function get_mail_body()
             saveIndispCircuito($return, $api);
 
         }
+
+        imap_setflag_full($inbox,implode(",", $ids), "\\Seen");
     }
 
     /* close the connection */
@@ -283,8 +287,6 @@ function get_attachments_efectivas()
 
 function saveIndispCircuito($global, $api)
 {
-
-
     $fecha = "";
     $time = "";
     $condition = "";

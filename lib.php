@@ -1625,11 +1625,13 @@ class chatBotAPI
     //Auxiliar de carga de indisponibilidad a nivel de circuito
     public function getIndisponibilidadCircuitoData($cadena)
     {
+        echo $cadena;
         $array = explode(" ", strtoupper($cadena));
-        $response['FECHA'] = $array[1];
-        $response['HORA'] = $array[2];
-        $response['ESTADO'] = $array[3];
-        $response['CIRCUITO'] = $array[4];
+        $response['FECHA'] = $array[0];
+        $response['HORA'] = $array[1];
+        $response['ESTADO'] = $array[2];
+        $response['CIRCUITO'] = $array[3];
+        var_dump($response);
         return $response;
     }
 
