@@ -2,4 +2,12 @@
 
 include './download_attachments.php';
 
-get_mail_body();
+if (get_mail_body()) {
+    echo "Carga Finalizada";
+
+}else{
+    echo "ocurrio un error en la carga";
+}
+
+
+

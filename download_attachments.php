@@ -290,7 +290,7 @@ function saveIndispCircuito($global)
     $suscribers = "";
 
     $data = $api->getIndisponibilidadCircuitoData($global);
-    var_dump($data);
+
 
     $response = $api->setIndispCircuito($data);
 
