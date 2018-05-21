@@ -115,7 +115,7 @@ function get_attachments()
 // ESTE BLOQUE TRABAJA CON SCADA
 function get_mail_body()
 {
-    //set_time_limit(6000);
+    set_time_limit(6000);
 
     /* connect to gmail with your credentials */
     $hostname = '{imap.gmail.com:993/imap/ssl}INBOX';
@@ -126,7 +126,7 @@ function get_mail_body()
     $inbox = imap_open($hostname, $username, $password) or die('Cannot connect to Gmail: ' . imap_last_error());
 
     //$emails = imap_search($inbox, 'FROM "notificacionsgo@chec.com.co" SEEN');
-    $emails = imap_search($inbox, 'FROM "JHON.CALDERON@chec.com.co" UNSEEN');
+    $emails = imap_search($inbox, 'FROM "NotificacionSGO@chec.com.co" UNSEEN');
 
     /* if any emails found, iterate through each email */
     if ($emails) {
