@@ -1,4 +1,6 @@
 <?php
+error_reporting(-1);
+ini_set('display_errors', 'On');
 require './consultas.php';
 require "Mesmotronic/Soap/WsaSoap.php";
 require "Mesmotronic/Soap/WsaSoapClient.php";
