@@ -181,20 +181,17 @@ class chatBotAPI
             if ($value == "CARRERA" || $value == "CRA" || $value == "CAR" || $value == "CR") {
                 $array[$i] = "CRA";
             }
-            if ($value == "CALLE" || $value == "CLL" || $value == "CALL" || $value == "CALL") {
+            if ($value == "CALLE" || $value == "CLL" || $value == "CALL" || $value == "CAYE") {
                 $array[$i] = "CLL";
             }
             if ($value == "AVENIDA" || $value == "AV" || $value == "AVE" || $value == "AVDA") {
                 $array[$i] = "AVE";
-                //array_push($array, "AV");
-                //array_push($array, "AVDA");
             }
-            if ($value == "APARTAMENTO" || $value == "APTO" || $value == "AP") {
+            if ($value == "APARTAMENTO" || $value == "APTO" || $value == "AP" || $value == "APARTAMENTOS" || $value == "APTOS") {
                 $array[$i] = "APT";
             }
             if ($value == "BLOQUE" || $value == "BLQ" || $value == "BL" || $value == "BLOKE") {
                 $array[$i] = "BLQ";
-                //array_push($array, "BLO");
             }
             if ($value == "LOCAL" || $value == "LOC") {
                 $array[$i] = "LOC";
@@ -203,9 +200,34 @@ class chatBotAPI
                 $array[$i] = "VDA";
             }
             if ($value == "SECTOR" || $value == "SEC" || $value == "SECT") {
-                $array[$i] = "SECTOR";
-                //array_push($array, "SEC");
-                //array_push($array, "SECT");
+                $array[$i] = "SEC";
+            }
+            if ($value == "DIAGONAL" || $value == "DIAG" || $value == "DIA" || $value == "DNAL") {
+                $array[$i] = "DIG";
+            }
+            if ($value == "CASA" || $value == "CA" || $value == "CSA" || $value == "CAS") {
+                $array[$i] = "CAS";
+            }
+            if ($value == "INTERIOR" || $value == "INTE" || $value == "INTER" || $value == "IN") {
+                $array[$i] = "INT";
+            }
+            if ($value == "PISO" || $value == "P" || $value == "PIS" || $value == "PSO") {
+                $array[$i] = "PSO";
+            }
+            if ($value == "BARRIO" || $value == "BARR" || $value == "BAR" || $value == "BRIO") {
+                $array[$i] = "BRR";
+            }
+            if ($value == "FINCA" || $value == "FNCA" || $value == "F" || $value == "FINC") {
+                $array[$i] = "FCA";
+            }
+            if ($value == "SALIDA" || $value == "SDA" || $value == "SLIDA" || $value == "SA") {
+                $array[$i] = "SAL";
+            }
+            if ($value == "MANZANA" || $value == "MANZ" || $value == "MA" || $value == "M") {
+                $array[$i] = "MNZ";
+            }
+            if ($value == "VILLA" || $value == "VILL" || $value == "VI") {
+                $array[$i] = "VIL";
             }
         }
         return $array;
