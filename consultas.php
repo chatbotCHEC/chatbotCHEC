@@ -72,29 +72,28 @@ function getSuspProgramada($con, $niu)
     $now = time();
     foreach ($cliente as $key => $value) {
 
-        
         $date = $value->FECHA_FIN . ' ' . $value->HORA_FIN;
-        
+
         //Validar formato de fecha
         $parsedDate = substr($date, 2, 1);
-        if($parsedDate == "/"){
+        if ($parsedDate == "/") {
             $format = "d/m/Y H:i";
-        }else{
+        } else {
             $format = "Y-m-d H:i";
         }
-        
+
         $dateobj = DateTime::createFromFormat($format, $date);
         $iso_datetime = $dateobj->format(Datetime::ATOM);
         $fecha_def = strtotime($iso_datetime);
         // var_dump($fecha_def);
         if ($fecha_def > $now) {
-            
+
             array_push($futuras, $value);
         }
         //var_dump($fecha_def>$now);
     }
     // var_dump($futuras);
-    
+
     return $futuras;
 
 }
@@ -185,7 +184,7 @@ function getNamesQuery($palabras, $municipio)
         case 1:
             $filter = [
                 'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'),
-                'NOMBRE' => new MongoDB\BSON\Regex($palabras[0], 'i')
+                'NOMBRE' => new MongoDB\BSON\Regex($palabras[0], 'i'),
             ];
             break;
         case 2:
@@ -262,8 +261,8 @@ function getAdressQuery($palabras, $municipio)
     switch ($num) {
         case 1:
             $filter = [
-                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'), 
-                'DIRECCION' => new MongoDB\BSON\Regex($palabras[0], 'i')
+                'MUNICIPIO' => new MongoDB\BSON\Regex($municipio, 'i'),
+                'DIRECCION' => new MongoDB\BSON\Regex($palabras[0], 'i'),
             ];
             break;
         case 2:
@@ -430,20 +429,37 @@ function updSuspProgramada($con, $orden_op)
     return $result;
 }
 
-function insertCalificacion($con, $calificacion){
+function insertCalificacion($con, $calificacion)
+{
     $bulk = new MongoDB\Driver\BulkWrite;
     $a = $bulk->insert(['CALIFICACION' => $calificacion['calificacion'], 'ID' => $calificacion['id'], 'SESSIONID' => $calificacion['sessionId'], 'FECHA' => $calificacion['date']]);
     $result = $con->executeBulkWrite($GLOBALS['dbname'] . '.calificacion', $bulk);
 }
 
-function insertLogBusqueda($con, $contexto, $criterio){
+function insertLogBusqueda($con, $contexto, $criterio)
+{
     $bulk = new MongoDB\Driver\BulkWrite;
     $a = $bulk->insert(
         [
             'FECHA_BUSQUEDA' => date("d-m-Y G:i"),
             'CONTEXTO' => $contexto,
-            'CRITERIO' => $criterio
+            'CRITERIO' => $criterio,
         ]);
     $result = $con->executeBulkWrite($GLOBALS['dbname'] . '.log_busqueda', $bulk);
+    return $result;
+}
+
+
+
+
+function insertLogResultado($con, $tipo_indisponibilidad)
+{
+    $bulk = new MongoDB\Driver\BulkWrite;
+    $a = $bulk->insert(
+        [
+            'FECHA_RESULTADO' => date("d-m-Y G:i"),
+            'TIPO_INDISPONBILIDAD' => $tipo_indisponibilidad,
+        ]);
+    $result = $con->executeBulkWrite($GLOBALS['dbname'] . '.log_resultados', $bulk);
     return $result;
 }

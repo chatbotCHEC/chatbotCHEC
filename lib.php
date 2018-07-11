@@ -51,7 +51,6 @@ class chatBotAPI
 
     }
 
-   
     //Obtener los datos del usuario a partir del NIU
     //Todas estas tienden a desaparecer en el update
     public function getUserData($NIU)
@@ -110,7 +109,6 @@ class chatBotAPI
         return $resultado;
     }
 
-
     public function getNiuFromAddress($direccion, $municipio)
     {
         $direccionesProcesadas = $this->processAddress($direccion);
@@ -127,9 +125,9 @@ class chatBotAPI
                 //La siguiente línea se encarga de enmascarar los datos por motivos de seguridad.
                 /* $direcShow = "******".substr( $value->DIRECCION, -7);
                 array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' =>$direcShow)); */
-                
+
                 //Sin enmascarar
-                array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' =>$value->DIRECCION));
+                array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' => $value->DIRECCION));
             }
             $resultado['VARIOS'] = $foundResults;
 
@@ -243,19 +241,19 @@ class chatBotAPI
         $response = $this->getIndisponibilidad($niu);
 
         //Validar si no se encontró ninguna indisponibilidad para enviar diferentes tipos de respuesta
-        if(substr($response, 0, 7)=="En este"){
+        if (substr($response, 0, 7) == "En este") {
             $json['speech'] = $response;
             $json['displayText'] = $response;
             $json['messages'] = array(
                 array(
                     'type' => 0,
                     'platform' => 'telegram',
-                    'speech' =>  $response
+                    'speech' => $response,
                 ),
                 array(
                     'type' => 0,
                     'platform' => 'telegram',
-                    'speech' =>  "\n🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415 \n🔹 Línea para daños: Marca 115.\n🔹 CHAT en Linea: "
+                    'speech' => "\n🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415 \n🔹 Línea para daños: Marca 115.\n🔹 CHAT en Linea: ",
                 ),
                 array(
                     'type' => 1,
@@ -265,16 +263,16 @@ class chatBotAPI
                     'buttons' => array(
                         array(
                             'text' => "👆 Ingresa Aquí",
-                            'postback' => "https://servicio.asistenciachat.com/website/chec_chat/Default2.aspx"
-                        )
-                    )
+                            'postback' => "https://servicio.asistenciachat.com/website/chec_chat/Default2.aspx",
+                        ),
+                    ),
                 ),
                 array(
                     'type' => 4,
                     'platform' => 'telegram',
                     'payload' => array(
                         'telegram' => array(
-                            'text' =>  "Si por el contrario deseas seguir conversando conmigo selecciona una de las siguientes opciones:",
+                            'text' => "Si por el contrario deseas seguir conversando conmigo selecciona una de las siguientes opciones:",
                             'reply_markup' => array(
                                 'inline_keyboard' => array(
                                     array(
@@ -303,22 +301,22 @@ class chatBotAPI
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => $response
+                    'speech' => $response,
                 ),
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => "🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415"
+                    'speech' => "🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415",
                 ),
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => "🔹 Línea para daños: Marca 115."
+                    'speech' => "🔹 Línea para daños: Marca 115.",
                 ),
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => "🔹 CHAT en Línea: "
+                    'speech' => "🔹 CHAT en Línea: ",
                 ),
                 array(
                     'type' => 1,
@@ -328,14 +326,14 @@ class chatBotAPI
                     'buttons' => array(
                         array(
                             'text' => "Ingresa Aquí",
-                            'postback' => "https://servicio.asistenciachat.com/website/chec_chat/Default2.aspx"
-                        )
-                    )
+                            'postback' => "https://servicio.asistenciachat.com/website/chec_chat/Default2.aspx",
+                        ),
+                    ),
                 ),
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => "Si por el contrario deseas seguir conversando conmigo selecciona una de las siguientes opciones:"
+                    'speech' => "Si por el contrario deseas seguir conversando conmigo selecciona una de las siguientes opciones:",
                 ),
                 array(
                     'type' => 2,
@@ -344,11 +342,11 @@ class chatBotAPI
                     'replies' => array(
                         '🔙 Buscar de nuevo',
                         '💠 Menú Principal',
-                        '👌 He finalizado la consulta'
-                    )
-                )
+                        '👌 He finalizado la consulta',
+                    ),
+                ),
             );
-        }else{ //Se envía cuando sí se encuentra alguna indisponibilidad
+        } else { //Se envía cuando sí se encuentra alguna indisponibilidad
             $json['speech'] = $response . "A continuación selecciona una opción:";
             $json['displayText'] = $response . "\n A continuación selecciona una opción:";
             $json['messages'] = array(
@@ -386,7 +384,7 @@ class chatBotAPI
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => $response
+                    'speech' => $response,
                 ),
                 array(
                     'type' => 2,
@@ -395,9 +393,9 @@ class chatBotAPI
                     'replies' => array(
                         '🔙 Buscar de nuevo',
                         '💠 Menú Principal',
-                        '👌 He finalizado la consulta'
-                    )
-                )
+                        '👌 He finalizado la consulta',
+                    ),
+                ),
             );
         }
 
@@ -408,7 +406,7 @@ class chatBotAPI
     //Método que busca el NIU de un usuario asociado con su direccion. Puede encontrar 1 solo registro y buscar, 2 o mas y mostrar una
     //lista de posibles nius encontrados, o indicar que no se encontro registro alguno.
     public function getIndisAddress($direccion, $municipio)
-    { 
+    {
         $busqueda = $this->getNiuFromAddress($direccion, $municipio);
         //Verificar si se obtuvo una sola cuenta
         if (isset($busqueda['NIU'])) {
@@ -431,7 +429,7 @@ class chatBotAPI
                     'platform' => 'telegram',
                     'payload' => array(
                         'telegram' => array(
-                            'text' => $json['speech']."\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
+                            'text' => $json['speech'] . "\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
                             'reply_markup' => array(
                                 'inline_keyboard' => array(
                                     array(
@@ -460,7 +458,7 @@ class chatBotAPI
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => $json['speech'] . "\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees."
+                    'speech' => $json['speech'] . "\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
                 ),
                 array(
                     'type' => 2,
@@ -469,9 +467,9 @@ class chatBotAPI
                     'replies' => array(
                         '🔙 Buscar de nuevo',
                         '💠 Menú Principal',
-                        '🔍 Consulta el número de cuenta'
-                    )
-                )
+                        '🔍 Consulta el número de cuenta',
+                    ),
+                ),
             );
             return $json;
         }
@@ -500,7 +498,7 @@ class chatBotAPI
                                             'text' => '💠 Menú Principal',
                                             'callback_data' => 'Menú Principal',
                                         ),
-                                    )
+                                    ),
                                 ),
                             ),
                         ),
@@ -509,7 +507,7 @@ class chatBotAPI
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => "No encuentro ningún registro asociado a esta dirección. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal"
+                    'speech' => "No encuentro ningún registro asociado a esta dirección. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal",
                 ),
                 array(
                     'type' => 2,
@@ -517,9 +515,9 @@ class chatBotAPI
                     'title' => 'Selecciona una opción',
                     'replies' => array(
                         '🔙 Buscar de nuevo',
-                        '💠 Menú Principal'
-                    )
-                )
+                        '💠 Menú Principal',
+                    ),
+                ),
             );
             return $json;
         }
@@ -551,7 +549,7 @@ class chatBotAPI
                     'platform' => 'telegram',
                     'payload' => array(
                         'telegram' => array(
-                            'text' => $json['speech']."\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
+                            'text' => $json['speech'] . "\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
                             'reply_markup' => array(
                                 'inline_keyboard' => array(
                                     array(
@@ -580,7 +578,7 @@ class chatBotAPI
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => $json['speech'] . "\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees."
+                    'speech' => $json['speech'] . "\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
                 ),
                 array(
                     'type' => 2,
@@ -589,9 +587,9 @@ class chatBotAPI
                     'replies' => array(
                         '🔙 Buscar de nuevo',
                         '💠 Menú Principal',
-                        '🔍 Consulta el número de cuenta'
-                    )
-                )
+                        '🔍 Consulta el número de cuenta',
+                    ),
+                ),
             );
             return $json;
         }
@@ -620,7 +618,7 @@ class chatBotAPI
                                             'text' => '💠 Menú Principal',
                                             'callback_data' => 'Menú Principal',
                                         ),
-                                    )
+                                    ),
                                 ),
                             ),
                         ),
@@ -629,7 +627,7 @@ class chatBotAPI
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => "No encuentro ningún registro asociado a este número de cédula. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal"
+                    'speech' => "No encuentro ningún registro asociado a este número de cédula. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal",
                 ),
                 array(
                     'type' => 2,
@@ -637,9 +635,9 @@ class chatBotAPI
                     'title' => 'Selecciona una opción',
                     'replies' => array(
                         '🔙 Buscar de nuevo',
-                        '💠 Menú Principal'
-                    )
-                )
+                        '💠 Menú Principal',
+                    ),
+                ),
             );
             return $json;
         }
@@ -672,7 +670,7 @@ class chatBotAPI
                     'platform' => 'telegram',
                     'payload' => array(
                         'telegram' => array(
-                            'text' => $json['speech']."\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
+                            'text' => $json['speech'] . "\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
                             'reply_markup' => array(
                                 'inline_keyboard' => array(
                                     array(
@@ -701,7 +699,7 @@ class chatBotAPI
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => $json['speech'] . "\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees."
+                    'speech' => $json['speech'] . "\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
                 ),
                 array(
                     'type' => 2,
@@ -710,9 +708,9 @@ class chatBotAPI
                     'replies' => array(
                         '🔙 Buscar de nuevo',
                         '💠 Menú Principal',
-                        '🔍 Consulta el número de cuenta'
-                    )
-                )
+                        '🔍 Consulta el número de cuenta',
+                    ),
+                ),
             );
             return $json;
         }
@@ -741,7 +739,7 @@ class chatBotAPI
                                             'text' => '💠 Menú Principal',
                                             'callback_data' => 'Menú Principal',
                                         ),
-                                    )
+                                    ),
                                 ),
                             ),
                         ),
@@ -750,7 +748,7 @@ class chatBotAPI
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => "No encuentro ningún registro asociado a este número de NIT. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal"
+                    'speech' => "No encuentro ningún registro asociado a este número de NIT. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal",
                 ),
                 array(
                     'type' => 2,
@@ -758,9 +756,9 @@ class chatBotAPI
                     'title' => 'Selecciona una opción',
                     'replies' => array(
                         '🔙 Buscar de nuevo',
-                        '💠 Menú Principal'
-                    )
-                )
+                        '💠 Menú Principal',
+                    ),
+                ),
             );
             return $json;
         }
@@ -793,7 +791,7 @@ class chatBotAPI
                     'platform' => 'telegram',
                     'payload' => array(
                         'telegram' => array(
-                            'text' => $json['speech']."\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
+                            'text' => $json['speech'] . "\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
                             'reply_markup' => array(
                                 'inline_keyboard' => array(
                                     array(
@@ -822,7 +820,7 @@ class chatBotAPI
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => $json['speech'] . "\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees."
+                    'speech' => $json['speech'] . "\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
                 ),
                 array(
                     'type' => 2,
@@ -831,9 +829,9 @@ class chatBotAPI
                     'replies' => array(
                         '🔙 Buscar de nuevo',
                         '💠 Menú Principal',
-                        '🔍 Consulta el número de cuenta'
-                    )
-                )
+                        '🔍 Consulta el número de cuenta',
+                    ),
+                ),
             );
             return $json;
         }
@@ -862,7 +860,7 @@ class chatBotAPI
                                             'text' => '💠 Menú Principal',
                                             'callback_data' => 'Menú Principal',
                                         ),
-                                    )
+                                    ),
                                 ),
                             ),
                         ),
@@ -871,7 +869,7 @@ class chatBotAPI
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => "No encuentro ningún registro asociado a este nombre. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal"
+                    'speech' => "No encuentro ningún registro asociado a este nombre. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal",
                 ),
                 array(
                     'type' => 2,
@@ -879,9 +877,9 @@ class chatBotAPI
                     'title' => 'Selecciona una opción',
                     'replies' => array(
                         '🔙 Buscar de nuevo',
-                        '💠 Menú Principal'
-                    )
-                )
+                        '💠 Menú Principal',
+                    ),
+                ),
             );
             return $json;
         }
@@ -892,20 +890,20 @@ class chatBotAPI
     public function getSPNiu($niu)
     {
         $response = $this->getSuspensionesProgramadas($niu, true);
-         //Validar si no se encontró ninguna susp programada para enviar diferentes tipos de respuesta
-         if(substr($response, 0, 7)=="En este"){
+        //Validar si no se encontró ninguna susp programada para enviar diferentes tipos de respuesta
+        if (substr($response, 0, 7) == "En este") {
             $json['speech'] = $response;
             $json['displayText'] = $response;
             $json['messages'] = array(
                 array(
                     'type' => 0,
                     'platform' => 'telegram',
-                    'speech' =>  $response
+                    'speech' => $response,
                 ),
                 array(
                     'type' => 0,
                     'platform' => 'telegram',
-                    'speech' =>  "\n🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415 \n🔹 Línea para daños: Marca 115.\n🔹 CHAT en Linea: "
+                    'speech' => "\n🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415 \n🔹 Línea para daños: Marca 115.\n🔹 CHAT en Linea: ",
                 ),
                 array(
                     'type' => 1,
@@ -915,16 +913,16 @@ class chatBotAPI
                     'buttons' => array(
                         array(
                             'text' => "👆 Ingresa Aquí",
-                            'postback' => "https://servicio.asistenciachat.com/website/chec_chat/Default2.aspx"
-                        )
-                    )
+                            'postback' => "https://servicio.asistenciachat.com/website/chec_chat/Default2.aspx",
+                        ),
+                    ),
                 ),
                 array(
                     'type' => 4,
                     'platform' => 'telegram',
                     'payload' => array(
                         'telegram' => array(
-                            'text' =>  "Si por el contrario deseas seguir conversando conmigo selecciona una de las siguientes opciones:",
+                            'text' => "Si por el contrario deseas seguir conversando conmigo selecciona una de las siguientes opciones:",
                             'reply_markup' => array(
                                 'inline_keyboard' => array(
                                     array(
@@ -953,22 +951,22 @@ class chatBotAPI
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => $response
+                    'speech' => $response,
                 ),
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => "🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415"
+                    'speech' => "🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415",
                 ),
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => "🔹 Línea para daños: Marca 115."
+                    'speech' => "🔹 Línea para daños: Marca 115.",
                 ),
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => "🔹 CHAT en Línea: "
+                    'speech' => "🔹 CHAT en Línea: ",
                 ),
                 array(
                     'type' => 1,
@@ -978,14 +976,14 @@ class chatBotAPI
                     'buttons' => array(
                         array(
                             'text' => "Ingresa Aquí",
-                            'postback' => "https://servicio.asistenciachat.com/website/chec_chat/Default2.aspx"
-                        )
-                    )
+                            'postback' => "https://servicio.asistenciachat.com/website/chec_chat/Default2.aspx",
+                        ),
+                    ),
                 ),
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => "Si por el contrario deseas seguir conversando conmigo selecciona una de las siguientes opciones:"
+                    'speech' => "Si por el contrario deseas seguir conversando conmigo selecciona una de las siguientes opciones:",
                 ),
                 array(
                     'type' => 2,
@@ -994,11 +992,11 @@ class chatBotAPI
                     'replies' => array(
                         '🔙 Buscar de nuevo',
                         '💠 Menú Principal',
-                        '👌 He finalizado la consulta'
-                    )
-                )
+                        '👌 He finalizado la consulta',
+                    ),
+                ),
             );
-        }else{ //Se envía cuando sí se encuentra alguna indisponibilidad
+        } else { //Se envía cuando sí se encuentra alguna indisponibilidad
             $json['speech'] = $response . "A continuación selecciona una opción:";
             $json['displayText'] = $response . "\n A continuación selecciona una opción:";
             $json['messages'] = array(
@@ -1036,7 +1034,7 @@ class chatBotAPI
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => $response
+                    'speech' => $response,
                 ),
                 array(
                     'type' => 2,
@@ -1045,9 +1043,9 @@ class chatBotAPI
                     'replies' => array(
                         '🔙 Buscar de nuevo',
                         '💠 Menú Principal',
-                        '👌 He finalizado la consulta'
-                    )
-                )
+                        '👌 He finalizado la consulta',
+                    ),
+                ),
             );
         }
 
@@ -1080,7 +1078,7 @@ class chatBotAPI
                     'platform' => 'telegram',
                     'payload' => array(
                         'telegram' => array(
-                            'text' => $json['speech']."\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
+                            'text' => $json['speech'] . "\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
                             'reply_markup' => array(
                                 'inline_keyboard' => array(
                                     array(
@@ -1109,7 +1107,7 @@ class chatBotAPI
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => $json['speech'] . "\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees."
+                    'speech' => $json['speech'] . "\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
                 ),
                 array(
                     'type' => 2,
@@ -1118,9 +1116,9 @@ class chatBotAPI
                     'replies' => array(
                         '🔙 Buscar de nuevo',
                         '💠 Menú Principal',
-                        '🔍 Consulta el número de cuenta'
-                    )
-                )
+                        '🔍 Consulta el número de cuenta',
+                    ),
+                ),
             );
             return $json;
         }
@@ -1149,7 +1147,7 @@ class chatBotAPI
                                             'text' => '💠 Menú Principal',
                                             'callback_data' => 'Menú Principal',
                                         ),
-                                    )
+                                    ),
                                 ),
                             ),
                         ),
@@ -1158,7 +1156,7 @@ class chatBotAPI
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => "No encuentro ningún registro asociado a este número de cédula. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal"
+                    'speech' => "No encuentro ningún registro asociado a este número de cédula. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal",
                 ),
                 array(
                     'type' => 2,
@@ -1166,15 +1164,15 @@ class chatBotAPI
                     'title' => 'Selecciona una opción',
                     'replies' => array(
                         '🔙 Buscar de nuevo',
-                        '💠 Menú Principal'
-                    )
-                )
+                        '💠 Menú Principal',
+                    ),
+                ),
             );
             return $json;
         }
     }
 
-     //c2_nit
+    //c2_nit
     // Funcion para buscar Indisponibilidad con el NIT
     public function getSPNIT($cedula)
     {
@@ -1200,7 +1198,7 @@ class chatBotAPI
                     'platform' => 'telegram',
                     'payload' => array(
                         'telegram' => array(
-                            'text' => $json['speech']."\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
+                            'text' => $json['speech'] . "\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
                             'reply_markup' => array(
                                 'inline_keyboard' => array(
                                     array(
@@ -1229,7 +1227,7 @@ class chatBotAPI
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => $json['speech'] . "\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees."
+                    'speech' => $json['speech'] . "\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
                 ),
                 array(
                     'type' => 2,
@@ -1238,9 +1236,9 @@ class chatBotAPI
                     'replies' => array(
                         '🔙 Buscar de nuevo',
                         '💠 Menú Principal',
-                        '🔍 Consulta el número de cuenta'
-                    )
-                )
+                        '🔍 Consulta el número de cuenta',
+                    ),
+                ),
             );
             return $json;
         }
@@ -1269,7 +1267,7 @@ class chatBotAPI
                                             'text' => '💠 Menú Principal',
                                             'callback_data' => 'Menú Principal',
                                         ),
-                                    )
+                                    ),
                                 ),
                             ),
                         ),
@@ -1278,7 +1276,7 @@ class chatBotAPI
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => "No encuentro ningún registro asociado a este número de NIT. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal"
+                    'speech' => "No encuentro ningún registro asociado a este número de NIT. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal",
                 ),
                 array(
                     'type' => 2,
@@ -1286,9 +1284,9 @@ class chatBotAPI
                     'title' => 'Selecciona una opción',
                     'replies' => array(
                         '🔙 Buscar de nuevo',
-                        '💠 Menú Principal'
-                    )
-                )
+                        '💠 Menú Principal',
+                    ),
+                ),
             );
             return $json;
         }
@@ -1321,7 +1319,7 @@ class chatBotAPI
                     'platform' => 'telegram',
                     'payload' => array(
                         'telegram' => array(
-                            'text' => $json['speech']."\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
+                            'text' => $json['speech'] . "\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
                             'reply_markup' => array(
                                 'inline_keyboard' => array(
                                     array(
@@ -1350,7 +1348,7 @@ class chatBotAPI
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => $json['speech'] . "\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees."
+                    'speech' => $json['speech'] . "\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
                 ),
                 array(
                     'type' => 2,
@@ -1359,9 +1357,9 @@ class chatBotAPI
                     'replies' => array(
                         '🔙 Buscar de nuevo',
                         '💠 Menú Principal',
-                        '🔍 Consulta el número de cuenta'
-                    )
-                )
+                        '🔍 Consulta el número de cuenta',
+                    ),
+                ),
             );
             return $json;
         }
@@ -1390,7 +1388,7 @@ class chatBotAPI
                                             'text' => '💠 Menú Principal',
                                             'callback_data' => 'Menú Principal',
                                         ),
-                                    )
+                                    ),
                                 ),
                             ),
                         ),
@@ -1399,7 +1397,7 @@ class chatBotAPI
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => "No encuentro ningún registro asociado a esta dirección. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal"
+                    'speech' => "No encuentro ningún registro asociado a esta dirección. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal",
                 ),
                 array(
                     'type' => 2,
@@ -1407,15 +1405,15 @@ class chatBotAPI
                     'title' => 'Selecciona una opción',
                     'replies' => array(
                         '🔙 Buscar de nuevo',
-                        '💠 Menú Principal'
-                    )
-                )
+                        '💠 Menú Principal',
+                    ),
+                ),
             );
             return $json;
         }
     }
 
-      //c1_nombre
+    //c1_nombre
     // Funcion para buscar Indisponibilidad con el Nombre
     public function getSPNombre($nombre, $municipio)
     {
@@ -1442,7 +1440,7 @@ class chatBotAPI
                     'platform' => 'telegram',
                     'payload' => array(
                         'telegram' => array(
-                            'text' => $json['speech']."\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
+                            'text' => $json['speech'] . "\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
                             'reply_markup' => array(
                                 'inline_keyboard' => array(
                                     array(
@@ -1471,7 +1469,7 @@ class chatBotAPI
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => $json['speech'] . "\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees."
+                    'speech' => $json['speech'] . "\n Si por el contrario, quieres buscar por otra opción o regresar al menú, presiona el botón que desees.",
                 ),
                 array(
                     'type' => 2,
@@ -1480,9 +1478,9 @@ class chatBotAPI
                     'replies' => array(
                         '🔙 Buscar de nuevo',
                         '💠 Menú Principal',
-                        '🔍 Consulta el número de cuenta'
-                    )
-                )
+                        '🔍 Consulta el número de cuenta',
+                    ),
+                ),
             );
             return $json;
         }
@@ -1511,7 +1509,7 @@ class chatBotAPI
                                             'text' => '💠 Menú Principal',
                                             'callback_data' => 'Menú Principal',
                                         ),
-                                    )
+                                    ),
                                 ),
                             ),
                         ),
@@ -1520,7 +1518,7 @@ class chatBotAPI
                 array(
                     'type' => 0,
                     'platform' => 'skype',
-                    'speech' => "No encuentro ningún registro asociado a este nombre. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal"
+                    'speech' => "No encuentro ningún registro asociado a este nombre. Para realizar una nueva búsqueda presiona 'Buscar de nuevo', de lo contrario regresa al Menú Principal",
                 ),
                 array(
                     'type' => 2,
@@ -1528,20 +1526,15 @@ class chatBotAPI
                     'title' => 'Selecciona una opción',
                     'replies' => array(
                         '🔙 Buscar de nuevo',
-                        '💠 Menú Principal'
-                    )
-                )
+                        '💠 Menú Principal',
+                    ),
+                ),
             );
             return $json;
         }
     }
 
-
     //-----------------------------------------------------------------------------
-
-
-
-
 
     // ------------------------------- BÚSQUEDA A FUENTES DE DATOS ----------------------------------
     //método que obtiene las indisponibilidades con el NIU. Se diferencia de getIndisNiu, en cuanto a que esta
@@ -1554,7 +1547,8 @@ class chatBotAPI
 
         if (!is_array($susp)) {
             if ($susp->VALOR == "s") {
-                //ACA SE VA ARESPONDER UNA SUSP EFECTIVA $this->setLogResultado('suspension efectiva')
+                // Carga de resultado de suspensión efectiva
+                $this->setLogResultado('Suspensión Efectiva');
                 $msg .= "\n🔷 Tu servicio se encuentra suspendido desde: $susp->HORA_FIN por cualquiera de los siguientes motivos: \n - Falta de pago \n - Solicitud del cliente \n - Revisión técnica.";
                 return $msg;
             } else {
@@ -1575,8 +1569,9 @@ class chatBotAPI
         $prog = getSuspProgramada($this->con, $niu);
         //var_dump($prog);
         $msg = "";
-        if (!is_array($prog) || count($prog)>0) {
-            //aca susp programada
+        if (!is_array($prog) || count($prog) > 0) {
+            // Carga de resultado suspensión programada
+            $this->setLogResultado('Suspensión Programada');
             $msg .= "\n🔷 Para esta cuenta, hemos encontrado las siguientes suspensiones programadas: ";
             foreach ($prog as $p) {
                 $msg .= "\nPara el inmueble consultado encontre las siguientes interrupciones del servicio de energía programadas:\n🔷 Hay una interrupción programada que inicia el " . $p->FECHA_INICIO . " a las " . $p->HORA_INICIO . ", y finaliza el " . $p->FECHA_FIN . " a las " . $p->HORA_FIN;
@@ -1584,7 +1579,8 @@ class chatBotAPI
             return $msg;
         } else {
             if ($soloC2) {
-                //aca Sin indisp reportada
+                //Hay carga de indisponibilidad reportada
+                $this->setLogResultado('Sin Indisponibilidad Reportada');
                 $msg .= "\nEn este momento no me reporta ninguna falla del servicio en tu sector, por favor comunicate con nosotros CHAT en Linea: \n🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415 \n🔹 Línea para daños: Marca 115.\n";
                 return $msg;
 
@@ -1602,13 +1598,14 @@ class chatBotAPI
         $circuito = getSuspCircuito($this->con, $niu);
         $msg = "";
         if (!is_array($circuito) && ($circuito->ESTADO == "ABIERTO" || $circuito->ESTADO == "APERTURA")) {
-            //aca log de circuito
+            //Carga de resultado indisponibilidad a nivel de circuito
+            $this->setLogResultado('Indisponibilidad a nivel de Circuito');
             $msg .= "\n🔷 Para el inmueble consultado encontre que se reportó la siguiente falla en el servicio de energía: \n🔷 Hay una falla en el circuito reportada el " . $circuito->FECHA . " a las " . $circuito->HORA . ". Estamos trabajando para reestablecer el servicio lo más pronto posible.";
             return $msg;
         } else {
             //Invocar metodo para buscar interr SGO
-            return $this->getSGO($niu);
-            //return "En este momento no me reporta ninguna falla del servicio en tu sector, por favor comunicate con nosotros: ";
+            /* return $this->getSGO($niu); */
+            return "En este momento no me reporta ninguna falla del servicio en tu sector, por favor comunicate con nosotros: ";
         }
     }
 
@@ -1616,33 +1613,29 @@ class chatBotAPI
     public function getSGO($niu)
     {
         $res = $this->consultarIndisponibilidad($niu);
-        if(substr($res->NombreSuscriptor,0,5)!="ERROR"){
+        if (substr($res->NombreSuscriptor, 0, 5) != "ERROR") {
             $time = explode(" ", $res->Fecha);
             //Validar si se encuentra una indisponibilidad en el SGO
-            if($res->Estado==0){
-                //aca log SGO
+            if ($res->Estado == 0) {
+                //Carga de resultado indisponibilidad a nivel nodo
+                $this->setLogResultado('Indisponibilidad a nivel de Nodo');
                 $msg = "\n🔷 Para el inmueble consultado encontré que se reportó la siguiente falla en el servicio de energía: \n🔷 Hay una falla en el nodo reportada el " . $time[0] . " a las " . $time[1] . ".";
                 //Validar si ya hay cuadrillas en campo
-                if($res->Orden == 1){
+                if ($res->Orden == 1) {
                     $msg .= "\n Ya tenemos una de nuetras cuadrillas en camino para solucionar este inconveniente.";
                 }
                 return $msg;
-            }else{
-                //aca no encontro nada
-                return "En este momento no me reporta ninguna falla del servicio en tu sector, por favor comunicate con nosotros: ";            
+            } else {
+                //No hay carga de indisponibilidad
+                $this->setLogResultado('Sin Indisponibilidad Reportada');
+                return "En este momento no me reporta ninguna falla del servicio en tu sector, por favor comunicate con nosotros: ";
             }
-        }else{
+        } else {
             return "No he podido encontrar ningún registro asociado con esta cuenta.";
         }
     }
 
-
-
     //-----------------------------------------------------------------------------
-
-
-
-
 
     //----------------------------CARGA DE DATOS------------------------------------
     //Carga de indisponibilidad a nivel de circuito
@@ -1690,58 +1683,66 @@ class chatBotAPI
 
     //----------------------------CONEXION SGO------------------------------------
 
-    public function consultarIndisponibilidad($niu){
-        
+    public function consultarIndisponibilidad($niu)
+    {
+
         $wsdl = $this->SGOurl;
         $client = new \Mesmotronic\Soap\WsaSoapClient($wsdl);
         $result = $client->ConsultarIndisponibilidad(array('Cuenta' => $niu));
-        
+
         return $result->ConsultarIndisponibilidadResult;
     }
-    
-    public function consularInterrupcionesDelServicioXCuenta($niu){
-    
+
+    public function consularInterrupcionesDelServicioXCuenta($niu)
+    {
+
         $wsdl = $this->SGOurl;
         $client2 = new \Mesmotronic\Soap\WsaSoapClient($wsdl);
         $result2 = $client2->consularInterrupcionesDelServicioXCuenta(array('Cuenta' => $niu));
-        
+
         return $result2->consularInterrupcionesDelServicioXCuentaResult;
     }
-    
-    public function consultarIndisponibilidadXNodo($nodo){
-    
+
+    public function consultarIndisponibilidadXNodo($nodo)
+    {
+
         $wsdl = $this->SGOurl;
         $client3 = new \Mesmotronic\Soap\WsaSoapClient($wsdl);
         $result3 = $client3->consultarIndisponibilidadXNodo(array('Nodo' => $nodo));
-        
+
         return $result3->consultarIndisponibilidadXNodoResult;
     }
 
-
     //----------------------------CALIFICACION DEL SERVICIO------------------------------------
 
-    public function setCalificacion($calificacion){
+    public function setCalificacion($calificacion)
+    {
 
         insertCalificacion($this->con, $calificacion);
 
-        if($calificacion['calificacion'] == 'Excelente'||$calificacion['calificacion'] == 'Bueno'){
+        if ($calificacion['calificacion'] == 'Excelente' || $calificacion['calificacion'] == 'Bueno') {
             $event = 'calif_positiva';
-        }else{
+        } else {
             $event = 'calif_negativa';
         }
 
-
         $json['followupEvent'] = array(
-            'name' => $event
+            'name' => $event,
         );
         return $json;
     }
 
     //----------------------------INSERTS DE LOG PARA MONITOREO------------------------------------
-    
+
     //Método para la inserción de una búsqueda en el log de búsquedas.
-    public function setLogBusqueda($contexto, $criterio){
+    public function setLogBusqueda($contexto, $criterio)
+    {
         return insertLogBusqueda($this->con, $contexto, $criterio);
+    }
+
+    public function setLogResultado($tipo_indisponibilidad)
+    {
+        return insertLogResultado($this->con, $tipo_indisponibilidad);
     }
 
 }
