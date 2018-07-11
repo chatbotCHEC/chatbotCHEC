@@ -4,12 +4,13 @@ require './download_attachments.php';
 require './lib.php';
 
 //$server = "http://localhost/chatbotCHEC/";
-$server= "https://chatbotindisp.herokuapp.com/";
+//$server= "https://chatbotindisp.herokuapp.com/";
+$server = "http://52.179.22.43/chatbot/";
 $helper = new HTMLTable2JSON();
 $api = new chatBotApi();
 
 get_attachments();
-echo "attachments downloaded";
+//echo "attachments downloaded";
 getDataFromFiles($server, $helper, $api, true);
 getDataFromFiles($server, $helper, $api, false);
 
@@ -18,7 +19,7 @@ function getDataFromFiles($server, $helper, $api, $initial)
     $dir = new DirectoryIterator('./attachment/');
     foreach ($dir as $fileinfo) {
         if (!$fileinfo->isDot()) {
-            echo "loading...\n";
+            //echo "loading...\n";
 
             //Obtener el numero de la orden
             $file = $fileinfo->getFilename();

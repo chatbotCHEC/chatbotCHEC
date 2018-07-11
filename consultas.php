@@ -435,3 +435,15 @@ function insertCalificacion($con, $calificacion){
     $a = $bulk->insert(['CALIFICACION' => $calificacion['calificacion'], 'ID' => $calificacion['id'], 'SESSIONID' => $calificacion['sessionId'], 'FECHA' => $calificacion['date']]);
     $result = $con->executeBulkWrite($GLOBALS['dbname'] . '.calificacion', $bulk);
 }
+
+function insertLogBusqueda($con, $contexto, $criterio){
+    $bulk = new MongoDB\Driver\BulkWrite;
+    $a = $bulk->insert(
+        [
+            'FECHA_BUSQUEDA' => date("d-m-Y G:i"),
+            'CONTEXTO' => $contexto,
+            'CRITERIO' => $criterio
+        ]);
+    $result = $con->executeBulkWrite($GLOBALS['dbname'] . '.log_busqueda', $bulk);
+    return $result;
+}

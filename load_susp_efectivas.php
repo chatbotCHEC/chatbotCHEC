@@ -11,7 +11,7 @@ get_attachments_efectivas();
 $dir = new DirectoryIterator('./attachment_efectivas/');
 foreach ($dir as $fileinfo) {
     if (!$fileinfo->isDot()) {
-        echo "loading...\n";
+        //echo "loading...\n";
 
         //Obtener el numero de la orden
         $file = $fileinfo->getFilename();

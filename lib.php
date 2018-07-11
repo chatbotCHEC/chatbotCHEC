@@ -1604,8 +1604,8 @@ class chatBotAPI
             return $msg;
         } else {
             //Invocar metodo para buscar interr SGO
-            //return $this->getSGO($niu);
-            return "En este momento no me reporta ninguna falla del servicio en tu sector, por favor comunicate con nosotros: ";
+            return $this->getSGO($niu);
+            //return "En este momento no me reporta ninguna falla del servicio en tu sector, por favor comunicate con nosotros: ";
         }
     }
 
@@ -1730,6 +1730,13 @@ class chatBotAPI
             'name' => $event
         );
         return $json;
+    }
+
+    //----------------------------INSERTS DE LOG PARA MONITOREO------------------------------------
+    
+    //Método para la inserción de una búsqueda en el log de búsquedas.
+    public function setLogBusqueda($contexto, $criterio){
+        return insertLogBusqueda($this->con, $contexto, $criterio);
     }
 
 }

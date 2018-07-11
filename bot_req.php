@@ -3,8 +3,6 @@
 error_reporting(-1);
 ini_set('display_errors', 'On');
 
-//TODO: consultas.php 1
-
 require './lib.php';
 
 //Instancia de la API
@@ -19,12 +17,6 @@ $contexts = array();
 
 //Obtener el cuerpo de la petición que viene de API.ai
 $reqBody = $api->detectRequestBody();
-
-
-/* $fp = fopen('request.json', 'w');
-fwrite($fp, json_encode($reqBody));
-fclose($fp); */
-
 
 //Obtener los contextos de la petición
 foreach ($reqBody['result']['contexts'] as $valor) {
@@ -61,47 +53,57 @@ foreach ($contexts as $i => $con) {
 
     switch ($con['name']) {
         case 'c1_cc':
+            $insertALog = $api->setLogBusqueda('c1', 'cedula');
             $response = $api->getIndisCC($number);
             $answered = true;
             break;
         case 'c1_direccion_municipio':
+            $insertALog = $api->setLogBusqueda('c1', 'direccion');
             $direccion = $reqBody['result']['resolvedQuery'];
             $response = $api->getIndisAddress($direccion, $municipio);
             $answered = true;
             break;
         case 'c1_nit':
+            $insertALog = $api->setLogBusqueda('c1', 'nit');
             $response = $api->getIndisNIT($number);
             $answered = true;
             break;
         case 'c1_niu':
             if(!$answered){
+                $insertALog = $api->setLogBusqueda('c1', 'niu');
                 $response = $api->getIndisNiu($number);    
             }
             break;
         case 'c1_nombre_municipio':
+            $insertALog = $api->setLogBusqueda('c1', 'nombre');
             $nombre = $reqBody['result']['resolvedQuery'];
             $response = $api->getIndisNombre($nombre, $municipio);
             $answered = true;
             break;
         case 'c2_cc':
+            $insertALog = $api->setLogBusqueda('c2', 'cedula');
             $response = $api->getSPCC($number);
             $answered = true;
             break;
         case 'c2_direccion_municipio':
+            $insertALog = $api->setLogBusqueda('c2', 'direccion');
             $direccion = $reqBody['result']['resolvedQuery'];
             $response = $api->getSPAddress($direccion, $municipio);
             $answered = true;
             break;
         case 'c2_nit':
+            $insertALog = $api->setLogBusqueda('c2', 'nit');
             $response = $api->getSPNIT($number);
             $answered = true;
             break;
         case 'c2_niu':
             if(!$answered){
+                $insertALog = $api->setLogBusqueda('c2', 'niu');
                 $response = $api->getSPNiu($number);    
             }
             break;
         case 'c2_nombre_municipio':
+            $insertALog = $api->setLogBusqueda('c2', 'nombre');
             $nombre = $reqBody['result']['resolvedQuery'];
             $response = $api->getSPNombre($nombre, $municipio);
             $answered = true;
