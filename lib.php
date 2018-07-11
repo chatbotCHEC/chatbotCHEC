@@ -1543,7 +1543,7 @@ class chatBotAPI
 
 
 
-    // ------------------------------- MAIN C1 ----------------------------------
+    // ------------------------------- BÚSQUEDA A FUENTES DE DATOS ----------------------------------
     //método que obtiene las indisponibilidades con el NIU. Se diferencia de getIndisNiu, en cuanto a que esta
     //puede ser reutilizada en otros parametros
     public function getIndisponibilidad($niu)
@@ -1554,6 +1554,7 @@ class chatBotAPI
 
         if (!is_array($susp)) {
             if ($susp->VALOR == "s") {
+                //ACA SE VA ARESPONDER UNA SUSP EFECTIVA $this->setLogResultado('suspension efectiva')
                 $msg .= "\n🔷 Tu servicio se encuentra suspendido desde: $susp->HORA_FIN por cualquiera de los siguientes motivos: \n - Falta de pago \n - Solicitud del cliente \n - Revisión técnica.";
                 return $msg;
             } else {
@@ -1575,6 +1576,7 @@ class chatBotAPI
         //var_dump($prog);
         $msg = "";
         if (!is_array($prog) || count($prog)>0) {
+            //aca susp programada
             $msg .= "\n🔷 Para esta cuenta, hemos encontrado las siguientes suspensiones programadas: ";
             foreach ($prog as $p) {
                 $msg .= "\nPara el inmueble consultado encontre las siguientes interrupciones del servicio de energía programadas:\n🔷 Hay una interrupción programada que inicia el " . $p->FECHA_INICIO . " a las " . $p->HORA_INICIO . ", y finaliza el " . $p->FECHA_FIN . " a las " . $p->HORA_FIN;
@@ -1582,6 +1584,7 @@ class chatBotAPI
             return $msg;
         } else {
             if ($soloC2) {
+                //aca Sin indisp reportada
                 $msg .= "\nEn este momento no me reporta ninguna falla del servicio en tu sector, por favor comunicate con nosotros CHAT en Linea: \n🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415 \n🔹 Línea para daños: Marca 115.\n";
                 return $msg;
 
@@ -1599,7 +1602,7 @@ class chatBotAPI
         $circuito = getSuspCircuito($this->con, $niu);
         $msg = "";
         if (!is_array($circuito) && ($circuito->ESTADO == "ABIERTO" || $circuito->ESTADO == "APERTURA")) {
-
+            //aca log de circuito
             $msg .= "\n🔷 Para el inmueble consultado encontre que se reportó la siguiente falla en el servicio de energía: \n🔷 Hay una falla en el circuito reportada el " . $circuito->FECHA . " a las " . $circuito->HORA . ". Estamos trabajando para reestablecer el servicio lo más pronto posible.";
             return $msg;
         } else {
@@ -1617,6 +1620,7 @@ class chatBotAPI
             $time = explode(" ", $res->Fecha);
             //Validar si se encuentra una indisponibilidad en el SGO
             if($res->Estado==0){
+                //aca log SGO
                 $msg = "\n🔷 Para el inmueble consultado encontré que se reportó la siguiente falla en el servicio de energía: \n🔷 Hay una falla en el nodo reportada el " . $time[0] . " a las " . $time[1] . ".";
                 //Validar si ya hay cuadrillas en campo
                 if($res->Orden == 1){
@@ -1624,6 +1628,7 @@ class chatBotAPI
                 }
                 return $msg;
             }else{
+                //aca no encontro nada
                 return "En este momento no me reporta ninguna falla del servicio en tu sector, por favor comunicate con nosotros: ";            
             }
         }else{
