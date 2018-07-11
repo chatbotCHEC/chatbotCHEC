@@ -1604,8 +1604,8 @@ class chatBotAPI
             return $msg;
         } else {
             //Invocar metodo para buscar interr SGO
-            /* return $this->getSGO($niu); */
-            return "En este momento no me reporta ninguna falla del servicio en tu sector, por favor comunicate con nosotros: ";
+            return $this->getSGO($niu);
+            /* return "En este momento no me reporta ninguna falla del servicio en tu sector, por favor comunicate con nosotros: "; */
         }
     }
 
