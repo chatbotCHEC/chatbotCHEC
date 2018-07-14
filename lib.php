@@ -1604,8 +1604,8 @@ class chatBotAPI
             return $msg;
         } else {
             //Invocar metodo para buscar interr SGO
-            return $this->getSGO($niu);
-            /* return "En este momento no me reporta ninguna falla del servicio en tu sector, por favor comunicate con nosotros: "; */
+            //return $this->getSGO($niu);
+             return "En este momento no me reporta ninguna falla del servicio en tu sector, por favor comunicate con nosotros: "; 
         }
     }
 
@@ -1628,7 +1628,15 @@ class chatBotAPI
             } else {
                 //No hay carga de indisponibilidad
                 $this->setLogResultado('Sin Indisponibilidad Reportada');
-                return "En este momento no me reporta ninguna falla del servicio en tu sector, por favor comunicate con nosotros: ";
+                $baseResponse = "En este momento no me reporta ninguna falla del servicio en tu sector.";
+                
+                if($res->Evento != -1){
+                    $fechaHora = explode(" ", $res->Fecha);
+                    $baseResponse .= " El último reporte de daños que tengo registrado para esta cuenta fue el " . $fechaHora
+                }
+                
+                
+                return "En este momento no me reporta ninguna falla del servicio en tu sector. por favor comunicate con nosotros: ";
             }
         } else {
             return "No he podido encontrar ningún registro asociado con esta cuenta.";
