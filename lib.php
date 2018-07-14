@@ -1632,7 +1632,7 @@ class chatBotAPI
                 
                 if($res->Evento != -1){
                     $fechaHora = explode(" ", $res->Fecha);
-                    $baseResponse .= " El último reporte de daños que tengo registrado para esta cuenta fue el " . $fechaHora
+                    //$baseResponse .= " El último reporte de daños que tengo registrado para esta cuenta fue el " . $fechaHora
                 }
                 
                 
