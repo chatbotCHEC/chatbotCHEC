@@ -458,7 +458,7 @@ function insertLogResultado($con, $tipo_indisponibilidad)
     $a = $bulk->insert(
         [
             'FECHA_RESULTADO' => new \MongoDB\BSON\UTCDateTime(new \DateTime()),
-            'TIPO_INDISPONBILIDAD' => $tipo_indisponibilidad,
+            'TIPO_INDISPONIBILIDAD' => $tipo_indisponibilidad,
         ]);
     $result = $con->executeBulkWrite($GLOBALS['dbname'] . '.log_resultados', $bulk);
     return $result;
