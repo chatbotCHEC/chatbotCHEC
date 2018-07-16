@@ -1581,7 +1581,7 @@ class chatBotAPI
             if ($soloC2) {
                 //Hay carga de indisponibilidad reportada
                 $this->setLogResultado('Sin Indisponibilidad Reportada');
-                $msg .= "\nEn este momento no me reporta ninguna falla del servicio en tu sector, por favor comunicate con nosotros CHAT en Linea: \n🔹 Línea para trámites y solicitudes: Marca 01 8000 912432 #415 \n🔹 Línea para daños: Marca 115.\n";
+                $msg .= "\nEn este momento no tengo registrada ninguna suspensión programada para esta cuenta";
                 return $msg;
 
             } else {
