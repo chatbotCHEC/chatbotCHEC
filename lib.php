@@ -1603,7 +1603,7 @@ class chatBotAPI
             $msg .= "\n🔷 Para el inmueble consultado encontre que se reportó la siguiente falla en el servicio de energía: \n🔷 Hay una falla en el circuito reportada el " . $circuito->FECHA . " a las " . $circuito->HORA . ". Estamos trabajando para reestablecer el servicio lo más pronto posible.";
             return $msg;
         } else {
-            //Invocar metodo para buscar interr SGO
+            //Invocar metodo para buscar interr             
             return $this->getSGO($niu);
             /* return "En este momento no me reporta ninguna falla del servicio en tu sector, por favor comunicate con nosotros: "; */
         }

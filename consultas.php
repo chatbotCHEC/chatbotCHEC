@@ -441,7 +441,7 @@ function insertLogBusqueda($con, $contexto, $criterio)
     $bulk = new MongoDB\Driver\BulkWrite;
     $a = $bulk->insert(
         [
-            'FECHA_BUSQUEDA' => date("d-m-Y G:i"),
+            'FECHA_BUSQUEDA' => new \MongoDB\BSON\UTCDateTime(new \DateTime()),
             'CONTEXTO' => $contexto,
             'CRITERIO' => $criterio,
         ]);
@@ -457,7 +457,7 @@ function insertLogResultado($con, $tipo_indisponibilidad)
     $bulk = new MongoDB\Driver\BulkWrite;
     $a = $bulk->insert(
         [
-            'FECHA_RESULTADO' => date("d-m-Y G:i"),
+            'FECHA_RESULTADO' => new \MongoDB\BSON\UTCDateTime(new \DateTime()),
             'TIPO_INDISPONBILIDAD' => $tipo_indisponibilidad,
         ]);
     $result = $con->executeBulkWrite($GLOBALS['dbname'] . '.log_resultados', $bulk);
