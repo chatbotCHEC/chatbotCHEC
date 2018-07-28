@@ -236,9 +236,9 @@ class chatBotAPI
 
     //c1_niu
     //Método que busca las indisponibilidades teniendo el numero de cuenta
-    public function getIndisNiu($niu)
+    public function getIndisNiu($niu, $isTest)
     {
-        $response = $this->getIndisponibilidad($niu);
+        $response = $this->getIndisponibilidad($niu, $isTest);
 
         //Validar si no se encontró ninguna indisponibilidad para enviar diferentes tipos de respuesta
         if (substr($response, 0, 7) == "En este") {
@@ -410,7 +410,7 @@ class chatBotAPI
         $busqueda = $this->getNiuFromAddress($direccion, $municipio);
         //Verificar si se obtuvo una sola cuenta
         if (isset($busqueda['NIU'])) {
-            return $this->getIndisNiu($busqueda['NIU']);
+            return $this->getIndisNiu($busqueda['NIU'], false);
         }
 
         //Verificar si se obtuvo más de una dirección
@@ -530,7 +530,7 @@ class chatBotAPI
         $busqueda = $this->getNiuFromCedula($cedula);
         //Verificar si se obtuvo una sola cuenta
         if (isset($busqueda['NIU'])) {
-            return $this->getIndisNiu($busqueda['NIU']);
+            return $this->getIndisNiu($busqueda['NIU'], false);
         }
 
         //Verificar si se obtuvo más de una dirección
@@ -650,7 +650,7 @@ class chatBotAPI
         $busqueda = $this->getNiuFromNIT($cedula);
         //Verificar si se obtuvo una sola cuenta
         if (isset($busqueda['NIU'])) {
-            return $this->getIndisNiu($busqueda['NIU']);
+            return $this->getIndisNiu($busqueda['NIU'], false);
         }
 
         //Verificar si se obtuvo más de una dirección
@@ -772,7 +772,7 @@ class chatBotAPI
         $busqueda = $this->getNiuFromName($palabras, $municipio);
         //Verificar si se obtuvo una sola cuenta
         if (isset($busqueda['NIU'])) {
-            return $this->getIndisNiu($busqueda['NIU']);
+            return $this->getIndisNiu($busqueda['NIU'], false);
         }
 
         //Verificar si se obtuvo más de una dirección
@@ -889,7 +889,7 @@ class chatBotAPI
     //Método que busca las suspensiones programada teniendo el numero de cuenta
     public function getSPNiu($niu)
     {
-        $response = $this->getSuspensionesProgramadas($niu, true);
+        $response = $this->getSuspensionesProgramadas($niu, true, false);
         //Validar si no se encontró ninguna susp programada para enviar diferentes tipos de respuesta
         if (substr($response, 0, 7) == "En este") {
             $json['speech'] = $response;
@@ -1539,7 +1539,7 @@ class chatBotAPI
     // ------------------------------- BÚSQUEDA A FUENTES DE DATOS ----------------------------------
     //método que obtiene las indisponibilidades con el NIU. Se diferencia de getIndisNiu, en cuanto a que esta
     //puede ser reutilizada en otros parametros
-    public function getIndisponibilidad($niu)
+    public function getIndisponibilidad($niu, $isTest)
     {
         $susp = getSuspEfectiva($this->con, $niu);
 
@@ -1548,30 +1548,33 @@ class chatBotAPI
         if (!is_array($susp)) {
             if ($susp->VALOR == "s") {
                 // Carga de resultado de suspensión efectiva
-                $this->setLogResultado('Suspensión Efectiva');
+                if(!$isTest){
+                    $this->setLogResultado('Suspensión Efectiva');
+                }
                 $msg .= "\n🔷 Tu servicio se encuentra suspendido desde: $susp->HORA_FIN por cualquiera de los siguientes motivos: \n - Falta de pago \n - Solicitud del cliente \n - Revisión técnica.";
                 return $msg;
             } else {
                 //Invocar metodo para buscar interrupcion programada
-                return $this->getSuspensionesProgramadas($niu, false);
+                return $this->getSuspensionesProgramadas($niu, false, $isTest);
             }
 
         } else {
             //Invocar metodo para buscar interrupcion programada
-            return $this->getSuspensionesProgramadas($niu, false);
+            return $this->getSuspensionesProgramadas($niu, false, $isTest);
         }
 
     }
 
     //Método que obtiene las suspensiones programadas teniendo el NIU. Reutilizable
-    public function getSuspensionesProgramadas($niu, $soloC2)
+    public function getSuspensionesProgramadas($niu, $soloC2, $isTest)
     {
         $prog = getSuspProgramada($this->con, $niu);
-        //var_dump($prog);
         $msg = "";
         if (!is_array($prog) || count($prog) > 0) {
             // Carga de resultado suspensión programada
-            $this->setLogResultado('Suspensión Programada');
+            if(!$isTest){
+                $this->setLogResultado('Suspensión Programada');
+            }
             $msg .= "\n🔷 Para esta cuenta, hemos encontrado las siguientes suspensiones programadas: ";
             foreach ($prog as $p) {
                 $msg .= "\nPara el inmueble consultado encontre las siguientes interrupciones del servicio de energía programadas:\n🔷 Hay una interrupción programada que inicia el " . $p->FECHA_INICIO . " a las " . $p->HORA_INICIO . ", y finaliza el " . $p->FECHA_FIN . " a las " . $p->HORA_FIN;
@@ -1580,31 +1583,35 @@ class chatBotAPI
         } else {
             if ($soloC2) {
                 //Hay carga de indisponibilidad reportada
-                $this->setLogResultado('Sin Indisponibilidad Reportada');
+                if(!$isTest){
+                    $this->setLogResultado('Sin Indisponibilidad Reportada');
+                }
                 $msg .= "\nEn este momento no tengo registrada ninguna suspensión programada para esta cuenta";
                 return $msg;
 
             } else {
                 //Invocar metodo para buscar interr scada
-                return $this->getInterrupCircuito($niu);
+                return $this->getInterrupCircuito($niu, $isTest);
             }
 
         }
     }
 
     //Método que obtiene las interrupciones a nivel de circuito SCADA teniendo el NIU. Reutilizable
-    public function getInterrupCircuito($niu)
+    public function getInterrupCircuito($niu, $isTest)
     {
         $circuito = getSuspCircuito($this->con, $niu);
         $msg = "";
         if (!is_array($circuito) && ($circuito->ESTADO == "ABIERTO" || $circuito->ESTADO == "APERTURA")) {
             //Carga de resultado indisponibilidad a nivel de circuito
-            $this->setLogResultado('Indisponibilidad a nivel de Circuito');
+            if(!$isTest){
+                $this->setLogResultado('Indisponibilidad a nivel de Circuito');
+            }
             $msg .= "\n🔷 Para el inmueble consultado encontre que se reportó la siguiente falla en el servicio de energía: \n🔷 Hay una falla en el circuito reportada el " . $circuito->FECHA . " a las " . $circuito->HORA . ". Estamos trabajando para reestablecer el servicio lo más pronto posible.";
             return $msg;
         } else {
             //Invocar metodo para buscar interr SGO
-            return $this->getSGO($niu);
+            return $this->getSGO($niu, $isTest);
 
             //Comentar los siguientes métodos cuando se habilite el SGO
             /* $this->setLogResultado('Sin Indisponibilidad Reportada');
@@ -1613,7 +1620,7 @@ class chatBotAPI
     }
 
     //Método que obtiene las interrupciones a nivel de nodo SGO teniendo el NIU. Reutilizable
-    public function getSGO($niu)
+    public function getSGO($niu, $isTest)
     {
         try{
             $res = $this->consultarIndisponibilidad($niu);
@@ -1622,7 +1629,9 @@ class chatBotAPI
                 //Validar si se encuentra una indisponibilidad en el SGO
                 if ($res->Estado == 0) {
                     //Carga de resultado indisponibilidad a nivel nodo
-                    $this->setLogResultado('Indisponibilidad a nivel de Nodo');
+                    if(!$isTest){
+                        $this->setLogResultado('Indisponibilidad a nivel de Nodo');
+                    }
                     $msg = "\n🔷 Para el inmueble consultado encontré que se reportó la siguiente falla en el servicio de energía: \n🔷 Hay una falla en el nodo reportada el " . $time[0] . " a las " . $time[1] . ".";
                     //Validar si ya hay cuadrillas en campo
                     if ($res->Orden == 1) {
@@ -1631,7 +1640,9 @@ class chatBotAPI
                     return $msg;
                 } else {
                     //No hay carga de indisponibilidad
-                    $this->setLogResultado('Sin Indisponibilidad Reportada');
+                    if(!$isTest){
+                        $this->setLogResultado('Sin Indisponibilidad Reportada');
+                    }
                     $baseResponse = "En este momento no me reporta ninguna falla del servicio en tu sector.";
                     
                     if($res->Evento != -1){
@@ -1672,7 +1683,6 @@ class chatBotAPI
         $response['HORA'] = $array[1];
         $response['ESTADO'] = $array[2];
         $response['CIRCUITO'] = $array[3];
-        var_dump($response);
         return $response;
     }
 
