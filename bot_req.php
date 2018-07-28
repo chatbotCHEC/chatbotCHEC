@@ -70,7 +70,7 @@ foreach ($contexts as $i => $con) {
             break;
         case 'c1_niu':
             if(!$answered){
-                //$insertALog = $api->setLogBusqueda('c1', 'niu');
+                $insertALog = $api->setLogBusqueda('c1', 'niu');
                 $response = $api->getIndisNiu($number, false);    
             }
             break;
