@@ -1647,7 +1647,7 @@ class chatBotAPI
             }
         }catch (Exception $e){
             $this->setLogSGOerror($e->getMessage());
-            $this->sendAlertSGOerror($e->getMessage());
+            //$this->sendAlertSGOerror($e->getMessage());
             return "En este momento no me reporta ninguna falla del servicio en tu sector, por favor comunicate con nosotros: ";
         }
 
@@ -1774,8 +1774,10 @@ class chatBotAPI
     //----------------------------ENVÍO DE ALERTA EN CASO DE ERRORES------------------------------------
     
     public function sendAlertSGOerror($msg){
-        imap_mail('prjchec.jcardona@umanizales.edu.co', 'CHATBOT: Notificación de error en Fuente SGO', 'Se ha registrado el siguiente error en una petición realizada al SGO: '.$msg);
-        imap_mail('prjchec.dcardona@umanizales.edu.co', 'CHATBOT: Notificación de error en Fuente SGO', 'Se ha registrado el siguiente error en una petición realizada al SGO: '.$msg);
+        $result = mail(
+            'prjchec.jcardona@umanizales.edu.co',
+            'CHATBOT: Notificación de error en Fuente SGO', 'Se ha registrado el siguiente error en una petición realizada al SGO: '.$msg
+        );
     }
 
 }
