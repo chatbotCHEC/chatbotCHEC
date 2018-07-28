@@ -112,7 +112,6 @@ foreach ($contexts as $i => $con) {
             $calificacion['calificacion'] = substr($reqBody['result']['resolvedQuery'],5);
             $calificacion['id'] = $reqBody['id'];
             $calificacion['sessionId'] = $reqBody['sessionId'];
-            $calificacion['date'] = $reqBody['timestamp'];
             $response = $api->setCalificacion($calificacion);
             $answered = true;
             break;

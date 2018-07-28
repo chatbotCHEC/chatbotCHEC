@@ -1615,35 +1615,42 @@ class chatBotAPI
     //Método que obtiene las interrupciones a nivel de nodo SGO teniendo el NIU. Reutilizable
     public function getSGO($niu)
     {
-        $res = $this->consultarIndisponibilidad($niu);
-        if (substr($res->NombreSuscriptor, 0, 5) != "ERROR") {
-            $time = explode(" ", $res->Fecha);
-            //Validar si se encuentra una indisponibilidad en el SGO
-            if ($res->Estado == 0) {
-                //Carga de resultado indisponibilidad a nivel nodo
-                $this->setLogResultado('Indisponibilidad a nivel de Nodo');
-                $msg = "\n🔷 Para el inmueble consultado encontré que se reportó la siguiente falla en el servicio de energía: \n🔷 Hay una falla en el nodo reportada el " . $time[0] . " a las " . $time[1] . ".";
-                //Validar si ya hay cuadrillas en campo
-                if ($res->Orden == 1) {
-                    $msg .= "\n Ya tenemos una de nuetras cuadrillas en camino para solucionar este inconveniente.";
+        try{
+            $res = $this->consultarIndisponibilidad($niu);
+            if (substr($res->NombreSuscriptor, 0, 5) != "ERROR") {
+                $time = explode(" ", $res->Fecha);
+                //Validar si se encuentra una indisponibilidad en el SGO
+                if ($res->Estado == 0) {
+                    //Carga de resultado indisponibilidad a nivel nodo
+                    $this->setLogResultado('Indisponibilidad a nivel de Nodo');
+                    $msg = "\n🔷 Para el inmueble consultado encontré que se reportó la siguiente falla en el servicio de energía: \n🔷 Hay una falla en el nodo reportada el " . $time[0] . " a las " . $time[1] . ".";
+                    //Validar si ya hay cuadrillas en campo
+                    if ($res->Orden == 1) {
+                        $msg .= "\n Ya tenemos una de nuetras cuadrillas en camino para solucionar este inconveniente.";
+                    }
+                    return $msg;
+                } else {
+                    //No hay carga de indisponibilidad
+                    $this->setLogResultado('Sin Indisponibilidad Reportada');
+                    $baseResponse = "En este momento no me reporta ninguna falla del servicio en tu sector.";
+                    
+                    if($res->Evento != -1){
+                        $fechaHora = explode(" ", $res->Fecha);
+                        //$baseResponse .= " El último reporte de daños que tengo registrado para esta cuenta fue el " . $fechaHora
+                    }
+                    
+                    
+                    return "En este momento no me reporta ninguna falla del servicio en tu sector. por favor comunicate con nosotros: ";
                 }
-                return $msg;
             } else {
-                //No hay carga de indisponibilidad
-                $this->setLogResultado('Sin Indisponibilidad Reportada');
-                $baseResponse = "En este momento no me reporta ninguna falla del servicio en tu sector.";
-                
-                if($res->Evento != -1){
-                    $fechaHora = explode(" ", $res->Fecha);
-                    //$baseResponse .= " El último reporte de daños que tengo registrado para esta cuenta fue el " . $fechaHora
-                }
-                
-                
-                return "En este momento no me reporta ninguna falla del servicio en tu sector. por favor comunicate con nosotros: ";
+                return "No he podido encontrar ningún registro asociado con esta cuenta.";
             }
-        } else {
-            return "No he podido encontrar ningún registro asociado con esta cuenta.";
+        }catch (Exception $e){
+            $this->setLogSGOerror($e->getMessage());
+            $this->sendAlertSGOerror($e->getMessage());
+            return "En este momento no me reporta ninguna falla del servicio en tu sector, por favor comunicate con nosotros: ";
         }
+
     }
 
     //-----------------------------------------------------------------------------
@@ -1754,6 +1761,21 @@ class chatBotAPI
     public function setLogResultado($tipo_indisponibilidad)
     {
         return insertLogResultado($this->con, $tipo_indisponibilidad);
+    }
+
+    public function setLogSGOerror($msg)
+    {
+        if(strlen($msg)>80){
+            $msg = substr($msg, 0, 80);
+        }
+        return insertLogSGOerror($this->con, $msg);
+    }
+
+    //----------------------------ENVÍO DE ALERTA EN CASO DE ERRORES------------------------------------
+    
+    public function sendAlertSGOerror($msg){
+        imap_mail('prjchec.jcardona@umanizales.edu.co', 'CHATBOT: Notificación de error en Fuente SGO', 'Se ha registrado el siguiente error en una petición realizada al SGO: '.$msg);
+        imap_mail('prjchec.dcardona@umanizales.edu.co', 'CHATBOT: Notificación de error en Fuente SGO', 'Se ha registrado el siguiente error en una petición realizada al SGO: '.$msg);
     }
 
 }

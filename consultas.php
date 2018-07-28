@@ -432,7 +432,12 @@ function updSuspProgramada($con, $orden_op)
 function insertCalificacion($con, $calificacion)
 {
     $bulk = new MongoDB\Driver\BulkWrite;
-    $a = $bulk->insert(['CALIFICACION' => $calificacion['calificacion'], 'ID' => $calificacion['id'], 'SESSIONID' => $calificacion['sessionId'], 'FECHA' => $calificacion['date']]);
+    $a = $bulk->insert([
+        'CALIFICACION' => $calificacion['calificacion'],
+        'ID' => $calificacion['id'],
+        'SESSIONID' => $calificacion['sessionId'],
+        'FECHA' => new \MongoDB\BSON\UTCDateTime(new \DateTime())
+    ]);
     $result = $con->executeBulkWrite($GLOBALS['dbname'] . '.calificacion', $bulk);
 }
 
@@ -461,5 +466,17 @@ function insertLogResultado($con, $tipo_indisponibilidad)
             'TIPO_INDISPONIBILIDAD' => $tipo_indisponibilidad,
         ]);
     $result = $con->executeBulkWrite($GLOBALS['dbname'] . '.log_resultados', $bulk);
+    return $result;
+}
+
+function insertLogSGOerror($con, $msg)
+{
+    $bulk = new MongoDB\Driver\BulkWrite;
+    $a = $bulk->insert(
+        [
+            'FECHA' => new \MongoDB\BSON\UTCDateTime(new \DateTime()),
+            'DESCRIPCION' => $msg
+        ]);
+    $result = $con->executeBulkWrite($GLOBALS['dbname'] . '.log_SGOerror', $bulk);
     return $result;
 }
