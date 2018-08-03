@@ -1611,11 +1611,11 @@ class chatBotAPI
             return $msg;
         } else {
             //Invocar metodo para buscar interr SGO
-            return $this->getSGO($niu, $isTest);
+            //return $this->getSGO($niu, $isTest);
 
             //Comentar los siguientes métodos cuando se habilite el SGO
-            /* $this->setLogResultado('Sin Indisponibilidad Reportada');
-            return "En este momento no me reporta ninguna falla del servicio en tu sector, por favor comunicate con nosotros: "; */ 
+            $this->setLogResultado('Sin Indisponibilidad Reportada');
+            return "En este momento no me reporta ninguna falla del servicio en tu sector, por favor comunicate con nosotros: "; 
         }
     }
 
@@ -1658,7 +1658,7 @@ class chatBotAPI
             }
         }catch (Exception $e){
             $this->setLogSGOerror($e->getMessage());
-            //$this->sendAlertSGOerror($e->getMessage());
+            $this->sendAlertSGOerror($e->getMessage());
             return "En este momento no me reporta ninguna falla del servicio en tu sector, por favor comunicate con nosotros: ";
         }
 
@@ -1784,10 +1784,15 @@ class chatBotAPI
     //----------------------------ENVÍO DE ALERTA EN CASO DE ERRORES------------------------------------
     
     public function sendAlertSGOerror($msg){
-        $result = mail(
-            'prjchec.jcardona@umanizales.edu.co',
-            'CHATBOT: Notificación de error en Fuente SGO', 'Se ha registrado el siguiente error en una petición realizada al SGO: '.$msg
-        );
+        try {
+            $result = imap_mail(
+                'prjchec.jcardona@umanizales.edu.co',
+                'CHATBOT: Notificación de error en Fuente SGO', 'Se ha registrado el siguiente error en una petición realizada al SGO: '.$msg
+            );
+
+        } catch (Exception $e){
+            echo $e->getMessage();
+        }
     }
 
 }

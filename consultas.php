@@ -137,10 +137,7 @@ function getSuspEfectiva($con, $niu)
     $filter = ['NIU' => $niu];
     $query = new MongoDB\Driver\Query($filter);
     $result = $con->executeQuery($GLOBALS['dbname'] . ".susp_efectivas", $query);
-    //var_dump($result);
-
     $cliente = $result->toArray();
-    //var_dump($cliente);
 
     $reg_reciente = array();
 
@@ -149,7 +146,6 @@ function getSuspEfectiva($con, $niu)
 
         $mostRecent = 0;
         $now = Time();
-        //var_dump($now);
 
         foreach ($cliente as $r) {
             $curDate = strtotime($r->HORA_FIN);
@@ -162,7 +158,6 @@ function getSuspEfectiva($con, $niu)
         }
 
     }
-    //var_dump($reg_reciente);
 
     return $reg_reciente;
 
