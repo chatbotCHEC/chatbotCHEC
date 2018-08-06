@@ -1611,11 +1611,11 @@ class chatBotAPI
             return $msg;
         } else {
             //Invocar metodo para buscar interr SGO
-            //return $this->getSGO($niu, $isTest);
+            return $this->getSGO($niu, $isTest);
 
             //Comentar los siguientes métodos cuando se habilite el SGO
-            $this->setLogResultado('Sin Indisponibilidad Reportada');
-            return "En este momento no me reporta ninguna falla del servicio en tu sector, por favor comunicate con nosotros: "; 
+            /* $this->setLogResultado('Sin Indisponibilidad Reportada');
+            return "En este momento no me reporta ninguna falla del servicio en tu sector, por favor comunicate con nosotros: ";  */
         }
     }
 
