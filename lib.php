@@ -77,9 +77,10 @@ class chatBotAPI
                 array_push($foundResults, array('NIU' => $value->NIU, 'DIRECCION' => $value->DIRECCION));
             }
             $resultado['VARIOS'] = $foundResults;
-
+            //LOG A ENCONTRE VARIOS
         } else {
             $resultado['NINGUNO'] = 1;
+            //LOG A NO ENCONTRE CUENTAS
         }
         return $resultado;
     }
